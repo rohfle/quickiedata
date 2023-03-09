@@ -1,14 +1,12 @@
-package helpers
+package quickiedata
 
 import (
 	"fmt"
 	"strconv"
 	"strings"
-
-	"github.com/rohfle/quickiedata/types"
 )
 
-func SimplifyMapOfTermArray(terms map[string][]*types.Term) map[string][]string {
+func SimplifyMapOfTermArray(terms map[string][]*Term) map[string][]string {
 	var output = make(map[string][]string)
 	for key, values := range terms {
 		var valuesOut []string
@@ -20,7 +18,7 @@ func SimplifyMapOfTermArray(terms map[string][]*types.Term) map[string][]string 
 	return output
 }
 
-func SimplifyMapOfTerms(terms map[string]*types.Term) map[string]string {
+func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 	var output = make(map[string]string)
 	for _, value := range terms {
 		output[value.Language] = value.Value
@@ -28,12 +26,12 @@ func SimplifyMapOfTerms(terms map[string]*types.Term) map[string]string {
 	return output
 }
 
-func SimplifyEntities(entities map[string]*types.EntityInfo) map[string]interface{} {
+func SimplifyEntities(entities map[string]*EntityInfo) map[string]interface{} {
 	var output = make(map[string]interface{})
 	for key, entity := range entities {
 		switch entity.Type {
 		case "item":
-			output[key] = &types.SimpleItem{
+			output[key] = &SimpleItem{
 				Labels:       SimplifyMapOfTerms(entity.Labels),
 				Descriptions: SimplifyMapOfTerms(entity.Descriptions),
 				Aliases:      SimplifyMapOfTermArray(entity.Aliases),
@@ -41,7 +39,7 @@ func SimplifyEntities(entities map[string]*types.EntityInfo) map[string]interfac
 				Sitelinks:    SimplifySitelinks(entity.Sitelinks),
 			}
 		case "property":
-			output[key] = &types.SimpleProperty{
+			output[key] = &SimpleProperty{
 				DataType:     entity.DataType, // needed?
 				Labels:       SimplifyMapOfTerms(entity.Labels),
 				Descriptions: SimplifyMapOfTerms(entity.Descriptions),
@@ -49,7 +47,7 @@ func SimplifyEntities(entities map[string]*types.EntityInfo) map[string]interfac
 				Claims:       SimplifyClaims(entity.Claims),
 			}
 		case "lexeme":
-			output[key] = &types.SimpleLexeme{
+			output[key] = &SimpleLexeme{
 				DataType:        entity.DataType, // needed?
 				LexicalCategory: entity.LexicalCategory,
 				Language:        entity.Language,
@@ -58,13 +56,13 @@ func SimplifyEntities(entities map[string]*types.EntityInfo) map[string]interfac
 				Senses:          SimplifySenses(entity.Senses),
 			}
 		case "form":
-			output[key] = &types.SimpleForm{
+			output[key] = &SimpleForm{
 				GrammaticalFeatures: entity.GrammaticalFeatures,
 				Representations:     SimplifyMapOfTerms(entity.Representations),
 				Claims:              SimplifyClaims(entity.Claims),
 			}
 		case "sense":
-			output[key] = &types.SimpleSense{
+			output[key] = &SimpleSense{
 				Glosses: SimplifyMapOfTerms(entity.Glosses),
 				Claims:  SimplifyClaims(entity.Claims),
 			}
@@ -73,7 +71,7 @@ func SimplifyEntities(entities map[string]*types.EntityInfo) map[string]interfac
 	return output
 }
 
-func SimplifySitelinks(sitelinks map[string]*types.Sitelink) map[string]string {
+func SimplifySitelinks(sitelinks map[string]*Sitelink) map[string]string {
 	var output = make(map[string]string)
 	for _, value := range sitelinks {
 		output[value.Site] = value.Title
@@ -81,10 +79,10 @@ func SimplifySitelinks(sitelinks map[string]*types.Sitelink) map[string]string {
 	return output
 }
 
-func SimplifySenses(senses []*types.Sense) []*types.SimpleSense {
-	var output []*types.SimpleSense
+func SimplifySenses(senses []*Sense) []*SimpleSense {
+	var output []*SimpleSense
 	for _, sense := range senses {
-		output = append(output, &types.SimpleSense{
+		output = append(output, &SimpleSense{
 			Glosses: SimplifyMapOfTerms(sense.Glosses),
 			Claims:  SimplifyClaims(sense.Claims),
 		})
@@ -92,10 +90,10 @@ func SimplifySenses(senses []*types.Sense) []*types.SimpleSense {
 	return output
 }
 
-func SimplifyForms(forms []*types.Form) []*types.SimpleForm {
-	var output []*types.SimpleForm
+func SimplifyForms(forms []*Form) []*SimpleForm {
+	var output []*SimpleForm
 	for _, form := range forms {
-		output = append(output, &types.SimpleForm{
+		output = append(output, &SimpleForm{
 			Representations:     SimplifyMapOfTerms(form.Representations),
 			GrammaticalFeatures: form.GrammaticalFeatures,
 			Claims:              SimplifyClaims(form.Claims),
@@ -104,17 +102,17 @@ func SimplifyForms(forms []*types.Form) []*types.SimpleForm {
 	return output
 }
 
-func SimplifyClaims(claimMap map[string][]*types.Claim) map[string][]*types.SimpleClaim {
-	var output = make(map[string][]*types.SimpleClaim)
+func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
+	var output = make(map[string][]*SimpleClaim)
 
 	for key, claims := range claimMap {
-		var newClaims []*types.SimpleClaim
+		var newClaims []*SimpleClaim
 		for _, claim := range claims {
 			mainSnak := SimplifySnak(claim.MainSnak)
 			if mainSnak == nil {
 				continue
 			}
-			simpleClaim := &types.SimpleClaim{
+			simpleClaim := &SimpleClaim{
 				Type:  mainSnak.Type,
 				Value: mainSnak.Value,
 			}
@@ -130,7 +128,7 @@ func SimplifyClaims(claimMap map[string][]*types.Claim) map[string][]*types.Simp
 	return output
 }
 
-func SimplifySnak(snak *types.Snak) *types.SnakValue {
+func SimplifySnak(snak *Snak) *SnakValue {
 	if snak.SnakType != "value" {
 		return nil
 	}
@@ -140,17 +138,17 @@ func SimplifySnak(snak *types.Snak) *types.SnakValue {
 		stype = snak.DataValue.Type
 	}
 
-	return &types.SnakValue{
+	return &SnakValue{
 		Type:  stype,
 		Value: ParseClaim(snak.DataValue),
 	}
 }
 
-func SimplifySnaks(snakMap map[string][]*types.Snak) map[string][]*types.SnakValue {
-	var output = make(map[string][]*types.SnakValue)
+func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SnakValue {
+	var output = make(map[string][]*SnakValue)
 
 	for key, snaks := range snakMap {
-		var newSnaks []*types.SnakValue
+		var newSnaks []*SnakValue
 		for _, snak := range snaks {
 			if snak.SnakType == "value" {
 				newSnaks = append(newSnaks, SimplifySnak(snak))
@@ -163,37 +161,37 @@ func SimplifySnaks(snakMap map[string][]*types.Snak) map[string][]*types.SnakVal
 	return output
 }
 
-func ParseClaim(dv *types.SnakValue) interface{} {
+func ParseClaim(dv *SnakValue) interface{} {
 	switch value := dv.Value.(type) {
 	case string:
 		return value
-	case *types.SnakValueEntity:
+	case *SnakValueEntity:
 		return value.ID
-	case *types.SnakValueMonolingualText:
+	case *SnakValueMonolingualText:
 		return value.Value
-	case *types.SnakValueGlobeCoordinate:
+	case *SnakValueGlobeCoordinate:
 		// convert globe
-		return &types.SnakValueGlobeCoordinate{
+		return &SnakValueGlobeCoordinate{
 			Latitude:  value.Latitude,
 			Longitude: value.Longitude,
 			Altitude:  value.Altitude,
 			Precision: value.Precision,
 			Globe:     GetWikidataIDFromURL(value.Globe),
 		}
-	case *types.SnakValueQuantity:
+	case *SnakValueQuantity:
 		// use blank string for no unit
 		unit := ""
 		if value.Unit != "1" {
 			unit = value.Unit
 		}
-		return &types.SnakValueQuantity{
+		return &SnakValueQuantity{
 			Amount:     value.Amount,
 			Unit:       GetWikidataIDFromURL(unit),
 			UpperBound: value.UpperBound,
 			LowerBound: value.LowerBound,
 		}
-	case *types.SnakValueTime:
-		return &types.SnakValueTime{
+	case *SnakValueTime:
+		return &SnakValueTime{
 			After:         value.After,
 			Before:        value.Before,
 			CalendarModel: GetWikidataIDFromURL(value.CalendarModel),
@@ -217,7 +215,7 @@ func GetWikidataIDFromURL(url string) string {
 	return strings.TrimPrefix(url, "http://www.wikidata.org/entity/")
 }
 
-func SimplifySPARQLResults(results *types.SPARQLResults) []map[string]interface{} {
+func SimplifySPARQLResults(results *SPARQLResults) []map[string]interface{} {
 	var output []map[string]interface{}
 	for _, binding := range results.Results.Bindings {
 		var newResult = make(map[string]interface{})
@@ -256,7 +254,7 @@ func SimplifyWikidataURI(uri string) (string, error) {
 	return uri, nil
 }
 
-func SimplifyBindingValue(bvalue *types.SPARQLBindingValue) (interface{}, error) {
+func SimplifyBindingValue(bvalue *SPARQLBindingValue) (interface{}, error) {
 	switch bvalue.Type {
 	case "uri":
 		if bvalue.Value == nil {

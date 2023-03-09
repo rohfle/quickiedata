@@ -1,4 +1,4 @@
-package helpers
+package quickiedata
 
 func LookupCommonCalendars(wikidataID string) string {
 	switch wikidataID {

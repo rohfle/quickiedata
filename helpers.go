@@ -1,12 +1,10 @@
-package helpers
+package quickiedata
 
 import (
 	"fmt"
 	"net/url"
 	"regexp"
 	"strings"
-
-	"github.com/rohfle/quickiedata/types"
 )
 
 var ENTITY_ID_REGEXP = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
@@ -57,7 +55,7 @@ func GetSitelinkURL(site string, title string) string {
 		"wikimaniawiki",
 	}
 
-	if types.ValueInSlice(site, specialSites) {
+	if ValueInSlice(site, specialSites) {
 		site = strings.TrimPrefix(site, "wiki")
 		return fmt.Sprintf("https://%s.wikimedia.org/wiki/%s", site, title)
 	} else if site == "mediawikiwiki" {

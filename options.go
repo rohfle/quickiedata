@@ -1,4 +1,4 @@
-package types
+package quickiedata
 
 type GetEntitiesOptions struct {
 	Languages  []string

@@ -1,12 +1,10 @@
-package helpers
+package quickiedata
 
 import (
 	"fmt"
 	"reflect"
 	"regexp"
 	"strings"
-
-	"github.com/rohfle/quickiedata/types"
 )
 
 type WikidataID string
@@ -14,7 +12,7 @@ type WikidataID string
 var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:[PLSFQ][1-9]\d*$`)
 var VALID_SPARQL_VARIABLE_NAME = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
-func RenderSPARQLQuery(baseQuery string, options *types.GetSPARQLQueryOptions) (string, error) {
+func RenderSPARQLQuery(baseQuery string, options *GetSPARQLQueryOptions) (string, error) {
 	query := cleanupSPARQL(baseQuery)
 	if len(options.Variables) > 0 {
 		var statements []string

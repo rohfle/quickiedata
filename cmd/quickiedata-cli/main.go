@@ -6,8 +6,6 @@ import (
 	"os"
 
 	"github.com/rohfle/quickiedata"
-	"github.com/rohfle/quickiedata/helpers"
-	"github.com/rohfle/quickiedata/types"
 )
 
 func main() {
@@ -16,7 +14,7 @@ func main() {
 
 	if mode == "search" {
 		query := os.Args[2]
-		options := types.NewSearchEntitiesOptions()
+		options := quickiedata.NewSearchEntitiesOptions()
 		result, err := wd.SearchEntities(query, options)
 		if err != nil {
 			fmt.Printf("Error while searching for %s: %s\n", query, err)
@@ -41,7 +39,7 @@ func main() {
 			return
 		}
 
-		simpleResult := helpers.SimplifyEntities(result)
+		simpleResult := quickiedata.SimplifyEntities(result)
 
 		data, err := json.MarshalIndent(simpleResult, "", "  ")
 		if err != nil {
@@ -70,7 +68,7 @@ func main() {
 		`
 
 		options := quickiedata.NewGetSPARQLQueryOptions()
-		options.Variables["instanceOf"] = helpers.WikidataID("wd:" + os.Args[2])
+		options.Variables["instanceOf"] = quickiedata.WikidataID("wd:" + os.Args[2])
 		options.Variables["memeIDs"] = []string{"222", "979"}
 		options.Variables["foo"] = "bar"
 		options.Offset = 0
