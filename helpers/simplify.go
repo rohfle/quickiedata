@@ -256,7 +256,7 @@ func SimplifyWikidataURI(uri string) (string, error) {
 	return uri, nil
 }
 
-func SimplifyBindingValue(bvalue *types.BindingValue) (interface{}, error) {
+func SimplifyBindingValue(bvalue *types.SPARQLBindingValue) (interface{}, error) {
 	switch bvalue.Type {
 	case "uri":
 		if bvalue.Value == nil {
