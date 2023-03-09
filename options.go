@@ -45,7 +45,7 @@ type GetSPARQLQueryOptions struct {
 	Timeout   int64
 }
 
-func NewGetSPARQLQueryOptions() *GetSPARQLQueryOptions {
+func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
 	return &GetSPARQLQueryOptions{
 		Variables: make(map[string]interface{}),
 		Offset:    -1,

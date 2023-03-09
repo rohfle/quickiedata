@@ -67,13 +67,13 @@ func main() {
 		}
 		`
 
-		options := quickiedata.NewGetSPARQLQueryOptions()
+		options := quickiedata.NewSPARQLQueryOptions()
 		options.Variables["instanceOf"] = quickiedata.WikidataID("wd:" + os.Args[2])
 		options.Variables["memeIDs"] = []string{"222", "979"}
 		options.Variables["foo"] = "bar"
 		options.Offset = 0
 		options.Limit = 10
-		sdata, err := wd.GetSPARQLQueryAsSimple(sq, options)
+		sdata, err := wd.SPARQLQueryAsSimple(sq, options)
 		if err != nil {
 			fmt.Println(err)
 		}

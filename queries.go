@@ -102,8 +102,8 @@ func (wd *WikidataService) SearchEntitiesRaw(query string, options *SearchEntiti
 	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataService) GetSPARQLQueryAsSimple(query string, options *GetSPARQLQueryOptions) ([]map[string]interface{}, error) {
-	entities, err := wd.GetSPARQLQuery(query, options)
+func (wd *WikidataService) SPARQLQueryAsSimple(query string, options *GetSPARQLQueryOptions) ([]map[string]interface{}, error) {
+	entities, err := wd.SPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
 	}
@@ -111,8 +111,8 @@ func (wd *WikidataService) GetSPARQLQueryAsSimple(query string, options *GetSPAR
 	return SimplifySPARQLResults(entities), nil
 }
 
-func (wd *WikidataService) GetSPARQLQuery(query string, options *GetSPARQLQueryOptions) (*SPARQLResults, error) {
-	rawBody, err := wd.GetSPARQLQueryRaw(query, options)
+func (wd *WikidataService) SPARQLQuery(query string, options *GetSPARQLQueryOptions) (*SPARQLResults, error) {
+	rawBody, err := wd.SPARQLQueryRaw(query, options)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +126,7 @@ func (wd *WikidataService) GetSPARQLQuery(query string, options *GetSPARQLQueryO
 	return &result, nil
 }
 
-func (wd *WikidataService) GetSPARQLQueryRaw(query string, options *GetSPARQLQueryOptions) ([]byte, error) {
+func (wd *WikidataService) SPARQLQueryRaw(query string, options *GetSPARQLQueryOptions) ([]byte, error) {
 	url, err := wd.CreateSPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
