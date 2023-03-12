@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	wd := quickiedata.NewWikidataService()
+	wd := quickiedata.NewWikidataClient()
 	mode := os.Args[1]
 
 	if mode == "search" {
@@ -29,21 +29,33 @@ func main() {
 		fmt.Println(string(data))
 
 	} else if mode == "getentities" {
-		wikidataID := os.Args[2]
+		wikidataIDs := os.Args[2:]
 		options := quickiedata.NewGetEntitiesOptions()
 		options.Languages = []string{"en"}
-		options.Sitefilter = []string{"enwiki", "enwikibooks"}
-		result, err := wd.GetEntities([]string{wikidataID}, options)
+		options.Sitefilter = []string{"enwiki", "enwikiquote"}
+		result, err := wd.GetEntities(wikidataIDs, options)
 		if err != nil {
-			fmt.Printf("Error while retrieving %s: %s\n", wikidataID, err)
+			fmt.Printf("Error while retrieving %s: %s\n", wikidataIDs, err)
 			return
 		}
 
-		simpleResult := quickiedata.SimplifyEntities(result)
+		simpleResult := result.Simplify()
 
-		data, err := json.MarshalIndent(simpleResult, "", "  ")
+		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("P31").ValueAsString(); val != "" {
+			fmt.Println(wikidataIDs[0], "instance of", val)
+		}
+
+		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("does not exist").ValueAsString(); val != "" {
+			fmt.Println("should not be here", val)
+		}
+
+		for _, item := range simpleResult.GetEntityAsItem("does not exist").GetClaims("does not exist") {
+			fmt.Println("should not be here", item)
+		}
+
+		data, err := json.Marshal(simpleResult) //, "", "  ")
 		if err != nil {
-			fmt.Printf("Error while marshaling %s: %s\n", wikidataID, err)
+			fmt.Printf("Error while marshaling %s: %s\n", wikidataIDs, err)
 			return
 		}
 		fmt.Println(string(data))

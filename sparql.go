@@ -7,6 +7,69 @@ import (
 	"strings"
 )
 
+type BindingValue struct {
+	Value    *string `json:"value"`
+	Type     string  `json:"type"`
+	DataType string  `json:"datatype,omitempty"`
+	Lang     string  `json:"xml:lang,omitempty"`
+}
+
+type SimpleBindingValue struct {
+	Value interface{}
+}
+
+func (s *SimpleBindingValue) ValueAsString() string {
+	if s == nil {
+		return ""
+	}
+
+	casted, ok := s.Value.(string)
+	if !ok {
+		return ""
+	}
+
+	return casted
+}
+
+func (s *SimpleBindingValue) ValueAsInteger() *int64 {
+	if s == nil {
+		return nil
+	}
+
+	casted, ok := s.Value.(int64)
+	if !ok {
+		return nil
+	}
+
+	return &casted
+}
+
+func (s *SimpleBindingValue) ValueAsBoolean() *bool {
+	if s == nil {
+		return nil
+	}
+
+	casted, ok := s.Value.(bool)
+	if !ok {
+		return nil
+	}
+
+	return &casted
+}
+
+func (s *SimpleBindingValue) ValueAsFloat() *float64 {
+	if s == nil {
+		return nil
+	}
+
+	casted, ok := s.Value.(float64)
+	if !ok {
+		return nil
+	}
+
+	return &casted
+}
+
 type WikidataID string
 
 var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:[PLSFQ][1-9]\d*$`)
@@ -79,7 +142,7 @@ func renderSPARQLStatement(name string, value interface{}) (string, error) {
 }
 
 func insertStatementsInWhere(query string, statementBlock string) string {
-	// search for WHERE\s+{
+	// search for WHERE {
 	clauses := regexp.MustCompile(`(?i)WHERE\s*{`).FindAllStringIndex(query, -1)
 
 	output := ""

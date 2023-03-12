@@ -9,19 +9,30 @@ import (
 
 var ENTITY_ID_REGEXP = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
 
+// Checks if a string is a valid entity id
 func IsEntityID(id string) bool {
 	return ENTITY_ID_REGEXP.MatchString(id)
 }
 
+// Checks if a string is a valid entity id
+func ValidateEntityID(id string) error {
+	if !IsEntityID(id) {
+		return fmt.Errorf("invalid entity id '%s'", id)
+	}
+	return nil
+}
+
+// Checks an array of entity ids are all valid
 func ValidateEntityIDs(ids []string) error {
-	for _, eid := range ids {
-		if !IsEntityID(eid) {
-			return fmt.Errorf("invalid entity id '%s'", eid)
+	for _, id := range ids {
+		if err := ValidateEntityID(id); err != nil {
+			return err
 		}
 	}
 	return nil
 }
 
+// Checks if entity type is valid
 func ValidateEntityType(entityType string) error {
 	switch entityType {
 	case "item", "property", "lexeme", "form", "sense":
@@ -31,15 +42,19 @@ func ValidateEntityType(entityType string) error {
 	}
 }
 
+func ConvertLanguage(language string) string {
+	return strings.ToLower(strings.SplitN(language, "_", 2)[0])
+}
+
 func ConvertLanguages(languages []string) []string {
 	var newLanguages []string
 	for _, language := range languages {
-		language := strings.ToLower(strings.SplitN(language, "_", 2)[0])
-		newLanguages = append(newLanguages, language)
+		newLanguages = append(newLanguages, ConvertLanguage(language))
 	}
 	return newLanguages
 }
 
+// Get full sitelink url from site and title
 func GetSitelinkURL(site string, title string) string {
 	if site == "" || title == "" {
 		return ""
@@ -56,7 +71,7 @@ func GetSitelinkURL(site string, title string) string {
 	}
 
 	if ValueInSlice(site, specialSites) {
-		site = strings.TrimPrefix(site, "wiki")
+		site = strings.TrimSuffix(site, "wiki")
 		return fmt.Sprintf("https://%s.wikimedia.org/wiki/%s", site, title)
 	} else if site == "mediawikiwiki" {
 		return fmt.Sprintf("https://www.mediawiki.org/wiki/%s", title)
@@ -72,19 +87,22 @@ func GetSitelinkURL(site string, title string) string {
 		return fmt.Sprintf("https://www.wikidata.org/wiki/%s", title)
 	}
 
-	var SITE_PARSER_REGEXP = regexp.MustCompile(`^(.+)(wiki.*)$`)
-
-	match := SITE_PARSER_REGEXP.FindAllStringSubmatch(site, 1)
-	if match == nil {
+	bits := strings.SplitN(site, "wiki", 2)
+	if len(bits) < 2 || bits[0] == "" {
 		return ""
 	}
-
-	lang := match[0][1]
-	project := match[0][2]
-	lang = strings.ReplaceAll(lang, "_", "-")
+	lang := strings.ReplaceAll(bits[0], "_", "-")
+	project := "wiki" + bits[1]
 	if strings.HasSuffix(project, "wiki") {
 		project = "wikipedia"
 	}
 
 	return fmt.Sprintf("https://%s.%s.org/wiki/%s", lang, project, title)
+}
+
+func GetWikidataIDFromURL(url string) string {
+	if url == "" {
+		return ""
+	}
+	return strings.TrimPrefix(url, "http://www.wikidata.org/entity/")
 }
