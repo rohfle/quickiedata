@@ -11,32 +11,37 @@ import (
 	"strings"
 )
 
-type WikidataService struct {
+type WikidataClient struct {
 	APIEndpoint    string
 	SPARQLEndpoint string
 	Client         *http.Client
 }
 
-func NewWikidataService() *WikidataService {
-	// TODO: initialize http client with user agent
-	// TODO: rate limiting and backoff
-	return &WikidataService{
+func NewWikidataClient() *WikidataClient {
+	// TODO: initialize http client
+	// TODO: rate limiting and backoff, user agent, limits per host
+	return &WikidataClient{
 		APIEndpoint:    "https://www.wikidata.org/w/api.php",
 		SPARQLEndpoint: "https://query.wikidata.org/sparql",
 		Client:         http.DefaultClient,
 	}
 }
 
-func (wd *WikidataService) GetEntitiesAsSimple(ids []string, opt *GetEntitiesOptions) (map[string]interface{}, error) {
-	entities, err := wd.GetEntities(ids, opt)
+func (wd *WikidataClient) GetEntitiesRaw(ids []string, opt *GetEntitiesOptions) ([]byte, error) {
+	url, err := wd.CreateGetEntitiesURL(ids, opt)
 	if err != nil {
 		return nil, err
 	}
 
-	return SimplifyEntities(entities), nil
+	resp, err := wd.Client.Get(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataService) GetEntities(ids []string, opt *GetEntitiesOptions) (map[string]*EntityInfo, error) {
+func (wd *WikidataClient) GetEntities(ids []string, opt *GetEntitiesOptions) (*GetEntitiesResponse, error) {
 	rawBody, err := wd.GetEntitiesRaw(ids, opt)
 	if err != nil {
 		return nil, err
@@ -52,43 +57,44 @@ func (wd *WikidataService) GetEntities(ids []string, opt *GetEntitiesOptions) (m
 		return nil, result.Error
 	}
 
-	return result.Entities, nil
+	return &result, nil
 }
 
-func (wd *WikidataService) GetEntitiesRaw(ids []string, opt *GetEntitiesOptions) ([]byte, error) {
-	url, err := wd.CreateGetEntitiesURL(ids, opt)
+func (wd *WikidataClient) GetEntitiesSimple(ids []string, opt *GetEntitiesOptions) (*GetEntitiesSimpleResponse, error) {
+	response, err := wd.GetEntities(ids, opt)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := wd.Client.Get(url)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	return io.ReadAll(resp.Body)
+	return response.Simplify(), nil
 }
 
-func (wd *WikidataService) SearchEntities(query string, options *SearchEntitiesOptions) ([]*SearchResult, error) {
-	rawBody, err := wd.SearchEntitiesRaw(query, options)
+func (wd *WikidataClient) GetEntity(id string, opt *GetEntitiesOptions) (*GetEntityResponse, error) {
+	response, err := wd.GetEntities([]string{id}, opt)
 	if err != nil {
 		return nil, err
 	}
 
-	var result SearchResponse
-	err = json.Unmarshal(rawBody, &result)
-	if err != nil {
-		return nil, err
+	entity, ok := response.Entities[id]
+	if !ok {
+		return nil, nil // not found
 	}
 
-	if result.Error != nil {
-		return nil, result.Error
-	}
-
-	return result.Search, nil
+	return &GetEntityResponse{
+		Entity: entity,
+	}, nil
 }
 
-func (wd *WikidataService) SearchEntitiesRaw(query string, options *SearchEntitiesOptions) ([]byte, error) {
+func (wd *WikidataClient) GetEntitySimple(id string, opt *GetEntitiesOptions) (*GetEntitySimpleResponse, error) {
+	response, err := wd.GetEntity(id, opt)
+	if err != nil {
+		return nil, err
+	}
+
+	return response.Simplify(), nil
+}
+
+func (wd *WikidataClient) SearchEntitiesRaw(query string, options *SearchEntitiesOptions) ([]byte, error) {
 	url, err := wd.CreateSearchEntitiesURL(query, options)
 	if err != nil {
 		return nil, err
@@ -102,22 +108,41 @@ func (wd *WikidataService) SearchEntitiesRaw(query string, options *SearchEntiti
 	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataService) SPARQLQueryAsSimple(query string, options *GetSPARQLQueryOptions) ([]map[string]interface{}, error) {
-	entities, err := wd.SPARQLQuery(query, options)
+func (wd *WikidataClient) SearchEntities(query string, options *SearchEntitiesOptions) ([]*SearchResult, error) {
+	rawBody, err := wd.SearchEntitiesRaw(query, options)
 	if err != nil {
 		return nil, err
 	}
 
-	return SimplifySPARQLResults(entities), nil
+	var result SearchEntitiesResponse
+	err = json.Unmarshal(rawBody, &result)
+	if err != nil {
+		return nil, err
+	}
+
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return result.Search, nil
 }
 
-func (wd *WikidataService) SPARQLQuery(query string, options *GetSPARQLQueryOptions) (*SPARQLResults, error) {
+func (wd *WikidataClient) SPARQLQueryAsSimple(query string, options *GetSPARQLQueryOptions) ([]map[string]interface{}, error) {
+	response, err := wd.SPARQLQuery(query, options)
+	if err != nil {
+		return nil, err
+	}
+
+	return response.Simplify(), nil
+}
+
+func (wd *WikidataClient) SPARQLQuery(query string, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
 	rawBody, err := wd.SPARQLQueryRaw(query, options)
 	if err != nil {
 		return nil, err
 	}
 
-	var result SPARQLResults
+	var result SPARQLResponse
 	err = json.Unmarshal(rawBody, &result)
 	if err != nil {
 		return nil, err
@@ -126,7 +151,7 @@ func (wd *WikidataService) SPARQLQuery(query string, options *GetSPARQLQueryOpti
 	return &result, nil
 }
 
-func (wd *WikidataService) SPARQLQueryRaw(query string, options *GetSPARQLQueryOptions) ([]byte, error) {
+func (wd *WikidataClient) SPARQLQueryRaw(query string, options *GetSPARQLQueryOptions) ([]byte, error) {
 	url, err := wd.CreateSPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
@@ -140,7 +165,8 @@ func (wd *WikidataService) SPARQLQueryRaw(query string, options *GetSPARQLQueryO
 	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataService) CreateSPARQLQuery(sparqlQuery string, options *GetSPARQLQueryOptions) (string, error) {
+// Create a sparql query and render it as a URL
+func (wd *WikidataClient) CreateSPARQLQuery(sparqlQuery string, options *GetSPARQLQueryOptions) (string, error) {
 	if len(sparqlQuery) == 0 {
 		return "", errors.New("sparql query is empty")
 	}
@@ -162,7 +188,8 @@ func (wd *WikidataService) CreateSPARQLQuery(sparqlQuery string, options *GetSPA
 	return fullURL, nil
 }
 
-func (wd *WikidataService) CreateGetEntitiesURL(ids []string, opt *GetEntitiesOptions) (string, error) {
+// Create a wikidata api get entries (wbgetentries) query url
+func (wd *WikidataClient) CreateGetEntitiesURL(ids []string, opt *GetEntitiesOptions) (string, error) {
 	if len(ids) == 0 {
 		return "", errors.New("no ids specified")
 	}
@@ -195,7 +222,8 @@ func (wd *WikidataService) CreateGetEntitiesURL(ids []string, opt *GetEntitiesOp
 	return fullURL, nil
 }
 
-func (wd *WikidataService) CreateSearchEntitiesURL(search string, opt *SearchEntitiesOptions) (string, error) {
+// Create a wikidata api search entries (wbsearchentries) query url
+func (wd *WikidataClient) CreateSearchEntitiesURL(search string, opt *SearchEntitiesOptions) (string, error) {
 	if len(search) == 0 {
 		return "", errors.New("no ids specified")
 	}

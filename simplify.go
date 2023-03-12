@@ -26,49 +26,47 @@ func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 	return output
 }
 
-func SimplifyEntities(entities map[string]*EntityInfo) map[string]interface{} {
-	var output = make(map[string]interface{})
-	for key, entity := range entities {
-		switch entity.Type {
-		case "item":
-			output[key] = &SimpleItem{
-				Labels:       SimplifyMapOfTerms(entity.Labels),
-				Descriptions: SimplifyMapOfTerms(entity.Descriptions),
-				Aliases:      SimplifyMapOfTermArray(entity.Aliases),
-				Claims:       SimplifyClaims(entity.Claims),
-				Sitelinks:    SimplifySitelinks(entity.Sitelinks),
-			}
-		case "property":
-			output[key] = &SimpleProperty{
-				DataType:     entity.DataType, // needed?
-				Labels:       SimplifyMapOfTerms(entity.Labels),
-				Descriptions: SimplifyMapOfTerms(entity.Descriptions),
-				Aliases:      SimplifyMapOfTermArray(entity.Aliases),
-				Claims:       SimplifyClaims(entity.Claims),
-			}
-		case "lexeme":
-			output[key] = &SimpleLexeme{
-				DataType:        entity.DataType, // needed?
-				LexicalCategory: entity.LexicalCategory,
-				Language:        entity.Language,
-				Lemmas:          SimplifyMapOfTerms(entity.Lemmas),
-				Forms:           SimplifyForms(entity.Forms),
-				Senses:          SimplifySenses(entity.Senses),
-			}
-		case "form":
-			output[key] = &SimpleForm{
-				GrammaticalFeatures: entity.GrammaticalFeatures,
-				Representations:     SimplifyMapOfTerms(entity.Representations),
-				Claims:              SimplifyClaims(entity.Claims),
-			}
-		case "sense":
-			output[key] = &SimpleSense{
-				Glosses: SimplifyMapOfTerms(entity.Glosses),
-				Claims:  SimplifyClaims(entity.Claims),
-			}
+func SimplifyEntity(entity *EntityInfo) interface{} {
+	switch entity.Type {
+	case "item":
+		return &SimpleItem{
+			Labels:       SimplifyMapOfTerms(entity.Labels),
+			Descriptions: SimplifyMapOfTerms(entity.Descriptions),
+			Aliases:      SimplifyMapOfTermArray(entity.Aliases),
+			Claims:       SimplifyClaims(entity.Claims),
+			Sitelinks:    SimplifySitelinks(entity.Sitelinks),
 		}
+	case "property":
+		return &SimpleProperty{
+			DataType:     entity.DataType, // needed?
+			Labels:       SimplifyMapOfTerms(entity.Labels),
+			Descriptions: SimplifyMapOfTerms(entity.Descriptions),
+			Aliases:      SimplifyMapOfTermArray(entity.Aliases),
+			Claims:       SimplifyClaims(entity.Claims),
+		}
+	case "lexeme":
+		return &SimpleLexeme{
+			DataType:        entity.DataType, // needed?
+			LexicalCategory: entity.LexicalCategory,
+			Language:        entity.Language,
+			Lemmas:          SimplifyMapOfTerms(entity.Lemmas),
+			Forms:           SimplifyForms(entity.Forms),
+			Senses:          SimplifySenses(entity.Senses),
+		}
+	case "form":
+		return &SimpleForm{
+			GrammaticalFeatures: entity.GrammaticalFeatures,
+			Representations:     SimplifyMapOfTerms(entity.Representations),
+			Claims:              SimplifyClaims(entity.Claims),
+		}
+	case "sense":
+		return &SimpleSense{
+			Glosses: SimplifyMapOfTerms(entity.Glosses),
+			Claims:  SimplifyClaims(entity.Claims),
+		}
+	default:
+		return nil
 	}
-	return output
 }
 
 func SimplifySitelinks(sitelinks map[string]*Sitelink) map[string]string {
@@ -208,34 +206,6 @@ func ParseClaim(dv *SnakValue) interface{} {
 	}
 }
 
-func GetWikidataIDFromURL(url string) string {
-	if url == "" {
-		return ""
-	}
-	return strings.TrimPrefix(url, "http://www.wikidata.org/entity/")
-}
-
-func SimplifySPARQLResults(results *SPARQLResults) []map[string]interface{} {
-	var output []map[string]interface{}
-	for _, binding := range results.Results.Bindings {
-		var newResult = make(map[string]interface{})
-		for key, bvalue := range binding {
-			val, err := SimplifyBindingValue(bvalue)
-			if err != nil {
-				if bvalue.Value != nil {
-					fmt.Printf("error while simplifying %s value %v: %s\n", bvalue.DataType, *bvalue.Value, err)
-				} else {
-					fmt.Printf("error while simplifying %s value <nil>: %s\n", bvalue.DataType, err)
-				}
-				continue
-			}
-			newResult[key] = val
-		}
-		output = append(output, newResult)
-	}
-	return output
-}
-
 func SimplifySPARQLDataType(s string) string {
 	return strings.ToLower(strings.TrimPrefix(s, "http://www.w3.org/2001/XMLSchema#"))
 }
@@ -254,13 +224,19 @@ func SimplifyWikidataURI(uri string) (string, error) {
 	return uri, nil
 }
 
-func SimplifyBindingValue(bvalue *SPARQLBindingValue) (interface{}, error) {
+func SimplifyBindingValue(bvalue *BindingValue) (*SimpleBindingValue, error) {
 	switch bvalue.Type {
 	case "uri":
 		if bvalue.Value == nil {
 			return nil, nil
 		}
-		return SimplifyWikidataURI(*bvalue.Value)
+		value, err := SimplifyWikidataURI(*bvalue.Value)
+		if err != nil {
+			return nil, err
+		}
+		return &SimpleBindingValue{
+			Value: value,
+		}, nil
 	case "bnode":
 		return nil, nil
 	case "literal":
@@ -269,17 +245,30 @@ func SimplifyBindingValue(bvalue *SPARQLBindingValue) (interface{}, error) {
 		}
 		datatype := SimplifySPARQLDataType(bvalue.DataType)
 		switch datatype {
-		case "string", "datetime":
-			return *bvalue.Value, nil
 		case "boolean":
-			return *bvalue.Value == "true", nil
+			return &SimpleBindingValue{
+				Value: *bvalue.Value == "true",
+			}, nil
 		case "integer":
-			return strconv.ParseInt(*bvalue.Value, 10, 64)
+			value, err := strconv.ParseInt(*bvalue.Value, 10, 64)
+			if err != nil {
+				return nil, err
+			}
+			return &SimpleBindingValue{
+				Value: value,
+			}, nil
 		case "float":
-			return strconv.ParseFloat(*bvalue.Value, 64)
-		default:
-			// return unknown type as string
-			return *bvalue.Value, nil
+			value, err := strconv.ParseFloat(*bvalue.Value, 64)
+			if err != nil {
+				return nil, err
+			}
+			return &SimpleBindingValue{
+				Value: value,
+			}, nil
+		default: // including unknown types, string, datetime
+			return &SimpleBindingValue{
+				Value: *bvalue.Value,
+			}, nil
 		}
 	default:
 		return nil, fmt.Errorf("unknown type '%s'", bvalue.Type)
