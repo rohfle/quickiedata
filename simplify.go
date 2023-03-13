@@ -2,6 +2,7 @@ package quickiedata
 
 import (
 	"fmt"
+	"reflect"
 	"strconv"
 	"strings"
 )
@@ -201,7 +202,7 @@ func ParseClaim(dv *SnakValue) interface{} {
 		}
 	default:
 		// unexpected datatype
-		// TODO: warn?
+		Log.Printf("unexpected datatype '%s'", reflect.TypeOf(value))
 		return value
 	}
 }
@@ -225,11 +226,12 @@ func SimplifyWikidataURI(uri string) (string, error) {
 }
 
 func SimplifyBindingValue(bvalue *BindingValue) (*SimpleBindingValue, error) {
+	if bvalue.Value == nil {
+		return nil, nil
+	}
+
 	switch bvalue.Type {
 	case "uri":
-		if bvalue.Value == nil {
-			return nil, nil
-		}
 		value, err := SimplifyWikidataURI(*bvalue.Value)
 		if err != nil {
 			return nil, err
@@ -240,9 +242,6 @@ func SimplifyBindingValue(bvalue *BindingValue) (*SimpleBindingValue, error) {
 	case "bnode":
 		return nil, nil
 	case "literal":
-		if bvalue.Value == nil {
-			return nil, nil
-		}
 		datatype := SimplifySPARQLDataType(bvalue.DataType)
 		switch datatype {
 		case "boolean":

@@ -3,7 +3,6 @@ package quickiedata
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -17,13 +16,11 @@ type WikidataClient struct {
 	Client         *http.Client
 }
 
-func NewWikidataClient() *WikidataClient {
-	// TODO: initialize http client
-	// TODO: rate limiting and backoff, user agent, limits per host
+func NewWikidataClient(settings *HTTPClientSettings) *WikidataClient {
 	return &WikidataClient{
 		APIEndpoint:    "https://www.wikidata.org/w/api.php",
 		SPARQLEndpoint: "https://query.wikidata.org/sparql",
-		Client:         http.DefaultClient,
+		Client:         QuickieHTTPClient(settings),
 	}
 }
 
@@ -176,7 +173,7 @@ func (wd *WikidataClient) CreateSPARQLQuery(sparqlQuery string, options *GetSPAR
 		return "", err
 	}
 
-	fmt.Println(sparqlQuery)
+	DebugLog.Printf("SPARQL query: %s\n", sparqlQuery)
 	query := url.Values{}
 	query.Add("format", "json")
 	query.Add("query", sparqlQuery)

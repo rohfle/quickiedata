@@ -4,12 +4,20 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/rohfle/quickiedata"
 )
 
 func main() {
-	wd := quickiedata.NewWikidataClient()
+	wd := quickiedata.NewWikidataClient(&quickiedata.HTTPClientSettings{
+		UserAgent:       "quickiedata",
+		RequestInterval: 1 * time.Second,
+		Backoff:         1 * time.Second,
+		MaxBackoff:      30 * time.Second,
+		MaxRetries:      5,
+		MaxConnsPerHost: 1,
+	})
 	mode := os.Args[1]
 
 	if mode == "search" {

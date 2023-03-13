@@ -1,7 +1,5 @@
 package quickiedata
 
-import "fmt"
-
 type ResponseError struct {
 	Code  string `json:"code"`
 	Info  string `json:"info"`
@@ -112,13 +110,14 @@ func (results *SPARQLResponse) Simplify() []map[string]interface{} {
 	for _, binding := range results.Results.Bindings {
 		var newResult = make(map[string]interface{})
 		for key, bvalue := range binding {
+			if bvalue.Value == nil {
+				continue
+			}
 			val, err := SimplifyBindingValue(bvalue)
 			if err != nil {
-				if bvalue.Value != nil {
-					fmt.Printf("error while simplifying %s value %v: %s\n", bvalue.DataType, *bvalue.Value, err)
-				} else {
-					fmt.Printf("error while simplifying %s value <nil>: %s\n", bvalue.DataType, err)
-				}
+				Log.Printf("error while simplifying %s value %v: %s\n", bvalue.DataType, *bvalue.Value, err)
+				continue
+			} else if val == nil {
 				continue
 			}
 			newResult[key] = val
