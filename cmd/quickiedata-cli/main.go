@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -20,10 +21,12 @@ func main() {
 	})
 	mode := os.Args[1]
 
+	ctx := context.Background()
+
 	if mode == "search" {
 		query := os.Args[2]
 		options := quickiedata.NewSearchEntitiesOptions()
-		result, err := wd.SearchEntities(query, options)
+		result, err := wd.SearchEntities(ctx, query, options)
 		if err != nil {
 			fmt.Printf("Error while searching for %s: %s\n", query, err)
 			return
@@ -41,7 +44,7 @@ func main() {
 		options := quickiedata.NewGetEntitiesOptions()
 		options.Languages = []string{"en"}
 		options.Sitefilter = []string{"enwiki", "enwikiquote"}
-		result, err := wd.GetEntities(wikidataIDs, options)
+		result, err := wd.GetEntities(ctx, wikidataIDs, options)
 		if err != nil {
 			fmt.Printf("Error while retrieving %s: %s\n", wikidataIDs, err)
 			return
@@ -95,7 +98,7 @@ func main() {
 		query.Offset = 0
 		query.Limit = 10
 		options := quickiedata.NewSPARQLQueryOptions()
-		sdata, err := wd.SPARQLQuerySimple(query, options)
+		sdata, err := wd.SPARQLQuerySimple(ctx, query, options)
 		if err != nil {
 			fmt.Println(err)
 		}

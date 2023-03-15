@@ -1,6 +1,7 @@
 package quickiedata
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"io"
@@ -24,13 +25,22 @@ func NewWikidataClient(settings *HTTPClientSettings) *WikidataClient {
 	}
 }
 
-func (wd *WikidataClient) GetEntitiesRaw(ids []string, opt *GetEntitiesOptions) ([]byte, error) {
+func (wd *WikidataClient) GetWithContext(ctx context.Context, url string) (*http.Response, error) {
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return wd.Client.Do(req)
+}
+
+func (wd *WikidataClient) GetEntitiesRaw(ctx context.Context, ids []string, opt *GetEntitiesOptions) ([]byte, error) {
 	url, err := wd.CreateGetEntitiesURL(ids, opt)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := wd.Client.Get(url)
+	resp, err := wd.GetWithContext(ctx, url)
 	if err != nil {
 		return nil, err
 	}
@@ -38,8 +48,8 @@ func (wd *WikidataClient) GetEntitiesRaw(ids []string, opt *GetEntitiesOptions) 
 	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataClient) GetEntities(ids []string, opt *GetEntitiesOptions) (*GetEntitiesResponse, error) {
-	rawBody, err := wd.GetEntitiesRaw(ids, opt)
+func (wd *WikidataClient) GetEntities(ctx context.Context, ids []string, options *GetEntitiesOptions) (*GetEntitiesResponse, error) {
+	rawBody, err := wd.GetEntitiesRaw(ctx, ids, options)
 	if err != nil {
 		return nil, err
 	}
@@ -57,8 +67,8 @@ func (wd *WikidataClient) GetEntities(ids []string, opt *GetEntitiesOptions) (*G
 	return &result, nil
 }
 
-func (wd *WikidataClient) GetEntitiesSimple(ids []string, opt *GetEntitiesOptions) (*GetEntitiesSimpleResponse, error) {
-	response, err := wd.GetEntities(ids, opt)
+func (wd *WikidataClient) GetEntitiesSimple(ctx context.Context, ids []string, options *GetEntitiesOptions) (*GetEntitiesSimpleResponse, error) {
+	response, err := wd.GetEntities(ctx, ids, options)
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +76,8 @@ func (wd *WikidataClient) GetEntitiesSimple(ids []string, opt *GetEntitiesOption
 	return response.Simplify(), nil
 }
 
-func (wd *WikidataClient) GetEntity(id string, opt *GetEntitiesOptions) (*GetEntityResponse, error) {
-	response, err := wd.GetEntities([]string{id}, opt)
+func (wd *WikidataClient) GetEntity(ctx context.Context, id string, options *GetEntitiesOptions) (*GetEntityResponse, error) {
+	response, err := wd.GetEntities(ctx, []string{id}, options)
 	if err != nil {
 		return nil, err
 	}
@@ -82,8 +92,8 @@ func (wd *WikidataClient) GetEntity(id string, opt *GetEntitiesOptions) (*GetEnt
 	}, nil
 }
 
-func (wd *WikidataClient) GetEntitySimple(id string, opt *GetEntitiesOptions) (*GetEntitySimpleResponse, error) {
-	response, err := wd.GetEntity(id, opt)
+func (wd *WikidataClient) GetEntitySimple(ctx context.Context, id string, options *GetEntitiesOptions) (*GetEntitySimpleResponse, error) {
+	response, err := wd.GetEntity(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
@@ -91,13 +101,13 @@ func (wd *WikidataClient) GetEntitySimple(id string, opt *GetEntitiesOptions) (*
 	return response.Simplify(), nil
 }
 
-func (wd *WikidataClient) SearchEntitiesRaw(query string, options *SearchEntitiesOptions) ([]byte, error) {
+func (wd *WikidataClient) SearchEntitiesRaw(ctx context.Context, query string, options *SearchEntitiesOptions) ([]byte, error) {
 	url, err := wd.CreateSearchEntitiesURL(query, options)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := wd.Client.Get(url)
+	resp, err := wd.GetWithContext(ctx, url)
 	if err != nil {
 		return nil, err
 	}
@@ -105,8 +115,8 @@ func (wd *WikidataClient) SearchEntitiesRaw(query string, options *SearchEntitie
 	return io.ReadAll(resp.Body)
 }
 
-func (wd *WikidataClient) SearchEntities(query string, options *SearchEntitiesOptions) ([]*SearchResult, error) {
-	rawBody, err := wd.SearchEntitiesRaw(query, options)
+func (wd *WikidataClient) SearchEntities(ctx context.Context, query string, options *SearchEntitiesOptions) ([]*SearchResult, error) {
+	rawBody, err := wd.SearchEntitiesRaw(ctx, query, options)
 	if err != nil {
 		return nil, err
 	}
@@ -124,8 +134,8 @@ func (wd *WikidataClient) SearchEntities(query string, options *SearchEntitiesOp
 	return result.Search, nil
 }
 
-func (wd *WikidataClient) SPARQLQuerySimple(query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLSimpleResponse, error) {
-	response, err := wd.SPARQLQuery(query, options)
+func (wd *WikidataClient) SPARQLQuerySimple(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLSimpleResponse, error) {
+	response, err := wd.SPARQLQuery(ctx, query, options)
 	if err != nil {
 		return nil, err
 	}
@@ -133,8 +143,8 @@ func (wd *WikidataClient) SPARQLQuerySimple(query *SPARQLQuery, options *GetSPAR
 	return response.Simplify(), nil
 }
 
-func (wd *WikidataClient) SPARQLQuery(query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
-	rawBody, err := wd.SPARQLQueryRaw(query, options)
+func (wd *WikidataClient) SPARQLQuery(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
+	rawBody, err := wd.SPARQLQueryRaw(ctx, query, options)
 	if err != nil {
 		return nil, err
 	}
@@ -148,13 +158,13 @@ func (wd *WikidataClient) SPARQLQuery(query *SPARQLQuery, options *GetSPARQLQuer
 	return &result, nil
 }
 
-func (wd *WikidataClient) SPARQLQueryRaw(query *SPARQLQuery, options *GetSPARQLQueryOptions) ([]byte, error) {
+func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) ([]byte, error) {
 	url, err := wd.CreateSPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := wd.Client.Get(url)
+	resp, err := wd.GetWithContext(ctx, url)
 	if err != nil {
 		return nil, err
 	}
