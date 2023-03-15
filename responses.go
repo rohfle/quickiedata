@@ -96,6 +96,39 @@ func (resp *GetEntitiesSimpleResponse) GetEntityAsLexeme(key string) *SimpleLexe
 	return casted
 }
 
+func (resp *GetEntitySimpleResponse) GetEntityAsItem(key string) *SimpleItem {
+	if resp == nil {
+		return nil
+	}
+	casted, ok := resp.Entity.(*SimpleItem)
+	if !ok {
+		return nil
+	}
+	return casted
+}
+
+func (resp *GetEntitySimpleResponse) GetEntityAsProperty(key string) *SimpleProperty {
+	if resp == nil {
+		return nil
+	}
+	casted, ok := resp.Entity.(*SimpleProperty)
+	if !ok {
+		return nil
+	}
+	return casted
+}
+
+func (resp *GetEntitySimpleResponse) GetEntityAsLexeme(key string) *SimpleLexeme {
+	if resp == nil {
+		return nil
+	}
+	casted, ok := resp.Entity.(*SimpleLexeme)
+	if !ok {
+		return nil
+	}
+	return casted
+}
+
 type SPARQLResponse struct {
 	Head struct {
 		Vars []string
@@ -105,10 +138,10 @@ type SPARQLResponse struct {
 	}
 }
 
-func (results *SPARQLResponse) Simplify() []map[string]interface{} {
-	var output []map[string]interface{}
+func (results *SPARQLResponse) Simplify() *SPARQLSimpleResponse {
+	var output []map[string]*SimpleBindingValue
 	for _, binding := range results.Results.Bindings {
-		var newResult = make(map[string]interface{})
+		var newResult = make(map[string]*SimpleBindingValue)
 		for key, bvalue := range binding {
 			if bvalue.Value == nil {
 				continue
@@ -124,7 +157,9 @@ func (results *SPARQLResponse) Simplify() []map[string]interface{} {
 		}
 		output = append(output, newResult)
 	}
-	return output
+	return &SPARQLSimpleResponse{
+		Results: output,
+	}
 }
 
 type SPARQLSimpleResponse struct {

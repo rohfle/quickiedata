@@ -39,17 +39,26 @@ func NewSearchEntitiesOptions() *SearchEntitiesOptions {
 }
 
 type GetSPARQLQueryOptions struct {
-	Variables map[string]interface{}
-	Offset    int64
-	Limit     int64
-	Timeout   int64
+	Timeout int64
 }
 
 func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
 	return &GetSPARQLQueryOptions{
+		Timeout: -1,
+	}
+}
+
+type SPARQLQuery struct {
+	Template  string
+	Variables map[string]interface{}
+	Offset    int64
+	Limit     int64
+}
+
+func NewSPARQLQuery() *SPARQLQuery {
+	return &SPARQLQuery{
 		Variables: make(map[string]interface{}),
 		Offset:    -1,
 		Limit:     -1,
-		Timeout:   -1,
 	}
 }

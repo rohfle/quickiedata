@@ -49,19 +49,19 @@ func main() {
 
 		simpleResult := result.Simplify()
 
-		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("P31").ValueAsString(); val != "" {
-			fmt.Println(wikidataIDs[0], "instance of", val)
+		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("P31").ValueAsString(); val != nil {
+			fmt.Println(wikidataIDs[0], "instance of", *val)
 		}
 
-		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("does not exist").ValueAsString(); val != "" {
-			fmt.Println("should not be here", val)
+		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("does not exist").ValueAsString(); val != nil {
+			fmt.Println("should not be here", *val)
 		}
 
 		for _, item := range simpleResult.GetEntityAsItem("does not exist").GetClaims("does not exist") {
 			fmt.Println("should not be here", item)
 		}
 
-		data, err := json.Marshal(simpleResult) //, "", "  ")
+		data, err := json.MarshalIndent(simpleResult, "", "  ")
 		if err != nil {
 			fmt.Printf("Error while marshaling %s: %s\n", wikidataIDs, err)
 			return
@@ -69,7 +69,7 @@ func main() {
 		fmt.Println(string(data))
 	} else if mode == "sparql" {
 
-		sq := `
+		queryText := `
 		#Cats
 		SELECT DISTINCT ?item ?itemLabel ?instanceOf ?memeID
 		WHERE
@@ -87,17 +87,19 @@ func main() {
 		}
 		`
 
+		query := quickiedata.NewSPARQLQuery()
+		query.Template = queryText
+		query.Variables["instanceOf"] = quickiedata.WikidataID("wd:" + os.Args[2])
+		query.Variables["memeIDs"] = []string{"222", "979"}
+		query.Variables["foo"] = "bar"
+		query.Offset = 0
+		query.Limit = 10
 		options := quickiedata.NewSPARQLQueryOptions()
-		options.Variables["instanceOf"] = quickiedata.WikidataID("wd:" + os.Args[2])
-		options.Variables["memeIDs"] = []string{"222", "979"}
-		options.Variables["foo"] = "bar"
-		options.Offset = 0
-		options.Limit = 10
-		sdata, err := wd.SPARQLQueryAsSimple(sq, options)
+		sdata, err := wd.SPARQLQuerySimple(query, options)
 		if err != nil {
 			fmt.Println(err)
 		}
-		sraw, _ := json.MarshalIndent(sdata, "", "  ")
+		sraw, _ := json.MarshalIndent(sdata.Results, "", "  ")
 		fmt.Println(string(sraw))
 	} else {
 		fmt.Println("Usage: main.go [sparql|getentities|search] id")

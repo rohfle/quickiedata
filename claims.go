@@ -41,15 +41,15 @@ func (sc *SimpleClaim) GetQualifier(key string) *SnakValue {
 	return qualifiers[0]
 }
 
-func (sc *SimpleClaim) ValueAsString() string {
+func (sc *SimpleClaim) ValueAsString() *string {
 	if sc == nil {
-		return ""
+		return nil
 	}
 	value, ok := sc.Value.(string)
 	if !ok {
-		return ""
+		return nil
 	}
-	return value
+	return &value
 }
 
 func (sc *SimpleClaim) ValueAsCoordinate() *SnakValueGlobeCoordinate {
@@ -74,7 +74,7 @@ func (sc *SimpleClaim) ValueAsMonolingualText() *SnakValueMonolingualText {
 	return value
 }
 
-func (sc *SimpleClaim) ValueAsWikidataTime() *SnakValueTime {
+func (sc *SimpleClaim) ValueAsTime() *SnakValueTime {
 	if sc == nil {
 		return nil
 	}

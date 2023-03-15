@@ -75,34 +75,34 @@ type WikidataID string
 var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:[PLSFQ][1-9]\d*$`)
 var VALID_SPARQL_VARIABLE_NAME = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
-func RenderSPARQLQuery(baseQuery string, options *GetSPARQLQueryOptions) (string, error) {
-	query := cleanupSPARQL(baseQuery)
-	if len(options.Variables) > 0 {
+func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
+	queryText := cleanupSPARQL(query.Template)
+	if len(query.Variables) > 0 {
 		var statements []string
-		for name, value := range options.Variables {
+		for name, value := range query.Variables {
 			statement, err := renderSPARQLStatement(name, value)
 			if err != nil {
 				return "", err
 			}
 			statements = append(statements, statement)
 		}
-		query = insertStatementsInWhere(query, strings.Join(statements, " "))
+		queryText = insertStatementsInWhere(queryText, strings.Join(statements, " "))
 	}
 
-	lastIndexCurly := strings.LastIndex(query, "}")
+	lastIndexCurly := strings.LastIndex(queryText, "}")
 	trailingOptions := ""
 	if lastIndexCurly >= 0 {
-		trailingOptions = strings.ToLower(query[lastIndexCurly:])
+		trailingOptions = strings.ToLower(queryText[lastIndexCurly:])
 	}
 	// probably should replace the limit and offset in the query or error
 	// but for now this is good enough
-	if options.Offset >= 0 && strings.Index(trailingOptions, "offset ") <= 0 {
-		query += fmt.Sprintf(" OFFSET %d", options.Offset)
+	if query.Offset >= 0 && strings.Index(trailingOptions, "offset ") <= 0 {
+		queryText += fmt.Sprintf(" OFFSET %d", query.Offset)
 	}
-	if options.Limit > 0 && strings.Index(trailingOptions, "limit ") <= 0 {
-		query += fmt.Sprintf(" LIMIT %d", options.Limit)
+	if query.Limit > 0 && strings.Index(trailingOptions, "limit ") <= 0 {
+		queryText += fmt.Sprintf(" LIMIT %d", query.Limit)
 	}
-	return query, nil
+	return queryText, nil
 }
 
 func renderSPARQLStatement(name string, value interface{}) (string, error) {

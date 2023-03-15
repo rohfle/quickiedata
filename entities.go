@@ -124,6 +124,39 @@ func (s *SimpleItem) GetClaim(key string) *SimpleClaim {
 	return claims[0]
 }
 
+func (s *SimpleItem) GetRelatedIDsFromClaims(claimIDs []string) []string {
+	if s == nil || len(claimIDs) == 0 {
+		return nil
+	}
+
+	var relatedIDs []string
+	for _, claim := range claimIDs {
+		for _, item := range s.GetClaims(claim) {
+			wikidataID := item.ValueAsString()
+			if wikidataID != nil {
+				relatedIDs = append(relatedIDs, *wikidataID)
+			}
+		}
+	}
+	return relatedIDs
+}
+
+func (s *SimpleItem) GetQualifierIDsFromClaim(claimID string, qualifierID string) []string {
+	if s == nil {
+		return nil
+	}
+
+	var relatedIDs []string
+
+	for _, qualifier := range s.GetClaim(claimID).GetQualifiers(qualifierID) {
+		wikidataID := qualifier.ValueAsString()
+		if wikidataID != nil {
+			relatedIDs = append(relatedIDs, *wikidataID)
+		}
+	}
+	return relatedIDs
+}
+
 type SimpleLexeme struct {
 	DataType        DataType          `json:"type,omitempty"`
 	LexicalCategory string            `json:"category,omitempty"`

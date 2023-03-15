@@ -3,6 +3,7 @@ package quickiedata
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -20,15 +21,15 @@ type SnakValue struct {
 	Value interface{} `json:"value"`
 }
 
-func (sv *SnakValue) ValueAsString() string {
+func (sv *SnakValue) ValueAsString() *string {
 	if sv == nil {
-		return ""
+		return nil
 	}
 	value, ok := sv.Value.(string)
 	if !ok {
-		return ""
+		return nil
 	}
-	return value
+	return &value
 }
 
 func (sv *SnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
@@ -53,7 +54,7 @@ func (sv *SnakValue) ValueAsMonolingualText() *SnakValueMonolingualText {
 	return value
 }
 
-func (sv *SnakValue) ValueAsWikidataTime() *SnakValueTime {
+func (sv *SnakValue) ValueAsTime() *SnakValueTime {
 	if sv == nil {
 		return nil
 	}
@@ -106,6 +107,19 @@ type SnakValueTime struct {
 	Precision     int    `json:"precision,omitempty"`
 	Time          string `json:"time"`
 	Timezone      int    `json:"timezone,omitempty"`
+}
+
+func (s *SnakValueTime) GetYear() *int {
+	if s == nil {
+		return nil
+	}
+	yearStr := strings.SplitN(strings.TrimPrefix(s.Time, "+"), "-", 2)[0]
+	if val, err := strconv.Atoi(yearStr); err == nil {
+		return &val
+	}
+	// its possible that the year might not fit in an int32
+	// so might need to process the field yourself
+	return nil
 }
 
 type SnakValueQuantity struct {

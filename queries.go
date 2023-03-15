@@ -124,7 +124,7 @@ func (wd *WikidataClient) SearchEntities(query string, options *SearchEntitiesOp
 	return result.Search, nil
 }
 
-func (wd *WikidataClient) SPARQLQueryAsSimple(query string, options *GetSPARQLQueryOptions) ([]map[string]interface{}, error) {
+func (wd *WikidataClient) SPARQLQuerySimple(query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLSimpleResponse, error) {
 	response, err := wd.SPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
@@ -133,7 +133,7 @@ func (wd *WikidataClient) SPARQLQueryAsSimple(query string, options *GetSPARQLQu
 	return response.Simplify(), nil
 }
 
-func (wd *WikidataClient) SPARQLQuery(query string, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
+func (wd *WikidataClient) SPARQLQuery(query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
 	rawBody, err := wd.SPARQLQueryRaw(query, options)
 	if err != nil {
 		return nil, err
@@ -148,7 +148,7 @@ func (wd *WikidataClient) SPARQLQuery(query string, options *GetSPARQLQueryOptio
 	return &result, nil
 }
 
-func (wd *WikidataClient) SPARQLQueryRaw(query string, options *GetSPARQLQueryOptions) ([]byte, error) {
+func (wd *WikidataClient) SPARQLQueryRaw(query *SPARQLQuery, options *GetSPARQLQueryOptions) ([]byte, error) {
 	url, err := wd.CreateSPARQLQuery(query, options)
 	if err != nil {
 		return nil, err
@@ -163,25 +163,25 @@ func (wd *WikidataClient) SPARQLQueryRaw(query string, options *GetSPARQLQueryOp
 }
 
 // Create a sparql query and render it as a URL
-func (wd *WikidataClient) CreateSPARQLQuery(sparqlQuery string, options *GetSPARQLQueryOptions) (string, error) {
-	if len(sparqlQuery) == 0 {
+func (wd *WikidataClient) CreateSPARQLQuery(query *SPARQLQuery, options *GetSPARQLQueryOptions) (string, error) {
+	if query == nil || len(query.Template) == 0 {
 		return "", errors.New("sparql query is empty")
 	}
 
-	sparqlQuery, err := RenderSPARQLQuery(sparqlQuery, options)
+	sparqlQuery, err := RenderSPARQLQuery(query)
 	if err != nil {
 		return "", err
 	}
 
 	DebugLog.Printf("SPARQL query: %s\n", sparqlQuery)
-	query := url.Values{}
-	query.Add("format", "json")
-	query.Add("query", sparqlQuery)
+	queryParams := url.Values{}
+	queryParams.Add("format", "json")
+	queryParams.Add("query", sparqlQuery)
 	if options.Timeout > 0 {
-		query.Add("timeout", strconv.FormatInt(options.Timeout, 10))
+		queryParams.Add("timeout", strconv.FormatInt(options.Timeout, 10))
 	}
 
-	fullURL := wd.SPARQLEndpoint + "?" + query.Encode()
+	fullURL := wd.SPARQLEndpoint + "?" + queryParams.Encode()
 	return fullURL, nil
 }
 
