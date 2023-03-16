@@ -150,10 +150,7 @@ func (resp *GetEntitiesSimpleResponse) GetEntityAsItem(key string) *SimpleItem {
 	if !exists {
 		return nil
 	}
-	casted, ok := value.(*SimpleItem)
-	if !ok {
-		return nil
-	}
+	casted, _ := value.(*SimpleItem)
 	return casted
 }
 
@@ -165,10 +162,7 @@ func (resp *GetEntitiesSimpleResponse) GetEntityAsProperty(key string) *SimplePr
 	if !exists {
 		return nil
 	}
-	casted, ok := value.(*SimpleProperty)
-	if !ok {
-		return nil
-	}
+	casted, _ := value.(*SimpleProperty)
 	return casted
 }
 
@@ -180,10 +174,7 @@ func (resp *GetEntitiesSimpleResponse) GetEntityAsLexeme(key string) *SimpleLexe
 	if !exists {
 		return nil
 	}
-	casted, ok := value.(*SimpleLexeme)
-	if !ok {
-		return nil
-	}
+	casted, _ := value.(*SimpleLexeme)
 	return casted
 }
 
@@ -191,10 +182,7 @@ func (resp *GetEntitySimpleResponse) GetEntityAsItem(key string) *SimpleItem {
 	if resp == nil {
 		return nil
 	}
-	casted, ok := resp.Entity.(*SimpleItem)
-	if !ok {
-		return nil
-	}
+	casted, _ := resp.Entity.(*SimpleItem)
 	return casted
 }
 
@@ -202,10 +190,7 @@ func (resp *GetEntitySimpleResponse) GetEntityAsProperty(key string) *SimpleProp
 	if resp == nil {
 		return nil
 	}
-	casted, ok := resp.Entity.(*SimpleProperty)
-	if !ok {
-		return nil
-	}
+	casted, _ := resp.Entity.(*SimpleProperty)
 	return casted
 }
 
@@ -213,10 +198,7 @@ func (resp *GetEntitySimpleResponse) GetEntityAsLexeme(key string) *SimpleLexeme
 	if resp == nil {
 		return nil
 	}
-	casted, ok := resp.Entity.(*SimpleLexeme)
-	if !ok {
-		return nil
-	}
+	casted, _ := resp.Entity.(*SimpleLexeme)
 	return casted
 }
 
@@ -266,4 +248,21 @@ type SearchEntitiesResponse struct {
 	Success  int64          `json:"success"`
 	Error    *ResponseError `json:"error"`
 	ServedBy string         `json:"servedby"`
+}
+
+type SearchResult struct {
+	Aliases     []string `json:"aliases,omitempty"`
+	ConceptURI  string   `json:"concepturi"`
+	Description string   `json:"description"`
+	ID          string   `json:"id"`
+	Label       string   `json:"label"`
+	Match       struct {
+		Language string `json:"language"`
+		Text     string `json:"text"`
+		Type     string `json:"type"`
+	} `json:"match"`
+	PageID     int64  `json:"pageid"`
+	Repository string `json:"repository"`
+	Title      string `json:"title"`
+	URL        string `json:"url"`
 }

@@ -41,7 +41,8 @@ func TestEntitySimplify(t *testing.T) {
 
 		var compareEntity interface{}
 
-		switch path.Base(testCouple[0])[0] {
+		wikidataID := strings.SplitN(path.Base(testCouple[0]), ".", 2)[0]
+		switch wikidataID[0] {
 		case 'Q':
 			var temp quickiedata.SimpleItem
 			err = json.Unmarshal(compareData, &temp)

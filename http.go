@@ -67,7 +67,6 @@ type quickieRoundTripper struct {
 func (rt *quickieRoundTripper) RoundTrip(origReq *http.Request) (*http.Response, error) {
 	// set the initial backoff
 	backoff := rt.backoff
-
 	deadline, deadlineSet := origReq.Context().Deadline()
 
 	for retries := 0; retries <= rt.maxRetries; retries++ {
@@ -120,7 +119,6 @@ func (rt *quickieRoundTripper) RoundTrip(origReq *http.Request) (*http.Response,
 		}
 
 		// We are going to retry at this point
-
 		if err != nil {
 			// a network error has occurred, immediately retry
 			// covers things like connection timeouts, dns resolution errors, connection reset

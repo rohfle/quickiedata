@@ -35,12 +35,8 @@ func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	sc.Type = peek.Type
 	sc.Qualifiers = peek.Qualifiers
 
-	value, err := unmarshalSimpleSnakValue(peek.Type, peek.Value)
-	if err != nil {
-		return err
-	}
-	sc.Value = value
-	return nil
+	sc.Value, err = unmarshalSimpleSnakValue(peek.Type, peek.Value)
+	return err
 }
 
 func (sc *SimpleClaim) GetQualifiers(key string) []*SimpleSnakValue {
@@ -48,12 +44,7 @@ func (sc *SimpleClaim) GetQualifiers(key string) []*SimpleSnakValue {
 		return nil
 	}
 
-	qualifiers, ok := sc.Qualifiers[key]
-	if !ok {
-		return nil
-	}
-
-	return qualifiers
+	return sc.Qualifiers[key]
 }
 
 func (sc *SimpleClaim) GetQualifier(key string) *SimpleSnakValue {
@@ -83,10 +74,7 @@ func (sc *SimpleClaim) ValueAsCoordinate() *SnakValueGlobeCoordinate {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(*SnakValueGlobeCoordinate)
-	if !ok {
-		return nil
-	}
+	value, _ := sc.Value.(*SnakValueGlobeCoordinate)
 	return value
 }
 
@@ -94,10 +82,7 @@ func (sc *SimpleClaim) ValueAsMonolingualText() *SnakValueMonolingualText {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(*SnakValueMonolingualText)
-	if !ok {
-		return nil
-	}
+	value, _ := sc.Value.(*SnakValueMonolingualText)
 	return value
 }
 
@@ -105,10 +90,7 @@ func (sc *SimpleClaim) ValueAsTime() *SnakValueTime {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(*SnakValueTime)
-	if !ok {
-		return nil
-	}
+	value, _ := sc.Value.(*SnakValueTime)
 	return value
 }
 
@@ -116,10 +98,7 @@ func (sc *SimpleClaim) ValueAsQuantity() *SnakValueQuantity {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(*SnakValueQuantity)
-	if !ok {
-		return nil
-	}
+	value, _ := sc.Value.(*SnakValueQuantity)
 	return value
 }
 
@@ -127,9 +106,6 @@ func (sc *SimpleClaim) ValueAsEntity() *SnakValueEntity {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(*SnakValueEntity)
-	if !ok {
-		return nil
-	}
+	value, _ := sc.Value.(*SnakValueEntity)
 	return value
 }

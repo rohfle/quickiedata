@@ -126,23 +126,6 @@ func (n *NumberPlus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-type SearchResult struct {
-	Aliases     []string `json:"aliases,omitempty"`
-	ConceptURI  string   `json:"concepturi"`
-	Description string   `json:"description"`
-	ID          string   `json:"id"`
-	Label       string   `json:"label"`
-	Match       struct {
-		Language string `json:"language"`
-		Text     string `json:"text"`
-		Type     string `json:"type"`
-	} `json:"match"`
-	PageID     int64  `json:"pageid"`
-	Repository string `json:"repository"`
-	Title      string `json:"title"`
-	URL        string `json:"url"`
-}
-
 type Sitelink struct {
 	Site   string   `json:"site"`
 	Title  string   `json:"title"`

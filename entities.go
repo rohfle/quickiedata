@@ -87,12 +87,7 @@ func (s *SimpleProperty) GetClaims(key string) []*SimpleClaim {
 		return nil
 	}
 
-	claims, ok := s.Claims[key]
-	if !ok {
-		return nil
-	}
-
-	return claims
+	return s.Claims[key]
 }
 
 func (s *SimpleProperty) GetClaim(key string) *SimpleClaim {
@@ -130,11 +125,7 @@ func (s *SimpleItem) GetClaims(key string) []*SimpleClaim {
 	if s == nil {
 		return nil
 	}
-	claims, ok := s.Claims[key]
-	if !ok {
-		return nil
-	}
-	return claims
+	return s.Claims[key]
 }
 
 func (s *SimpleItem) GetClaim(key string) *SimpleClaim {
@@ -223,11 +214,7 @@ func (s *SimpleForm) GetClaims(key string) []*SimpleClaim {
 	if s == nil {
 		return nil
 	}
-	claims, ok := s.Claims[key]
-	if !ok {
-		return nil
-	}
-	return claims
+	return s.Claims[key]
 }
 
 func (s *SimpleForm) GetClaim(key string) *SimpleClaim {
@@ -262,11 +249,7 @@ func (s *SimpleSense) GetClaims(key string) []*SimpleClaim {
 	if s == nil {
 		return nil
 	}
-	claims, ok := s.Claims[key]
-	if !ok {
-		return nil
-	}
-	return claims
+	return s.Claims[key]
 }
 
 func (s *SimpleSense) GetClaim(key string) *SimpleClaim {

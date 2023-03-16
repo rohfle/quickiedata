@@ -36,10 +36,7 @@ func (sv *SnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueGlobeCoordinate)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueGlobeCoordinate)
 	return value
 }
 
@@ -47,10 +44,7 @@ func (sv *SnakValue) ValueAsMonolingualText() *SnakValueMonolingualText {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueMonolingualText)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueMonolingualText)
 	return value
 }
 
@@ -58,10 +52,7 @@ func (sv *SnakValue) ValueAsTime() *SnakValueTime {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueTime)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueTime)
 	return value
 }
 
@@ -69,10 +60,7 @@ func (sv *SnakValue) ValueAsQuantity() *SnakValueQuantity {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueQuantity)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueQuantity)
 	return value
 }
 
@@ -80,10 +68,7 @@ func (sv *SnakValue) ValueAsEntity() *SnakValueEntity {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueEntity)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueEntity)
 	return value
 }
 
@@ -228,10 +213,7 @@ func (sv *SimpleSnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueGlobeCoordinate)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueGlobeCoordinate)
 	return value
 }
 
@@ -239,10 +221,7 @@ func (sv *SimpleSnakValue) ValueAsTime() *SnakValueTime {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueTime)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueTime)
 	return value
 }
 
@@ -250,10 +229,7 @@ func (sv *SimpleSnakValue) ValueAsQuantity() *SnakValueQuantity {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(*SnakValueQuantity)
-	if !ok {
-		return nil
-	}
+	value, _ := sv.Value.(*SnakValueQuantity)
 	return value
 }
 

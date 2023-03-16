@@ -169,6 +169,11 @@ func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SimpleSnakValue {
 			output[key] = newSnaks
 		}
 	}
+
+	if len(output) == 0 {
+		return nil
+	}
+
 	return output
 }
 
