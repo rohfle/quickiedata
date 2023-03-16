@@ -53,6 +53,23 @@ const (
 	DataTypeWikibaseSense    DataType = "wikibase-sense"
 )
 
+// A lookup table for simpler data types
+var SIMPLE_TYPE_LUT = map[string]string{
+	"commonsMedia":      "media",
+	"external-id":       "external",
+	"geo-shape":         "geoshape",
+	"globecoordinate":   "coords",
+	"monolingualtext":   "string",
+	"musical-notation":  "musical",
+	"tabular-data":      "tabular",
+	"wikibase-entityid": "string",
+	"wikibase-form":     "form",
+	"wikibase-item":     "item",
+	"wikibase-lexeme":   "lexeme",
+	"wikibase-property": "property",
+	"wikibase-sense":    "sense",
+}
+
 // Internal aliases that simplify matters, but aren't used by wikidata
 const (
 	DataTypeSimple DataType = "simple"

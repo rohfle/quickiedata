@@ -1,5 +1,9 @@
 package quickiedata
 
+import (
+	"encoding/json"
+)
+
 type Claim struct {
 	ID              string             `json:"id"`
 	MainSnak        *Snak              `json:"mainsnak"`
@@ -11,12 +15,35 @@ type Claim struct {
 }
 
 type SimpleClaim struct {
-	Type       DataType                `json:"type,omitempty"`
-	Value      interface{}             `json:"value,omitempty"`
-	Qualifiers map[string][]*SnakValue `json:"qualifiers,omitempty"`
+	Type       DataType                      `json:"t,omitempty"`
+	Value      interface{}                   `json:"v,omitempty"`
+	Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
 }
 
-func (sc *SimpleClaim) GetQualifiers(key string) []*SnakValue {
+func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
+	var peek struct {
+		Type       DataType                      `json:"t,omitempty"`
+		Value      json.RawMessage               `json:"v,omitempty"`
+		Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
+	}
+
+	err := json.Unmarshal(data, &peek)
+	if err != nil {
+		return err
+	}
+
+	sc.Type = peek.Type
+	sc.Qualifiers = peek.Qualifiers
+
+	value, err := unmarshalSimpleSnakValue(string(peek.Type), peek.Value)
+	if err != nil {
+		return err
+	}
+	sc.Value = value
+	return nil
+}
+
+func (sc *SimpleClaim) GetQualifiers(key string) []*SimpleSnakValue {
 	if sc == nil {
 		return nil
 	}
@@ -29,7 +56,7 @@ func (sc *SimpleClaim) GetQualifiers(key string) []*SnakValue {
 	return qualifiers
 }
 
-func (sc *SimpleClaim) GetQualifier(key string) *SnakValue {
+func (sc *SimpleClaim) GetQualifier(key string) *SimpleSnakValue {
 	if sc == nil {
 		return nil
 	}

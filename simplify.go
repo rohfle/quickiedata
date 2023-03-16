@@ -16,6 +16,9 @@ func SimplifyMapOfTermArray(terms map[string][]*Term) map[string][]string {
 		}
 		output[key] = valuesOut
 	}
+	if len(output) == 0 {
+		return nil
+	}
 	return output
 }
 
@@ -23,6 +26,9 @@ func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 	var output = make(map[string]string)
 	for _, value := range terms {
 		output[value.Language] = value.Value
+	}
+	if len(output) == 0 {
+		return nil
 	}
 	return output
 }
@@ -39,7 +45,7 @@ func SimplifyEntity(entity *EntityInfo) interface{} {
 		}
 	case "property":
 		return &SimpleProperty{
-			DataType:     entity.DataType, // needed?
+			DataType:     entity.DataType,
 			Labels:       SimplifyMapOfTerms(entity.Labels),
 			Descriptions: SimplifyMapOfTerms(entity.Descriptions),
 			Aliases:      SimplifyMapOfTermArray(entity.Aliases),
@@ -47,7 +53,6 @@ func SimplifyEntity(entity *EntityInfo) interface{} {
 		}
 	case "lexeme":
 		return &SimpleLexeme{
-			DataType:        entity.DataType, // needed?
 			LexicalCategory: entity.LexicalCategory,
 			Language:        entity.Language,
 			Lemmas:          SimplifyMapOfTerms(entity.Lemmas),
@@ -74,6 +79,9 @@ func SimplifySitelinks(sitelinks map[string]*Sitelink) map[string]string {
 	var output = make(map[string]string)
 	for _, value := range sitelinks {
 		output[value.Site] = value.Title
+	}
+	if len(output) == 0 {
+		return nil
 	}
 	return output
 }
@@ -127,7 +135,7 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 	return output
 }
 
-func SimplifySnak(snak *Snak) *SnakValue {
+func SimplifySnak(snak *Snak) *SimpleSnakValue {
 	if snak.SnakType != "value" {
 		return nil
 	}
@@ -137,17 +145,22 @@ func SimplifySnak(snak *Snak) *SnakValue {
 		stype = snak.DataValue.Type
 	}
 
-	return &SnakValue{
+	// TODO: This needs to be tidied
+	if alt, exists := SIMPLE_TYPE_LUT[string(stype)]; exists {
+		stype = DataType(alt)
+	}
+
+	return &SimpleSnakValue{
 		Type:  stype,
 		Value: ParseClaim(snak.DataValue),
 	}
 }
 
-func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SnakValue {
-	var output = make(map[string][]*SnakValue)
+func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SimpleSnakValue {
+	var output = make(map[string][]*SimpleSnakValue)
 
 	for key, snaks := range snakMap {
-		var newSnaks []*SnakValue
+		var newSnaks []*SimpleSnakValue
 		for _, snak := range snaks {
 			if snak.SnakType == "value" {
 				newSnaks = append(newSnaks, SimplifySnak(snak))

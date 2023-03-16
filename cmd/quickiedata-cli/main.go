@@ -50,19 +50,7 @@ func main() {
 			return
 		}
 
-		simpleResult := result.Simplify()
-
-		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("P31").ValueAsString(); val != nil {
-			fmt.Println(wikidataIDs[0], "instance of", *val)
-		}
-
-		if val := simpleResult.GetEntityAsItem(wikidataIDs[0]).GetClaim("does not exist").ValueAsString(); val != nil {
-			fmt.Println("should not be here", *val)
-		}
-
-		for _, item := range simpleResult.GetEntityAsItem("does not exist").GetClaims("does not exist") {
-			fmt.Println("should not be here", item)
-		}
+		simpleResult := result //.Simplify()
 
 		data, err := json.MarshalIndent(simpleResult, "", "  ")
 		if err != nil {

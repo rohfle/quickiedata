@@ -674,7 +674,7 @@
         "q": {
           "P5168": [
             {
-              "t": "monolingualtext",
+              "t": "string",
               "v": ""
             }
           ]
@@ -754,7 +754,7 @@
             {
               "t": "time",
               "v": {
-                "calendar": "Q1985727",
+                "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2022-10-31T00:00:00Z"
               }
@@ -819,7 +819,7 @@
       {
         "t": "time",
         "v": {
-          "calendar": "Q1985727",
+          "calendarmodel": "Q1985727",
           "precision": 3,
           "time": "-13798000000-01-01T00:00:00Z"
         },
@@ -984,7 +984,7 @@
             {
               "t": "time",
               "v": {
-                "calendar": "Q1985786",
+                "calendarmodel": "Q1985786",
                 "time": "-16000000000-01-01T00:00:00Z"
               }
             }
@@ -993,7 +993,7 @@
             {
               "t": "time",
               "v": {
-                "calendar": "Q1985786",
+                "calendarmodel": "Q1985786",
                 "precision": 1,
                 "time": "-11400000000-01-01T00:00:00Z"
               }
@@ -1003,7 +1003,7 @@
             {
               "t": "time",
               "v": {
-                "calendar": "Q1985786",
+                "calendarmodel": "Q1985786",
                 "precision": 1,
                 "time": "-13700000000-01-01T00:00:00Z"
               }
@@ -1037,7 +1037,7 @@
             {
               "t": "time",
               "v": {
-                "calendar": "Q1985786",
+                "calendarmodel": "Q1985786",
                 "precision": 3,
                 "time": "-13798000000-01-01T00:00:00Z"
               }

@@ -207,3 +207,109 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 
 	return nil
 }
+
+type SimpleSnakValue struct {
+	Type  DataType    `json:"t"`
+	Value interface{} `json:"v"`
+}
+
+func (sv *SimpleSnakValue) ValueAsString() *string {
+	if sv == nil {
+		return nil
+	}
+	value, ok := sv.Value.(string)
+	if !ok {
+		return nil
+	}
+	return &value
+}
+
+func (sv *SimpleSnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
+	if sv == nil {
+		return nil
+	}
+	value, ok := sv.Value.(*SnakValueGlobeCoordinate)
+	if !ok {
+		return nil
+	}
+	return value
+}
+
+func (sv *SimpleSnakValue) ValueAsTime() *SnakValueTime {
+	if sv == nil {
+		return nil
+	}
+	value, ok := sv.Value.(*SnakValueTime)
+	if !ok {
+		return nil
+	}
+	return value
+}
+
+func (sv *SimpleSnakValue) ValueAsQuantity() *SnakValueQuantity {
+	if sv == nil {
+		return nil
+	}
+	value, ok := sv.Value.(*SnakValueQuantity)
+	if !ok {
+		return nil
+	}
+	return value
+}
+
+func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
+	var peek struct {
+		Type  DataType        `json:"t"`
+		Value json.RawMessage `json:"v"`
+	}
+	err := json.Unmarshal(data, &peek)
+	if err != nil {
+		return err
+	}
+
+	sv.Type = peek.Type
+	value, err := unmarshalSimpleSnakValue(string(peek.Type), peek.Value)
+	if err != nil {
+		return err
+	}
+	sv.Value = value
+	return nil
+}
+
+func unmarshalSimpleSnakValue(stype string, data []byte) (interface{}, error) {
+	switch stype {
+	case "media", "string", "external", "item":
+		var value string
+		err := json.Unmarshal(data, &value)
+		if err != nil {
+			return nil, err
+		}
+		return value, nil
+	case "quantity":
+		var value SnakValueQuantity
+		err := json.Unmarshal(data, &value)
+		if err != nil {
+			return nil, err
+		}
+		// remove leading + to prevent json.Number from failing to convert
+		value.Amount = NumberPlus(strings.TrimPrefix(string(value.Amount), "+"))
+		return &value, nil
+	case "coords":
+		var value SnakValueGlobeCoordinate
+		err := json.Unmarshal(data, &value)
+		if err != nil {
+			return nil, err
+		}
+		return &value, nil
+	case "time":
+		var value SnakValueTime
+		err := json.Unmarshal(data, &value)
+		if err != nil {
+			return nil, err
+		}
+		return &value, nil
+	default:
+		err := fmt.Errorf("%s simple snak value parser not implemented: %s", stype, string(data))
+		return nil, err
+	}
+}

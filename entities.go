@@ -1,5 +1,7 @@
 package quickiedata
 
+import "encoding/json"
+
 // This is a combined struct for all entity info types
 // Use the Type field to work out which fields will have values
 type EntityInfo struct {
@@ -62,11 +64,22 @@ type Sense struct {
 }
 
 type SimpleProperty struct {
-	DataType     DataType                  `json:"type"`
+	DataType     DataType                  `json:"datatype,omitempty"`
 	Labels       map[string]string         `json:"labels,omitempty"`
 	Descriptions map[string]string         `json:"descriptions,omitempty"`
 	Aliases      map[string][]string       `json:"aliases,omitempty"`
 	Claims       map[string][]*SimpleClaim `json:"claims,omitempty"`
+}
+
+func (s *SimpleProperty) MarshalJSON() ([]byte, error) {
+	type proxy SimpleProperty
+	return json.Marshal(struct {
+		proxy
+		Type string `json:"type"`
+	}{
+		proxy: proxy(*s),
+		Type:  "property",
+	})
 }
 
 func (s *SimpleProperty) GetClaims(key string) []*SimpleClaim {
@@ -100,6 +113,17 @@ type SimpleItem struct {
 	Aliases      map[string][]string       `json:"aliases,omitempty"`
 	Claims       map[string][]*SimpleClaim `json:"claims,omitempty"`
 	Sitelinks    map[string]string         `json:"sitelinks,omitempty"`
+}
+
+func (s *SimpleItem) MarshalJSON() ([]byte, error) {
+	type proxy SimpleItem
+	return json.Marshal(struct {
+		proxy
+		Type string `json:"type"`
+	}{
+		proxy: proxy(*s),
+		Type:  "item",
+	})
 }
 
 func (s *SimpleItem) GetClaims(key string) []*SimpleClaim {
@@ -158,7 +182,7 @@ func (s *SimpleItem) GetQualifierIDsFromClaim(claimID string, qualifierID string
 }
 
 type SimpleLexeme struct {
-	DataType        DataType          `json:"type,omitempty"`
+	Type            string            `json:"type"`
 	LexicalCategory string            `json:"category,omitempty"`
 	Language        string            `json:"language,omitempty"`
 	Lemmas          map[string]string `json:"lemmas,omitempty"`
@@ -166,10 +190,33 @@ type SimpleLexeme struct {
 	Senses          []*SimpleSense    `json:"senses,omitempty"`
 }
 
+func (s *SimpleLexeme) MarshalJSON() ([]byte, error) {
+	type proxy SimpleLexeme
+	return json.Marshal(struct {
+		proxy
+		Type string `json:"type"`
+	}{
+		proxy: proxy(*s),
+		Type:  "lexeme",
+	})
+}
+
 type SimpleForm struct {
+	Type                string                    `json:"type"`
 	Representations     map[string]string         `json:"representations,omitempty"`
 	GrammaticalFeatures []string                  `json:"features,omitempty"`
 	Claims              map[string][]*SimpleClaim `json:"claims,omitempty"`
+}
+
+func (s *SimpleForm) MarshalJSON() ([]byte, error) {
+	type proxy SimpleForm
+	return json.Marshal(struct {
+		proxy
+		Type string `json:"type"`
+	}{
+		proxy: proxy(*s),
+		Type:  "form",
+	})
 }
 
 func (s *SimpleForm) GetClaims(key string) []*SimpleClaim {
@@ -195,8 +242,20 @@ func (s *SimpleForm) GetClaim(key string) *SimpleClaim {
 }
 
 type SimpleSense struct {
+	Type    string                    `json:"type"`
 	Glosses map[string]string         `json:"glosses,omitempty"`
 	Claims  map[string][]*SimpleClaim `json:"claims,omitempty"`
+}
+
+func (s *SimpleSense) MarshalJSON() ([]byte, error) {
+	type proxy SimpleSense
+	return json.Marshal(struct {
+		proxy
+		Type string `json:"type"`
+	}{
+		proxy: proxy(*s),
+		Type:  "sense",
+	})
 }
 
 func (s *SimpleSense) GetClaims(key string) []*SimpleClaim {
