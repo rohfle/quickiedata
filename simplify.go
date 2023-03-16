@@ -145,9 +145,8 @@ func SimplifySnak(snak *Snak) *SimpleSnakValue {
 		stype = snak.DataValue.Type
 	}
 
-	// TODO: This needs to be tidied
-	if alt, exists := SIMPLE_TYPE_LUT[string(stype)]; exists {
-		stype = DataType(alt)
+	if alt, exists := SIMPLIFY_TYPE_LUT[stype]; exists {
+		stype = alt
 	}
 
 	return &SimpleSnakValue{

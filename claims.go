@@ -8,21 +8,21 @@ type Claim struct {
 	ID              string             `json:"id"`
 	MainSnak        *Snak              `json:"mainsnak"`
 	Rank            Rank               `json:"rank"`
-	Type            DataType           `json:"type"`
+	Type            string             `json:"type"`
 	Qualifiers      map[string][]*Snak `json:"qualifiers"`
 	QualifiersOrder []string           `json:"qualifiersOrder"`
 	References      []*Reference       `json:"references"`
 }
 
 type SimpleClaim struct {
-	Type       DataType                      `json:"t,omitempty"`
+	Type       string                        `json:"t,omitempty"`
 	Value      interface{}                   `json:"v,omitempty"`
 	Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
 }
 
 func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Type       DataType                      `json:"t,omitempty"`
+		Type       string                        `json:"t,omitempty"`
 		Value      json.RawMessage               `json:"v,omitempty"`
 		Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
 	}
@@ -35,7 +35,7 @@ func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	sc.Type = peek.Type
 	sc.Qualifiers = peek.Qualifiers
 
-	value, err := unmarshalSimpleSnakValue(string(peek.Type), peek.Value)
+	value, err := unmarshalSimpleSnakValue(peek.Type, peek.Value)
 	if err != nil {
 		return err
 	}

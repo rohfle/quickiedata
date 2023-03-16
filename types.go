@@ -54,7 +54,7 @@ const (
 )
 
 // A lookup table for simpler data types
-var SIMPLE_TYPE_LUT = map[string]string{
+var SIMPLIFY_TYPE_LUT = map[string]string{
 	"commonsMedia":      "media",
 	"external-id":       "external",
 	"geo-shape":         "geoshape",
@@ -96,11 +96,11 @@ var DATATYPES_ENTITY = []DataType{
 	DataTypeWikibaseSense,
 }
 
-func DataTypeIsSimple(dtype DataType) bool {
-	return ValueInSlice(dtype, DATATYPES_SIMPLE)
+func DataTypeIsSimple(dtype string) bool {
+	return ValueInSlice(DataType(dtype), DATATYPES_SIMPLE)
 }
-func DataTypeIsEntity(dtype DataType) bool {
-	return ValueInSlice(dtype, DATATYPES_ENTITY)
+func DataTypeIsEntity(dtype string) bool {
+	return ValueInSlice(DataType(dtype), DATATYPES_ENTITY)
 }
 
 func ValueInSlice[T comparable](needle T, haystack []T) bool {

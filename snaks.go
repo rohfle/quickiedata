@@ -9,15 +9,15 @@ import (
 
 type Snak struct {
 	ID        string     `json:"id"`
-	DataType  DataType   `json:"datatype"`
+	DataType  string     `json:"datatype"`
 	DataValue *SnakValue `json:"datavalue"`
 	Hash      string     `json:"hash"`
 	Property  string     `json:"property"`
-	SnakType  SnakType   `json:"snaktype"`
+	SnakType  string     `json:"snaktype"`
 }
 
 type SnakValue struct {
-	Type  DataType    `json:"type"`
+	Type  string      `json:"type"`
 	Value interface{} `json:"value"`
 }
 
@@ -147,45 +147,45 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 
 	// handle legacy "musical notation" datatype
 	peek.Type = strings.ReplaceAll(peek.Type, " ", "-")
-	sv.Type = DataType(peek.Type)
+	sv.Type = peek.Type
 
 	workingType := sv.Type
 	if DataTypeIsSimple(sv.Type) {
-		workingType = DataTypeSimple
+		workingType = "simple"
 	} else if DataTypeIsEntity(sv.Type) {
-		workingType = DataTypeEntity
+		workingType = "entity"
 	}
 
 	switch workingType {
-	case DataTypeSimple:
+	case "simple":
 		var value string
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
 			return err
 		}
 		sv.Value = value
-	case DataTypeEntity:
+	case "entity":
 		var value SnakValueEntity
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
 			return err
 		}
 		sv.Value = &value
-	case DataTypeGlobeCoordinate:
+	case "globecoordinate":
 		var value SnakValueGlobeCoordinate
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
 			return err
 		}
 		sv.Value = &value
-	case DataTypeMonolingualText:
+	case "monolingualtext":
 		var value SnakValueMonolingualText
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
 			return err
 		}
 		sv.Value = &value
-	case DataTypeQuantity:
+	case "quantity":
 		var value SnakValueQuantity
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
@@ -194,7 +194,7 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 		// remove leading + to prevent json.Number from failing to convert
 		value.Amount = NumberPlus(strings.TrimPrefix(string(value.Amount), "+"))
 		sv.Value = &value
-	case DataTypeTime:
+	case "time":
 		var value SnakValueTime
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
@@ -209,7 +209,7 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 }
 
 type SimpleSnakValue struct {
-	Type  DataType    `json:"t"`
+	Type  string      `json:"t"`
 	Value interface{} `json:"v"`
 }
 
@@ -259,7 +259,7 @@ func (sv *SimpleSnakValue) ValueAsQuantity() *SnakValueQuantity {
 
 func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Type  DataType        `json:"t"`
+		Type  string          `json:"t"`
 		Value json.RawMessage `json:"v"`
 	}
 	err := json.Unmarshal(data, &peek)
@@ -278,7 +278,7 @@ func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 
 func unmarshalSimpleSnakValue(stype string, data []byte) (interface{}, error) {
 	switch stype {
-	case "media", "string", "external", "item":
+	case "media", "string", "external", "item", "url", "property":
 		var value string
 		err := json.Unmarshal(data, &value)
 		if err != nil {

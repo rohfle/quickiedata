@@ -42,8 +42,8 @@ func main() {
 	} else if mode == "getentities" {
 		wikidataIDs := os.Args[2:]
 		options := quickiedata.NewGetEntitiesOptions()
-		options.Languages = []string{"en"}
-		options.Sitefilter = []string{"enwiki", "enwikiquote"}
+		// options.Languages = []string{"en"}
+		// options.Sitefilter = []string{"enwiki", "enwikiquote"}
 		result, err := wd.GetEntities(ctx, wikidataIDs, options)
 		if err != nil {
 			fmt.Printf("Error while retrieving %s: %s\n", wikidataIDs, err)

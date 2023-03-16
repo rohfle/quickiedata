@@ -23,7 +23,7 @@ type EntityInfo struct {
 
 	// Property fields
 	// ID (defined above)
-	DataType DataType `json:"datatype"`
+	DataType string `json:"datatype"`
 	// Labels (defined above)
 	// Descriptions (defined above)
 	// Aliases (defined above)
@@ -64,7 +64,7 @@ type Sense struct {
 }
 
 type SimpleProperty struct {
-	DataType     DataType                  `json:"datatype,omitempty"`
+	DataType     string                    `json:"datatype,omitempty"`
 	Labels       map[string]string         `json:"labels,omitempty"`
 	Descriptions map[string]string         `json:"descriptions,omitempty"`
 	Aliases      map[string][]string       `json:"aliases,omitempty"`

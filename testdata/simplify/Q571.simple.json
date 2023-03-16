@@ -1,0 +1,1908 @@
+{
+  "labels": {
+    "af": "boek",
+    "ak": "Nwoma/krataa",
+    "am": "መጽሐፍ",
+    "ami": "Codad",
+    "an": "Libro",
+    "ang": "bóc",
+    "ar": "كتاب",
+    "arc": "ܟܬܒܐ",
+    "arz": "كتاب",
+    "as": "কিতাপ",
+    "ast": "llibru",
+    "atj": "tapowatcike masinahikan",
+    "ay": "Panka",
+    "az": "kitab",
+    "azb": "کیتاب",
+    "ba": "китап",
+    "bar": "Buach",
+    "be": "кніга",
+    "be-tarask": "кніга",
+    "bg": "книга",
+    "bho": "किताब",
+    "bjn": "Buku",
+    "bm": "Gafɛ",
+    "bn": "বই",
+    "br": "levr",
+    "bs": "Knjiga",
+    "bxr": "Ном",
+    "ca": "llibre",
+    "cdo": "Cṳ̆",
+    "ce": "Книга",
+    "chr": "ᎪᏪᎵ",
+    "ckb": "پەرتووک",
+    "crh": "kitap",
+    "cs": "kniha",
+    "csb": "knéga",
+    "cu": "кънига",
+    "cv": "Кĕнеке",
+    "cy": "llyfr",
+    "da": "bog",
+    "dag": "buku",
+    "de": "Buch",
+    "de-ch": "Buch",
+    "diq": "Kıtabi",
+    "dsb": "knigły",
+    "dtp": "ḇuuk",
+    "dty": "पुस्तक",
+    "ee": "Agbale",
+    "el": "βιβλίο",
+    "en": "book",
+    "en-ca": "Book",
+    "en-gb": "book",
+    "eo": "libro",
+    "es": "libro",
+    "et": "raamat",
+    "eu": "liburu",
+    "ext": "libru",
+    "fa": "کتاب",
+    "fi": "kirja",
+    "fj": "Ivola",
+    "fr": "livre",
+    "frp": "Lévro",
+    "frr": "buk",
+    "fy": "boek",
+    "ga": "leabhar",
+    "gan": "書",
+    "gcr": "Liv (dokouman)",
+    "gd": "leabhar",
+    "gl": "libro",
+    "gn": "Kuatiañe'ẽ",
+    "got": "𐌱𐍉𐌺𐍉𐍃",
+    "gsw": "Buech",
+    "gu": "પુસ્તક",
+    "guc": "Karalo'uta",
+    "gv": "Lioar",
+    "ha": "littafi",
+    "hak": "Si",
+    "he": "ספר",
+    "hi": "पुस्तक",
+    "hr": "Knjiga",
+    "hsb": "kniha",
+    "ht": "Liv",
+    "hu": "könyv",
+    "hy": "գիրք",
+    "hyw": "Գիրք",
+    "ia": "libro",
+    "id": "buku",
+    "ie": "Libre",
+    "ilo": "libro",
+    "inh": "Джей",
+    "io": "libro",
+    "is": "Bók",
+    "it": "libro",
+    "iu": "ᕿᒥᕐᕈᐊᑦ/qimirruat",
+    "ja": "本",
+    "jam": "buk",
+    "jbo": "cukta",
+    "jv": "buku",
+    "ka": "წიგნი",
+    "kab": "Adlis",
+    "kbp": "Takayaɣ",
+    "kcg": "kwaa̱mbwat",
+    "kk": "Кітап",
+    "kn": "ಪುಸ್ತಕ",
+    "ko": "책",
+    "ksh": "Boch",
+    "ku": "pirtûk",
+    "ku-latn": "pirtûk",
+    "kv": "Небӧг",
+    "kw": "Lyver",
+    "ky": "Китеп",
+    "la": "liber",
+    "lad": "Livro",
+    "lb": "Buch",
+    "lez": "Улуб",
+    "li": "Book",
+    "lmo": "liber",
+    "ln": "Búku",
+    "lo": "ປຶ້ມ",
+    "lt": "knyga",
+    "lv": "grāmata",
+    "lzh": "書",
+    "mad": "Buku",
+    "mg": "Boky",
+    "mhr": "книга",
+    "min": "Buku",
+    "mk": "книга",
+    "ml": "പുസ്തകം",
+    "mn": "Ном",
+    "mni": "ꯂꯥꯏꯔꯤꯛ",
+    "mos": "sebre",
+    "mr": "पुस्तक",
+    "ms": "buku",
+    "ms-arab": "بوکو",
+    "mt": "ktieb",
+    "mwl": "Libro",
+    "my": "စာအုပ်",
+    "myv": "Кинига",
+    "nah": "Āmoxtli",
+    "nan": "Chheh",
+    "nap": "Libbro",
+    "nb": "bok",
+    "nds": "Book",
+    "nds-nl": "Boek",
+    "ne": "पुस्तक",
+    "new": "सफू",
+    "nl": "boek",
+    "nn": "bok",
+    "nqo": "ߞߊ߬ߝߊ",
+    "oc": "libre",
+    "olo": "Kirju",
+    "or": "ବହି",
+    "os": "Чиныг",
+    "pa": "ਕਿਤਾਬ",
+    "pap": "buki",
+    "pdc": "Buch",
+    "pi": "पोत्थकं",
+    "pl": "książka",
+    "pnb": "کتاب",
+    "ps": "کتاب",
+    "pt": "livro",
+    "pt-br": "livro",
+    "qu": "Liwru",
+    "rmf": "liin",
+    "ro": "carte",
+    "ru": "книга",
+    "rue": "Книга",
+    "rup": "Carti",
+    "rw": "Igitabo",
+    "sah": "Кинигэ",
+    "sat": "ᱯᱚᱛᱚᱵ",
+    "scn": "libbru",
+    "sco": "beuk",
+    "sd": "ڪتاب",
+    "se": "girji",
+    "sgs": "Kninga",
+    "sh": "knjiga",
+    "si": "පොත",
+    "sjd": "кыррьй",
+    "sju": "girja",
+    "sk": "kniha",
+    "sl": "knjiga",
+    "sma": "gærja",
+    "smn": "kirje",
+    "sms": "ǩeʹrjj",
+    "sn": "Bhuku",
+    "so": "Buug",
+    "sq": "libër",
+    "sr": "књига",
+    "sr-ec": "књига",
+    "sr-el": "knjiga",
+    "ss": "Íncwadzí",
+    "su": "Buku",
+    "sv": "bok",
+    "sw": "Kitabu",
+    "szl": "ksiōnżka",
+    "szy": "cudad",
+    "ta": "நூல்",
+    "tay": "biru",
+    "te": "పుస్తకము",
+    "tg": "китоб",
+    "tg-cyrl": "китоб",
+    "th": "หนังสือ",
+    "tk": "Kitap",
+    "tl": "aklat",
+    "tn": "Buka",
+    "tok": "lipu toki",
+    "tpi": "Buk",
+    "tr": "kitap",
+    "tt": "китап",
+    "tt-cyrl": "китап",
+    "tt-latn": "kitap",
+    "tyv": "Ном",
+    "uk": "книга",
+    "ur": "کتاب",
+    "uz": "kitob",
+    "vec": "Łibro",
+    "vep": "Kirj",
+    "vi": "sách",
+    "vo": "buk",
+    "wa": "Live",
+    "war": "Basahon",
+    "wuu": "图书",
+    "xh": "Incwadi",
+    "yi": "בוך",
+    "yo": "Ìwé",
+    "yue": "書",
+    "za": "Saw",
+    "zh": "書本",
+    "zh-cn": "图书",
+    "zh-hans": "图书",
+    "zh-hant": "書籍",
+    "zh-hk": "書籍",
+    "zh-tw": "書籍",
+    "zu": "Incwadi"
+  },
+  "descriptions": {
+    "ar": "مجموعة من الأوراق بأنواع مختلفة (ورقية، إلكترونية، إلخ.) تحتوي على كلمات وجمل لهدف أساسي وهو الحفظ (ضد الضياع).",
+    "az": "kağız və mürəkkəblə hazırlanan yaxud elektron formada olan və informasiya təqdim edən sözlər və yaxud şəkillər toplusu",
+    "be": "друкаванае выданне ў выглядзе пераплеценых разам лістоў паперы з якім-небудзь тэкстам",
+    "be-tarask": "друкаванае выданьне збораў тэкстаў і/або выяваў дзеля прадастаўленьня ведаў, аповедаў, гісторыяў",
+    "bg": "напечатано издание",
+    "bho": "लिखल पाठ जे प्रकाशित भइल होखे, छापा में चाहे इलेक्ट्रानिक तरीका से छपल होखे",
+    "bn": "জ্ঞান ও বিনোদন উপস্থাপনের মুদ্রিত ও বাঁধাইকৃত মাধ্যম",
+    "br": "teul skrivet",
+    "ca": "obra impresa o manuscrita cosida o enquadernada de manera que es reuneix en un volum",
+    "cs": "psaný text vydaný v tištěné či elektronické formě",
+    "cy": "cyfrwng ar gyfer cofnodi gwybodaeth ar ffurf ysgrifennu neu ddelweddau",
+    "da": "en samling af én eller flere tekster og/eller billeder for at representere viden eller en fiktiv historie, ofte manifesteret i fysisk form, eller i elektronisk format.",
+    "dag": "Buku nyɛla binshɛli din mali gbana ka sabbu be di ni ka ni nir'ni tooi karim li.",
+    "de": "in sich abgeschlossene Sammlung von Text oder Bildern auf Papier (klassisches Buch), in digitaler Form (E-Book) oder als Tonaufzeichnung (Hörbuch)",
+    "el": "υλικός φορέας γραπτού ή και εικαστικού περιεχομένου",
+    "en": "medium for recording information (words or images) typically on bound pages or more abstractly in electronic or audio form",
+    "en-gb": "written text that can be published in printed or electronic form",
+    "eo": "skriba teksto publikigebla en presita aŭ elektronika formo. Antaŭ la elektronika, ĝi konsistis de kungluitaj folioj de paperoj, papirusoj, ktp.",
+    "es": "medio para registrar información en forma de escritura o imágenes impresas",
+    "eu": "lan inprimatua edo eskuz izkiriatua biltzeko erabiltzen den euskarri fisikoa edo digitala",
+    "fa": "رسانه نوشتاری",
+    "fi": "painettu tai sähköinen teksti",
+    "fr": "document écrit formé de pages reliées entre elles",
+    "fy": "dokumint",
+    "gl": "obra impresa",
+    "gsw": "e Sammlig vo Text oder Bilder uf Papier (klasseschi Buechform), i digitale Form (E-Book) oder as Tonuufnahm (Hörbuech)",
+    "ha": "littafin rubutu",
+    "he": "טקסט מודפס ו/או דיגיטלי",
+    "hi": "लेखन या छवियों के रूप में जानकारी दर्ज करने का माध्यम",
+    "hsb": "medium",
+    "ht": "paj ki kole ak lòt e ki bay yon sans",
+    "hu": "információhordozó közeg, leggyakrabban papírra írott, nyomtatott, festett jelek, betűk",
+    "ia": "documento scripte composite de paginas interligate",
+    "id": "kumpulan kertas atau bahan lainnya yang dijilid menjadi satu pada salah satu ujungnya dan berisi tulisan atau gambar",
+    "ilo": "agasmang ti naisurat, naimaldit, nailustrado dagiti blanko a sabanas",
+    "it": "documento scritto costituito da un insieme di fogli stampati oppure manoscritti",
+    "ja": "情報を文字や図画でまとめ、通常、インクで紙に印刷したもの",
+    "kcg": "lyuut hu á̱ maai shei a̱ni di̱n vak lyui ku vak ili̱kti̱ronik",
+    "kn": "ಪದಗಳ ಮತ್ತು / ಅಥವಾ ಚಿತ್ರಗಳ ಸಂಗ್ರಹಕ್ಕೆ ಮಧ್ಯಮ ಜ್ಞಾನ ಅಥವಾ ಕಾಲ್ಪನಿಕ ಕಥೆಯನ್ನು ಪ್ರತಿನಿಧಿಸಲು, ಸಾಮಾನ್ಯವಾಗಿ ಬೌಂಡ್ ಕಾಗದ ಮತ್ತು ಶಾಯಿಯಲ್ಲಿ, ಅಥವಾ ಇ-ಪುಸ್ತಕಗಳಲ್ಲಿ",
+    "ko": "지식을 표현하기 위해 단어들이나 그림들을 모아놓은 것",
+    "lzh": "載籍之總名也",
+    "mr": "लेखन किंवा प्रतिमांच्या स्वरूपात माहिती संकलन करण्याचे माध्यम",
+    "my": "ရေးသားခြင်းသို့မဟုတ်ပုံသွင်းခြင်းတို့ဖြင့်အချက်အလက်များစုစည်းသည့်ဝတ္ထု",
+    "nb": "medium for en samling av ord og/eller bilder",
+    "nl": "informatiedrager, gedrukt, op papier geschreven of digitaal",
+    "nqo": "ߟߐ߲ߠߌ߲ ߠߎ߬ ߦߋ߫ ߟߊߞߊ߬ߝߏ߬ ߟߊ߫ ߝߋ߲ ߡߍ߲ ߘߐ߫ ߛߊ߫ ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲߬ߠߊ ߟߎ߬ ߘߌ߫ ߛߴߊ߬ ߘߐ߲߬ߘߐ߰ߣߍ߲߫ ߘߐ߬ߞߊ߬ߙߊ߲߫ ߠߴߊ߬ߟߎ߫ ߝߙߍߡߊ߬ ߛߐ߲߬",
+    "or": "କିଛି ଚିତ୍ର ଓ ଶବ୍ଦ ଗୁଡିକର ସମାହାର ଯାହାକୁ କାଗଜରେ ଛପା ଯାଇଥାଏ କିମ୍ବା ଇଣ୍ଟର୍ନେଟ ରେ ଇ-ପୁସ୍ତକ ହିସାବରେ ରଖାଯାଇଥାଏ ।",
+    "pl": "dokument piśmienniczy w postaci wielostronicowej publikacji",
+    "pt": "coleção de palavras e/ou imagens para representar o conhecimento ou uma história fictícia, muitas vezes manifestada em papel amarrado e tinta ou em livros digitais",
+    "pt-br": "coleção de palavras e/ou imagens para representar o conhecimento ou uma história fictícia, muitas vezes manifestada em papel amarrado e tinta ou em livros digitais",
+    "ro": "document scris format din mai multe pagini",
+    "ru": "носитель информации; вид печатной продукции; объединённые листы с информацией",
+    "sat": "ᱟᱹᱲᱟᱹ /ᱠᱟᱛᱷᱟ / ᱠᱟᱹᱦᱱᱤ/ ᱚᱱᱚᱬᱦᱮ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱥᱟᱢᱴᱟᱣ",
+    "scn": "cugghiuta di palori e mmàggini ca rapprisèntunu canuscenza, di sòlitu stampati o manuscritti supra carta riligata, o puru digitalizzati ntôn ducumentu elittrònicu",
+    "sd": "زرائع ابلاغ جو هڪ قسم",
+    "sk": "dielo vydané tlačou v samostatnom zväzku",
+    "sq": "medium për koleksionimin e fjalëve dhe/ose figurave për të paraqitur njohuri ose një tregim fiktiv, shpesh të manifestuar në letër dhe ngjyrë të lidhura, ose në libra elektronikë",
+    "sr": "медијум који представља збир речи и/или слика којима се преноси знање или замишљена прича",
+    "sr-ec": "писани текст који се може објавити у штампаном или електронском облику",
+    "sv": "pappersmedium eller digitalt medium med samling av ord och bilder som representerar kunskap eller en fiktiv berättelse",
+    "ta": "கருத்துகள், படங்கள், ஒளிப்படங்கள், கருத்து, கதை, பாடல் போன்றவற்றினை ஒருங்கிணைந்த முறையில் அளிக்கும் ஒரு ஊடகம் அல்லது அச்சு ஆவணம்",
+    "th": "สิ่งพิมพ์ที่มีการเย็บเล่มเข้าด้วยกัน ของข้อมูลประเภทตัวอักษรหรือรูปภาพ",
+    "tl": "katipunan ng mga nailimbag na akda",
+    "tr": "ciltli veya ciltsiz olarak bir araya getirilmiş, basılı veya yazılı kâğıt yaprakların bütünü",
+    "tt": "нинди дә булса текстны эченә алган, битләре билгеле бер тәртиптә бергә җыйналып төпләнгән басма (элек – шулай ук кулъязма, хәзерге заманда шулай ук электрон) әсәр",
+    "tt-cyrl": "нинди дә булса текстны эченә алган, битләре билгеле бер тәртиптә бергә җыйналып төпләнгән басма (элек – шулай ук кулъязма, хәзерге заманда шулай ук электрон) әсәр",
+    "tt-latn": "nindi dä bulsa tekstnı eçenä alğan, bitläre bilgele ber tärtiptä bergä cıynalıp töplängän basma (elek - şulay uq qul'yazma, xäzerge zamanda şulay uq elektron) äsär",
+    "uk": "письмовий запис, неперіодичне видання у вигляді зброшурованих аркушів друкованого матеріалу",
+    "vi": "phương tiện sử dụng từ và/hoặc hình ảnh để truyền tải kiến thức hoặc một câu chuyện",
+    "zh": "帶有文字或圖像的紙張的集合",
+    "zh-hans": "带有文字和图像的纸张的集合",
+    "zh-hant": "帶有文字和圖像的紙張的集合",
+    "zh-tw": "帶有文字和圖像的紙張的集合",
+    "zu": "into okuqoshiwe ukwaziswa kuyo ngohlobo lombhalo nangezithombe"
+  },
+  "aliases": {
+    "bho": [
+      "पुस्तक",
+      "पुस्तिका",
+      "बुक"
+    ],
+    "bn": [
+      "পুস্তক",
+      "গ্রন্থ"
+    ],
+    "ckb": [
+      "كتێب",
+      "پەڕتووک",
+      "پرتووک"
+    ],
+    "cs": [
+      "knížka"
+    ],
+    "cu": [
+      "ⰽⱏⱀⰻⰳⰰ"
+    ],
+    "da": [
+      "hæfte"
+    ],
+    "dag": [
+      "kundili"
+    ],
+    "en": [
+      "books",
+      "Books"
+    ],
+    "en-gb": [
+      "books"
+    ],
+    "es": [
+      "libros"
+    ],
+    "et": [
+      "raamatud"
+    ],
+    "fi": [
+      "nide",
+      "nidos"
+    ],
+    "fr": [
+      "ouvrage",
+      "livres",
+      "ouvrages"
+    ],
+    "gsw": [
+      "Buch"
+    ],
+    "he": [
+      "ספרים"
+    ],
+    "ht": [
+      "liv"
+    ],
+    "it": [
+      "libri"
+    ],
+    "ja": [
+      "書籍",
+      "書物",
+      "図書",
+      "典籍"
+    ],
+    "kcg": [
+      "nkwaa̱mbwat",
+      "kwa-a̱mbwat",
+      "ta̱ka̱da"
+    ],
+    "ko": [
+      "서적",
+      "도서",
+      "책자",
+      "문적",
+      "전적",
+      "편적",
+      "서전",
+      "서사",
+      "서질",
+      "북"
+    ],
+    "la": [
+      "libri"
+    ],
+    "ms": [
+      "kitab"
+    ],
+    "nb": [
+      "bøker"
+    ],
+    "or": [
+      "ପୁସ୍ତକ"
+    ],
+    "pl": [
+      "Tom",
+      "Tomik",
+      "księga"
+    ],
+    "sat": [
+      "ᱯᱩᱛᱷᱤ"
+    ],
+    "sjd": [
+      "кнӣга"
+    ],
+    "sq": [
+      "libri",
+      "libra"
+    ],
+    "sr-ec": [
+      "књиге"
+    ],
+    "ta": [
+      "புத்தகம்",
+      "பொத்தகம்",
+      "ஏடு",
+      "சுவடி"
+    ],
+    "te": [
+      "పుస్తకాలు"
+    ],
+    "tl": [
+      "libro"
+    ],
+    "tt": [
+      "кенәгә"
+    ],
+    "tt-cyrl": [
+      "кенәгә"
+    ],
+    "tt-latn": [
+      "kenägä"
+    ],
+    "ur": [
+      "کتابیں"
+    ],
+    "yo": [
+      "j"
+    ],
+    "zh": [
+      "书",
+      "书籍",
+      "图书",
+      "書籍",
+      "書",
+      "圖書",
+      "书本"
+    ],
+    "zh-hant": [
+      "書"
+    ],
+    "zh-tw": [
+      "書"
+    ]
+  },
+  "claims": {
+    "P1014": [
+      {
+        "t": "external",
+        "v": "300028051"
+      }
+    ],
+    "P1036": [
+      {
+        "t": "external",
+        "v": "002"
+      }
+    ],
+    "P10431": [
+      {
+        "t": "external",
+        "v": "BOOK"
+      }
+    ],
+    "P1051": [
+      {
+        "t": "external",
+        "v": "6451"
+      }
+    ],
+    "P10674": [
+      {
+        "t": "external",
+        "v": "95366",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Book"
+            }
+          ]
+        }
+      }
+    ],
+    "P10913": [
+      {
+        "t": "external",
+        "v": "f5/mt530/9426/504",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Books"
+            }
+          ]
+        }
+      }
+    ],
+    "P11293": [
+      {
+        "t": "external",
+        "v": "1000"
+      }
+    ],
+    "P11302": [
+      {
+        "t": "external",
+        "v": "784"
+      }
+    ],
+    "P11408": [
+      {
+        "t": "external",
+        "v": "本"
+      }
+    ],
+    "P1151": [
+      {
+        "t": "item",
+        "v": "Q10880143"
+      }
+    ],
+    "P1225": [
+      {
+        "t": "external",
+        "v": "10639916"
+      }
+    ],
+    "P1245": [
+      {
+        "t": "external",
+        "v": "417"
+      }
+    ],
+    "P1256": [
+      {
+        "t": "external",
+        "v": "49M32"
+      }
+    ],
+    "P1296": [
+      {
+        "t": "external",
+        "v": "0120138"
+      }
+    ],
+    "P1343": [
+      {
+        "t": "item",
+        "v": "Q602358",
+        "q": {
+          "P805": [
+            {
+              "t": "item",
+              "v": "Q24442391"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q19180675",
+        "q": {
+          "P805": [
+            {
+              "t": "item",
+              "v": "Q24766838"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q106727050",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Books"
+            }
+          ],
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2021-05-07T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q19219752",
+        "q": {
+          "P805": [
+            {
+              "t": "item",
+              "v": "Q112771783"
+            }
+          ]
+        }
+      }
+    ],
+    "P1368": [
+      {
+        "t": "external",
+        "v": "000049771"
+      }
+    ],
+    "P1417": [
+      {
+        "t": "external",
+        "v": "topic/book-publication"
+      }
+    ],
+    "P1424": [
+      {
+        "t": "item",
+        "v": "Q22835068"
+      },
+      {
+        "t": "item",
+        "v": "Q47482683"
+      }
+    ],
+    "P1438": [
+      {
+        "t": "external",
+        "v": "12134"
+      }
+    ],
+    "P1552": [
+      {
+        "t": "item",
+        "v": "Q783521"
+      },
+      {
+        "t": "item",
+        "v": "Q482980"
+      },
+      {
+        "t": "item",
+        "v": "Q2085381"
+      },
+      {
+        "t": "item",
+        "v": "Q1361759"
+      },
+      {
+        "t": "item",
+        "v": "Q1361758"
+      },
+      {
+        "t": "item",
+        "v": "Q33057"
+      },
+      {
+        "t": "item",
+        "v": "Q34770"
+      },
+      {
+        "t": "item",
+        "v": "Q1238720"
+      },
+      {
+        "t": "item",
+        "v": "Q2985386"
+      },
+      {
+        "t": "item",
+        "v": "Q998555"
+      },
+      {
+        "t": "item",
+        "v": "Q1607826"
+      },
+      {
+        "t": "item",
+        "v": "Q29514511"
+      },
+      {
+        "t": "item",
+        "v": "Q759811"
+      },
+      {
+        "t": "item",
+        "v": "Q772267"
+      },
+      {
+        "t": "item",
+        "v": "Q18602566"
+      },
+      {
+        "t": "item",
+        "v": "Q91783353"
+      },
+      {
+        "t": "item",
+        "v": "Q115804545"
+      }
+    ],
+    "P1617": [
+      {
+        "t": "external",
+        "v": "a9aede5d-df86-4664-9800-c325b6bd2f40"
+      }
+    ],
+    "P1709": [
+      {
+        "t": "url",
+        "v": "http://dbpedia.org/ontology/Book",
+        "q": {
+          "P813": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2015-06-11T00:00:00Z"
+              }
+            }
+          ],
+          "P973": [
+            {
+              "t": "url",
+              "v": "http://mappings.dbpedia.org/index.php/OntologyClass:Book"
+            }
+          ]
+        }
+      },
+      {
+        "t": "url",
+        "v": "https://schema.org/Book"
+      },
+      {
+        "t": "url",
+        "v": "http://purl.org/ontology/bibo/Book"
+      },
+      {
+        "t": "url",
+        "v": "http://purl.org/net/nknouf/ns/bibtex#Book"
+      },
+      {
+        "t": "url",
+        "v": "http://www.ontotext.com/proton/protonext#Book"
+      }
+    ],
+    "P1889": [
+      {
+        "t": "item",
+        "v": "Q3331189",
+        "q": {
+          "P1013": [
+            {
+              "t": "item",
+              "v": "Q16388"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q47461344"
+      },
+      {
+        "t": "item",
+        "v": "Q105763458"
+      },
+      {
+        "t": "item",
+        "v": "Q53731850"
+      }
+    ],
+    "P1963": [
+      {
+        "t": "property",
+        "v": "P1823"
+      },
+      {
+        "t": "property",
+        "v": "P1143"
+      },
+      {
+        "t": "property",
+        "v": "P2879"
+      },
+      {
+        "t": "property",
+        "v": "P2969"
+      },
+      {
+        "t": "property",
+        "v": "P3631"
+      },
+      {
+        "t": "property",
+        "v": "P50"
+      },
+      {
+        "t": "property",
+        "v": "P1476"
+      },
+      {
+        "t": "property",
+        "v": "P747"
+      },
+      {
+        "t": "property",
+        "v": "P364",
+        "q": {
+          "P2241": [
+            {
+              "t": "item",
+              "v": "Q18644427"
+            }
+          ]
+        }
+      },
+      {
+        "t": "property",
+        "v": "P407"
+      },
+      {
+        "t": "property",
+        "v": "P577"
+      },
+      {
+        "t": "property",
+        "v": "P6216"
+      }
+    ],
+    "P2184": [
+      {
+        "t": "item",
+        "v": "Q15873402"
+      }
+    ],
+    "P2263": [
+      {
+        "t": "external",
+        "v": "1794"
+      }
+    ],
+    "P227": [
+      {
+        "t": "external",
+        "v": "4008570-3"
+      }
+    ],
+    "P2347": [
+      {
+        "t": "external",
+        "v": "156",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "kirjat"
+            },
+            {
+              "t": "string",
+              "v": "böcker"
+            },
+            {
+              "t": "string",
+              "v": "books"
+            }
+          ]
+        }
+      }
+    ],
+    "P244": [
+      {
+        "t": "external",
+        "v": "sh85015738",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Books"
+            }
+          ]
+        }
+      }
+    ],
+    "P2581": [
+      {
+        "t": "external",
+        "v": "00012059n"
+      }
+    ],
+    "P2612": [
+      {
+        "t": "external",
+        "v": "books"
+      }
+    ],
+    "P268": [
+      {
+        "t": "external",
+        "v": "119322951",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Livres"
+            }
+          ]
+        }
+      }
+    ],
+    "P2737": [
+      {
+        "t": "item",
+        "v": "Q23766486",
+        "q": {
+          "P11260": [
+            {
+              "t": "item",
+              "v": "Q128093"
+            },
+            {
+              "t": "item",
+              "v": "Q106833"
+            },
+            {
+              "t": "item",
+              "v": "Q53731850"
+            }
+          ]
+        }
+      }
+    ],
+    "P279": [
+      {
+        "t": "item",
+        "v": "Q340169"
+      },
+      {
+        "t": "item",
+        "v": "Q49848"
+      }
+    ],
+    "P2888": [
+      {
+        "t": "url",
+        "v": "http://purl.org/spar/fabio/Book"
+      },
+      {
+        "t": "url",
+        "v": "https://citationstyles.org/ontology/type/book"
+      },
+      {
+        "t": "url",
+        "v": "http://purl.org/coar/resource_type/c_2f33"
+      },
+      {
+        "t": "url",
+        "v": "http://linked.earth/ontology/#book"
+      }
+    ],
+    "P2959": [
+      {
+        "t": "item",
+        "v": "Q52834100"
+      }
+    ],
+    "P3106": [
+      {
+        "t": "external",
+        "v": "books"
+      }
+    ],
+    "P3219": [
+      {
+        "t": "external",
+        "v": "livre"
+      }
+    ],
+    "P3417": [
+      {
+        "t": "external",
+        "v": "Books"
+      }
+    ],
+    "P349": [
+      {
+        "t": "external",
+        "v": "00573378"
+      }
+    ],
+    "P3553": [
+      {
+        "t": "external",
+        "v": "19553713",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "书籍"
+            }
+          ]
+        }
+      }
+    ],
+    "P3612": [
+      {
+        "t": "external",
+        "v": "sujet/livre"
+      }
+    ],
+    "P366": [
+      {
+        "t": "item",
+        "v": "Q3523102",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q173799",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q24911979",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q8434",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q843894",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q34516",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q208195",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q104482419",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q110143752"
+            }
+          ]
+        }
+      }
+    ],
+    "P373": [
+      {
+        "t": "string",
+        "v": "Books"
+      }
+    ],
+    "P3827": [
+      {
+        "t": "external",
+        "v": "books"
+      }
+    ],
+    "P3832": [
+      {
+        "t": "external",
+        "v": "10321",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "book"
+            }
+          ],
+          "P4900": [
+            {
+              "t": "item",
+              "v": "Q7189615"
+            }
+          ]
+        }
+      }
+    ],
+    "P3911": [
+      {
+        "t": "external",
+        "v": "13650-3",
+        "q": {
+          "P4390": [
+            {
+              "t": "item",
+              "v": "Q39893449"
+            }
+          ]
+        }
+      }
+    ],
+    "P3916": [
+      {
+        "t": "external",
+        "v": "concept500"
+      }
+    ],
+    "P3984": [
+      {
+        "t": "external",
+        "v": "books",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "So many books, so little time"
+            }
+          ],
+          "P407": [
+            {
+              "t": "item",
+              "v": "Q1860"
+            }
+          ],
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2008-01-25T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P4167": [
+      {
+        "t": "external",
+        "v": "Bøker"
+      }
+    ],
+    "P4212": [
+      {
+        "t": "external",
+        "v": "pcrtK3Ric1GReJ"
+      }
+    ],
+    "P4342": [
+      {
+        "t": "external",
+        "v": "bok"
+      }
+    ],
+    "P486": [
+      {
+        "t": "external",
+        "v": "D001877"
+      }
+    ],
+    "P487": [
+      {
+        "t": "string",
+        "v": "🕮"
+      },
+      {
+        "t": "string",
+        "v": "📚"
+      },
+      {
+        "t": "string",
+        "v": "📙"
+      },
+      {
+        "t": "string",
+        "v": "📘"
+      },
+      {
+        "t": "string",
+        "v": "📗"
+      },
+      {
+        "t": "string",
+        "v": "📖"
+      },
+      {
+        "t": "string",
+        "v": "📕"
+      }
+    ],
+    "P5008": [
+      {
+        "t": "item",
+        "v": "Q5460604"
+      },
+      {
+        "t": "item",
+        "v": "Q6173448",
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2022-10-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P5019": [
+      {
+        "t": "external",
+        "v": "buch-30"
+      }
+    ],
+    "P508": [
+      {
+        "t": "external",
+        "v": "303"
+      }
+    ],
+    "P5125": [
+      {
+        "t": "item",
+        "v": "Q7112569"
+      }
+    ],
+    "P5247": [
+      {
+        "t": "external",
+        "v": "3055-818"
+      }
+    ],
+    "P527": [
+      {
+        "t": "item",
+        "v": "Q234460"
+      },
+      {
+        "t": "item",
+        "v": "Q1980247"
+      }
+    ],
+    "P5398": [
+      {
+        "t": "external",
+        "v": "000000993"
+      }
+    ],
+    "P6104": [
+      {
+        "t": "item",
+        "v": "Q8487081"
+      }
+    ],
+    "P6200": [
+      {
+        "t": "external",
+        "v": "cq23pdgvyn7t"
+      }
+    ],
+    "P6404": [
+      {
+        "t": "external",
+        "v": "libro",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "libro"
+            }
+          ],
+          "P577": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+2010-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "external",
+        "v": "il-libro",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Il libro"
+            }
+          ],
+          "P2093": [
+            {
+              "t": "string",
+              "v": "Marilena Maniaci"
+            }
+          ],
+          "P577": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+2010-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P646": [
+      {
+        "t": "external",
+        "v": "/m/0bt_c3"
+      }
+    ],
+    "P6573": [
+      {
+        "t": "external",
+        "v": "Buch"
+      }
+    ],
+    "P6706": [
+      {
+        "t": "external",
+        "v": "libro",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "libro"
+            }
+          ]
+        }
+      }
+    ],
+    "P691": [
+      {
+        "t": "external",
+        "v": "ph114930",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "knihy"
+            }
+          ]
+        }
+      }
+    ],
+    "P7033": [
+      {
+        "t": "external",
+        "v": "scot/1916"
+      }
+    ],
+    "P7497": [
+      {
+        "t": "external",
+        "v": "Book"
+      }
+    ],
+    "P7502": [
+      {
+        "t": "external",
+        "v": "Book-XXJK"
+      }
+    ],
+    "P7749": [
+      {
+        "t": "external",
+        "v": "13603"
+      }
+    ],
+    "P7818": [
+      {
+        "t": "external",
+        "v": "Livre"
+      }
+    ],
+    "P7827": [
+      {
+        "t": "external",
+        "v": "Libro"
+      }
+    ],
+    "P7829": [
+      {
+        "t": "external",
+        "v": "Book"
+      }
+    ],
+    "P7844": [
+      {
+        "t": "external",
+        "v": "T505-1987"
+      }
+    ],
+    "P8168": [
+      {
+        "t": "external",
+        "v": "Q394362"
+      }
+    ],
+    "P8189": [
+      {
+        "t": "external",
+        "v": "987007283230005171"
+      }
+    ],
+    "P8406": [
+      {
+        "t": "external",
+        "v": "T009964"
+      }
+    ],
+    "P8408": [
+      {
+        "t": "external",
+        "v": "Book"
+      }
+    ],
+    "P8519": [
+      {
+        "t": "external",
+        "v": "62867"
+      }
+    ],
+    "P8672": [
+      {
+        "t": "external",
+        "v": "847519659179954178",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Books"
+            }
+          ]
+        }
+      }
+    ],
+    "P8703": [
+      {
+        "t": "string",
+        "v": "кн.",
+        "q": {
+          "P1535": [
+            {
+              "t": "item",
+              "v": "Q19670003"
+            }
+          ]
+        }
+      }
+    ],
+    "P8814": [
+      {
+        "t": "external",
+        "v": "06422547-n"
+      },
+      {
+        "t": "external",
+        "v": "02873453-n"
+      }
+    ],
+    "P8957": [
+      {
+        "t": "external",
+        "v": "60010200",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Books"
+            }
+          ]
+        }
+      }
+    ],
+    "P902": [
+      {
+        "t": "external",
+        "v": "010461"
+      }
+    ],
+    "P9084": [
+      {
+        "t": "external",
+        "v": "books-literature"
+      }
+    ],
+    "P910": [
+      {
+        "t": "item",
+        "v": "Q5461161"
+      },
+      {
+        "t": "item",
+        "v": "Q33098516"
+      }
+    ],
+    "P9100": [
+      {
+        "t": "external",
+        "v": "books"
+      }
+    ],
+    "P9318": [
+      {
+        "t": "external",
+        "v": "girji"
+      }
+    ],
+    "P935": [
+      {
+        "t": "string",
+        "v": "Book"
+      }
+    ],
+    "P9495": [
+      {
+        "t": "external",
+        "v": "term/369BC664-6FCF-4AE1-AFD4-EA9CB6642BC8"
+      },
+      {
+        "t": "external",
+        "v": "term/5104348c-8c39-4f8e-9505-d18d9700c8fd"
+      }
+    ],
+    "P950": [
+      {
+        "t": "external",
+        "v": "XX4576243",
+        "q": {
+          "P1810": [
+            {
+              "t": "string",
+              "v": "Libros"
+            }
+          ]
+        }
+      }
+    ],
+    "P989": [
+      {
+        "t": "media",
+        "v": "Nl-Boekdocument.ogg",
+        "q": {
+          "P407": [
+            {
+              "t": "item",
+              "v": "Q7411"
+            }
+          ],
+          "P5237": [
+            {
+              "t": "item",
+              "v": "Q7411"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "sitelinks": {
+    "afwiki": "Boek",
+    "alswiki": "Buch",
+    "amiwiki": "Codad",
+    "amwiki": "መጽሐፍ",
+    "anwiki": "Libro",
+    "arcwiki": "ܟܬܒܐ (ܣܦܪܐ)",
+    "arwiki": "كتاب",
+    "arwikiquote": "كتاب",
+    "arzwiki": "كتاب",
+    "astwiki": "Llibru",
+    "aswiki": "কিতাপ",
+    "atjwiki": "Masinahikan",
+    "aywiki": "Panka",
+    "azbwiki": "کیتاب",
+    "azwiki": "Kitab",
+    "azwikiquote": "Kitab",
+    "barwiki": "Buach",
+    "bat_smgwiki": "Kninga",
+    "bawiki": "Китап",
+    "be_x_oldwiki": "Кніга",
+    "bewiki": "Кніга",
+    "bewikiquote": "Кніга",
+    "bgwiki": "Книга",
+    "bgwikiquote": "Книги — Читатели",
+    "bhwiki": "किताब",
+    "bjnwiki": "Buku",
+    "bmwiki": "Gafɛ",
+    "bnwiki": "বই",
+    "bnwikiquote": "বই",
+    "brwiki": "Levr",
+    "bswiki": "Knjiga",
+    "bswikiquote": "Knjiga",
+    "bxrwiki": "Ном (бэшэг)",
+    "cawiki": "Llibre",
+    "cawikiquote": "Llibre",
+    "cdowiki": "Cṳ̆",
+    "cewiki": "Жайна",
+    "chrwiki": "ᎪᏪᎵ",
+    "ckbwiki": "کتێب",
+    "commonswiki": "Book",
+    "crhwiki": "Kitap",
+    "cswiki": "Kniha",
+    "cswikiquote": "Kniha",
+    "cvwiki": "Кĕнеке",
+    "cywiki": "Llyfr",
+    "dagwiki": "Buku",
+    "dawiki": "Bog",
+    "dewiki": "Buch",
+    "dewikibooks": "Buch",
+    "dewikinews": "Kategorie:Buch",
+    "dewikiquote": "Buch",
+    "diqwiki": "Kıtab",
+    "dtywiki": "पुस्तक",
+    "elwiki": "Βιβλίο",
+    "elwikiquote": "Βιβλία",
+    "enwiki": "Book",
+    "enwikinews": "Category:Books",
+    "enwikiquote": "Books",
+    "eowiki": "Libro",
+    "eowikiquote": "Libro",
+    "eswiki": "Libro",
+    "eswikiquote": "Libro",
+    "etwiki": "Raamat",
+    "etwikiquote": "Raamat",
+    "euwiki": "Liburu",
+    "extwiki": "Libru",
+    "fawiki": "کتاب",
+    "fawikibooks": "کتاب",
+    "fawikiquote": "کتاب",
+    "fiwiki": "Kirja",
+    "fiwikiquote": "Kirja",
+    "fjwiki": "Ivola",
+    "frpwiki": "Lévro",
+    "frrwiki": "Buk",
+    "frwiki": "Livre (document)",
+    "frwikinews": "Catégorie:Livre",
+    "frwikiquote": "Livre",
+    "fywiki": "Boek",
+    "ganwiki": "書",
+    "gawiki": "Leabhar",
+    "gcrwiki": "Liv (dokouman)",
+    "gdwiki": "Leabhar",
+    "glwiki": "Libro",
+    "gnwiki": "Aranduka",
+    "gotwiki": "𐌱𐍉𐌺𐍉𐍃",
+    "gucwiki": "Karalo'uta",
+    "gvwiki": "Lioar",
+    "hakwiki": "Sû",
+    "hawiki": "Littafi",
+    "hewiki": "ספר",
+    "hewikinews": "קטגוריה:ספרים",
+    "hewikiquote": "ספר",
+    "hiwiki": "पुस्तक",
+    "hiwikiquote": "पुस्तक",
+    "hrwiki": "Knjiga",
+    "hrwikiquote": "Knjige",
+    "htwiki": "Liv (pou li)",
+    "huwiki": "Könyv",
+    "huwikiquote": "Könyv",
+    "hywiki": "Գիրք",
+    "hywikiquote": "Գիրք",
+    "hywwiki": "Գիրք",
+    "iawiki": "Libro",
+    "idwiki": "Buku",
+    "iewiki": "Libre",
+    "ilowiki": "Libro",
+    "inhwiki": "Дешарг",
+    "iowiki": "Libro",
+    "iswiki": "Bók",
+    "itwiki": "Libro",
+    "itwikiquote": "Libro",
+    "iuwiki": "ᕿᒥᕐᕈᐊᑦ/qimirruat",
+    "jamwiki": "Buk",
+    "jawiki": "本",
+    "jawikiquote": "書物",
+    "jbowiki": "cukta",
+    "jvwiki": "Buku",
+    "kabwiki": "Adlis",
+    "kawiki": "წიგნი",
+    "kbpwiki": "Takayaɣ",
+    "kcgwiki": "Kwaa̱mbwat",
+    "kkwiki": "Кітап",
+    "knwiki": "ಪುಸ್ತಕ",
+    "kowiki": "책",
+    "kowikinews": "분류:책",
+    "kowikiquote": "책",
+    "kshwiki": "Boch (z lääse)",
+    "kuwiki": "Pirtûk",
+    "kvwiki": "Небӧг",
+    "kwwiki": "Lyver",
+    "kywiki": "Китеп",
+    "lawiki": "Liber",
+    "lawikiquote": "Liber",
+    "lbwiki": "Buch",
+    "lezwiki": "Улуб",
+    "liwiki": "Book",
+    "lmowiki": "Liber",
+    "lnwiki": "Búku",
+    "lowiki": "ປຶ້ມ",
+    "ltwiki": "Knyga",
+    "ltwikiquote": "Knyga",
+    "lvwiki": "Grāmata",
+    "madwiki": "Buku",
+    "mgwiki": "Boky",
+    "mhrwiki": "Книга",
+    "mkwiki": "Книга",
+    "mlwiki": "പുസ്തകം",
+    "mlwikiquote": "പുസ്തകങ്ങൾ",
+    "mniwiki": "ꯂꯥꯢꯂꯤꯛ",
+    "mnwiki": "Ном",
+    "mrwiki": "पुस्तक",
+    "mswiki": "Buku",
+    "mwlwiki": "Libro",
+    "myvwiki": "Кинига",
+    "mywiki": "စာအုပ်",
+    "nahwiki": "Amoxtli",
+    "napwiki": "Libbro",
+    "nds_nlwiki": "Boek (literetuur)",
+    "ndswiki": "Book",
+    "newiki": "पुस्तक",
+    "newwiki": "सफू",
+    "nlwiki": "Boek (document)",
+    "nlwikinews": "Categorie:Boek",
+    "nlwikiquote": "Boek",
+    "nnwiki": "Bok",
+    "nnwikiquote": "Bøker",
+    "nowiki": "Bok",
+    "nowikinews": "Kategori:Bøker",
+    "nqowiki": "ߞߊ߬ߝߊ",
+    "ocwiki": "Libre",
+    "olowiki": "Kirju",
+    "oswiki": "Чиныг",
+    "pawiki": "ਕਿਤਾਬ",
+    "pdcwiki": "Buch",
+    "piwiki": "पोत्थकं",
+    "plwiki": "Książka",
+    "plwikiquote": "Książka",
+    "pnbwiki": "کتاب",
+    "ptwiki": "Livro",
+    "ptwikinews": "Categoria:Livros",
+    "ptwikiquote": "Livros",
+    "quwiki": "Patara qhilqa",
+    "roa_rupwiki": "Carti",
+    "rowiki": "Carte",
+    "rowikiquote": "Cărți",
+    "ruewiki": "Книга",
+    "ruwiki": "Книга",
+    "ruwikinews": "Категория:Книги",
+    "ruwikiquote": "Книга",
+    "rwwiki": "Igitabo",
+    "sahwiki": "Кинигэ",
+    "satwiki": "ᱯᱩᱛᱷᱤ",
+    "scnwiki": "Libbru",
+    "scowiki": "Beuk",
+    "sdwiki": "ڪتاب",
+    "sewiki": "Girji",
+    "shwiki": "Knjiga",
+    "simplewiki": "Book",
+    "siwiki": "පොත්",
+    "skwiki": "Kniha",
+    "skwikiquote": "Kniha",
+    "slwiki": "Knjiga",
+    "slwikiquote": "Knjiga",
+    "snwiki": "Bhuku",
+    "sowiki": "Buug",
+    "sqwiki": "Libri",
+    "srwiki": "Књига",
+    "srwikiquote": "Књига",
+    "sswiki": "Íncwadzí",
+    "suwiki": "Buku",
+    "svwiki": "Bok",
+    "swwiki": "Kitabu",
+    "szywiki": "cudad",
+    "tawiki": "நூல் (எழுத்துப் படைப்பு)",
+    "tawikiquote": "நூல்கள்",
+    "taywiki": "biru",
+    "tewiki": "పుస్తకము",
+    "tewikiquote": "పుస్తకం",
+    "tgwiki": "Китоб",
+    "thwiki": "หนังสือ",
+    "tkwiki": "Kitap",
+    "tlwiki": "Aklat",
+    "tnwiki": "Buka",
+    "tpiwiki": "Buk",
+    "trwiki": "Kitap",
+    "trwikiquote": "Kitaplar",
+    "ttwiki": "Китап",
+    "tyvwiki": "Ном",
+    "ukwiki": "Книга",
+    "ukwikiquote": "Книга",
+    "urwiki": "کتاب",
+    "urwikiquote": "کتاب",
+    "uzwiki": "Kitob",
+    "uzwikiquote": "Kitob",
+    "vecwiki": "Łibro",
+    "vepwiki": "Kirj",
+    "viwiki": "Sách",
+    "vowiki": "Buk",
+    "warwiki": "Libro",
+    "wawiki": "Live (po lére)",
+    "wuuwiki": "图书",
+    "xhwiki": "Incwadi",
+    "yiwiki": "בוך",
+    "yowiki": "Ìwé",
+    "zawiki": "Saw",
+    "zh_classicalwiki": "書",
+    "zh_min_nanwiki": "Chheh",
+    "zh_yuewiki": "書",
+    "zhwiki": "图书",
+    "zuwiki": "Incwadi"
+  },
+  "type": "item"
+}
