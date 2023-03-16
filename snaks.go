@@ -25,11 +25,8 @@ func (sv *SnakValue) ValueAsString() *string {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(string)
-	if !ok {
-		return nil
-	}
-	return &value
+	value, _ := sv.Value.(*string)
+	return value
 }
 
 func (sv *SnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
@@ -143,54 +140,23 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 
 	switch workingType {
 	case "simple":
-		var value string
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		sv.Value = value
+		s := ""
+		sv.Value = &s
 	case "entity":
-		var value SnakValueEntity
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		sv.Value = &value
+		sv.Value = &SnakValueEntity{}
 	case "globecoordinate", "globe-coordinate":
-		var value SnakValueGlobeCoordinate
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		sv.Value = &value
+		sv.Value = &SnakValueGlobeCoordinate{}
 	case "monolingualtext":
-		var value SnakValueMonolingualText
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		sv.Value = &value
+		sv.Value = &SnakValueMonolingualText{}
 	case "quantity":
-		var value SnakValueQuantity
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		// remove leading + to prevent json.Number from failing to convert
-		value.Amount = NumberPlus(strings.TrimPrefix(string(value.Amount), "+"))
-		sv.Value = &value
+		sv.Value = &SnakValueQuantity{}
 	case "time":
-		var value SnakValueTime
-		err := json.Unmarshal(peek.Value, &value)
-		if err != nil {
-			return err
-		}
-		sv.Value = &value
+		sv.Value = &SnakValueTime{}
 	default:
 		return fmt.Errorf("%s snak value parser not implemented", workingType)
 	}
 
-	return nil
+	return json.Unmarshal(peek.Value, sv.Value)
 }
 
 type SimpleSnakValue struct {
@@ -202,11 +168,8 @@ func (sv *SimpleSnakValue) ValueAsString() *string {
 	if sv == nil {
 		return nil
 	}
-	value, ok := sv.Value.(string)
-	if !ok {
-		return nil
-	}
-	return &value
+	value, _ := sv.Value.(*string)
+	return value
 }
 
 func (sv *SimpleSnakValue) ValueAsCoordinate() *SnakValueGlobeCoordinate {
@@ -253,39 +216,26 @@ func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 }
 
 func unmarshalSimpleSnakValue(stype string, data []byte) (interface{}, error) {
+	var value interface{}
+
 	switch stype {
 	case "string", "external", "item", "url", "property", "lexeme", "media", "geoshape", "musical":
-		var value string
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return value, nil
+		s := ""
+		value = &s
 	case "quantity":
-		var value SnakValueQuantity
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		// remove leading + to prevent json.Number from failing to convert
-		value.Amount = NumberPlus(strings.TrimPrefix(string(value.Amount), "+"))
-		return &value, nil
+		value = &SnakValueQuantity{}
 	case "coords":
-		var value SnakValueGlobeCoordinate
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SnakValueGlobeCoordinate{}
 	case "time":
-		var value SnakValueTime
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SnakValueTime{}
 	default:
 		err := fmt.Errorf("%s simple snak value parser not implemented: %s", stype, string(data))
 		return nil, err
 	}
+
+	err := json.Unmarshal(data, value)
+	if err != nil {
+		return nil, err
+	}
+	return value, nil
 }

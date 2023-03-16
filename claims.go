@@ -63,11 +63,8 @@ func (sc *SimpleClaim) ValueAsString() *string {
 	if sc == nil {
 		return nil
 	}
-	value, ok := sc.Value.(string)
-	if !ok {
-		return nil
-	}
-	return &value
+	value, _ := sc.Value.(*string)
+	return value
 }
 
 func (sc *SimpleClaim) ValueAsCoordinate() *SnakValueGlobeCoordinate {

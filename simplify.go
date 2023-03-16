@@ -179,12 +179,12 @@ func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SimpleSnakValue {
 
 func ParseClaim(dv *SnakValue) interface{} {
 	switch value := dv.Value.(type) {
-	case string:
+	case *string:
 		return value
 	case *SnakValueEntity:
-		return value.ID
+		return &value.ID
 	case *SnakValueMonolingualText:
-		return value.Value
+		return &value.Value
 	case *SnakValueGlobeCoordinate:
 		// convert globe
 		return &SnakValueGlobeCoordinate{

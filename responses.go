@@ -101,45 +101,28 @@ func unmarshalSimpleEntity(data json.RawMessage) (interface{}, error) {
 		return nil, err
 	}
 
+	var value interface{}
+
 	switch peek.Type {
 	case "item":
-		var value SimpleItem
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SimpleItem{}
 	case "property":
-		var value SimpleProperty
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SimpleProperty{}
 	case "lexeme":
-		var value SimpleLexeme
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SimpleLexeme{}
 	case "form":
-		var value SimpleForm
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SimpleForm{}
 	case "sense":
-		var value SimpleSense
-		err := json.Unmarshal(data, &value)
-		if err != nil {
-			return nil, err
-		}
-		return &value, nil
+		value = &SimpleSense{}
 	default:
 		return nil, fmt.Errorf("%s entity value parser not implemented", peek.Type)
 	}
+
+	err = json.Unmarshal(data, value)
+	if err != nil {
+		return nil, err
+	}
+	return value, nil
 }
 
 func (resp *GetEntitiesSimpleResponse) GetEntityAsItem(key string) *SimpleItem {
