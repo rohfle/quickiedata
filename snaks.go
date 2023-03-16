@@ -171,7 +171,7 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 			return err
 		}
 		sv.Value = &value
-	case "globecoordinate":
+	case "globecoordinate", "globe-coordinate":
 		var value SnakValueGlobeCoordinate
 		err := json.Unmarshal(peek.Value, &value)
 		if err != nil {
@@ -278,7 +278,7 @@ func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 
 func unmarshalSimpleSnakValue(stype string, data []byte) (interface{}, error) {
 	switch stype {
-	case "media", "string", "external", "item", "url", "property":
+	case "string", "external", "item", "url", "property", "lexeme", "media", "geoshape", "musical":
 		var value string
 		err := json.Unmarshal(data, &value)
 		if err != nil {

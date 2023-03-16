@@ -59,6 +59,7 @@ var SIMPLIFY_TYPE_LUT = map[string]string{
 	"external-id":       "external",
 	"geo-shape":         "geoshape",
 	"globecoordinate":   "coords",
+	"globe-coordinate":  "coords",
 	"monolingualtext":   "string",
 	"musical-notation":  "musical",
 	"tabular-data":      "tabular",

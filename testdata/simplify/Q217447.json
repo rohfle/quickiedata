@@ -1,0 +1,1319 @@
+{
+      "pageid": 212559,
+      "ns": 0,
+      "title": "Q217447",
+      "lastrevid": 1770819571,
+      "modified": "2022-11-13T14:52:13Z",
+      "type": "item",
+      "id": "Q217447",
+      "labels": {
+        "ca": {
+          "language": "ca",
+          "value": "Verla"
+        },
+        "ceb": {
+          "language": "ceb",
+          "value": "Verla"
+        },
+        "cs": {
+          "language": "cs",
+          "value": "Verla"
+        },
+        "da": {
+          "language": "da",
+          "value": "Verla"
+        },
+        "de": {
+          "language": "de",
+          "value": "Verla"
+        },
+        "en": {
+          "language": "en",
+          "value": "Verla"
+        },
+        "es": {
+          "language": "es",
+          "value": "Verla"
+        },
+        "et": {
+          "language": "et",
+          "value": "Verla"
+        },
+        "fi": {
+          "language": "fi",
+          "value": "Verla"
+        },
+        "fr": {
+          "language": "fr",
+          "value": "Verla"
+        },
+        "he": {
+          "language": "he",
+          "value": "ורלה"
+        },
+        "hi": {
+          "language": "hi",
+          "value": "वेरला"
+        },
+        "hr": {
+          "language": "hr",
+          "value": "Verla"
+        },
+        "hu": {
+          "language": "hu",
+          "value": "Verla ipartörténeti műemlékei"
+        },
+        "it": {
+          "language": "it",
+          "value": "Verla"
+        },
+        "ja": {
+          "language": "ja",
+          "value": "ヴェルラ砕木・板紙工場"
+        },
+        "ka": {
+          "language": "ka",
+          "value": "ვერლა"
+        },
+        "lt": {
+          "language": "lt",
+          "value": "Verla"
+        },
+        "nb": {
+          "language": "nb",
+          "value": "Verla tresliperi og pappfabrikk"
+        },
+        "ne": {
+          "language": "ne",
+          "value": "भेर्ला ग्राउण्डवुड र बोर्ड मिल"
+        },
+        "nl": {
+          "language": "nl",
+          "value": "Verla"
+        },
+        "nn": {
+          "language": "nn",
+          "value": "Verla tresliperi og pappfabrikk"
+        },
+        "pl": {
+          "language": "pl",
+          "value": "Verla"
+        },
+        "pt": {
+          "language": "pt",
+          "value": "Verla"
+        },
+        "ro": {
+          "language": "ro",
+          "value": "Verla"
+        },
+        "ru": {
+          "language": "ru",
+          "value": "Верла"
+        },
+        "se": {
+          "language": "se",
+          "value": "Verla"
+        },
+        "sh": {
+          "language": "sh",
+          "value": "Verla"
+        },
+        "sje": {
+          "language": "sje",
+          "value": "Verla"
+        },
+        "sk": {
+          "language": "sk",
+          "value": "Verla"
+        },
+        "sma": {
+          "language": "sma",
+          "value": "Verla"
+        },
+        "smj": {
+          "language": "smj",
+          "value": "Verla"
+        },
+        "smn": {
+          "language": "smn",
+          "value": "Verla"
+        },
+        "sms": {
+          "language": "sms",
+          "value": "Verla"
+        },
+        "sv": {
+          "language": "sv",
+          "value": "Verla träsliperi och pappfabrik"
+        },
+        "tr": {
+          "language": "tr",
+          "value": "Verla"
+        },
+        "vi": {
+          "language": "vi",
+          "value": "Verla"
+        },
+        "xmf": {
+          "language": "xmf",
+          "value": "ვერლა"
+        },
+        "zh": {
+          "language": "zh",
+          "value": "韦尔拉磨木纸板厂"
+        }
+      },
+      "descriptions": {
+        "ceb": {
+          "language": "ceb",
+          "value": "lungsod"
+        },
+        "de": {
+          "language": "de",
+          "value": "Fabrik in Finnland"
+        },
+        "en": {
+          "language": "en",
+          "value": "Finnish UNESCO world heritage site"
+        },
+        "fi": {
+          "language": "fi",
+          "value": "suomalainen  UNESCO:n maailmanperintökohde"
+        },
+        "id": {
+          "language": "id",
+          "value": "Warisan Dunia di Finlandia"
+        },
+        "it": {
+          "language": "it",
+          "value": "villaggio finlandese patrimonio dell'umanità Unesco"
+        },
+        "ne": {
+          "language": "ne",
+          "value": "विरला ग्रौंड्वूड र बोर्ड मिल उत्तरी युरोपका एक विश्व सम्पदा क्षेत्रहरू मध्ये हो ।"
+        },
+        "nl": {
+          "language": "nl",
+          "value": "plaats in Finland"
+        },
+        "sv": {
+          "language": "sv",
+          "value": "industriminne i Kouvola i Finland"
+        },
+        "zh": {
+          "language": "zh",
+          "value": "世界文化遗产"
+        }
+      },
+      "aliases": {
+        "fi": [
+          {
+            "language": "fi",
+            "value": "Verlan hiomo"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan puuhiomo"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan museo"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan pahvitehdas"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan tehdas"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan tehdasalue"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan ruukki"
+          },
+          {
+            "language": "fi",
+            "value": "Verlan tehdasmuseo"
+          }
+        ],
+        "fr": [
+          {
+            "language": "fr",
+            "value": "Usine de traitement du bois et du carton de Verla"
+          },
+          {
+            "language": "fr",
+            "value": "Usine de traitement du bois et de carton de Verla"
+          }
+        ],
+        "nb": [
+          {
+            "language": "nb",
+            "value": "Verla"
+          }
+        ]
+      },
+      "claims": {
+        "P131": [
+          {
+            "id": "Q217447$d209286d-417e-2b76-5a52-21055444a7fb",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q204382",
+                  "numeric-id": 204382,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "6f82d2df0bdba019b69410a252e2c157cb795640",
+              "property": "P131",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "241969d9a72163658dd02bcdc22477afa8c94a72",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q3485482",
+                          "numeric-id": 3485482,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "8cf5b94252b3da4624cd67d4e08214c5074adc36",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1435": [
+          {
+            "id": "Q217447$ADA139A8-43D6-4B17-A59E-9DC3AA91695B",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q9259",
+                  "numeric-id": 9259,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "d22546e8bf86b97293821ea8757787befdf35ca8",
+              "property": "P1435",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": {
+              "P580": [
+                {
+                  "id": "",
+                  "datatype": "time",
+                  "datavalue": {
+                    "type": "time",
+                    "value": {
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                      "precision": 9,
+                      "time": "+1996-01-01T00:00:00Z"
+                    }
+                  },
+                  "hash": "317f1979d0a112d2e41fb51b4e307743e3161bc5",
+                  "property": "P580",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "qualifiersOrder": null,
+            "references": null
+          },
+          {
+            "id": "Q217447$414E431F-B6E1-4DFF-B33F-14A4859FF381",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q29966257",
+                  "numeric-id": 29966257,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "956e95ee463b06936f63f0a49e4659e8d2a659f2",
+              "property": "P1435",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "47b92e14a15f099714b8cbad66cd88ec92d68475",
+                "snaks": {
+                  "P854": [
+                    {
+                      "id": "",
+                      "datatype": "url",
+                      "datavalue": {
+                        "type": "string",
+                        "value": "http://www.rky.fi/read/asp/r_kohde_det.aspx?KOHDE_ID=1277"
+                      },
+                      "hash": "d0ec81e8107e15543f62f469fab948efe31b74ef",
+                      "property": "P854",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              },
+              {
+                "hash": "241969d9a72163658dd02bcdc22477afa8c94a72",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q3485482",
+                          "numeric-id": 3485482,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "8cf5b94252b3da4624cd67d4e08214c5074adc36",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P1566": [
+          {
+            "id": "Q217447$79426EAC-8D53-4B0D-9F8E-66A2BD2330F1",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "631914"
+              },
+              "hash": "27c92b7e41c02fde1146630895616c76ec824ead",
+              "property": "P1566",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "88694a0f4d1486770c269f7db16a1982f74da69d",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q830106",
+                          "numeric-id": 830106,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "1b3ef912a2bd61e18dd43abd184337eb010b2e96",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P17": [
+          {
+            "id": "Q217447$82efdfd7-464e-1061-331d-e33d9246122a",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q33",
+                  "numeric-id": 33,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "478fb2513e99d97c0e19259525594c35a7deb28d",
+              "property": "P17",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P18": [
+          {
+            "id": "q217447$588CA442-BE9D-4BFE-8C77-ECBADA697729",
+            "mainsnak": {
+              "id": "",
+              "datatype": "commonsMedia",
+              "datavalue": {
+                "type": "string",
+                "value": "Verla.JPG"
+              },
+              "hash": "24b760ed8220208b3babcbafe2be0a43575355ed",
+              "property": "P18",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P2046": [
+          {
+            "id": "Q217447$1AF6B55B-A7FD-44A4-AFEF-ECB7CFF0F4AA",
+            "mainsnak": {
+              "id": "",
+              "datatype": "quantity",
+              "datavalue": {
+                "type": "quantity",
+                "value": {
+                  "amount": "22.778",
+                  "unit": "http://www.wikidata.org/entity/Q35852"
+                }
+              },
+              "hash": "0bb27e4274af245d4b5f14496adcba76fd0c2ff0",
+              "property": "P2046",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          },
+          {
+            "id": "Q217447$EDC23B1B-E639-42C8-A8AD-373654DECE29",
+            "mainsnak": {
+              "id": "",
+              "datatype": "quantity",
+              "datavalue": {
+                "type": "quantity",
+                "value": {
+                  "amount": "88.03",
+                  "unit": "http://www.wikidata.org/entity/Q35852"
+                }
+              },
+              "hash": "4d9c72fab9382029310712ce37b72828becf9e0c",
+              "property": "P2046",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": {
+              "P518": [
+                {
+                  "id": "",
+                  "datatype": "wikibase-item",
+                  "datavalue": {
+                    "type": "wikibase-entityid",
+                    "value": {
+                      "id": "Q64364418",
+                      "numeric-id": 64364418,
+                      "entity-type": "item"
+                    }
+                  },
+                  "hash": "5fcb1f5c115fa5c6b5f2942b01877eb305f49399",
+                  "property": "P518",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P214": [
+          {
+            "id": "Q217447$8D010E99-7578-4A74-9C6C-DE413C477DBD",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "247860056"
+              },
+              "hash": "39a9c307f1c4732f1d2d2ba85fcf175a29b53160",
+              "property": "P214",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "ad3713df772ae88af6a7458d084a40ad20b226d6",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q54919",
+                          "numeric-id": 54919,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "6b7d4330c4aac4caec4ede9de0311ce273f88ecd",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ],
+                  "P813": [
+                    {
+                      "id": "",
+                      "datatype": "time",
+                      "datavalue": {
+                        "type": "time",
+                        "value": {
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                          "precision": 11,
+                          "time": "+2015-08-06T00:00:00Z"
+                        }
+                      },
+                      "hash": "a00cc299e508357647636e29593b8ca3e534077d",
+                      "property": "P813",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P813"
+                ]
+              }
+            ]
+          }
+        ],
+        "P2347": [
+          {
+            "id": "Q217447$A7C548FF-A083-4B61-9F2E-2FEA9C6A1712",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "115307"
+              },
+              "hash": "29f40ca1dba168fec33fae97755546a93268d778",
+              "property": "P2347",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P2614": [
+          {
+            "id": "Q217447$BA5AB572-EAC6-4DFE-AE11-255E120B9C0E",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q23038978",
+                  "numeric-id": 23038978,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "16b5f6994a5a2a152170b737b59af7d93b88c8fe",
+              "property": "P2614",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "3aec03da94795f7f0203777f2671f0844bffe924",
+                "snaks": {
+                  "P854": [
+                    {
+                      "id": "",
+                      "datatype": "url",
+                      "datavalue": {
+                        "type": "string",
+                        "value": "http://whc.unesco.org/en/list/751"
+                      },
+                      "hash": "5e7e3c1c4bc5baa1faeffa190e0c155d76a49264",
+                      "property": "P854",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P31": [
+          {
+            "id": "Q217447$4e8987ec-4219-9ff9-7c1f-63f0692ce05c",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q83405",
+                  "numeric-id": 83405,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "96a4accb81d806a008acb71dcf35886a0076ba87",
+              "property": "P31",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          },
+          {
+            "id": "Q217447$B1FB2558-8E11-4771-BF94-663C35957D79",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q29969141",
+                  "numeric-id": 29969141,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "8502d520e573e2ce2f7a4c29908061c02273eb52",
+              "property": "P31",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          },
+          {
+            "id": "Q217447$F86E94B4-01C5-4CF1-88B9-3F20CD1D2D97",
+            "mainsnak": {
+              "id": "",
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "id": "Q1569871",
+                  "numeric-id": 1569871,
+                  "entity-type": "item"
+                }
+              },
+              "hash": "20b2d69f3034a00390399745478fb35f5ace1a6e",
+              "property": "P31",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "3548484c6b7cb89b6b9a55e08f42f1c07a6f80bd",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q38896738",
+                          "numeric-id": 38896738,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "d1d9ed036b1a5d9d8a82d9af4f3b9c5c40b2b5d0",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248"
+                ]
+              }
+            ]
+          }
+        ],
+        "P373": [
+          {
+            "id": "q217447$8C4B8C93-D6B5-4183-9573-9E87FD7EEF5B",
+            "mainsnak": {
+              "id": "",
+              "datatype": "string",
+              "datavalue": {
+                "type": "string",
+                "value": "Verla groundwood and board mill"
+              },
+              "hash": "16c23122e7bcd058d7dad7104c299720355844fe",
+              "property": "P373",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P3896": [
+          {
+            "id": "Q217447$E877BF5E-86CA-4ABA-8AAB-4E98FAE3667C",
+            "mainsnak": {
+              "id": "",
+              "datatype": "geo-shape",
+              "datavalue": {
+                "type": "string",
+                "value": "Data:Rky/1277 Verlan teollisuusympäristö.map"
+              },
+              "hash": "36ee9d7504511a3fdb7acdcd894892f33d9434bf",
+              "property": "P3896",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P4009": [
+          {
+            "id": "Q217447$8a64afb4-47a4-9c01-0543-e74bbe93846d",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "1277"
+              },
+              "hash": "0a4bda4fcbf19d19a3381d4186ffc9e7b843b44f",
+              "property": "P4009",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P5310": [
+          {
+            "id": "Q217447$C4224EA7-8453-4BE7-92FD-84E8E1F063DA",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "201382"
+              },
+              "hash": "7b97961d2f389b6f722c45be58a0383cd605c9a1",
+              "property": "P5310",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P625": [
+          {
+            "id": "Q217447$FDF38AD5-7933-4101-8478-8E7BAB95ED1E",
+            "mainsnak": {
+              "id": "",
+              "datatype": "globe-coordinate",
+              "datavalue": {
+                "type": "globecoordinate",
+                "value": {
+                  "latitude": 61.061992,
+                  "longitude": 26.640016,
+                  "precision": 0.000001,
+                  "globe": "http://www.wikidata.org/entity/Q2"
+                }
+              },
+              "hash": "9088bac461829d421605897dacd8d063e7e7ad77",
+              "property": "P625",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "47b92e14a15f099714b8cbad66cd88ec92d68475",
+                "snaks": {
+                  "P854": [
+                    {
+                      "id": "",
+                      "datatype": "url",
+                      "datavalue": {
+                        "type": "string",
+                        "value": "http://www.rky.fi/read/asp/r_kohde_det.aspx?KOHDE_ID=1277"
+                      },
+                      "hash": "d0ec81e8107e15543f62f469fab948efe31b74ef",
+                      "property": "P854",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P854"
+                ]
+              }
+            ]
+          }
+        ],
+        "P646": [
+          {
+            "id": "Q217447$5A80FBD4-9F7D-4E82-92C8-B2E9C8058208",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "/m/0bgk_k"
+              },
+              "hash": "9d70921648145579eacd97f0147c7156066afec6",
+              "property": "P646",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "2b00cb481cddcac7623114367489b5c194901c4a",
+                "snaks": {
+                  "P248": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q15241312",
+                          "numeric-id": 15241312,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "a94b740202b097dd33355e0e6c00e54b9395e5e0",
+                      "property": "P248",
+                      "snaktype": "value"
+                    }
+                  ],
+                  "P577": [
+                    {
+                      "id": "",
+                      "datatype": "time",
+                      "datavalue": {
+                        "type": "time",
+                        "value": {
+                          "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                          "precision": 11,
+                          "time": "+2013-10-28T00:00:00Z"
+                        }
+                      },
+                      "hash": "fde79ecb015112d2f29229ccc1ec514ed3e71fa2",
+                      "property": "P577",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P248",
+                  "P577"
+                ]
+              }
+            ]
+          }
+        ],
+        "P6766": [
+          {
+            "id": "Q217447$FF9F11B3-E3F8-4ED2-95AD-FB1CE2C29EE4",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "1125875527"
+              },
+              "hash": "fe63d282380d54a8e75ff607c08fa7536fc02fae",
+              "property": "P6766",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ],
+        "P757": [
+          {
+            "id": "q217447$AF7C5E46-EECC-47FB-BF7F-0D3B8ED3112F",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "751"
+              },
+              "hash": "1dca1db15bc03d1c21f6b64828aeae6b5ab920f0",
+              "property": "P757",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+                "snaks": {
+                  "P143": [
+                    {
+                      "id": "",
+                      "datatype": "wikibase-item",
+                      "datavalue": {
+                        "type": "wikibase-entityid",
+                        "value": {
+                          "id": "Q328",
+                          "numeric-id": 328,
+                          "entity-type": "item"
+                        }
+                      },
+                      "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+                      "property": "P143",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P143"
+                ]
+              }
+            ]
+          }
+        ],
+        "P7859": [
+          {
+            "id": "Q217447$6BB6C922-33C4-4B48-A83C-8933E57AAA7F",
+            "mainsnak": {
+              "id": "",
+              "datatype": "external-id",
+              "datavalue": {
+                "type": "string",
+                "value": "viaf-247860056"
+              },
+              "hash": "c485b95e1d46fa488c905eece92ee5bcfe2f5b96",
+              "property": "P7859",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": [
+              {
+                "hash": "dfe612f60e31baeb49c9daf123dc0b86d04d0053",
+                "snaks": {
+                  "P214": [
+                    {
+                      "id": "",
+                      "datatype": "external-id",
+                      "datavalue": {
+                        "type": "string",
+                        "value": "247860056"
+                      },
+                      "hash": "39a9c307f1c4732f1d2d2ba85fcf175a29b53160",
+                      "property": "P214",
+                      "snaktype": "value"
+                    }
+                  ]
+                },
+                "snaks-order": [
+                  "P214"
+                ]
+              }
+            ]
+          }
+        ],
+        "P856": [
+          {
+            "id": "Q217447$62E720CF-F124-4BC9-A0BB-718D4E014EF3",
+            "mainsnak": {
+              "id": "",
+              "datatype": "url",
+              "datavalue": {
+                "type": "string",
+                "value": "http://www.verla.fi/"
+              },
+              "hash": "7cb56191fd35c61856faaa80de59b76976799367",
+              "property": "P856",
+              "snaktype": "value"
+            },
+            "rank": "normal",
+            "type": "statement",
+            "qualifiers": null,
+            "qualifiersOrder": null,
+            "references": null
+          }
+        ]
+      },
+      "sitelinks": {
+        "cawiki": {
+          "site": "cawiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "cebwiki": {
+          "site": "cebwiki",
+          "title": "Verla (lungsod)",
+          "url": ""
+        },
+        "commonswiki": {
+          "site": "commonswiki",
+          "title": "Category:Verla groundwood and board mill",
+          "url": ""
+        },
+        "cswiki": {
+          "site": "cswiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "dawiki": {
+          "site": "dawiki",
+          "title": "Verla papirmølle",
+          "url": ""
+        },
+        "dewiki": {
+          "site": "dewiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "enwiki": {
+          "site": "enwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "eswiki": {
+          "site": "eswiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "fiwiki": {
+          "site": "fiwiki",
+          "title": "Verlan puuhiomo ja pahvitehdas",
+          "url": ""
+        },
+        "frwiki": {
+          "site": "frwiki",
+          "title": "Musée de Verla",
+          "url": ""
+        },
+        "hewiki": {
+          "site": "hewiki",
+          "title": "ורלה",
+          "url": ""
+        },
+        "hrwiki": {
+          "site": "hrwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "huwiki": {
+          "site": "huwiki",
+          "title": "Verla ipartörténeti műemlékei",
+          "url": ""
+        },
+        "itwiki": {
+          "site": "itwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "jawiki": {
+          "site": "jawiki",
+          "title": "ヴェルラ砕木・板紙工場",
+          "url": ""
+        },
+        "kawiki": {
+          "site": "kawiki",
+          "title": "ვერლა",
+          "url": ""
+        },
+        "ltwiki": {
+          "site": "ltwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "lvwiki": {
+          "site": "lvwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "newiki": {
+          "site": "newiki",
+          "title": "भेर्ला ग्राउण्डवुड र बोर्ड मिल",
+          "url": ""
+        },
+        "nlwiki": {
+          "site": "nlwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "nnwiki": {
+          "site": "nnwiki",
+          "title": "Verla tresliperi og pappfabrikk",
+          "url": ""
+        },
+        "nowiki": {
+          "site": "nowiki",
+          "title": "Verla tresliperi og pappfabrikk",
+          "url": ""
+        },
+        "plwiki": {
+          "site": "plwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "ptwiki": {
+          "site": "ptwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "rowiki": {
+          "site": "rowiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "ruwiki": {
+          "site": "ruwiki",
+          "title": "Деревоперерабатывающая фабрика Верла",
+          "url": ""
+        },
+        "shwiki": {
+          "site": "shwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "skwiki": {
+          "site": "skwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "svwiki": {
+          "site": "svwiki",
+          "title": "Verla träsliperi och pappfabrik",
+          "url": ""
+        },
+        "trwiki": {
+          "site": "trwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "viwiki": {
+          "site": "viwiki",
+          "title": "Verla",
+          "url": ""
+        },
+        "xmfwiki": {
+          "site": "xmfwiki",
+          "title": "ვერლა",
+          "url": ""
+        },
+        "zhwiki": {
+          "site": "zhwiki",
+          "title": "韦尔拉磨木纸板厂",
+          "url": ""
+        }
+      },
+      "datatype": "",
+      "lexical-category": "",
+      "language": "",
+      "lemmas": null,
+      "forms": null,
+      "senses": null,
+      "representations": null,
+      "grammatical-features": null,
+      "glosses": null
+    }
