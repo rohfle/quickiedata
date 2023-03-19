@@ -70,7 +70,6 @@ func TestEntitySimplify(t *testing.T) {
 		}
 
 		if diff := deep.Equal(afterEntity, compareEntity); diff != nil {
-
 			t.Error("unmatching entities for", testCouple[0], "->", testCouple[1])
 
 			for _, line := range diff {

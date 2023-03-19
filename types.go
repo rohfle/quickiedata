@@ -116,6 +116,16 @@ func ValueInSlice[T comparable](needle T, haystack []T) bool {
 // An extension of json.Number that removes the prefix "+" to prevent errors when unmarshaling
 type NumberPlus json.Number
 
+func (n *NumberPlus) Float64() (float64, error) {
+	return json.Number(*n).Float64()
+}
+func (n *NumberPlus) Int64() (int64, error) {
+	return json.Number(*n).Int64()
+}
+func (n *NumberPlus) String() string {
+	return json.Number(*n).String()
+}
+
 func (n *NumberPlus) UnmarshalJSON(data []byte) error {
 	var str string
 	if err := json.Unmarshal(data, &str); err != nil {

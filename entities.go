@@ -1,6 +1,8 @@
 package quickiedata
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 // This is a combined struct for all entity info types
 // Use the Type field to work out which fields will have values
@@ -173,7 +175,6 @@ func (s *SimpleItem) GetQualifierIDsFromClaim(claimID string, qualifierID string
 }
 
 type SimpleLexeme struct {
-	Type            string            `json:"type"`
 	LexicalCategory string            `json:"category,omitempty"`
 	Language        string            `json:"language,omitempty"`
 	Lemmas          map[string]string `json:"lemmas,omitempty"`
@@ -193,7 +194,6 @@ func (s *SimpleLexeme) MarshalJSON() ([]byte, error) {
 }
 
 type SimpleForm struct {
-	Type                string                    `json:"type"`
 	Representations     map[string]string         `json:"representations,omitempty"`
 	GrammaticalFeatures []string                  `json:"features,omitempty"`
 	Claims              map[string][]*SimpleClaim `json:"claims,omitempty"`
@@ -229,7 +229,6 @@ func (s *SimpleForm) GetClaim(key string) *SimpleClaim {
 }
 
 type SimpleSense struct {
-	Type    string                    `json:"type"`
 	Glosses map[string]string         `json:"glosses,omitempty"`
 	Claims  map[string][]*SimpleClaim `json:"claims,omitempty"`
 }

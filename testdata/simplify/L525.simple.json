@@ -1,0 +1,73 @@
+{
+  "language": "Q150",
+  "lemmas": {
+    "fr": "maison"
+  },
+  "forms": [
+    {
+      "representations": {
+        "fr": "maisons"
+      },
+      "features": [
+        "Q146786"
+      ],
+      "claims": {
+        "P443": [
+          {
+            "t": "media",
+            "v": "LL-Q150 (fra)-0x010C-maisons.wav"
+          }
+        ]
+      },
+      "type": "form"
+    },
+    {
+      "representations": {
+        "fr": "maison"
+      },
+      "features": [
+        "Q110786"
+      ],
+      "claims": {
+        "P443": [
+          {
+            "t": "media",
+            "v": "LL-Q150 (fra)-0x010C-maison.wav"
+          }
+        ]
+      },
+      "type": "form"
+    }
+  ],
+  "senses": [
+    {
+      "glosses": {
+        "fr": "édifice destiné à l'habitation"
+      },
+      "claims": {
+        "P5137": [
+          {
+            "t": "item",
+            "v": "Q3947"
+          }
+        ],
+        "P5972": [
+          {
+            "t": "sense",
+            "v": "L41768-S2"
+          },
+          {
+            "t": "sense",
+            "v": "L267790-S1"
+          },
+          {
+            "t": "sense",
+            "v": "L220794-S1"
+          }
+        ]
+      },
+      "type": "sense"
+    }
+  ],
+  "type": "lexeme"
+}
