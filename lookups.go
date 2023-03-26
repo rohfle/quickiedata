@@ -36,6 +36,25 @@ func LookupCommonUnits(wikidataID string) string {
 	return output
 }
 
+func LookupCommonColor(wikidataID string) string {
+	switch wikidataID {
+	case "Q22006653":
+		return "color"
+	case "Q838368":
+		return "black and white"
+	case "Q767608":
+		return "sepia"
+	default:
+		return ""
+	}
+}
+
+var TIME_UNIT_TO_SECONDS = map[string]int{
+	"Q11574": 1,
+	"Q7727":  60,
+	"Q25235": 3600,
+}
+
 var COMMON_UNITS = map[string]string{
 	"Q573":     "d",
 	"Q577":     "a",

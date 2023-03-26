@@ -113,8 +113,12 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 	var output = make(map[string][]*SimpleClaim)
 
 	for key, claims := range claimMap {
+		var preferredClaims []*SimpleClaim
 		var newClaims []*SimpleClaim
 		for _, claim := range claims {
+			if claim.Rank == "deprecated" {
+				continue
+			}
 			mainSnak := SimplifySnak(claim.MainSnak)
 			if mainSnak == nil {
 				continue
@@ -126,10 +130,14 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 			if len(claim.Qualifiers) > 0 {
 				simpleClaim.Qualifiers = SimplifySnaks(claim.Qualifiers)
 			}
-			newClaims = append(newClaims, simpleClaim)
+			if claim.Rank == "preferred" {
+				preferredClaims = append(preferredClaims, simpleClaim)
+			} else {
+				newClaims = append(newClaims, simpleClaim)
+			}
 		}
 		if len(newClaims) > 0 {
-			output[key] = newClaims
+			output[key] = append(preferredClaims, newClaims...)
 		}
 	}
 	return output
