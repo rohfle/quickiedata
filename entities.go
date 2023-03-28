@@ -123,6 +123,15 @@ func (s *SimpleItem) MarshalJSON() ([]byte, error) {
 	})
 }
 
+func (s *SimpleItem) IsInstanceOf(other string) bool {
+	for _, claim := range s.GetClaims("P31") {
+		if value := claim.ValueAsString(); value != nil && *value == other {
+			return true
+		}
+	}
+	return false
+}
+
 func (s *SimpleItem) GetClaims(key string) []*SimpleClaim {
 	if s == nil {
 		return nil
@@ -171,6 +180,25 @@ func (s *SimpleItem) GetQualifierIDsFromClaim(claimID string, qualifierID string
 			relatedIDs = append(relatedIDs, *wikidataID)
 		}
 	}
+	return relatedIDs
+}
+
+func (s *SimpleItem) GetQualifierIDsFromClaims(claimID string, qualifierID string) []string {
+	if s == nil {
+		return nil
+	}
+
+	var relatedIDs []string
+
+	for _, claim := range s.GetClaims(claimID) {
+		for _, qualifier := range claim.GetQualifiers(qualifierID) {
+			wikidataID := qualifier.ValueAsString()
+			if wikidataID != nil {
+				relatedIDs = append(relatedIDs, *wikidataID)
+			}
+		}
+	}
+
 	return relatedIDs
 }
 
