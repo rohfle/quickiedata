@@ -136,6 +136,8 @@ func renderSPARQLStatement(name string, value interface{}) (string, error) {
 			values = append(values, string(wid))
 		}
 		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(values, " ")), nil
+	case int, int32, int64:
+		return fmt.Sprintf(`BIND( %d as ?%s)`, v, name), nil
 	default:
 		return "", fmt.Errorf("unhandled %s datatype", reflect.TypeOf(v))
 	}
