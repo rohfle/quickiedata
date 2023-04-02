@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -79,6 +80,12 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	queryText := cleanupSPARQL(query.Template)
 	if len(query.Variables) > 0 {
 		var statements []string
+		// sort the variables to keep output deterministic
+		var keys []string
+		for key := range query.Variables {
+			keys = append(keys, key)
+		}
+		sort.Strings(keys)
 		for name, value := range query.Variables {
 			statement, err := renderSPARQLStatement(name, value)
 			if err != nil {

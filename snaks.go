@@ -104,6 +104,24 @@ func (s *SnakValueTime) GetYear() *int {
 	return nil
 }
 
+func (s *SnakValueTime) GetDate() *string {
+	if s == nil {
+		return nil
+	}
+
+	date := strings.SplitN(strings.TrimPrefix(s.Time, "+"), "T", 2)[0]
+	if s.Precision >= 11 {
+		return &date
+	}
+	// if there is less precision than a certain date, just return the year.
+	// is there a better alternative?
+	if s.Precision >= 9 {
+		year := strings.SplitN(date, "-", 2)[0]
+		return &year
+	}
+	return nil
+}
+
 type SnakValueQuantity struct {
 	Amount     NumberPlus `json:"amount"`
 	Unit       string     `json:"unit,omitempty"`

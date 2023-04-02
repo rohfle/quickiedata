@@ -55,6 +55,17 @@ var TIME_UNIT_TO_SECONDS = map[string]int{
 	"Q25235": 3600,
 }
 
+var LENGTH_UNIT_TO_MM = map[string]float64{
+	"Q828224": 1000000, // km
+	"Q11573":  1000,    // m
+	"Q174728": 10,      // cm
+	"Q174789": 1,       // mm
+	"Q253276": 1609344, // mi
+	"Q482798": 914.4,   // yd
+	"Q3710":   304.8,   // ft
+	"Q218593": 25.4,    // in
+}
+
 var COMMON_UNITS = map[string]string{
 	"Q573":     "d",
 	"Q577":     "a",
