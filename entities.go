@@ -167,6 +167,10 @@ func (s *SimpleItem) GetRelatedIDsFromClaims(claimIDs []string) []string {
 	return relatedIDs
 }
 
+func (s *SimpleItem) GetRelatedIDsFromClaim(claimID string) []string {
+	return s.GetRelatedIDsFromClaims([]string{claimID})
+}
+
 func (s *SimpleItem) GetQualifierIDsFromClaim(claimID string, qualifierID string) []string {
 	if s == nil {
 		return nil
