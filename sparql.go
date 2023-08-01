@@ -73,7 +73,7 @@ func (s *SimpleBindingValue) ValueAsFloat() *float64 {
 
 type WikidataID string
 
-var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:[PLSFQ][1-9]\d*$`)
+var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:(?:NOOP|[PLSFQ][1-9]\d*)$`)
 var VALID_SPARQL_VARIABLE_NAME = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
 func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
@@ -86,7 +86,8 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 			keys = append(keys, key)
 		}
 		sort.Strings(keys)
-		for name, value := range query.Variables {
+		for _, name := range keys {
+			value := query.Variables[name]
 			statement, err := renderSPARQLStatement(name, value)
 			if err != nil {
 				return "", err

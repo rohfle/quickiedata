@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"os"
 	"time"
 
@@ -12,7 +13,9 @@ import (
 
 func main() {
 	wd := quickiedata.NewWikidataClient(&quickiedata.HTTPClientSettings{
-		UserAgent:       "quickiedata",
+		DefaultHeaders: http.Header{
+			"User-Agent": {"quickiedata"},
+		},
 		RequestInterval: 1 * time.Second,
 		Backoff:         1 * time.Second,
 		MaxBackoff:      30 * time.Second,

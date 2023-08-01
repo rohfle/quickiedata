@@ -10,11 +10,20 @@ import (
 )
 
 type HTTPClientSettings struct {
-	UserAgent       string
+	// Headers that will be added to every request
+	// Include headers like "User-Agent" and "Authorization" here
+	DefaultHeaders http.Header
+	// Minimum time between successful requests
 	RequestInterval time.Duration
-	Backoff         time.Duration
-	MaxBackoff      time.Duration
-	MaxRetries      int
+	// Amount of time to wait between errors
+	// Doubled after every successive fail
+	Backoff time.Duration
+	// Maximum amount of time to wait between errors
+	// Backoff will be clamped to this value
+	MaxBackoff time.Duration
+	// Number of times to retry the request on failure
+	MaxRetries int
+	// Maximum number of connections per host
 	MaxConnsPerHost int
 }
 
@@ -43,24 +52,24 @@ func QuickieHTTPClient(settings *HTTPClientSettings) *http.Client {
 
 	return &http.Client{
 		Transport: &quickieRoundTripper{
-			roundTripper: transport,
-			limiter:      limiter,
-			userAgent:    settings.UserAgent,
-			backoff:      backoff,
-			maxBackoff:   maxBackoff,
-			maxRetries:   maxRetries,
+			roundTripper:   transport,
+			limiter:        limiter,
+			defaultHeaders: settings.DefaultHeaders,
+			backoff:        backoff,
+			maxBackoff:     maxBackoff,
+			maxRetries:     maxRetries,
 		},
 	}
 }
 
 // quickieRoundTripper is a custom transport that enforces a rate limit on requests
 type quickieRoundTripper struct {
-	roundTripper http.RoundTripper // underlying RoundTripper to use
-	limiter      *rate.Limiter
-	userAgent    string
-	backoff      time.Duration
-	maxBackoff   time.Duration
-	maxRetries   int
+	roundTripper   http.RoundTripper // underlying RoundTripper to use
+	limiter        *rate.Limiter
+	defaultHeaders http.Header
+	backoff        time.Duration
+	maxBackoff     time.Duration
+	maxRetries     int
 }
 
 // Custom RoundTrip function that implements retries, backoff, user agent, handles errors,
@@ -92,9 +101,9 @@ func (rt *quickieRoundTripper) RoundTrip(origReq *http.Request) (*http.Response,
 			return nil, err
 		}
 
-		// Set the user agent
-		if rt.userAgent != "" {
-			req.Header.Set("User-Agent", rt.userAgent)
+		// Set the headers (used for User-Agent and Authorization)
+		if len(rt.defaultHeaders) > 0 {
+			req.Header = rt.defaultHeaders.Clone()
 		}
 
 		// Send the request
