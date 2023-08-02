@@ -1,6 +1,7 @@
 package quickiedata
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
 	"regexp"
@@ -77,6 +78,10 @@ var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:(?:NOOP|[PLSFQ][1-9]\
 var VALID_SPARQL_VARIABLE_NAME = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
 func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
+	if query == nil || len(query.Template) == 0 {
+		return "", errors.New("sparql query is empty")
+	}
+
 	queryText := cleanupSPARQL(query.Template)
 	if len(query.Variables) > 0 {
 		var statements []string

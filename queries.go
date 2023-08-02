@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -159,50 +160,28 @@ func (wd *WikidataClient) SPARQLQuery(ctx context.Context, query *SPARQLQuery, o
 }
 
 func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) ([]byte, error) {
-	queryParams, err := wd.CreateSPARQLQuery(query, options)
+	sparqlQuery, err := RenderSPARQLQuery(query)
 	if err != nil {
 		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", wd.SPARQLEndpoint, strings.NewReader(queryParams.Encode()))
+	req, err := http.NewRequestWithContext(ctx, "POST", wd.SPARQLEndpoint, strings.NewReader(sparqlQuery))
 	if err != nil {
 		return nil, err
 	}
 
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("Content-Type", "application/sparql-query")
+	req.Header.Set("Accept", "application/sparql-results+json")
 
 	resp, err := wd.Client.Do(req)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
-	if resp.StatusCode == 414 {
-		return nil, errors.New("request too large")
+	if resp.StatusCode >= 300 {
+		return nil, fmt.Errorf("request returned status: %s", resp.Status)
 	}
 	return io.ReadAll(resp.Body)
-}
-
-// Create a sparql query and render it as a URL
-func (wd *WikidataClient) CreateSPARQLQuery(query *SPARQLQuery, options *GetSPARQLQueryOptions) (url.Values, error) {
-	if query == nil || len(query.Template) == 0 {
-		return nil, errors.New("sparql query is empty")
-	}
-
-	sparqlQuery, err := RenderSPARQLQuery(query)
-	if err != nil {
-		return nil, err
-	}
-
-	DebugLog.Printf("SPARQL query: %s\n", sparqlQuery)
-	queryParams := url.Values{}
-	queryParams.Add("format", "json")
-	queryParams.Add("query", sparqlQuery)
-	if options.Timeout > 0 {
-		queryParams.Add("timeout", strconv.FormatInt(options.Timeout, 10))
-	}
-
-	return queryParams, nil
-
 }
 
 // Create a wikidata api get entries (wbgetentries) query url
