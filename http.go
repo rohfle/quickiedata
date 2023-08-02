@@ -101,9 +101,18 @@ func (rt *quickieRoundTripper) RoundTrip(origReq *http.Request) (*http.Response,
 			return nil, err
 		}
 
-		// Set the headers (used for User-Agent and Authorization)
+		// Set default headers (used for User-Agent and Authorization)
 		if len(rt.defaultHeaders) > 0 {
-			req.Header = rt.defaultHeaders.Clone()
+			for key, values := range rt.defaultHeaders {
+				if len(values) == 0 {
+					continue
+				}
+				// Support header keys with multiple values
+				req.Header.Del(key)
+				for _, val := range values {
+					req.Header.Add(key, val)
+				}
+			}
 		}
 
 		// Send the request
