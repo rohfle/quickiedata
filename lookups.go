@@ -1,61 +1,31 @@
 package quickiedata
 
-func LookupCommonCalendars(wikidataID string) string {
-	switch wikidataID {
-	case "Q1985786":
-		return "julian"
-	case "Q1985727":
-		return "gregorian"
-	default:
-		return ""
-	}
+var LookupCommonCalendars = map[string]string{
+	"Q1985786": "julian",
+	"Q1985727": "gregorian",
 }
 
-func LookupCommonGlobes(wikidataID string) string {
-	switch wikidataID {
-	case "Q2":
-		return "earth"
-	case "Q111":
-		return "mars"
-	case "Q308":
-		return "mercury"
-	case "Q313":
-		return "venus"
-	case "Q405":
-		return "moon"
-	default:
-		return ""
-	}
+var LookupCommonGlobes = map[string]string{
+	"Q2":   "earth",
+	"Q111": "mars",
+	"Q308": "mercury",
+	"Q313": "venus",
+	"Q405": "moon",
 }
 
-func LookupCommonUnits(wikidataID string) string {
-	output, found := MapCommonUnits[wikidataID]
-	if !found {
-		return ""
-	}
-	return output
+var LookupCommonColor = map[string]string{
+	"Q22006653": "color",
+	"Q838368":   "black and white",
+	"Q767608":   "sepia",
 }
 
-func LookupCommonColor(wikidataID string) string {
-	switch wikidataID {
-	case "Q22006653":
-		return "color"
-	case "Q838368":
-		return "black and white"
-	case "Q767608":
-		return "sepia"
-	default:
-		return ""
-	}
-}
-
-var MapTimeUnitToSeconds = map[string]int{
+var LookupTimeUnitToSeconds = map[string]int{
 	"Q11574": 1,
 	"Q7727":  60,
 	"Q25235": 3600,
 }
 
-var MapLengthUnitToMM = map[string]float64{
+var LookupLengthUnitToMM = map[string]float64{
 	"Q828224": 1000000, // km
 	"Q11573":  1000,    // m
 	"Q174728": 10,      // cm
@@ -66,7 +36,7 @@ var MapLengthUnitToMM = map[string]float64{
 	"Q218593": 25.4,    // in
 }
 
-var MapCommonUnits = map[string]string{
+var LookupCommonUnits = map[string]string{
 	"Q573":     "d",
 	"Q577":     "a",
 	"Q199":     "1",
