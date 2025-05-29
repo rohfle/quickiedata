@@ -9,12 +9,12 @@ import (
 
 var ValidSPARQLEntityID = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
 
-// Checks if a string is a valid entity id
+// IsEntityID checks if a string is a valid entity id
 func IsEntityID(id string) bool {
 	return ValidSPARQLEntityID.MatchString(id)
 }
 
-// Checks if a string is a valid entity id
+// ValidateEntityID checks if a string is a valid entity id
 func ValidateEntityID(id string) error {
 	if !IsEntityID(id) {
 		return fmt.Errorf("invalid entity id '%s'", id)
@@ -22,7 +22,7 @@ func ValidateEntityID(id string) error {
 	return nil
 }
 
-// Checks an array of entity ids are all valid
+// ValidateEntityIDs checks an array of entity ids are all valid
 func ValidateEntityIDs(ids []string) error {
 	for _, id := range ids {
 		if err := ValidateEntityID(id); err != nil {
@@ -32,7 +32,7 @@ func ValidateEntityIDs(ids []string) error {
 	return nil
 }
 
-// Checks if entity type is valid
+// ValidateEntityType checks if entity type is valid
 func ValidateEntityType(entityType string) error {
 	switch entityType {
 	case "item", "property", "lexeme", "form", "sense":
@@ -54,7 +54,7 @@ func ConvertLanguages(languages []string) []string {
 	return newLanguages
 }
 
-// Get full sitelink url from site and title
+// GetSitelinkURL gets the full sitelink url from site and title
 func GetSitelinkURL(site string, title string) string {
 	if site == "" || title == "" {
 		return ""

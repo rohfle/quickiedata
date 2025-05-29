@@ -1,10 +1,11 @@
+// Package quickiedata is a simple library for wikidata that supports wbsearchentries, wbgetentries and sparql
 package quickiedata
 
 import (
 	"encoding/json"
 )
 
-// This is a combined struct for all entity info types
+// EntityInfo is a combined struct for all entity info types
 // Use the Type field to work out which fields will have values
 type EntityInfo struct {
 	PageID    int64     `json:"pageid"`

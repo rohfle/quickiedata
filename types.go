@@ -28,7 +28,7 @@ const (
 	SnakTypeNoValue   SnakType = "novalue"
 )
 
-// Wikidata datatype
+// DataType is the Wikidata datatype
 // see https://www.wikidata.org/wiki/Special:ListDatatypes for more info
 type DataType string
 
@@ -53,7 +53,7 @@ const (
 	DataTypeWikibaseSense    DataType = "wikibase-sense"
 )
 
-// A lookup table for simpler data types
+// MapSimplifyType is a lookup table used to simplify data types
 var MapSimplifyType = map[string]string{
 	"commonsMedia":      "media",
 	"external-id":       "external",
@@ -113,7 +113,7 @@ func ValueInSlice[T comparable](needle T, haystack []T) bool {
 	return false
 }
 
-// An extension of json.Number that removes the prefix "+" to prevent errors when unmarshaling
+// NumberPlus extends json.Number to removes the prefix "+" and prevent errors when unmarshaling
 type NumberPlus json.Number
 
 func (n *NumberPlus) Float64() (float64, error) {

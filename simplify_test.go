@@ -85,7 +85,7 @@ func TestEntitySimplify(t *testing.T) {
 }
 
 func getTestEntitySimplifyCouples(baseDir string) ([][2]string, error) {
-	var couples map[string][2]string = make(map[string][2]string)
+	var couples = make(map[string][2]string)
 
 	files, err := os.ReadDir(baseDir)
 	if err != nil {
