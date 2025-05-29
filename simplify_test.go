@@ -79,6 +79,8 @@ func TestEntitySimplify(t *testing.T) {
 			if t.Failed() {
 				t.FailNow()
 			}
+		} else {
+			t.Log(testCouple[0], "->", testCouple[1], "matches!")
 		}
 	}
 

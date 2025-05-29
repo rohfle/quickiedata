@@ -113,12 +113,13 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 	var output = make(map[string][]*SimpleClaim)
 
 	for key, claims := range claimMap {
-		var preferredClaims []*SimpleClaim
-		var newClaims []*SimpleClaim
+		// var preferredClaims []*SimpleClaim
+		// var newClaims []*SimpleClaim
+		// var deprecatedClaims []*SimpleClaim
 		for _, claim := range claims {
-			if claim.Rank == "deprecated" {
-				continue
-			}
+			// if claim.Rank == "deprecated" {
+			// 	continue
+			// }
 			mainSnak := SimplifySnak(claim.MainSnak)
 			if mainSnak == nil {
 				continue
@@ -130,15 +131,25 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 			if len(claim.Qualifiers) > 0 {
 				simpleClaim.Qualifiers = SimplifySnaks(claim.Qualifiers)
 			}
-			if claim.Rank == "preferred" {
-				preferredClaims = append(preferredClaims, simpleClaim)
-			} else {
-				newClaims = append(newClaims, simpleClaim)
-			}
+			// TODO: Reordering makes tests fail
+			// switch claim.Rank {
+			// case "preferred":
+			// 	preferredClaims = append(preferredClaims, simpleClaim)
+			// case "deprecated":
+			// 	deprecatedClaims = append(deprecatedClaims, simpleClaim)
+			// default:
+			// 	newClaims = append(newClaims, simpleClaim)
+			// }
+			output[key] = append(output[key], simpleClaim)
 		}
-		if len(newClaims) > 0 {
-			output[key] = append(preferredClaims, newClaims...)
-		}
+		// TODO: Reordering makes tests fail
+		// if len(newClaims) > 0 {
+		// 	preferredClaims = append(preferredClaims, newClaims...)
+		// }
+		// if len(deprecatedClaims) > 0 {
+		// 	preferredClaims = append(preferredClaims, deprecatedClaims...)
+		// }
+		// output[key] = preferredClaims
 	}
 	return output
 }
