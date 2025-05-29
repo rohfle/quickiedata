@@ -187,6 +187,19 @@
     "P1419": [
       {
         "t": "item",
+        "v": "Q5457948",
+        "q": {
+          "P5102": [
+            {
+              "t": "item",
+              "v": "Q41719"
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "r": "deprecated",
         "v": "Q209306",
         "q": {
           "P5102": [
@@ -199,19 +212,8 @@
       },
       {
         "t": "item",
+        "r": "deprecated",
         "v": "Q326905",
-        "q": {
-          "P5102": [
-            {
-              "t": "item",
-              "v": "Q41719"
-            }
-          ]
-        }
-      },
-      {
-        "t": "item",
-        "v": "Q5457948",
         "q": {
           "P5102": [
             {
@@ -257,15 +259,18 @@
     "P18": [
       {
         "t": "media",
+        "r": "preferred",
+        "v": "NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg"
+      },
+      {
+        "t": "media",
+        "r": "deprecated",
         "v": "Hubble ultra deep field.jpg"
       },
       {
         "t": "media",
+        "r": "deprecated",
         "v": "CMB Timeline300 no WMAP.jpg"
-      },
-      {
-        "t": "media",
-        "v": "NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg"
       }
     ],
     "P1889": [
@@ -339,6 +344,7 @@
     "P227": [
       {
         "t": "external",
+        "r": "preferred",
         "v": "4079154-3",
         "q": {
           "P1810": [
@@ -626,6 +632,7 @@
     "P361": [
       {
         "t": "item",
+        "r": "deprecated",
         "v": "Q3327819",
         "q": {
           "P5102": [

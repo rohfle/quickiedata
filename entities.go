@@ -78,7 +78,7 @@ func (s *SimpleProperty) MarshalJSON() ([]byte, error) {
 	type proxy SimpleProperty
 	return json.Marshal(struct {
 		proxy
-		Type string `json:"type"`
+		Type string `json:"t"`
 	}{
 		proxy: proxy(*s),
 		Type:  "property",
@@ -117,7 +117,7 @@ func (s *SimpleItem) MarshalJSON() ([]byte, error) {
 	type proxy SimpleItem
 	return json.Marshal(struct {
 		proxy
-		Type string `json:"type"`
+		Type string `json:"t"`
 	}{
 		proxy: proxy(*s),
 		Type:  "item",
@@ -219,7 +219,7 @@ func (s *SimpleLexeme) MarshalJSON() ([]byte, error) {
 	type proxy SimpleLexeme
 	return json.Marshal(struct {
 		proxy
-		Type string `json:"type"`
+		Type string `json:"t"`
 	}{
 		proxy: proxy(*s),
 		Type:  "lexeme",
@@ -236,7 +236,7 @@ func (s *SimpleForm) MarshalJSON() ([]byte, error) {
 	type proxy SimpleForm
 	return json.Marshal(struct {
 		proxy
-		Type string `json:"type"`
+		Type string `json:"t"`
 	}{
 		proxy: proxy(*s),
 		Type:  "form",
@@ -270,7 +270,7 @@ func (s *SimpleSense) MarshalJSON() ([]byte, error) {
 	type proxy SimpleSense
 	return json.Marshal(struct {
 		proxy
-		Type string `json:"type"`
+		Type string `json:"t"`
 	}{
 		proxy: proxy(*s),
 		Type:  "sense",

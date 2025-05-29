@@ -77,6 +77,9 @@ func TestEntitySimplify(t *testing.T) {
 			}
 
 			if t.Failed() {
+				// afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
+				// fmt.Println(string(afterdata))
+				// fmt.Println(reflect.TypeOf(afterEntity))
 				t.FailNow()
 			}
 		} else {

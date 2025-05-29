@@ -16,6 +16,7 @@ type Claim struct {
 
 type SimpleClaim struct {
 	Type       string                        `json:"t,omitempty"`
+	Rank       string                        `json:"r,omitempty"`
 	Value      interface{}                   `json:"v,omitempty"`
 	Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
 }
@@ -23,6 +24,7 @@ type SimpleClaim struct {
 func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	var peek struct {
 		Type       string                        `json:"t,omitempty"`
+		Rank       string                        `json:"r,omitempty"`
 		Value      json.RawMessage               `json:"v,omitempty"`
 		Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
 	}
@@ -33,6 +35,7 @@ func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	}
 
 	sc.Type = peek.Type
+	sc.Rank = peek.Rank
 	sc.Qualifiers = peek.Qualifiers
 
 	sc.Value, err = unmarshalSimpleSnakValue(peek.Type, peek.Value)
