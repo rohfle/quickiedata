@@ -8,18 +8,19 @@ import (
 	"os"
 	"time"
 
+	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 )
 
 func main() {
-	wd := quickiedata.NewWikidataClient(&quickiedata.HTTPClientSettings{
+	wd := quickiedata.NewWikidataClient(&nicehttp.Settings{
 		DefaultHeaders: http.Header{
-			"User-Agent": {"quickiedata"},
+			"User-Agent": {"quickiedata/0.x"},
 		},
 		RequestInterval: 1 * time.Second,
 		Backoff:         1 * time.Second,
 		MaxBackoff:      30 * time.Second,
-		MaxRetries:      5,
+		MaxTries:        5,
 		MaxConnsPerHost: 1,
 	})
 	mode := os.Args[1]
