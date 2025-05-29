@@ -74,8 +74,8 @@ func (s *SimpleBindingValue) ValueAsFloat() *float64 {
 
 type WikidataID string
 
-var VALID_SPARQL_WIKIDATA_ID = regexp.MustCompile(`^[a-z]+:(?:NOOP|[PLSFQ][1-9]\d*)$`)
-var VALID_SPARQL_VARIABLE_NAME = regexp.MustCompile(`^[A-Za-z_]\w*$`)
+var ValidSPARQLWikipediaID = regexp.MustCompile(`^[a-z]+:(?:NOOP|[PLSFQ][1-9]\d*)$`)
+var ValidSPARQLVariableName = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
 func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	if query == nil || len(query.Template) == 0 {
@@ -120,7 +120,7 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 
 func renderSPARQLStatement(name string, value interface{}) (string, error) {
 	// validate key is valid
-	if !VALID_SPARQL_VARIABLE_NAME.MatchString(name) {
+	if !ValidSPARQLVariableName.MatchString(name) {
 		return "", fmt.Errorf("invalid sparql variable name '%s'", name)
 	}
 
@@ -136,14 +136,14 @@ func renderSPARQLStatement(name string, value interface{}) (string, error) {
 		}
 		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(escaped, " ")), nil
 	case WikidataID:
-		if !VALID_SPARQL_WIKIDATA_ID.MatchString(string(v)) {
+		if !ValidSPARQLWikipediaID.MatchString(string(v)) {
 			return "", fmt.Errorf("invalid wikidata reference '%s'", v)
 		}
 		return fmt.Sprintf(`BIND( %s as ?%s)`, v, name), nil
 	case []WikidataID:
 		var values []string
 		for _, wid := range v {
-			if !VALID_SPARQL_WIKIDATA_ID.MatchString(string(wid)) {
+			if !ValidSPARQLWikipediaID.MatchString(string(wid)) {
 				return "", fmt.Errorf("invalid wikidata reference '%s'", v)
 			}
 			values = append(values, string(wid))

@@ -153,7 +153,7 @@ func SimplifySnak(snak *Snak) *SimpleSnakValue {
 		stype = snak.DataValue.Type
 	}
 
-	if alt, exists := SIMPLIFY_TYPE_LUT[stype]; exists {
+	if alt, exists := MapSimplifyType[stype]; exists {
 		stype = alt
 	}
 

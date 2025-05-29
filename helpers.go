@@ -7,11 +7,11 @@ import (
 	"strings"
 )
 
-var ENTITY_ID_REGEXP = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
+var ValidSPARQLEntityID = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
 
 // Checks if a string is a valid entity id
 func IsEntityID(id string) bool {
-	return ENTITY_ID_REGEXP.MatchString(id)
+	return ValidSPARQLEntityID.MatchString(id)
 }
 
 // Checks if a string is a valid entity id

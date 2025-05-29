@@ -29,7 +29,7 @@ func LookupCommonGlobes(wikidataID string) string {
 }
 
 func LookupCommonUnits(wikidataID string) string {
-	output, found := COMMON_UNITS[wikidataID]
+	output, found := MapCommonUnits[wikidataID]
 	if !found {
 		return ""
 	}
@@ -49,13 +49,13 @@ func LookupCommonColor(wikidataID string) string {
 	}
 }
 
-var TIME_UNIT_TO_SECONDS = map[string]int{
+var MapTimeUnitToSeconds = map[string]int{
 	"Q11574": 1,
 	"Q7727":  60,
 	"Q25235": 3600,
 }
 
-var LENGTH_UNIT_TO_MM = map[string]float64{
+var MapLengthUnitToMM = map[string]float64{
 	"Q828224": 1000000, // km
 	"Q11573":  1000,    // m
 	"Q174728": 10,      // cm
@@ -66,7 +66,7 @@ var LENGTH_UNIT_TO_MM = map[string]float64{
 	"Q218593": 25.4,    // in
 }
 
-var COMMON_UNITS = map[string]string{
+var MapCommonUnits = map[string]string{
 	"Q573":     "d",
 	"Q577":     "a",
 	"Q199":     "1",
