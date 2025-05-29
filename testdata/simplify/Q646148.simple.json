@@ -1,0 +1,249 @@
+{
+  "labels": {
+    "ca": "Henning Christophersen",
+    "da": "Henning Christophersen",
+    "de": "Henning Christophersen",
+    "en": "Henning Christophersen",
+    "eo": "Henning Christophersen",
+    "es": "Henning Christophersen",
+    "fi": "Henning Christophersen",
+    "fo": "Henning Christophersen",
+    "fr": "Henning Christophersen",
+    "hu": "Henning Christophersen",
+    "is": "Henning Christophersen",
+    "it": "Henning Christophersen",
+    "kl": "Henning Christophersen",
+    "nb": "Henning Christophersen",
+    "nl": "Henning Christophersen",
+    "nn": "Henning Christophersen",
+    "oc": "Henning Christophersen",
+    "pl": "Henning Christophersen",
+    "pt": "Henning Christophersen",
+    "sv": "Henning Christophersen",
+    "zh-cn": "亨宁·克里斯托弗森",
+    "zh-hant": "亨寧·克里斯托弗森"
+  },
+  "descriptions": {
+    "da": "dansk politiker og erhvervsmand",
+    "de": "dänischer Politiker",
+    "en": "Danish politician",
+    "fa": "دیپلمات دانمارکی",
+    "fr": "personnalité politique danoise",
+    "hu": "dán politikus",
+    "it": "politico danese",
+    "nb": "dansk diplomat",
+    "nl": "Deens diplomaat",
+    "nn": "dansk diplomat",
+    "sv": "dansk diplomat"
+  },
+  "claims": {
+    "P102": [
+      {
+        "t": "item",
+        "v": "Q217321"
+      }
+    ],
+    "P106": [
+      {
+        "t": "item",
+        "v": "Q193391"
+      },
+      {
+        "t": "item",
+        "v": "Q82955"
+      }
+    ],
+    "P1412": [
+      {
+        "t": "item",
+        "v": "Q9035"
+      }
+    ],
+    "P1559": [
+      {
+        "t": "string",
+        "v": ""
+      }
+    ],
+    "P166": [
+      {
+        "t": "item",
+        "v": "Q1890947"
+      },
+      {
+        "t": "item",
+        "v": "Q28100916"
+      },
+      {
+        "t": "item",
+        "v": "Q20899901"
+      },
+      {
+        "t": "item",
+        "v": "Q12192290"
+      },
+      {
+        "t": "item",
+        "v": "Q13422142"
+      }
+    ],
+    "P1749": [
+      {
+        "t": "external",
+        "v": "vi2globs34zv"
+      }
+    ],
+    "P19": [
+      {
+        "t": "item",
+        "v": "Q1748"
+      }
+    ],
+    "P20": [
+      {
+        "t": "item",
+        "v": "Q240"
+      }
+    ],
+    "P21": [
+      {
+        "t": "item",
+        "v": "Q6581097"
+      }
+    ],
+    "P213": [
+      {
+        "t": "external",
+        "v": "0000 0003 8162 2081"
+      }
+    ],
+    "P214": [
+      {
+        "t": "external",
+        "v": "262215362"
+      }
+    ],
+    "P227": [
+      {
+        "t": "external",
+        "v": "170105202"
+      }
+    ],
+    "P244": [
+      {
+        "t": "external",
+        "v": "no98066422"
+      }
+    ],
+    "P269": [
+      {
+        "t": "external",
+        "v": "091296862"
+      }
+    ],
+    "P27": [
+      {
+        "t": "item",
+        "v": "Q35"
+      }
+    ],
+    "P31": [
+      {
+        "t": "item",
+        "v": "Q5"
+      }
+    ],
+    "P39": [
+      {
+        "t": "item",
+        "v": "Q5449541"
+      },
+      {
+        "t": "item",
+        "v": "Q6866144",
+        "q": {
+          "P1365": [
+            {
+              "t": "item",
+              "v": "Q312881"
+            }
+          ],
+          "P1366": [
+            {
+              "t": "item",
+              "v": "Q323762"
+            }
+          ],
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1978-08-30T00:00:00Z"
+              }
+            }
+          ],
+          "P582": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1979-10-26T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P569": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 11,
+          "time": "+1939-11-08T00:00:00Z"
+        }
+      }
+    ],
+    "P570": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 11,
+          "time": "+2016-12-31T00:00:00Z"
+        }
+      }
+    ],
+    "P646": [
+      {
+        "t": "external",
+        "v": "/m/05vhp2"
+      }
+    ],
+    "P735": [
+      {
+        "t": "item",
+        "v": "Q18607880"
+      }
+    ]
+  },
+  "sitelinks": {
+    "cawiki": "Henning Christophersen",
+    "dawiki": "Henning Christophersen",
+    "dewiki": "Henning Christophersen",
+    "enwiki": "Henning Christophersen",
+    "eowiki": "Henning Christophersen",
+    "eswiki": "Henning Christophersen",
+    "fiwiki": "Henning Christophersen",
+    "frwiki": "Henning Christophersen",
+    "itwiki": "Henning Christophersen",
+    "nlwiki": "Henning Christophersen",
+    "nowiki": "Henning Christophersen",
+    "plwiki": "Henning Christophersen",
+    "svwiki": "Henning Christophersen"
+  },
+  "t": "item"
+}

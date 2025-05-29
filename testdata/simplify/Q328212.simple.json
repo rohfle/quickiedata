@@ -1,0 +1,268 @@
+{
+  "labels": {
+    "bg": "Вероника Рот",
+    "ca": "Veronica Roth",
+    "cs": "Veronica Rothová",
+    "da": "Veronica Roth",
+    "de": "Veronica Roth",
+    "en": "Veronica Roth",
+    "es": "Veronica Roth",
+    "fa": "ورونیکا راف",
+    "fi": "Veronica Roth",
+    "fr": "Veronica Roth",
+    "he": "ורוניקה רות'",
+    "hy": "Վերոնիկա Ռոթ",
+    "id": "Veronica Roth",
+    "it": "Veronica Roth",
+    "ja": "ヴェロニカ・ロス",
+    "ka": "ვერონიკა როთი",
+    "ko": "베로니카 로스",
+    "lv": "Veronika Rota",
+    "nb": "Veronica Roth",
+    "nl": "Veronica Roth",
+    "nn": "Veronica Roth",
+    "pt": "Veronica Roth",
+    "ru": "Рот, Вероника",
+    "sr": "Veronika Rot",
+    "sv": "Veronica Roth",
+    "tr": "Veronica Roth",
+    "uk": "Вероніка Рот",
+    "vi": "Veronica Roth",
+    "zh": "韦罗妮卡·罗思"
+  },
+  "descriptions": {
+    "da": "amerikansk skribent",
+    "de": "US-amerikanische Schriftstellerin",
+    "en": "American author",
+    "es": "autora y escritora estadounidense",
+    "fa": "نویسنده آمریکایی",
+    "fr": "écrivain américaine",
+    "it": "scrittrice statunitense",
+    "nb": "amerikansk skribent",
+    "nl": "Amerikaans schrijver",
+    "nn": "amerikansk skribent",
+    "sv": "amerikansk författare",
+    "tr": "19 Ağustos 1998 New York doğumlu , Northwestern University mezunu , New York Times En Çok Satanlar'da Divergent üçlemesiyle ün kazanmış , 2011 ve 2012'de Best Young Adult Fantasy \u0026 Science Fiction ödülünü kazanmış Amerikan vatandaşı yazar.",
+    "zh": "American fiction writer"
+  },
+  "aliases": {
+    "tr": [
+      "Divergent",
+      "Insurgent",
+      "Allegiant",
+      "Four"
+    ]
+  },
+  "claims": {
+    "P1005": [
+      {
+        "t": "string",
+        "v": "1522214"
+      }
+    ],
+    "P1006": [
+      {
+        "t": "string",
+        "v": "334997283"
+      }
+    ],
+    "P1015": [
+      {
+        "t": "string",
+        "v": "x11070798"
+      }
+    ],
+    "P106": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P1207": [
+      {
+        "t": "string",
+        "v": "n2012065705"
+      }
+    ],
+    "P1233": [
+      {
+        "t": "string",
+        "v": "152187"
+      }
+    ],
+    "P1273": [
+      {
+        "t": "string",
+        "v": "a11265723"
+      }
+    ],
+    "P1477": [
+      {
+        "t": "string",
+        "v": ""
+      }
+    ],
+    "P18": [
+      {
+        "t": "media",
+        "v": "Veronica Roth March 18, 2014 (cropped).jpg"
+      }
+    ],
+    "P19": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P21": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P213": [
+      {
+        "t": "string",
+        "v": "0000 0001 0818 2046"
+      }
+    ],
+    "P214": [
+      {
+        "t": "string",
+        "v": "160629702"
+      }
+    ],
+    "P227": [
+      {
+        "t": "string",
+        "v": "1020743859"
+      }
+    ],
+    "P244": [
+      {
+        "t": "string",
+        "v": "n2010079812"
+      }
+    ],
+    "P268": [
+      {
+        "t": "string",
+        "v": "16557547m"
+      }
+    ],
+    "P27": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P31": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P345": [
+      {
+        "t": "string",
+        "v": "nm4316121"
+      }
+    ],
+    "P349": [
+      {
+        "t": "string",
+        "v": "001149925"
+      }
+    ],
+    "P373": [
+      {
+        "t": "string",
+        "v": "Veronica Roth"
+      }
+    ],
+    "P569": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 11,
+          "time": "+1988-08-19T00:00:00Z"
+        }
+      }
+    ],
+    "P646": [
+      {
+        "t": "string",
+        "v": "/m/0j4_x7k"
+      }
+    ],
+    "P69": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P691": [
+      {
+        "t": "string",
+        "v": "hka2012699219"
+      }
+    ],
+    "P800": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P856": [
+      {
+        "t": "url",
+        "v": "http://veronicarothbooks.blogspot.com"
+      }
+    ],
+    "P937": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P949": [
+      {
+        "t": "string",
+        "v": "000627758"
+      }
+    ]
+  },
+  "sitelinks": {
+    "arwiki": "فيرونيكا روث",
+    "bgwiki": "Вероника Рот",
+    "cawiki": "Veronica Roth",
+    "cswiki": "Veronica Rothová",
+    "dawiki": "Veronica Roth",
+    "dewiki": "Veronica Roth",
+    "enwiki": "Veronica Roth",
+    "enwikiquote": "Veronica Roth",
+    "eswiki": "Veronica Roth",
+    "fawiki": "ورونیکا راف",
+    "fiwiki": "Veronica Roth",
+    "frwiki": "Veronica Roth",
+    "hewiki": "ורוניקה רות'",
+    "idwiki": "Veronica Roth",
+    "itwiki": "Veronica Roth",
+    "itwikiquote": "Veronica Roth",
+    "jawiki": "ヴェロニカ・ロス",
+    "kawiki": "ვერონიკა როთი",
+    "kowiki": "베로니카 로스",
+    "lvwiki": "Veronika Rota",
+    "nlwiki": "Veronica Roth",
+    "ptwiki": "Veronica Roth",
+    "ruwiki": "Рот, Вероника",
+    "simplewiki": "Veronica Roth",
+    "srwiki": "Veronika Rot",
+    "svwiki": "Veronica Roth",
+    "ukwiki": "Вероніка Рот",
+    "viwiki": "Veronica Roth",
+    "zhwiki": "韦罗妮卡·罗思"
+  },
+  "t": "item"
+}

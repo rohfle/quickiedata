@@ -1,0 +1,41 @@
+{
+  "claims": {
+    "P569": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 10,
+          "time": "+1869-11-01T00:00:00Z"
+        }
+      },
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 10,
+          "time": "+1990-11-01T00:00:00Z"
+        }
+      },
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 9,
+          "time": "+1990-01-01T00:00:00Z"
+        }
+      }
+    ],
+    "P570": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 11,
+          "time": "+1929-05-07T00:00:00Z"
+        }
+      }
+    ]
+  },
+  "t": "item"
+}

@@ -1,0 +1,1091 @@
+{
+  "labels": {
+    "af": "Bielefeld",
+    "an": "Bielefeld",
+    "ar": "بيليفيلد",
+    "ast": "Bielefeld",
+    "az": "Bielefeld",
+    "bar": "Bielefeld",
+    "be": "Горад Білефельд",
+    "be-tarask": "Білефэльд",
+    "bg": "Билефелд",
+    "br": "Bielefeld",
+    "ca": "Bielefeld",
+    "ceb": "Bielefeld (kapital sa munisipyo)",
+    "co": "Bielefeld",
+    "cs": "Bielefeld",
+    "cv": "Билефелд",
+    "cy": "Bielefeld",
+    "da": "Bielefeld",
+    "de": "Bielefeld",
+    "de-at": "Bielefeld",
+    "de-ch": "Bielefeld",
+    "diq": "Bielefeld",
+    "el": "Μπίλεφελντ",
+    "en": "Bielefeld",
+    "en-ca": "Bielefeld",
+    "en-gb": "Bielefeld",
+    "eo": "Bielefeld",
+    "es": "Bielefeld",
+    "et": "Bielefeld",
+    "eu": "Bielefeld",
+    "fa": "بیله‌فلد",
+    "fi": "Bielefeld",
+    "fr": "Bielefeld",
+    "frp": "Bielefeld",
+    "frr": "Bielefeld",
+    "fur": "Bielefeld",
+    "fy": "Bielefeld",
+    "ga": "Bielefeld",
+    "gd": "Bielefeld",
+    "gl": "Bielefeld",
+    "gsw": "Bielefeld",
+    "gv": "Bielefeld",
+    "he": "בילפלד",
+    "hr": "Bielefeld",
+    "hsb": "Bielefeld",
+    "hu": "Bielefeld",
+    "hy": "Բիլեֆելդ",
+    "ia": "Bielefeld",
+    "id": "Bielefeld",
+    "ie": "Bielefeld",
+    "io": "Bielefeld",
+    "is": "Bielefeld",
+    "it": "Bielefeld",
+    "ja": "ビーレフェルト",
+    "ka": "ბილეფილდი",
+    "kg": "Bielefeld",
+    "kk": "Билефельд",
+    "ko": "빌레펠트",
+    "ksh": "Bielefeld",
+    "ku": "Bielefeld",
+    "ky": "Билефельд",
+    "la": "Bilivelda",
+    "lb": "Bielefeld",
+    "li": "Bielefeld",
+    "lij": "Bielefeld",
+    "lt": "Bylefeldas",
+    "lv": "Bīlefelde",
+    "mg": "Bielefeld",
+    "min": "Bielefeld",
+    "mk": "Билефелд",
+    "mn": "Билефельд",
+    "mr": "बीलेफेल्ड",
+    "ms": "Bielefeld",
+    "nan": "Bielefeld",
+    "nap": "Bielefeld",
+    "nb": "Bielefeld",
+    "nds": "Builefeld",
+    "nds-nl": "Bielefeld",
+    "nl": "Bielefeld",
+    "nn": "Bielefeld",
+    "nrm": "Bielefeld",
+    "oc": "Bielefeld",
+    "pcd": "Bielefeld",
+    "pl": "Bielefeld",
+    "pms": "Bielefeld",
+    "pnb": "بیلفیلڈ",
+    "pt": "Bielefeld",
+    "pt-br": "Bielefeld",
+    "rm": "Bielefeld",
+    "ro": "Bielefeld",
+    "ru": "Билефельд",
+    "sc": "Bielefeld",
+    "scn": "Bielefeld",
+    "sco": "Bielefeld",
+    "sh": "Bielefeld",
+    "sk": "Bielefeld",
+    "sl": "Bielefeld",
+    "sr": "Билефелд",
+    "sr-el": "Bielefeld",
+    "stq": "Bielefeld",
+    "sv": "Bielefeld",
+    "sw": "Bielefeld",
+    "szl": "Bielefeld",
+    "th": "บีเลอเฟลด์",
+    "tr": "Bielefeld",
+    "tt": "Билефелд",
+    "uk": "Білефельд",
+    "ur": "بیئلفیلڈ",
+    "uz": "Bielefeld",
+    "vec": "Bielefeld",
+    "vi": "Bielefeld",
+    "vls": "Bielefeld",
+    "vo": "Bielefeld",
+    "wa": "Bielefeld",
+    "war": "Bielefeld",
+    "wo": "Bielefeld",
+    "zh": "比勒费尔德",
+    "zu": "Bielefeld"
+  },
+  "descriptions": {
+    "de": "Großstadt in Nordrhein-Westfalen, Deutschland",
+    "el": "πόλη της Γερμανίας, στην Βόρεια Ρηνανία-Βεστφαλία",
+    "en": "city in Germany",
+    "es": "ciudad independiente alemana en Renania del Norte-Westfalia",
+    "fr": "commune allemande",
+    "it": "città extracircondariale tedesca",
+    "ne": "जर्मनीको सहर",
+    "nl": "gemeente in Noordrijn-Westfalen, Duitsland",
+    "ru": "город в Германии"
+  },
+  "aliases": {
+    "de": [
+      "Leineweberstadt"
+    ]
+  },
+  "claims": {
+    "P1036": [
+      {
+        "t": "string",
+        "v": "2--435655"
+      }
+    ],
+    "P1082": [
+      {
+        "t": "quantity",
+        "r": "preferred",
+        "v": {
+          "amount": "329327",
+          "upperbound": "329327",
+          "lowerbound": "329327"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2014-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "328864",
+          "upperbound": "328864",
+          "lowerbound": "328864"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2013-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "328314",
+          "upperbound": "328314",
+          "lowerbound": "328314"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2012-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "327199",
+          "upperbound": "327199",
+          "lowerbound": "327199"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2011-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "323270",
+          "upperbound": "323270",
+          "lowerbound": "323270"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2010-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "321758",
+          "upperbound": "321758",
+          "lowerbound": "321758"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2000-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "319037",
+          "upperbound": "319037",
+          "lowerbound": "319037"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1990-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "312708",
+          "upperbound": "312708",
+          "lowerbound": "312708"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1980-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "169134",
+          "upperbound": "169134",
+          "lowerbound": "169134"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1970-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "175076",
+          "upperbound": "175076",
+          "lowerbound": "175076"
+        },
+        "q": {
+          "P585": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+1960-12-31T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P123456789": [
+      {
+        "t": "property",
+        "v": "P207614"
+      }
+    ],
+    "P1249": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985786",
+          "precision": 9,
+          "time": "+1214-01-01T00:00:00Z"
+        }
+      }
+    ],
+    "P1281": [
+      {
+        "t": "external",
+        "v": "638806"
+      }
+    ],
+    "P131": [
+      {
+        "t": "item",
+        "v": "Q7923"
+      }
+    ],
+    "P1456": [
+      {
+        "t": "item",
+        "v": "Q1831146"
+      }
+    ],
+    "P1464": [
+      {
+        "t": "item",
+        "v": "Q8046295"
+      }
+    ],
+    "P1465": [
+      {
+        "t": "item",
+        "v": "Q15080547"
+      }
+    ],
+    "P150": [
+      {
+        "t": "item",
+        "v": "Q630083"
+      },
+      {
+        "t": "item",
+        "v": "Q884493"
+      },
+      {
+        "t": "item",
+        "v": "Q1490832"
+      },
+      {
+        "t": "item",
+        "v": "Q1593495"
+      },
+      {
+        "t": "item",
+        "v": "Q1715175"
+      },
+      {
+        "t": "item",
+        "v": "Q857314"
+      },
+      {
+        "t": "item",
+        "v": "Q2235530"
+      },
+      {
+        "t": "item",
+        "v": "Q1457938"
+      },
+      {
+        "t": "item",
+        "v": "Q2271193"
+      },
+      {
+        "t": "item",
+        "v": "Q2348419"
+      }
+    ],
+    "P1566": [
+      {
+        "t": "external",
+        "v": "2949186"
+      }
+    ],
+    "P17": [
+      {
+        "t": "item",
+        "v": "Q183"
+      }
+    ],
+    "P1792": [
+      {
+        "t": "item",
+        "v": "Q6957433"
+      }
+    ],
+    "P18": [
+      {
+        "t": "media",
+        "v": "Bielefeld City.jpg"
+      }
+    ],
+    "P1842": [
+      {
+        "t": "external",
+        "v": "Bielefeld (Nordrhein-Westfalen, Germany)"
+      }
+    ],
+    "P190": [
+      {
+        "t": "item",
+        "v": "Q207614"
+      },
+      {
+        "t": "item",
+        "v": "Q474605",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1953-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q990109",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1958-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q17393",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1973-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q167749",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1980-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q2235",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1987-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q598",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1991-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q1007634",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1995-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P1997": [
+      {
+        "t": "string",
+        "v": "110710585624249"
+      }
+    ],
+    "P2044": [
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "118",
+          "unit": "Q11573",
+          "upperbound": "119",
+          "lowerbound": "117"
+        }
+      }
+    ],
+    "P2046": [
+      {
+        "t": "quantity",
+        "v": {
+          "amount": "258.82",
+          "unit": "Q712226",
+          "upperbound": "258.83",
+          "lowerbound": "258.81"
+        }
+      }
+    ],
+    "P214": [
+      {
+        "t": "external",
+        "v": "312796170"
+      }
+    ],
+    "P227": [
+      {
+        "t": "external",
+        "v": "4006510-8"
+      }
+    ],
+    "P242": [
+      {
+        "t": "media",
+        "v": "North rhine w BI.svg"
+      }
+    ],
+    "P244": [
+      {
+        "t": "external",
+        "v": "n79145551"
+      }
+    ],
+    "P268": [
+      {
+        "t": "external",
+        "v": "119717772"
+      }
+    ],
+    "P281": [
+      {
+        "t": "string",
+        "v": "33501"
+      },
+      {
+        "t": "string",
+        "v": "33602"
+      },
+      {
+        "t": "string",
+        "v": "33604"
+      },
+      {
+        "t": "string",
+        "v": "33605"
+      },
+      {
+        "t": "string",
+        "v": "33607"
+      },
+      {
+        "t": "string",
+        "v": "33609"
+      },
+      {
+        "t": "string",
+        "v": "33611"
+      },
+      {
+        "t": "string",
+        "v": "33613"
+      },
+      {
+        "t": "string",
+        "v": "33615"
+      },
+      {
+        "t": "string",
+        "v": "33617"
+      },
+      {
+        "t": "string",
+        "v": "33619"
+      },
+      {
+        "t": "string",
+        "v": "33647"
+      }
+    ],
+    "P31": [
+      {
+        "t": "item",
+        "v": "Q22865"
+      },
+      {
+        "t": "item",
+        "v": "Q262166"
+      },
+      {
+        "t": "item",
+        "v": "Q1549591"
+      },
+      {
+        "t": "item",
+        "v": "Q1187811"
+      }
+    ],
+    "P373": [
+      {
+        "t": "string",
+        "v": "Bielefeld"
+      }
+    ],
+    "P395": [
+      {
+        "t": "string",
+        "v": "BI"
+      }
+    ],
+    "P421": [
+      {
+        "t": "item",
+        "v": "Q6655"
+      }
+    ],
+    "P439": [
+      {
+        "t": "external",
+        "v": "05711000"
+      }
+    ],
+    "P443": [
+      {
+        "t": "media",
+        "v": "De-Bielefeld.ogg"
+      }
+    ],
+    "P47": [
+      {
+        "t": "item",
+        "v": "Q6234"
+      },
+      {
+        "t": "item",
+        "v": "Q6230"
+      },
+      {
+        "t": "item",
+        "v": "Q6218"
+      },
+      {
+        "t": "item",
+        "v": "Q3771"
+      },
+      {
+        "t": "item",
+        "v": "Q225375"
+      },
+      {
+        "t": "item",
+        "v": "Q225432"
+      }
+    ],
+    "P473": [
+      {
+        "t": "string",
+        "v": "05203"
+      },
+      {
+        "t": "string",
+        "v": "05208"
+      },
+      {
+        "t": "string",
+        "v": "05202"
+      },
+      {
+        "t": "string",
+        "v": "05205"
+      },
+      {
+        "t": "string",
+        "v": "05206"
+      },
+      {
+        "t": "string",
+        "v": "05209"
+      },
+      {
+        "t": "string",
+        "v": "0521"
+      }
+    ],
+    "P6": [
+      {
+        "t": "item",
+        "r": "preferred",
+        "v": "Q2097128",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+2009-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q1278930",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1999-01-01T00:00:00Z"
+              }
+            }
+          ],
+          "P582": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+2009-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q534246",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1994-01-01T00:00:00Z"
+              }
+            }
+          ],
+          "P582": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1999-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q1460066",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1975-01-01T00:00:00Z"
+              }
+            }
+          ],
+          "P582": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1989-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "t": "item",
+        "v": "Q1278930",
+        "q": {
+          "P580": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1989-01-01T00:00:00Z"
+              }
+            }
+          ],
+          "P582": [
+            {
+              "t": "time",
+              "v": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1994-01-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P605": [
+      {
+        "t": "external",
+        "v": "DEA41"
+      }
+    ],
+    "P625": [
+      {
+        "t": "coords",
+        "v": {
+          "latitude": 52.016666666667,
+          "longitude": 8.5166666666667,
+          "precision": 0.016666666666667,
+          "globe": "Q2"
+        }
+      }
+    ],
+    "P646": [
+      {
+        "t": "external",
+        "v": "/m/018m98"
+      }
+    ],
+    "P706": [
+      {
+        "t": "item",
+        "v": "Q677337"
+      },
+      {
+        "t": "item",
+        "v": "Q109773"
+      }
+    ],
+    "P856": [
+      {
+        "t": "url",
+        "v": "http://www.bielefeld.de/"
+      }
+    ],
+    "P910": [
+      {
+        "t": "item",
+        "v": "Q8299342"
+      }
+    ],
+    "P935": [
+      {
+        "t": "string",
+        "v": "Bielefeld"
+      }
+    ],
+    "P94": [
+      {
+        "t": "media",
+        "v": "DEU Bielefeld COA.svg"
+      }
+    ],
+    "P948": [
+      {
+        "t": "media",
+        "v": "Bielefeld City.jpg"
+      }
+    ],
+    "P949": [
+      {
+        "t": "external",
+        "v": "000977673"
+      }
+    ],
+    "P982": [
+      {
+        "t": "external",
+        "v": "dbdd7aff-9bf5-4084-98c3-722f27d7bb4d"
+      }
+    ],
+    "P998": [
+      {
+        "t": "external",
+        "v": "Regional/Europe/Germany/States/North_Rhine-Westphalia/Localities/Bielefeld/"
+      }
+    ]
+  },
+  "sitelinks": {
+    "afwiki": "Bielefeld",
+    "arwiki": "بيلفلد",
+    "azwiki": "Bilefeld",
+    "barwiki": "Bielefeld",
+    "be_x_oldwiki": "Білефэльд",
+    "bewiki": "Горад Білефельд",
+    "bgwiki": "Билефелд",
+    "cawiki": "Bielefeld",
+    "cebwiki": "Bielefeld (kapital sa munisipyo)",
+    "commonswiki": "Bielefeld",
+    "cswiki": "Bielefeld",
+    "cvwiki": "Билефелд",
+    "cywiki": "Bielefeld",
+    "dawiki": "Bielefeld",
+    "dewiki": "Bielefeld",
+    "dewikiquote": "Bielefeld",
+    "dewikisource": "Bielefeld",
+    "dewikivoyage": "Bielefeld",
+    "elwiki": "Μπίλεφελντ",
+    "enwiki": "Bielefeld",
+    "enwikivoyage": "Bielefeld",
+    "eowiki": "Bielefeld",
+    "eswiki": "Bielefeld",
+    "etwiki": "Bielefeld",
+    "euwiki": "Bielefeld",
+    "fawiki": "بیله‌فلد",
+    "fawikivoyage": "بیلفلد",
+    "fiwiki": "Bielefeld",
+    "frrwiki": "Bielefeld",
+    "frwiki": "Bielefeld",
+    "frwikivoyage": "Bielefeld",
+    "fywiki": "Bielefeld",
+    "glwiki": "Bielefeld",
+    "gvwiki": "Bielefeld",
+    "hewiki": "בילפלד",
+    "hrwiki": "Bielefeld",
+    "hsbwiki": "Bielefeld",
+    "huwiki": "Bielefeld",
+    "hywiki": "Բիլեֆելդ",
+    "idwiki": "Bielefeld",
+    "iewiki": "Bielefeld",
+    "iswiki": "Bielefeld",
+    "itwiki": "Bielefeld",
+    "jawiki": "ビーレフェルト",
+    "kawiki": "ბილეფილდი",
+    "kkwiki": "Билефельд",
+    "kowiki": "빌레펠트",
+    "kshwiki": "Bielefeld",
+    "kuwiki": "Bielefeld",
+    "kywiki": "Билефельд",
+    "lawiki": "Bilivelda",
+    "liwiki": "Bielefeld",
+    "ltwiki": "Bylefeldas",
+    "lvwiki": "Bīlefelde",
+    "mkwiki": "Билефелд",
+    "mnwiki": "Билефельд",
+    "mrwiki": "बीलेफेल्ड",
+    "ndswiki": "Builefeld",
+    "nlwiki": "Bielefeld",
+    "nnwiki": "Bielefeld",
+    "nowiki": "Bielefeld",
+    "ocwiki": "Bielefeld",
+    "plwiki": "Bielefeld",
+    "plwikivoyage": "Bielefeld",
+    "pnbwiki": "بیلفیلڈ",
+    "ptwiki": "Bielefeld",
+    "rowiki": "Bielefeld",
+    "ruwiki": "Билефельд",
+    "scowiki": "Bielefeld",
+    "shwiki": "Bielefeld",
+    "simplewiki": "Bielefeld",
+    "skwiki": "Bielefeld",
+    "srwiki": "Билефелд",
+    "stqwiki": "Bielefeld",
+    "svwiki": "Bielefeld",
+    "swwiki": "Bielefeld",
+    "szlwiki": "Bielefeld",
+    "thwiki": "บีเลอเฟลด์",
+    "trwiki": "Bielefeld",
+    "ttwiki": "Билефелд",
+    "ukwiki": "Білефельд",
+    "urwiki": "بیئلفیلڈ",
+    "uzwiki": "Bielefeld",
+    "viwiki": "Bielefeld",
+    "vowiki": "Bielefeld",
+    "warwiki": "Bielefeld",
+    "zh_min_nanwiki": "Bielefeld",
+    "zhwiki": "比勒费尔德"
+  },
+  "t": "item"
+}

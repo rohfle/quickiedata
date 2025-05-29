@@ -1,0 +1,97 @@
+{
+  "labels": {
+    "en": "Bring the Jubilee",
+    "es": "Lo que el tiempo se llevó",
+    "zh": "把銀禧帶來",
+    "zh-hans": "把银禧带来",
+    "zh-hant": "把銀禧帶來",
+    "zh-hk": "把銀禧帶來"
+  },
+  "descriptions": {
+    "de": "Buch von Ward Moore",
+    "nl": "boek van Ward Moore"
+  },
+  "aliases": {
+    "zh": [
+      "帶來銀禧"
+    ]
+  },
+  "claims": {
+    "P123": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P136": [
+      {
+        "t": "item",
+        "v": ""
+      },
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P212": [
+      {
+        "t": "string",
+        "v": "978-0-345-40502-9"
+      },
+      {
+        "t": "string",
+        "v": "978-84-270-1284-4"
+      }
+    ],
+    "P243": [
+      {
+        "t": "string",
+        "v": "38014790"
+      }
+    ],
+    "P31": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P364": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P50": [
+      {
+        "t": "item",
+        "v": ""
+      }
+    ],
+    "P577": [
+      {
+        "t": "time",
+        "v": {
+          "calendarmodel": "Q1985727",
+          "precision": 9,
+          "time": "+1953-01-01T00:00:00Z"
+        }
+      }
+    ],
+    "P921": [
+      {
+        "t": "item",
+        "v": ""
+      },
+      {
+        "t": "item",
+        "v": ""
+      }
+    ]
+  },
+  "sitelinks": {
+    "enwiki": "Bring the Jubilee",
+    "eswiki": "Lo que el tiempo se llevó",
+    "zhwiki": "把銀禧帶來"
+  },
+  "t": "item"
+}
