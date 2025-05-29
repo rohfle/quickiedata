@@ -39,6 +39,13 @@ func TestEntitySimplify(t *testing.T) {
 			t.Fatal(err)
 		}
 
+		// Useful widget to populate initial testdata
+		// if string(compareData) == "{}" {
+		// 	afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
+		// 	os.WriteFile(testCouple[1], afterdata, 0644)
+		// 	continue
+		// }
+
 		var compareEntity interface{}
 
 		wikidataID := strings.SplitN(path.Base(testCouple[0]), ".", 2)[0]
@@ -75,16 +82,12 @@ func TestEntitySimplify(t *testing.T) {
 			for _, line := range diff {
 				t.Error(line)
 			}
-
-			if t.Failed() {
-				// afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
-				// fmt.Println(string(afterdata))
-				// fmt.Println(reflect.TypeOf(afterEntity))
-				t.FailNow()
-			}
 		} else {
 			t.Log(testCouple[0], "->", testCouple[1], "matches!")
 		}
+	}
+	if t.Failed() {
+		t.FailNow()
 	}
 
 }
