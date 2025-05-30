@@ -20,7 +20,7 @@ type WikidataClient struct {
 	Client         *http.Client
 }
 
-func NewWikidataClient(settings *nicehttp.Settings) *WikidataClient {
+func NewClient(settings *nicehttp.Settings) *WikidataClient {
 	return &WikidataClient{
 		APIEndpoint:    "https://www.wikidata.org/w/api.php",
 		SPARQLEndpoint: "https://query.wikidata.org/sparql",

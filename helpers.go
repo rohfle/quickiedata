@@ -106,3 +106,15 @@ func GetWikidataIDFromURL(url string) string {
 	}
 	return strings.TrimPrefix(url, "http://www.wikidata.org/entity/")
 }
+
+func SplitAndTrim(s, sep string) []string {
+	parts := strings.Split(s, sep)
+	var out []string
+	for _, part := range parts {
+		trimmed := strings.TrimSpace(part)
+		if trimmed != "" {
+			out = append(out, trimmed)
+		}
+	}
+	return out
+}
