@@ -40,11 +40,12 @@ func TestEntitySimplify(t *testing.T) {
 		}
 
 		// Useful widget to populate initial testdata
-		// if string(compareData) == "{}" {
-		// 	afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
-		// 	os.WriteFile(testCouple[1], afterdata, 0644)
-		// 	continue
-		// }
+		if strings.HasPrefix(string(compareData), "{}") {
+			t.Logf("found special symbol %q in %q. populating expected simpified entity data...", "{}", testCouple[1])
+			afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
+			os.WriteFile(testCouple[1], afterdata, 0644)
+			continue
+		}
 
 		var compareEntity interface{}
 
