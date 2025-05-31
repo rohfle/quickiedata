@@ -42,7 +42,7 @@ func ValidateEntityType(entityType string) error {
 	}
 }
 
-func ConvertNumericIDAndTypeToEntityID(entityType string, numericID int64) (string, error) {
+func GetEntityIDFromNumericIDAndType(entityType string, numericID int64) (string, error) {
 	prefix := ""
 	switch entityType {
 	case "item":
