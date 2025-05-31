@@ -80,6 +80,7 @@ type SnakValueGlobeCoordinate struct {
 type SnakValueMonolingualText struct {
 	Language string `json:"language"`
 	Value    string `json:"value"`
+	Text     string `json:"text"`
 }
 
 type SnakValueTime struct {

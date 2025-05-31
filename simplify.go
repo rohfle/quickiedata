@@ -199,6 +199,9 @@ func ParseClaim(dv *SnakValue) interface{} {
 		s := value.GetID()
 		return &s
 	case *SnakValueMonolingualText:
+		if value.Text != "" {
+			return &value.Text
+		}
 		return &value.Value
 	case *SnakValueGlobeCoordinate:
 		// convert globe
