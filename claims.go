@@ -17,7 +17,7 @@ type Claim struct {
 type SimpleClaim struct {
 	Type       string                        `json:"type,omitempty"`
 	Rank       string                        `json:"rank,omitempty"`
-	Value      interface{}                   `json:"value,omitempty"`
+	Value      any                           `json:"value,omitempty"`
 	Qualifiers map[string][]*SimpleSnakValue `json:"qualifiers,omitempty"`
 }
 

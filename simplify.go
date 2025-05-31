@@ -33,7 +33,7 @@ func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 	return output
 }
 
-func SimplifyEntity(entity *EntityInfo) interface{} {
+func SimplifyEntity(entity *EntityInfo) any {
 	switch entity.Type {
 	case "item":
 		return &SimpleItem{
@@ -191,7 +191,7 @@ func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SimpleSnakValue {
 	return output
 }
 
-func ParseClaim(dv *SnakValue) interface{} {
+func ParseClaim(dv *SnakValue) any {
 	switch value := dv.Value.(type) {
 	case *string:
 		return value

@@ -17,8 +17,8 @@ type Snak struct {
 }
 
 type SnakValue struct {
-	Type  string      `json:"type"`
-	Value interface{} `json:"value"`
+	Type  string `json:"type"`
+	Value any    `json:"value"`
 }
 
 func (sv *SnakValue) ValueAsString() *string {
@@ -195,8 +195,8 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 }
 
 type SimpleSnakValue struct {
-	Type  string      `json:"type"`
-	Value interface{} `json:"value"`
+	Type  string `json:"type"`
+	Value any    `json:"value"`
 }
 
 func (sv *SimpleSnakValue) ValueAsString() *string {
@@ -250,8 +250,8 @@ func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func unmarshalSimpleSnakValue(stype string, data []byte) (interface{}, error) {
-	var value interface{}
+func unmarshalSimpleSnakValue(stype string, data []byte) (any, error) {
+	var value any
 
 	switch stype {
 	case "string", "external", "item", "url", "property", "lexeme", "media", "geoshape", "musical", "form", "sense", "tabular":

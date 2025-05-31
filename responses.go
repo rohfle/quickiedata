@@ -22,7 +22,7 @@ type GetEntitiesResponse struct {
 }
 
 type GetEntitiesSimpleResponse struct {
-	Entities map[string]interface{} `json:"entities,omitempty"`
+	Entities map[string]any `json:"entities,omitempty"`
 }
 
 func (resp *GetEntitiesSimpleResponse) UnmarshalJSON(data []byte) error {
@@ -49,11 +49,11 @@ type GetEntityResponse struct {
 }
 
 type GetEntitySimpleResponse struct {
-	Entity interface{} `json:"entity,omitempty"`
+	Entity any `json:"entity,omitempty"`
 }
 
 func (resp *GetEntitiesResponse) Simplify() *GetEntitiesSimpleResponse {
-	var output = make(map[string]interface{})
+	var output = make(map[string]any)
 	for key, entity := range resp.Entities {
 		simple := SimplifyEntity(entity)
 		if simple != nil {
@@ -92,7 +92,7 @@ func (resp *GetEntitySimpleResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func unmarshalSimpleEntity(data json.RawMessage) (interface{}, error) {
+func unmarshalSimpleEntity(data json.RawMessage) (any, error) {
 	var peek struct {
 		Type string `json:"type"`
 	}
@@ -101,7 +101,7 @@ func unmarshalSimpleEntity(data json.RawMessage) (interface{}, error) {
 		return nil, err
 	}
 
-	var value interface{}
+	var value any
 
 	switch peek.Type {
 	case "item":

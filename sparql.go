@@ -17,7 +17,7 @@ type BindingValue struct {
 }
 
 type SimpleBindingValue struct {
-	Value interface{}
+	Value any
 }
 
 func (s *SimpleBindingValue) ValueAsString() string {
@@ -118,7 +118,7 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	return queryText, nil
 }
 
-func renderSPARQLStatement(name string, value interface{}) (string, error) {
+func renderSPARQLStatement(name string, value any) (string, error) {
 	// validate key is valid
 	if !ValidSPARQLVariableName.MatchString(name) {
 		return "", fmt.Errorf("invalid sparql variable name '%s'", name)

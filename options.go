@@ -50,14 +50,14 @@ func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
 
 type SPARQLQuery struct {
 	Template  string
-	Variables map[string]interface{}
+	Variables map[string]any
 	Offset    int64
 	Limit     int64
 }
 
 func NewSPARQLQuery() *SPARQLQuery {
 	return &SPARQLQuery{
-		Variables: make(map[string]interface{}),
+		Variables: make(map[string]any),
 		Offset:    -1,
 		Limit:     -1,
 	}

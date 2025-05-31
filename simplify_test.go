@@ -47,7 +47,7 @@ func TestEntitySimplify(t *testing.T) {
 			continue
 		}
 
-		var compareEntity interface{}
+		var compareEntity any
 
 		wikidataID := strings.SplitN(path.Base(testCouple[0]), ".", 2)[0]
 		switch wikidataID[0] {

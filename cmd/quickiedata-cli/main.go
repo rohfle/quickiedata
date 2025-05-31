@@ -18,7 +18,7 @@ import (
 const UserAgent = "quickiedata-cli/0.1"
 
 func parseArray(val string) ([]string, error) {
-	var rawArr []interface{}
+	var rawArr []any
 	if err := json.Unmarshal([]byte(val), &rawArr); err != nil {
 		return nil, err
 	}
