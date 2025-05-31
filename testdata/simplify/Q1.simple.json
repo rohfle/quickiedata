@@ -2,13 +2,13 @@
   "claims": {
     "P10": [
       {
-        "t": "media",
-        "v": "Welche Form hat das Universum?.webm",
-        "q": {
+        "type": "media",
+        "value": "Welche Form hat das Universum?.webm",
+        "qualifiers": {
           "P407": [
             {
-              "t": "item",
-              "v": "Q188"
+              "type": "item",
+              "value": "Q188"
             }
           ]
         }
@@ -16,143 +16,143 @@
     ],
     "P10242": [
       {
-        "t": "external",
-        "v": "05864/eu_u_0459/u0459"
+        "type": "external",
+        "value": "05864/eu_u_0459/u0459"
       }
     ],
     "P10283": [
       {
-        "t": "external",
-        "v": "C84999194"
+        "type": "external",
+        "value": "C84999194"
       }
     ],
     "P1036": [
       {
-        "t": "external",
-        "v": "113"
+        "type": "external",
+        "value": "113"
       },
       {
-        "t": "external",
-        "v": "523.1"
+        "type": "external",
+        "value": "523.1"
       }
     ],
     "P1051": [
       {
-        "t": "external",
-        "v": "517"
+        "type": "external",
+        "value": "517"
       }
     ],
     "P10757": [
       {
-        "t": "external",
-        "v": "59069"
+        "type": "external",
+        "value": "59069"
       }
     ],
     "P11408": [
       {
-        "t": "external",
-        "v": "宇宙"
+        "type": "external",
+        "value": "宇宙"
       }
     ],
     "P1245": [
       {
-        "t": "external",
-        "v": "8506"
+        "type": "external",
+        "value": "8506"
       }
     ],
     "P1256": [
       {
-        "t": "external",
-        "v": "51A11"
+        "type": "external",
+        "value": "51A11"
       }
     ],
     "P1296": [
       {
-        "t": "external",
-        "v": "0216407"
+        "type": "external",
+        "value": "0216407"
       }
     ],
     "P1343": [
       {
-        "t": "item",
-        "v": "Q602358",
-        "q": {
+        "type": "item",
+        "value": "Q602358",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q24373557"
+              "type": "item",
+              "value": "Q24373557"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q19190511",
-        "q": {
+        "type": "item",
+        "value": "Q19190511",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q84065667"
+              "type": "item",
+              "value": "Q84065667"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q2041543",
-        "q": {
+        "type": "item",
+        "value": "Q2041543",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q23856221"
+              "type": "item",
+              "value": "Q23856221"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q88672152",
-        "q": {
+        "type": "item",
+        "value": "Q88672152",
+        "qualifiers": {
           "P304": [
             {
-              "t": "string",
-              "v": "13-36"
+              "type": "string",
+              "value": "13-36"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q107433072",
-        "q": {
+        "type": "item",
+        "value": "Q107433072",
+        "qualifiers": {
           "P155": [
             {
-              "t": "item",
-              "v": "Q3918"
+              "type": "item",
+              "value": "Q3918"
             }
           ],
           "P156": [
             {
-              "t": "item",
-              "v": "Q1515577"
+              "type": "item",
+              "value": "Q1515577"
             }
           ],
           "P1810": [
             {
-              "t": "string",
-              "v": "Univerſum"
+              "type": "string",
+              "value": "Univerſum"
             }
           ],
           "P304": [
             {
-              "t": "string",
-              "v": "715"
+              "type": "string",
+              "value": "715"
             }
           ],
           "P3903": [
             {
-              "t": "string",
-              "v": "2"
+              "type": "string",
+              "value": "2"
             }
           ]
         }
@@ -160,25 +160,25 @@
     ],
     "P1417": [
       {
-        "t": "external",
-        "v": "topic/universe",
-        "q": {
+        "type": "external",
+        "value": "topic/universe",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Universe"
+              "type": "string",
+              "value": "Universe"
             }
           ]
         }
       },
       {
-        "t": "external",
-        "v": "topic/Cosmos-astronomy",
-        "q": {
+        "type": "external",
+        "value": "topic/Cosmos-astronomy",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Cosmos"
+              "type": "string",
+              "value": "Cosmos"
             }
           ]
         }
@@ -186,39 +186,39 @@
     ],
     "P1419": [
       {
-        "t": "item",
-        "v": "Q5457948",
-        "q": {
+        "type": "item",
+        "value": "Q5457948",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "r": "deprecated",
-        "v": "Q209306",
-        "q": {
+        "type": "item",
+        "rank": "deprecated",
+        "value": "Q209306",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "r": "deprecated",
-        "v": "Q326905",
-        "q": {
+        "type": "item",
+        "rank": "deprecated",
+        "value": "Q326905",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
@@ -226,149 +226,149 @@
     ],
     "P1424": [
       {
-        "t": "item",
-        "v": "Q22903368"
+        "type": "item",
+        "value": "Q22903368"
       },
       {
-        "t": "item",
-        "v": "Q6312136"
+        "type": "item",
+        "value": "Q6312136"
       }
     ],
     "P1552": [
       {
-        "t": "item",
-        "v": "Q11412"
+        "type": "item",
+        "value": "Q11412"
       },
       {
-        "t": "item",
-        "v": "Q104934"
+        "type": "item",
+        "value": "Q104934"
       }
     ],
     "P1617": [
       {
-        "t": "external",
-        "v": "1a63b798-e466-4c5b-8707-297218d4c69e"
+        "type": "external",
+        "value": "1a63b798-e466-4c5b-8707-297218d4c69e"
       }
     ],
     "P1711": [
       {
-        "t": "external",
-        "v": "100162"
+        "type": "external",
+        "value": "100162"
       }
     ],
     "P18": [
       {
-        "t": "media",
-        "r": "preferred",
-        "v": "NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg"
+        "type": "media",
+        "rank": "preferred",
+        "value": "NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg"
       },
       {
-        "t": "media",
-        "r": "deprecated",
-        "v": "Hubble ultra deep field.jpg"
+        "type": "media",
+        "rank": "deprecated",
+        "value": "Hubble ultra deep field.jpg"
       },
       {
-        "t": "media",
-        "r": "deprecated",
-        "v": "CMB Timeline300 no WMAP.jpg"
+        "type": "media",
+        "rank": "deprecated",
+        "value": "CMB Timeline300 no WMAP.jpg"
       }
     ],
     "P1889": [
       {
-        "t": "item",
-        "v": "Q2708714"
+        "type": "item",
+        "value": "Q2708714"
       },
       {
-        "t": "item",
-        "v": "Q221392"
+        "type": "item",
+        "value": "Q221392"
       },
       {
-        "t": "item",
-        "v": "Q7896833",
-        "q": {
+        "type": "item",
+        "value": "Q7896833",
+        "qualifiers": {
           "P1013": [
             {
-              "t": "item",
-              "v": "Q24005632"
+              "type": "item",
+              "value": "Q24005632"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q7896824",
-        "q": {
+        "type": "item",
+        "value": "Q7896824",
+        "qualifiers": {
           "P1013": [
             {
-              "t": "item",
-              "v": "Q24005632"
+              "type": "item",
+              "value": "Q24005632"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q23893549",
-        "q": {
+        "type": "item",
+        "value": "Q23893549",
+        "qualifiers": {
           "P1013": [
             {
-              "t": "item",
-              "v": "Q24005632"
+              "type": "item",
+              "value": "Q24005632"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q115754894"
+        "type": "item",
+        "value": "Q115754894"
       }
     ],
     "P1953": [
       {
-        "t": "external",
-        "v": "3874660"
+        "type": "external",
+        "value": "3874660"
       }
     ],
     "P2163": [
       {
-        "t": "external",
-        "v": "1922713"
+        "type": "external",
+        "value": "1922713"
       }
     ],
     "P2184": [
       {
-        "t": "item",
-        "v": "Q136407"
+        "type": "item",
+        "value": "Q136407"
       }
     ],
     "P227": [
       {
-        "t": "external",
-        "r": "preferred",
-        "v": "4079154-3",
-        "q": {
+        "type": "external",
+        "rank": "preferred",
+        "value": "4079154-3",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Weltall"
+              "type": "string",
+              "value": "Weltall"
             }
           ]
         }
       },
       {
-        "t": "external",
-        "v": "4114295-0",
-        "q": {
+        "type": "external",
+        "value": "4114295-0",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Kosmos \u003cBegriff\u003e"
+              "type": "string",
+              "value": "Kosmos \u003cBegriff\u003e"
             }
           ],
           "P518": [
             {
-              "t": "item",
-              "v": "Q269323"
+              "type": "item",
+              "value": "Q269323"
             }
           ]
         }
@@ -376,22 +376,22 @@
     ],
     "P2347": [
       {
-        "t": "external",
-        "v": "4403"
+        "type": "external",
+        "value": "4403"
       }
     ],
     "P2386": [
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "880000000000000000000000",
           "unit": "Q828224"
         },
-        "q": {
+        "qualifiers": {
           "P518": [
             {
-              "t": "item",
-              "v": "Q221392"
+              "type": "item",
+              "value": "Q221392"
             }
           ]
         }
@@ -399,13 +399,13 @@
     ],
     "P244": [
       {
-        "t": "external",
-        "v": "sh2010007248",
-        "q": {
+        "type": "external",
+        "value": "sh2010007248",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Universe"
+              "type": "string",
+              "value": "Universe"
             }
           ]
         }
@@ -413,85 +413,85 @@
     ],
     "P2579": [
       {
-        "t": "item",
-        "v": "Q338"
+        "type": "item",
+        "value": "Q338"
       },
       {
-        "t": "item",
-        "v": "Q170835"
+        "type": "item",
+        "value": "Q170835"
       }
     ],
     "P2581": [
       {
-        "t": "external",
-        "v": "00022991n"
+        "type": "external",
+        "value": "00022991n"
       }
     ],
     "P2612": [
       {
-        "t": "external",
-        "v": "universe"
+        "type": "external",
+        "value": "universe"
       }
     ],
     "P2670": [
       {
-        "t": "item",
-        "v": "Q6999"
+        "type": "item",
+        "value": "Q6999"
       },
       {
-        "t": "item",
-        "v": "Q18343",
-        "q": {
+        "type": "item",
+        "value": "Q18343",
+        "qualifiers": {
           "P1107": [
             {
-              "t": "quantity",
-              "v": {
+              "type": "quantity",
+              "value": {
                 "amount": "0.70"
               }
             }
           ],
           "P1480": [
             {
-              "t": "item",
-              "v": "Q60070514"
+              "type": "item",
+              "value": "Q60070514"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q79925",
-        "q": {
+        "type": "item",
+        "value": "Q79925",
+        "qualifiers": {
           "P1107": [
             {
-              "t": "quantity",
-              "v": {
+              "type": "quantity",
+              "value": {
                 "amount": "0.25"
               }
             }
           ],
           "P1480": [
             {
-              "t": "item",
-              "v": "Q60070514"
+              "type": "item",
+              "value": "Q60070514"
             }
           ],
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q2504088",
-        "q": {
+        "type": "item",
+        "value": "Q2504088",
+        "qualifiers": {
           "P1107": [
             {
-              "t": "quantity",
-              "v": {
+              "type": "quantity",
+              "value": {
                 "amount": "0.036"
               }
             }
@@ -499,29 +499,29 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q185674"
+        "type": "item",
+        "value": "Q185674"
       },
       {
-        "t": "item",
-        "v": "Q28732711"
+        "type": "item",
+        "value": "Q28732711"
       },
       {
-        "t": "item",
-        "v": "Q6005984",
-        "q": {
+        "type": "item",
+        "value": "Q6005984",
+        "qualifiers": {
           "P1107": [
             {
-              "t": "quantity",
-              "v": {
+              "type": "quantity",
+              "value": {
                 "amount": "0.05"
               }
             }
           ],
           "P1480": [
             {
-              "t": "item",
-              "v": "Q60070514"
+              "type": "item",
+              "value": "Q60070514"
             }
           ]
         }
@@ -529,13 +529,13 @@
     ],
     "P268": [
       {
-        "t": "external",
-        "v": "123747698",
-        "q": {
+        "type": "external",
+        "value": "123747698",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Univers"
+              "type": "string",
+              "value": "Univers"
             }
           ]
         }
@@ -543,19 +543,19 @@
     ],
     "P2924": [
       {
-        "t": "external",
-        "v": "2334183"
+        "type": "external",
+        "value": "2334183"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q36906466",
-        "q": {
+        "type": "item",
+        "value": "Q36906466",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
@@ -563,35 +563,35 @@
     ],
     "P3113": [
       {
-        "t": "item",
-        "v": "Q2051667"
+        "type": "item",
+        "value": "Q2051667"
       }
     ],
     "P3219": [
       {
-        "t": "external",
-        "v": "univers"
+        "type": "external",
+        "value": "univers"
       },
       {
-        "t": "external",
-        "v": "univers-notions-de-base"
+        "type": "external",
+        "value": "univers-notions-de-base"
       }
     ],
     "P3222": [
       {
-        "t": "external",
-        "v": "universum"
+        "type": "external",
+        "value": "universum"
       }
     ],
     "P3365": [
       {
-        "t": "external",
-        "v": "universo",
-        "q": {
+        "type": "external",
+        "value": "universo",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Universo"
+              "type": "string",
+              "value": "Universo"
             }
           ]
         }
@@ -599,25 +599,25 @@
     ],
     "P3417": [
       {
-        "t": "external",
-        "v": "The-Universe"
+        "type": "external",
+        "value": "The-Universe"
       }
     ],
     "P349": [
       {
-        "t": "external",
-        "v": "00574074"
+        "type": "external",
+        "value": "00574074"
       }
     ],
     "P3553": [
       {
-        "t": "external",
-        "v": "19620787",
-        "q": {
+        "type": "external",
+        "value": "19620787",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "宇宙"
+              "type": "string",
+              "value": "宇宙"
             }
           ]
         }
@@ -625,20 +625,20 @@
     ],
     "P3569": [
       {
-        "t": "external",
-        "v": "natuurkunde-scheikunde-en-sterrenkunde/heelal"
+        "type": "external",
+        "value": "natuurkunde-scheikunde-en-sterrenkunde/heelal"
       }
     ],
     "P361": [
       {
-        "t": "item",
-        "r": "deprecated",
-        "v": "Q3327819",
-        "q": {
+        "type": "item",
+        "rank": "deprecated",
+        "value": "Q3327819",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ]
         }
@@ -646,23 +646,23 @@
     ],
     "P373": [
       {
-        "t": "string",
-        "v": "Universe"
+        "type": "string",
+        "value": "Universe"
       }
     ],
     "P3847": [
       {
-        "t": "external",
-        "v": "universe"
+        "type": "external",
+        "value": "universe"
       },
       {
-        "t": "external",
-        "v": "place:universe",
-        "q": {
+        "type": "external",
+        "value": "place:universe",
+        "qualifiers": {
           "P3831": [
             {
-              "t": "item",
-              "v": "Q17334923"
+              "type": "item",
+              "value": "Q17334923"
             }
           ]
         }
@@ -670,19 +670,19 @@
     ],
     "P3916": [
       {
-        "t": "external",
-        "v": "concept3230"
+        "type": "external",
+        "value": "concept3230"
       }
     ],
     "P3938": [
       {
-        "t": "item",
-        "v": "Q76458",
-        "q": {
+        "type": "item",
+        "value": "Q76458",
+        "qualifiers": {
           "P5168": [
             {
-              "t": "string",
-              "v": ""
+              "type": "string",
+              "value": ""
             }
           ]
         }
@@ -690,13 +690,13 @@
     ],
     "P4342": [
       {
-        "t": "external",
-        "v": "universet",
-        "q": {
+        "type": "external",
+        "value": "universet",
+        "qualifiers": {
           "P4390": [
             {
-              "t": "item",
-              "v": "Q39893449"
+              "type": "item",
+              "value": "Q39893449"
             }
           ]
         }
@@ -704,25 +704,25 @@
     ],
     "P443": [
       {
-        "t": "media",
-        "v": "Ms-MY-Alam Semesta.ogg",
-        "q": {
+        "type": "media",
+        "value": "Ms-MY-Alam Semesta.ogg",
+        "qualifiers": {
           "P407": [
             {
-              "t": "item",
-              "v": "Q9237"
+              "type": "item",
+              "value": "Q9237"
             }
           ]
         }
       },
       {
-        "t": "media",
-        "v": "Evren - Türkçe telaffuz sesi.wav",
-        "q": {
+        "type": "media",
+        "value": "Evren - Türkçe telaffuz sesi.wav",
+        "qualifiers": {
           "P407": [
             {
-              "t": "item",
-              "v": "Q256"
+              "type": "item",
+              "value": "Q256"
             }
           ]
         }
@@ -730,13 +730,13 @@
     ],
     "P461": [
       {
-        "t": "item",
-        "v": "Q106521687",
-        "q": {
+        "type": "item",
+        "value": "Q106521687",
+        "qualifiers": {
           "P1013": [
             {
-              "t": "item",
-              "v": "Q395"
+              "type": "item",
+              "value": "Q395"
             }
           ]
         }
@@ -744,23 +744,23 @@
     ],
     "P4613": [
       {
-        "t": "external",
-        "v": "29999"
+        "type": "external",
+        "value": "29999"
       }
     ],
     "P5008": [
       {
-        "t": "item",
-        "v": "Q5460604"
+        "type": "item",
+        "value": "Q5460604"
       },
       {
-        "t": "item",
-        "v": "Q6173448",
-        "q": {
+        "type": "item",
+        "value": "Q6173448",
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2022-10-31T00:00:00Z"
@@ -772,19 +772,19 @@
     ],
     "P5019": [
       {
-        "t": "external",
-        "v": "weltall"
+        "type": "external",
+        "value": "weltall"
       }
     ],
     "P5034": [
       {
-        "t": "external",
-        "v": "KSH1998032878",
-        "q": {
+        "type": "external",
+        "value": "KSH1998032878",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "우주"
+              "type": "string",
+              "value": "우주"
             }
           ]
         }
@@ -792,65 +792,65 @@
     ],
     "P508": [
       {
-        "t": "external",
-        "v": "7239"
+        "type": "external",
+        "value": "7239"
       }
     ],
     "P527": [
       {
-        "t": "item",
-        "v": "Q133327"
+        "type": "item",
+        "value": "Q133327"
       },
       {
-        "t": "item",
-        "v": "Q221392"
+        "type": "item",
+        "value": "Q221392"
       },
       {
-        "t": "item",
-        "v": "Q1133705"
+        "type": "item",
+        "value": "Q1133705"
       }
     ],
     "P5337": [
       {
-        "t": "external",
-        "v": "CAAqIQgKIhtDQkFTRGdvSUwyMHZNRGQyTjJNU0FtVnVLQUFQAQ"
+        "type": "external",
+        "value": "CAAqIQgKIhtDQkFTRGdvSUwyMHZNRGQyTjJNU0FtVnVLQUFQAQ"
       }
     ],
     "P5357": [
       {
-        "t": "external",
-        "v": "universe_the"
+        "type": "external",
+        "value": "universe_the"
       }
     ],
     "P580": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985727",
           "precision": 3,
           "time": "-13798000000-01-01T00:00:00Z"
         },
-        "q": {
+        "qualifiers": {
           "P1480": [
             {
-              "t": "item",
-              "v": "Q21097017"
+              "type": "item",
+              "value": "Q21097017"
             }
           ],
           "P459": [
             {
-              "t": "item",
-              "v": "Q15605"
+              "type": "item",
+              "value": "Q15605"
             },
             {
-              "t": "item",
-              "v": "Q76250"
+              "type": "item",
+              "value": "Q76250"
             }
           ],
           "P805": [
             {
-              "t": "item",
-              "v": "Q500699"
+              "type": "item",
+              "value": "Q500699"
             }
           ]
         }
@@ -858,25 +858,25 @@
     ],
     "P6262": [
       {
-        "t": "external",
-        "v": "memory-alpha:Universe",
-        "q": {
+        "type": "external",
+        "value": "memory-alpha:Universe",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Universe"
+              "type": "string",
+              "value": "Universe"
             }
           ],
           "P407": [
             {
-              "t": "item",
-              "v": "Q1860"
+              "type": "item",
+              "value": "Q1860"
             }
           ],
           "P9675": [
             {
-              "t": "string",
-              "v": "178356"
+              "type": "string",
+              "value": "178356"
             }
           ]
         }
@@ -884,31 +884,31 @@
     ],
     "P6366": [
       {
-        "t": "external",
-        "v": "84999194"
+        "type": "external",
+        "value": "84999194"
       }
     ],
     "P646": [
       {
-        "t": "external",
-        "v": "/m/07v7c"
+        "type": "external",
+        "value": "/m/07v7c"
       }
     ],
     "P6573": [
       {
-        "t": "external",
-        "v": "Weltall"
+        "type": "external",
+        "value": "Weltall"
       }
     ],
     "P6706": [
       {
-        "t": "external",
-        "v": "univèrso+(sostantivo)",
-        "q": {
+        "type": "external",
+        "value": "univèrso+(sostantivo)",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "univèrso (sostantivo)"
+              "type": "string",
+              "value": "univèrso (sostantivo)"
             }
           ]
         }
@@ -916,19 +916,19 @@
     ],
     "P6900": [
       {
-        "t": "external",
-        "v": "宇宙"
+        "type": "external",
+        "value": "宇宙"
       }
     ],
     "P691": [
       {
-        "t": "external",
-        "v": "ph116566",
-        "q": {
+        "type": "external",
+        "value": "ph116566",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "vesmír"
+              "type": "string",
+              "value": "vesmír"
             }
           ]
         }
@@ -936,61 +936,61 @@
     ],
     "P7033": [
       {
-        "t": "external",
-        "v": "scot/9808"
+        "type": "external",
+        "value": "scot/9808"
       }
     ],
     "P7305": [
       {
-        "t": "external",
-        "v": "3998491"
+        "type": "external",
+        "value": "3998491"
       }
     ],
     "P7314": [
       {
-        "t": "external",
-        "v": "alem"
+        "type": "external",
+        "value": "alem"
       }
     ],
     "P7502": [
       {
-        "t": "external",
-        "v": "Universe-99XJG"
+        "type": "external",
+        "value": "Universe-99XJG"
       }
     ],
     "P7775": [
       {
-        "t": "external",
-        "v": "Universe"
+        "type": "external",
+        "value": "Universe"
       }
     ],
     "P7818": [
       {
-        "t": "external",
-        "v": "Univers"
+        "type": "external",
+        "value": "Univers"
       }
     ],
     "P7827": [
       {
-        "t": "external",
-        "v": "Universo"
+        "type": "external",
+        "value": "Universo"
       }
     ],
     "P7832": [
       {
-        "t": "external",
-        "v": "Unibertso"
+        "type": "external",
+        "value": "Unibertso"
       }
     ],
     "P793": [
       {
-        "t": "item",
-        "v": "Q323",
-        "q": {
+        "type": "item",
+        "value": "Q323",
+        "qualifiers": {
           "P1319": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985786",
                 "time": "-16000000000-01-01T00:00:00Z"
               }
@@ -998,8 +998,8 @@
           ],
           "P1326": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985786",
                 "precision": 1,
                 "time": "-11400000000-01-01T00:00:00Z"
@@ -1008,8 +1008,8 @@
           ],
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985786",
                 "precision": 1,
                 "time": "-13700000000-01-01T00:00:00Z"
@@ -1019,31 +1019,31 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q837317"
+        "type": "item",
+        "value": "Q837317"
       },
       {
-        "t": "item",
-        "v": "Q1208634"
+        "type": "item",
+        "value": "Q1208634"
       },
       {
-        "t": "item",
-        "v": "Q1079826"
+        "type": "item",
+        "value": "Q1079826"
       },
       {
-        "t": "item",
-        "v": "Q273508",
-        "q": {
+        "type": "item",
+        "value": "Q273508",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q41719"
+              "type": "item",
+              "value": "Q41719"
             }
           ],
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985786",
                 "precision": 3,
                 "time": "-13798000000-01-01T00:00:00Z"
@@ -1053,29 +1053,29 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q1079806"
+        "type": "item",
+        "value": "Q1079806"
       },
       {
-        "t": "item",
-        "v": "Q3491753"
+        "type": "item",
+        "value": "Q3491753"
       }
     ],
     "P8189": [
       {
-        "t": "external",
-        "v": "987007572655805171"
+        "type": "external",
+        "value": "987007572655805171"
       }
     ],
     "P828": [
       {
-        "t": "item",
-        "v": "Q323",
-        "q": {
+        "type": "item",
+        "value": "Q323",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q3144351"
+              "type": "item",
+              "value": "Q3144351"
             }
           ]
         }
@@ -1083,50 +1083,50 @@
     ],
     "P8313": [
       {
-        "t": "external",
-        "v": "Universet"
+        "type": "external",
+        "value": "Universet"
       }
     ],
     "P8408": [
       {
-        "t": "external",
-        "v": "ThePhysicalUniverse"
+        "type": "external",
+        "value": "ThePhysicalUniverse"
       }
     ],
     "P8814": [
       {
-        "t": "external",
-        "v": "05822288-n"
+        "type": "external",
+        "value": "05822288-n"
       }
     ],
     "P8885": [
       {
-        "t": "external",
-        "v": "우주"
+        "type": "external",
+        "value": "우주"
       }
     ],
     "P9084": [
       {
-        "t": "external",
-        "v": "the-universe"
+        "type": "external",
+        "value": "the-universe"
       }
     ],
     "P910": [
       {
-        "t": "item",
-        "v": "Q21079384"
+        "type": "item",
+        "value": "Q21079384"
       }
     ],
     "P920": [
       {
-        "t": "external",
-        "v": "LEM201201756"
+        "type": "external",
+        "value": "LEM201201756"
       }
     ],
     "P949": [
       {
-        "t": "external",
-        "v": "001810866"
+        "type": "external",
+        "value": "001810866"
       }
     ]
   },

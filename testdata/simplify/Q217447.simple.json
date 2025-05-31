@@ -1,279 +1,279 @@
 {
-      "labels": {
-        "ca": "Verla",
-        "ceb": "Verla",
-        "cs": "Verla",
-        "da": "Verla",
-        "de": "Verla",
-        "en": "Verla",
-        "es": "Verla",
-        "et": "Verla",
-        "fi": "Verla",
-        "fr": "Verla",
-        "he": "ורלה",
-        "hi": "वेरला",
-        "hr": "Verla",
-        "hu": "Verla ipartörténeti műemlékei",
-        "it": "Verla",
-        "ja": "ヴェルラ砕木・板紙工場",
-        "ka": "ვერლა",
-        "lt": "Verla",
-        "nb": "Verla tresliperi og pappfabrikk",
-        "ne": "भेर्ला ग्राउण्डवुड र बोर्ड मिल",
-        "nl": "Verla",
-        "nn": "Verla tresliperi og pappfabrikk",
-        "pl": "Verla",
-        "pt": "Verla",
-        "ro": "Verla",
-        "ru": "Верла",
-        "se": "Verla",
-        "sh": "Verla",
-        "sje": "Verla",
-        "sk": "Verla",
-        "sma": "Verla",
-        "smj": "Verla",
-        "smn": "Verla",
-        "sms": "Verla",
-        "sv": "Verla träsliperi och pappfabrik",
-        "tr": "Verla",
-        "vi": "Verla",
-        "xmf": "ვერლა",
-        "zh": "韦尔拉磨木纸板厂"
-      },
-      "descriptions": {
-        "ceb": "lungsod",
-        "de": "Fabrik in Finnland",
-        "en": "Finnish UNESCO world heritage site",
-        "fi": "suomalainen  UNESCO:n maailmanperintökohde",
-        "id": "Warisan Dunia di Finlandia",
-        "it": "villaggio finlandese patrimonio dell'umanità Unesco",
-        "ne": "विरला ग्रौंड्वूड र बोर्ड मिल उत्तरी युरोपका एक विश्व सम्पदा क्षेत्रहरू मध्ये हो ।",
-        "nl": "plaats in Finland",
-        "sv": "industriminne i Kouvola i Finland",
-        "zh": "世界文化遗产"
-      },
-      "aliases": {
-        "fi": [
-          "Verlan hiomo",
-          "Verlan puuhiomo",
-          "Verlan museo",
-          "Verlan pahvitehdas",
-          "Verlan tehdas",
-          "Verlan tehdasalue",
-          "Verlan ruukki",
-          "Verlan tehdasmuseo"
-        ],
-        "fr": [
-          "Usine de traitement du bois et du carton de Verla",
-          "Usine de traitement du bois et de carton de Verla"
-        ],
-        "nb": [
-          "Verla"
-        ]
-      },
-      "claims": {
-        "P131": [
-          {
-            "t": "item",
-            "v": "Q204382"
-          }
-        ],
-        "P1435": [
-          {
-            "t": "item",
-            "v": "Q9259",
-            "q": {
-              "P580": [
-                {
-                  "t": "time",
-                  "v": {
-                    "calendarmodel": "Q1985727",
-                    "precision": 9,
-                    "time": "+1996-01-01T00:00:00Z"
-                  }
-                }
-              ]
+  "labels": {
+    "ca": "Verla",
+    "ceb": "Verla",
+    "cs": "Verla",
+    "da": "Verla",
+    "de": "Verla",
+    "en": "Verla",
+    "es": "Verla",
+    "et": "Verla",
+    "fi": "Verla",
+    "fr": "Verla",
+    "he": "ורלה",
+    "hi": "वेरला",
+    "hr": "Verla",
+    "hu": "Verla ipartörténeti műemlékei",
+    "it": "Verla",
+    "ja": "ヴェルラ砕木・板紙工場",
+    "ka": "ვერლა",
+    "lt": "Verla",
+    "nb": "Verla tresliperi og pappfabrikk",
+    "ne": "भेर्ला ग्राउण्डवुड र बोर्ड मिल",
+    "nl": "Verla",
+    "nn": "Verla tresliperi og pappfabrikk",
+    "pl": "Verla",
+    "pt": "Verla",
+    "ro": "Verla",
+    "ru": "Верла",
+    "se": "Verla",
+    "sh": "Verla",
+    "sje": "Verla",
+    "sk": "Verla",
+    "sma": "Verla",
+    "smj": "Verla",
+    "smn": "Verla",
+    "sms": "Verla",
+    "sv": "Verla träsliperi och pappfabrik",
+    "tr": "Verla",
+    "vi": "Verla",
+    "xmf": "ვერლა",
+    "zh": "韦尔拉磨木纸板厂"
+  },
+  "descriptions": {
+    "ceb": "lungsod",
+    "de": "Fabrik in Finnland",
+    "en": "Finnish UNESCO world heritage site",
+    "fi": "suomalainen  UNESCO:n maailmanperintökohde",
+    "id": "Warisan Dunia di Finlandia",
+    "it": "villaggio finlandese patrimonio dell'umanità Unesco",
+    "ne": "विरला ग्रौंड्वूड र बोर्ड मिल उत्तरी युरोपका एक विश्व सम्पदा क्षेत्रहरू मध्ये हो ।",
+    "nl": "plaats in Finland",
+    "sv": "industriminne i Kouvola i Finland",
+    "zh": "世界文化遗产"
+  },
+  "aliases": {
+    "fi": [
+      "Verlan hiomo",
+      "Verlan puuhiomo",
+      "Verlan museo",
+      "Verlan pahvitehdas",
+      "Verlan tehdas",
+      "Verlan tehdasalue",
+      "Verlan ruukki",
+      "Verlan tehdasmuseo"
+    ],
+    "fr": [
+      "Usine de traitement du bois et du carton de Verla",
+      "Usine de traitement du bois et de carton de Verla"
+    ],
+    "nb": [
+      "Verla"
+    ]
+  },
+  "claims": {
+    "P131": [
+      {
+        "type": "item",
+        "value": "Q204382"
+      }
+    ],
+    "P1435": [
+      {
+        "type": "item",
+        "value": "Q9259",
+        "qualifiers": {
+          "P580": [
+            {
+              "type": "time",
+              "value": {
+                "calendarmodel": "Q1985727",
+                "precision": 9,
+                "time": "+1996-01-01T00:00:00Z"
+              }
             }
-          },
-          {
-            "t": "item",
-            "v": "Q29966257"
-          }
-        ],
-        "P1566": [
-          {
-            "t": "external",
-            "v": "631914"
-          }
-        ],
-        "P17": [
-          {
-            "t": "item",
-            "v": "Q33"
-          }
-        ],
-        "P18": [
-          {
-            "t": "media",
-            "v": "Verla.JPG"
-          }
-        ],
-        "P2046": [
-          {
-            "t": "quantity",
-            "v": {
-              "amount": "22.778",
-              "unit": "Q35852"
-            }
-          },
-          {
-            "t": "quantity",
-            "v": {
-              "amount": "88.03",
-              "unit": "Q35852"
-            },
-            "q": {
-              "P518": [
-                {
-                  "t": "item",
-                  "v": "Q64364418"
-                }
-              ]
-            }
-          }
-        ],
-        "P214": [
-          {
-            "t": "external",
-            "v": "247860056"
-          }
-        ],
-        "P2347": [
-          {
-            "t": "external",
-            "v": "115307"
-          }
-        ],
-        "P2614": [
-          {
-            "t": "item",
-            "v": "Q23038978"
-          }
-        ],
-        "P31": [
-          {
-            "t": "item",
-            "v": "Q83405"
-          },
-          {
-            "t": "item",
-            "v": "Q29969141"
-          },
-          {
-            "t": "item",
-            "v": "Q1569871"
-          }
-        ],
-        "P373": [
-          {
-            "t": "string",
-            "v": "Verla groundwood and board mill"
-          }
-        ],
-        "P3896": [
-          {
-            "t": "geoshape",
-            "v": "Data:Rky/1277 Verlan teollisuusympäristö.map"
-          }
-        ],
-        "P4009": [
-          {
-            "t": "external",
-            "v": "1277"
-          }
-        ],
-        "P5310": [
-          {
-            "t": "external",
-            "v": "201382"
-          }
-        ],
-        "P625": [
-          {
-            "t": "coords",
-            "v": {
-              "latitude": 61.061992,
-              "longitude": 26.640016,
-              "precision": 0.000001,
-              "globe": "Q2"
-            }
-          }
-        ],
-        "P646": [
-          {
-            "t": "external",
-            "v": "/m/0bgk_k"
-          }
-        ],
-        "P6766": [
-          {
-            "t": "external",
-            "v": "1125875527"
-          }
-        ],
-        "P757": [
-          {
-            "t": "external",
-            "v": "751"
-          }
-        ],
-        "P7859": [
-          {
-            "t": "external",
-            "v": "viaf-247860056"
-          }
-        ],
-        "P856": [
-          {
-            "t": "url",
-            "v": "http://www.verla.fi/"
-          }
-        ]
+          ]
+        }
       },
-      "sitelinks": {
-        "cawiki": "Verla",
-        "cebwiki": "Verla (lungsod)",
-        "commonswiki": "Category:Verla groundwood and board mill",
-        "cswiki": "Verla",
-        "dawiki": "Verla papirmølle",
-        "dewiki": "Verla",
-        "enwiki": "Verla",
-        "eswiki": "Verla",
-        "fiwiki": "Verlan puuhiomo ja pahvitehdas",
-        "frwiki": "Musée de Verla",
-        "hewiki": "ורלה",
-        "hrwiki": "Verla",
-        "huwiki": "Verla ipartörténeti műemlékei",
-        "itwiki": "Verla",
-        "jawiki": "ヴェルラ砕木・板紙工場",
-        "kawiki": "ვერლა",
-        "ltwiki": "Verla",
-        "lvwiki": "Verla",
-        "newiki": "भेर्ला ग्राउण्डवुड र बोर्ड मिल",
-        "nlwiki": "Verla",
-        "nnwiki": "Verla tresliperi og pappfabrikk",
-        "nowiki": "Verla tresliperi og pappfabrikk",
-        "plwiki": "Verla",
-        "ptwiki": "Verla",
-        "rowiki": "Verla",
-        "ruwiki": "Деревоперерабатывающая фабрика Верла",
-        "shwiki": "Verla",
-        "skwiki": "Verla",
-        "svwiki": "Verla träsliperi och pappfabrik",
-        "trwiki": "Verla",
-        "viwiki": "Verla",
-        "xmfwiki": "ვერლა",
-        "zhwiki": "韦尔拉磨木纸板厂"
+      {
+        "type": "item",
+        "value": "Q29966257"
+      }
+    ],
+    "P1566": [
+      {
+        "type": "external",
+        "value": "631914"
+      }
+    ],
+    "P17": [
+      {
+        "type": "item",
+        "value": "Q33"
+      }
+    ],
+    "P18": [
+      {
+        "type": "media",
+        "value": "Verla.JPG"
+      }
+    ],
+    "P2046": [
+      {
+        "type": "quantity",
+        "value": {
+          "amount": "22.778",
+          "unit": "Q35852"
+        }
       },
-      "type": "item"
-    }
+      {
+        "type": "quantity",
+        "value": {
+          "amount": "88.03",
+          "unit": "Q35852"
+        },
+        "qualifiers": {
+          "P518": [
+            {
+              "type": "item",
+              "value": "Q64364418"
+            }
+          ]
+        }
+      }
+    ],
+    "P214": [
+      {
+        "type": "external",
+        "value": "247860056"
+      }
+    ],
+    "P2347": [
+      {
+        "type": "external",
+        "value": "115307"
+      }
+    ],
+    "P2614": [
+      {
+        "type": "item",
+        "value": "Q23038978"
+      }
+    ],
+    "P31": [
+      {
+        "type": "item",
+        "value": "Q83405"
+      },
+      {
+        "type": "item",
+        "value": "Q29969141"
+      },
+      {
+        "type": "item",
+        "value": "Q1569871"
+      }
+    ],
+    "P373": [
+      {
+        "type": "string",
+        "value": "Verla groundwood and board mill"
+      }
+    ],
+    "P3896": [
+      {
+        "type": "geoshape",
+        "value": "Data:Rky/1277 Verlan teollisuusympäristö.map"
+      }
+    ],
+    "P4009": [
+      {
+        "type": "external",
+        "value": "1277"
+      }
+    ],
+    "P5310": [
+      {
+        "type": "external",
+        "value": "201382"
+      }
+    ],
+    "P625": [
+      {
+        "type": "coords",
+        "value": {
+          "latitude": 61.061992,
+          "longitude": 26.640016,
+          "precision": 0.000001,
+          "globe": "Q2"
+        }
+      }
+    ],
+    "P646": [
+      {
+        "type": "external",
+        "value": "/m/0bgk_k"
+      }
+    ],
+    "P6766": [
+      {
+        "type": "external",
+        "value": "1125875527"
+      }
+    ],
+    "P757": [
+      {
+        "type": "external",
+        "value": "751"
+      }
+    ],
+    "P7859": [
+      {
+        "type": "external",
+        "value": "viaf-247860056"
+      }
+    ],
+    "P856": [
+      {
+        "type": "url",
+        "value": "http://www.verla.fi/"
+      }
+    ]
+  },
+  "sitelinks": {
+    "cawiki": "Verla",
+    "cebwiki": "Verla (lungsod)",
+    "commonswiki": "Category:Verla groundwood and board mill",
+    "cswiki": "Verla",
+    "dawiki": "Verla papirmølle",
+    "dewiki": "Verla",
+    "enwiki": "Verla",
+    "eswiki": "Verla",
+    "fiwiki": "Verlan puuhiomo ja pahvitehdas",
+    "frwiki": "Musée de Verla",
+    "hewiki": "ורלה",
+    "hrwiki": "Verla",
+    "huwiki": "Verla ipartörténeti műemlékei",
+    "itwiki": "Verla",
+    "jawiki": "ヴェルラ砕木・板紙工場",
+    "kawiki": "ვერლა",
+    "ltwiki": "Verla",
+    "lvwiki": "Verla",
+    "newiki": "भेर्ला ग्राउण्डवुड र बोर्ड मिल",
+    "nlwiki": "Verla",
+    "nnwiki": "Verla tresliperi og pappfabrikk",
+    "nowiki": "Verla tresliperi og pappfabrikk",
+    "plwiki": "Verla",
+    "ptwiki": "Verla",
+    "rowiki": "Verla",
+    "ruwiki": "Деревоперерабатывающая фабрика Верла",
+    "shwiki": "Verla",
+    "skwiki": "Verla",
+    "svwiki": "Verla träsliperi och pappfabrik",
+    "trwiki": "Verla",
+    "viwiki": "Verla",
+    "xmfwiki": "ვერლა",
+    "zhwiki": "韦尔拉磨木纸板厂"
+  },
+  "type": "item"
+}

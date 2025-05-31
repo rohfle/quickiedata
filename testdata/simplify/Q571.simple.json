@@ -471,37 +471,37 @@
   "claims": {
     "P1014": [
       {
-        "t": "external",
-        "v": "300028051"
+        "type": "external",
+        "value": "300028051"
       }
     ],
     "P1036": [
       {
-        "t": "external",
-        "v": "002"
+        "type": "external",
+        "value": "002"
       }
     ],
     "P10431": [
       {
-        "t": "external",
-        "v": "BOOK"
+        "type": "external",
+        "value": "BOOK"
       }
     ],
     "P1051": [
       {
-        "t": "external",
-        "v": "6451"
+        "type": "external",
+        "value": "6451"
       }
     ],
     "P10674": [
       {
-        "t": "external",
-        "v": "95366",
-        "q": {
+        "type": "external",
+        "value": "95366",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Book"
+              "type": "string",
+              "value": "Book"
             }
           ]
         }
@@ -509,13 +509,13 @@
     ],
     "P10913": [
       {
-        "t": "external",
-        "v": "f5/mt530/9426/504",
-        "q": {
+        "type": "external",
+        "value": "f5/mt530/9426/504",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Books"
+              "type": "string",
+              "value": "Books"
             }
           ]
         }
@@ -523,91 +523,91 @@
     ],
     "P11293": [
       {
-        "t": "external",
-        "v": "1000"
+        "type": "external",
+        "value": "1000"
       }
     ],
     "P11302": [
       {
-        "t": "external",
-        "v": "784"
+        "type": "external",
+        "value": "784"
       }
     ],
     "P11408": [
       {
-        "t": "external",
-        "v": "本"
+        "type": "external",
+        "value": "本"
       }
     ],
     "P1151": [
       {
-        "t": "item",
-        "v": "Q10880143"
+        "type": "item",
+        "value": "Q10880143"
       }
     ],
     "P1225": [
       {
-        "t": "external",
-        "v": "10639916"
+        "type": "external",
+        "value": "10639916"
       }
     ],
     "P1245": [
       {
-        "t": "external",
-        "v": "417"
+        "type": "external",
+        "value": "417"
       }
     ],
     "P1256": [
       {
-        "t": "external",
-        "v": "49M32"
+        "type": "external",
+        "value": "49M32"
       }
     ],
     "P1296": [
       {
-        "t": "external",
-        "v": "0120138"
+        "type": "external",
+        "value": "0120138"
       }
     ],
     "P1343": [
       {
-        "t": "item",
-        "v": "Q602358",
-        "q": {
+        "type": "item",
+        "value": "Q602358",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q24442391"
+              "type": "item",
+              "value": "Q24442391"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q19180675",
-        "q": {
+        "type": "item",
+        "value": "Q19180675",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q24766838"
+              "type": "item",
+              "value": "Q24766838"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q106727050",
-        "q": {
+        "type": "item",
+        "value": "Q106727050",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Books"
+              "type": "string",
+              "value": "Books"
             }
           ],
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2021-05-07T00:00:00Z"
@@ -617,13 +617,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q19219752",
-        "q": {
+        "type": "item",
+        "value": "Q19219752",
+        "qualifiers": {
           "P805": [
             {
-              "t": "item",
-              "v": "Q112771783"
+              "type": "item",
+              "value": "Q112771783"
             }
           ]
         }
@@ -631,117 +631,117 @@
     ],
     "P1368": [
       {
-        "t": "external",
-        "v": "000049771"
+        "type": "external",
+        "value": "000049771"
       }
     ],
     "P1417": [
       {
-        "t": "external",
-        "v": "topic/book-publication"
+        "type": "external",
+        "value": "topic/book-publication"
       }
     ],
     "P1424": [
       {
-        "t": "item",
-        "v": "Q22835068"
+        "type": "item",
+        "value": "Q22835068"
       },
       {
-        "t": "item",
-        "v": "Q47482683"
+        "type": "item",
+        "value": "Q47482683"
       }
     ],
     "P1438": [
       {
-        "t": "external",
-        "v": "12134"
+        "type": "external",
+        "value": "12134"
       }
     ],
     "P1552": [
       {
-        "t": "item",
-        "v": "Q783521"
+        "type": "item",
+        "value": "Q783521"
       },
       {
-        "t": "item",
-        "v": "Q482980"
+        "type": "item",
+        "value": "Q482980"
       },
       {
-        "t": "item",
-        "v": "Q2085381"
+        "type": "item",
+        "value": "Q2085381"
       },
       {
-        "t": "item",
-        "v": "Q1361759"
+        "type": "item",
+        "value": "Q1361759"
       },
       {
-        "t": "item",
-        "v": "Q1361758"
+        "type": "item",
+        "value": "Q1361758"
       },
       {
-        "t": "item",
-        "v": "Q33057"
+        "type": "item",
+        "value": "Q33057"
       },
       {
-        "t": "item",
-        "v": "Q34770"
+        "type": "item",
+        "value": "Q34770"
       },
       {
-        "t": "item",
-        "v": "Q1238720"
+        "type": "item",
+        "value": "Q1238720"
       },
       {
-        "t": "item",
-        "v": "Q2985386"
+        "type": "item",
+        "value": "Q2985386"
       },
       {
-        "t": "item",
-        "v": "Q998555"
+        "type": "item",
+        "value": "Q998555"
       },
       {
-        "t": "item",
-        "v": "Q1607826"
+        "type": "item",
+        "value": "Q1607826"
       },
       {
-        "t": "item",
-        "v": "Q29514511"
+        "type": "item",
+        "value": "Q29514511"
       },
       {
-        "t": "item",
-        "v": "Q759811"
+        "type": "item",
+        "value": "Q759811"
       },
       {
-        "t": "item",
-        "v": "Q772267"
+        "type": "item",
+        "value": "Q772267"
       },
       {
-        "t": "item",
-        "v": "Q18602566"
+        "type": "item",
+        "value": "Q18602566"
       },
       {
-        "t": "item",
-        "v": "Q91783353"
+        "type": "item",
+        "value": "Q91783353"
       },
       {
-        "t": "item",
-        "v": "Q115804545"
+        "type": "item",
+        "value": "Q115804545"
       }
     ],
     "P1617": [
       {
-        "t": "external",
-        "v": "a9aede5d-df86-4664-9800-c325b6bd2f40"
+        "type": "external",
+        "value": "a9aede5d-df86-4664-9800-c325b6bd2f40"
       }
     ],
     "P1709": [
       {
-        "t": "url",
-        "v": "http://dbpedia.org/ontology/Book",
-        "q": {
+        "type": "url",
+        "value": "http://dbpedia.org/ontology/Book",
+        "qualifiers": {
           "P813": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2015-06-11T00:00:00Z"
@@ -750,109 +750,109 @@
           ],
           "P973": [
             {
-              "t": "url",
-              "v": "http://mappings.dbpedia.org/index.php/OntologyClass:Book"
+              "type": "url",
+              "value": "http://mappings.dbpedia.org/index.php/OntologyClass:Book"
             }
           ]
         }
       },
       {
-        "t": "url",
-        "v": "https://schema.org/Book"
+        "type": "url",
+        "value": "https://schema.org/Book"
       },
       {
-        "t": "url",
-        "v": "http://purl.org/ontology/bibo/Book"
+        "type": "url",
+        "value": "http://purl.org/ontology/bibo/Book"
       },
       {
-        "t": "url",
-        "v": "http://purl.org/net/nknouf/ns/bibtex#Book"
+        "type": "url",
+        "value": "http://purl.org/net/nknouf/ns/bibtex#Book"
       },
       {
-        "t": "url",
-        "v": "http://www.ontotext.com/proton/protonext#Book"
+        "type": "url",
+        "value": "http://www.ontotext.com/proton/protonext#Book"
       }
     ],
     "P1889": [
       {
-        "t": "item",
-        "v": "Q3331189",
-        "q": {
+        "type": "item",
+        "value": "Q3331189",
+        "qualifiers": {
           "P1013": [
             {
-              "t": "item",
-              "v": "Q16388"
+              "type": "item",
+              "value": "Q16388"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q47461344"
+        "type": "item",
+        "value": "Q47461344"
       },
       {
-        "t": "item",
-        "v": "Q105763458"
+        "type": "item",
+        "value": "Q105763458"
       },
       {
-        "t": "item",
-        "v": "Q53731850"
+        "type": "item",
+        "value": "Q53731850"
       }
     ],
     "P1963": [
       {
-        "t": "property",
-        "v": "P1823"
+        "type": "property",
+        "value": "P1823"
       },
       {
-        "t": "property",
-        "v": "P1143"
+        "type": "property",
+        "value": "P1143"
       },
       {
-        "t": "property",
-        "v": "P2879"
+        "type": "property",
+        "value": "P2879"
       },
       {
-        "t": "property",
-        "v": "P2969"
+        "type": "property",
+        "value": "P2969"
       },
       {
-        "t": "property",
-        "v": "P3631"
+        "type": "property",
+        "value": "P3631"
       },
       {
-        "t": "property",
-        "v": "P50"
+        "type": "property",
+        "value": "P50"
       },
       {
-        "t": "property",
-        "v": "P1476"
+        "type": "property",
+        "value": "P1476"
       },
       {
-        "t": "property",
-        "v": "P747"
+        "type": "property",
+        "value": "P747"
       },
       {
-        "t": "property",
-        "v": "P407"
+        "type": "property",
+        "value": "P407"
       },
       {
-        "t": "property",
-        "v": "P577"
+        "type": "property",
+        "value": "P577"
       },
       {
-        "t": "property",
-        "v": "P6216"
+        "type": "property",
+        "value": "P6216"
       },
       {
-        "t": "property",
-        "r": "deprecated",
-        "v": "P364",
-        "q": {
+        "type": "property",
+        "rank": "deprecated",
+        "value": "P364",
+        "qualifiers": {
           "P2241": [
             {
-              "t": "item",
-              "v": "Q18644427"
+              "type": "item",
+              "value": "Q18644427"
             }
           ]
         }
@@ -860,39 +860,39 @@
     ],
     "P2184": [
       {
-        "t": "item",
-        "v": "Q15873402"
+        "type": "item",
+        "value": "Q15873402"
       }
     ],
     "P2263": [
       {
-        "t": "external",
-        "v": "1794"
+        "type": "external",
+        "value": "1794"
       }
     ],
     "P227": [
       {
-        "t": "external",
-        "v": "4008570-3"
+        "type": "external",
+        "value": "4008570-3"
       }
     ],
     "P2347": [
       {
-        "t": "external",
-        "v": "156",
-        "q": {
+        "type": "external",
+        "value": "156",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "kirjat"
+              "type": "string",
+              "value": "kirjat"
             },
             {
-              "t": "string",
-              "v": "böcker"
+              "type": "string",
+              "value": "böcker"
             },
             {
-              "t": "string",
-              "v": "books"
+              "type": "string",
+              "value": "books"
             }
           ]
         }
@@ -900,13 +900,13 @@
     ],
     "P244": [
       {
-        "t": "external",
-        "v": "sh85015738",
-        "q": {
+        "type": "external",
+        "value": "sh85015738",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Books"
+              "type": "string",
+              "value": "Books"
             }
           ]
         }
@@ -914,25 +914,25 @@
     ],
     "P2581": [
       {
-        "t": "external",
-        "v": "00012059n"
+        "type": "external",
+        "value": "00012059n"
       }
     ],
     "P2612": [
       {
-        "t": "external",
-        "v": "books"
+        "type": "external",
+        "value": "books"
       }
     ],
     "P268": [
       {
-        "t": "external",
-        "v": "119322951",
-        "q": {
+        "type": "external",
+        "value": "119322951",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Livres"
+              "type": "string",
+              "value": "Livres"
             }
           ]
         }
@@ -940,21 +940,21 @@
     ],
     "P2737": [
       {
-        "t": "item",
-        "v": "Q23766486",
-        "q": {
+        "type": "item",
+        "value": "Q23766486",
+        "qualifiers": {
           "P11260": [
             {
-              "t": "item",
-              "v": "Q128093"
+              "type": "item",
+              "value": "Q128093"
             },
             {
-              "t": "item",
-              "v": "Q106833"
+              "type": "item",
+              "value": "Q106833"
             },
             {
-              "t": "item",
-              "v": "Q53731850"
+              "type": "item",
+              "value": "Q53731850"
             }
           ]
         }
@@ -962,71 +962,71 @@
     ],
     "P279": [
       {
-        "t": "item",
-        "v": "Q340169"
+        "type": "item",
+        "value": "Q340169"
       },
       {
-        "t": "item",
-        "v": "Q49848"
+        "type": "item",
+        "value": "Q49848"
       }
     ],
     "P2888": [
       {
-        "t": "url",
-        "v": "http://purl.org/spar/fabio/Book"
+        "type": "url",
+        "value": "http://purl.org/spar/fabio/Book"
       },
       {
-        "t": "url",
-        "v": "https://citationstyles.org/ontology/type/book"
+        "type": "url",
+        "value": "https://citationstyles.org/ontology/type/book"
       },
       {
-        "t": "url",
-        "v": "http://purl.org/coar/resource_type/c_2f33"
+        "type": "url",
+        "value": "http://purl.org/coar/resource_type/c_2f33"
       },
       {
-        "t": "url",
-        "v": "http://linked.earth/ontology/#book"
+        "type": "url",
+        "value": "http://linked.earth/ontology/#book"
       }
     ],
     "P2959": [
       {
-        "t": "item",
-        "v": "Q52834100"
+        "type": "item",
+        "value": "Q52834100"
       }
     ],
     "P3106": [
       {
-        "t": "external",
-        "v": "books"
+        "type": "external",
+        "value": "books"
       }
     ],
     "P3219": [
       {
-        "t": "external",
-        "v": "livre"
+        "type": "external",
+        "value": "livre"
       }
     ],
     "P3417": [
       {
-        "t": "external",
-        "v": "Books"
+        "type": "external",
+        "value": "Books"
       }
     ],
     "P349": [
       {
-        "t": "external",
-        "v": "00573378"
+        "type": "external",
+        "value": "00573378"
       }
     ],
     "P3553": [
       {
-        "t": "external",
-        "v": "19553713",
-        "q": {
+        "type": "external",
+        "value": "19553713",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "书籍"
+              "type": "string",
+              "value": "书籍"
             }
           ]
         }
@@ -1034,103 +1034,103 @@
     ],
     "P3612": [
       {
-        "t": "external",
-        "v": "sujet/livre"
+        "type": "external",
+        "value": "sujet/livre"
       }
     ],
     "P366": [
       {
-        "t": "item",
-        "v": "Q3523102",
-        "q": {
+        "type": "item",
+        "value": "Q3523102",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q173799",
-        "q": {
+        "type": "item",
+        "value": "Q173799",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q24911979",
-        "q": {
+        "type": "item",
+        "value": "Q24911979",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q8434",
-        "q": {
+        "type": "item",
+        "value": "Q8434",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q843894",
-        "q": {
+        "type": "item",
+        "value": "Q843894",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q34516",
-        "q": {
+        "type": "item",
+        "value": "Q34516",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q208195",
-        "q": {
+        "type": "item",
+        "value": "Q208195",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
       },
       {
-        "t": "item",
-        "v": "Q104482419",
-        "q": {
+        "type": "item",
+        "value": "Q104482419",
+        "qualifiers": {
           "P5102": [
             {
-              "t": "item",
-              "v": "Q110143752"
+              "type": "item",
+              "value": "Q110143752"
             }
           ]
         }
@@ -1138,31 +1138,31 @@
     ],
     "P373": [
       {
-        "t": "string",
-        "v": "Books"
+        "type": "string",
+        "value": "Books"
       }
     ],
     "P3827": [
       {
-        "t": "external",
-        "v": "books"
+        "type": "external",
+        "value": "books"
       }
     ],
     "P3832": [
       {
-        "t": "external",
-        "v": "10321",
-        "q": {
+        "type": "external",
+        "value": "10321",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "book"
+              "type": "string",
+              "value": "book"
             }
           ],
           "P4900": [
             {
-              "t": "item",
-              "v": "Q7189615"
+              "type": "item",
+              "value": "Q7189615"
             }
           ]
         }
@@ -1170,13 +1170,13 @@
     ],
     "P3911": [
       {
-        "t": "external",
-        "v": "13650-3",
-        "q": {
+        "type": "external",
+        "value": "13650-3",
+        "qualifiers": {
           "P4390": [
             {
-              "t": "item",
-              "v": "Q39893449"
+              "type": "item",
+              "value": "Q39893449"
             }
           ]
         }
@@ -1184,31 +1184,31 @@
     ],
     "P3916": [
       {
-        "t": "external",
-        "v": "concept500"
+        "type": "external",
+        "value": "concept500"
       }
     ],
     "P3984": [
       {
-        "t": "external",
-        "v": "books",
-        "q": {
+        "type": "external",
+        "value": "books",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "So many books, so little time"
+              "type": "string",
+              "value": "So many books, so little time"
             }
           ],
           "P407": [
             {
-              "t": "item",
-              "v": "Q1860"
+              "type": "item",
+              "value": "Q1860"
             }
           ],
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2008-01-25T00:00:00Z"
@@ -1220,71 +1220,71 @@
     ],
     "P4167": [
       {
-        "t": "external",
-        "v": "Bøker"
+        "type": "external",
+        "value": "Bøker"
       }
     ],
     "P4212": [
       {
-        "t": "external",
-        "v": "pcrtK3Ric1GReJ"
+        "type": "external",
+        "value": "pcrtK3Ric1GReJ"
       }
     ],
     "P4342": [
       {
-        "t": "external",
-        "v": "bok"
+        "type": "external",
+        "value": "bok"
       }
     ],
     "P486": [
       {
-        "t": "external",
-        "v": "D001877"
+        "type": "external",
+        "value": "D001877"
       }
     ],
     "P487": [
       {
-        "t": "string",
-        "v": "🕮"
+        "type": "string",
+        "value": "🕮"
       },
       {
-        "t": "string",
-        "v": "📚"
+        "type": "string",
+        "value": "📚"
       },
       {
-        "t": "string",
-        "v": "📙"
+        "type": "string",
+        "value": "📙"
       },
       {
-        "t": "string",
-        "v": "📘"
+        "type": "string",
+        "value": "📘"
       },
       {
-        "t": "string",
-        "v": "📗"
+        "type": "string",
+        "value": "📗"
       },
       {
-        "t": "string",
-        "v": "📖"
+        "type": "string",
+        "value": "📖"
       },
       {
-        "t": "string",
-        "v": "📕"
+        "type": "string",
+        "value": "📕"
       }
     ],
     "P5008": [
       {
-        "t": "item",
-        "v": "Q5460604"
+        "type": "item",
+        "value": "Q5460604"
       },
       {
-        "t": "item",
-        "v": "Q6173448",
-        "q": {
+        "type": "item",
+        "value": "Q6173448",
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2022-10-31T00:00:00Z"
@@ -1296,71 +1296,71 @@
     ],
     "P5019": [
       {
-        "t": "external",
-        "v": "buch-30"
+        "type": "external",
+        "value": "buch-30"
       }
     ],
     "P508": [
       {
-        "t": "external",
-        "v": "303"
+        "type": "external",
+        "value": "303"
       }
     ],
     "P5125": [
       {
-        "t": "item",
-        "v": "Q7112569"
+        "type": "item",
+        "value": "Q7112569"
       }
     ],
     "P5247": [
       {
-        "t": "external",
-        "v": "3055-818"
+        "type": "external",
+        "value": "3055-818"
       }
     ],
     "P527": [
       {
-        "t": "item",
-        "v": "Q234460"
+        "type": "item",
+        "value": "Q234460"
       },
       {
-        "t": "item",
-        "v": "Q1980247"
+        "type": "item",
+        "value": "Q1980247"
       }
     ],
     "P5398": [
       {
-        "t": "external",
-        "v": "000000993"
+        "type": "external",
+        "value": "000000993"
       }
     ],
     "P6104": [
       {
-        "t": "item",
-        "v": "Q8487081"
+        "type": "item",
+        "value": "Q8487081"
       }
     ],
     "P6200": [
       {
-        "t": "external",
-        "v": "cq23pdgvyn7t"
+        "type": "external",
+        "value": "cq23pdgvyn7t"
       }
     ],
     "P6404": [
       {
-        "t": "external",
-        "v": "libro",
-        "q": {
+        "type": "external",
+        "value": "libro",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "libro"
+              "type": "string",
+              "value": "libro"
             }
           ],
           "P577": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+2010-01-01T00:00:00Z"
@@ -1370,25 +1370,25 @@
         }
       },
       {
-        "t": "external",
-        "v": "il-libro",
-        "q": {
+        "type": "external",
+        "value": "il-libro",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Il libro"
+              "type": "string",
+              "value": "Il libro"
             }
           ],
           "P2093": [
             {
-              "t": "string",
-              "v": "Marilena Maniaci"
+              "type": "string",
+              "value": "Marilena Maniaci"
             }
           ],
           "P577": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+2010-01-01T00:00:00Z"
@@ -1400,25 +1400,25 @@
     ],
     "P646": [
       {
-        "t": "external",
-        "v": "/m/0bt_c3"
+        "type": "external",
+        "value": "/m/0bt_c3"
       }
     ],
     "P6573": [
       {
-        "t": "external",
-        "v": "Buch"
+        "type": "external",
+        "value": "Buch"
       }
     ],
     "P6706": [
       {
-        "t": "external",
-        "v": "libro",
-        "q": {
+        "type": "external",
+        "value": "libro",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "libro"
+              "type": "string",
+              "value": "libro"
             }
           ]
         }
@@ -1426,13 +1426,13 @@
     ],
     "P691": [
       {
-        "t": "external",
-        "v": "ph114930",
-        "q": {
+        "type": "external",
+        "value": "ph114930",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "knihy"
+              "type": "string",
+              "value": "knihy"
             }
           ]
         }
@@ -1440,91 +1440,91 @@
     ],
     "P7033": [
       {
-        "t": "external",
-        "v": "scot/1916"
+        "type": "external",
+        "value": "scot/1916"
       }
     ],
     "P7497": [
       {
-        "t": "external",
-        "v": "Book"
+        "type": "external",
+        "value": "Book"
       }
     ],
     "P7502": [
       {
-        "t": "external",
-        "v": "Book-XXJK"
+        "type": "external",
+        "value": "Book-XXJK"
       }
     ],
     "P7749": [
       {
-        "t": "external",
-        "v": "13603"
+        "type": "external",
+        "value": "13603"
       }
     ],
     "P7818": [
       {
-        "t": "external",
-        "v": "Livre"
+        "type": "external",
+        "value": "Livre"
       }
     ],
     "P7827": [
       {
-        "t": "external",
-        "v": "Libro"
+        "type": "external",
+        "value": "Libro"
       }
     ],
     "P7829": [
       {
-        "t": "external",
-        "v": "Book"
+        "type": "external",
+        "value": "Book"
       }
     ],
     "P7844": [
       {
-        "t": "external",
-        "v": "T505-1987"
+        "type": "external",
+        "value": "T505-1987"
       }
     ],
     "P8168": [
       {
-        "t": "external",
-        "v": "Q394362"
+        "type": "external",
+        "value": "Q394362"
       }
     ],
     "P8189": [
       {
-        "t": "external",
-        "v": "987007283230005171"
+        "type": "external",
+        "value": "987007283230005171"
       }
     ],
     "P8406": [
       {
-        "t": "external",
-        "v": "T009964"
+        "type": "external",
+        "value": "T009964"
       }
     ],
     "P8408": [
       {
-        "t": "external",
-        "v": "Book"
+        "type": "external",
+        "value": "Book"
       }
     ],
     "P8519": [
       {
-        "t": "external",
-        "v": "62867"
+        "type": "external",
+        "value": "62867"
       }
     ],
     "P8672": [
       {
-        "t": "external",
-        "v": "847519659179954178",
-        "q": {
+        "type": "external",
+        "value": "847519659179954178",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Books"
+              "type": "string",
+              "value": "Books"
             }
           ]
         }
@@ -1532,13 +1532,13 @@
     ],
     "P8703": [
       {
-        "t": "string",
-        "v": "кн.",
-        "q": {
+        "type": "string",
+        "value": "кн.",
+        "qualifiers": {
           "P1535": [
             {
-              "t": "item",
-              "v": "Q19670003"
+              "type": "item",
+              "value": "Q19670003"
             }
           ]
         }
@@ -1546,23 +1546,23 @@
     ],
     "P8814": [
       {
-        "t": "external",
-        "v": "06422547-n"
+        "type": "external",
+        "value": "06422547-n"
       },
       {
-        "t": "external",
-        "v": "02873453-n"
+        "type": "external",
+        "value": "02873453-n"
       }
     ],
     "P8957": [
       {
-        "t": "external",
-        "v": "60010200",
-        "q": {
+        "type": "external",
+        "value": "60010200",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Books"
+              "type": "string",
+              "value": "Books"
             }
           ]
         }
@@ -1570,63 +1570,63 @@
     ],
     "P902": [
       {
-        "t": "external",
-        "v": "010461"
+        "type": "external",
+        "value": "010461"
       }
     ],
     "P9084": [
       {
-        "t": "external",
-        "v": "books-literature"
+        "type": "external",
+        "value": "books-literature"
       }
     ],
     "P910": [
       {
-        "t": "item",
-        "v": "Q5461161"
+        "type": "item",
+        "value": "Q5461161"
       },
       {
-        "t": "item",
-        "v": "Q33098516"
+        "type": "item",
+        "value": "Q33098516"
       }
     ],
     "P9100": [
       {
-        "t": "external",
-        "v": "books"
+        "type": "external",
+        "value": "books"
       }
     ],
     "P9318": [
       {
-        "t": "external",
-        "v": "girji"
+        "type": "external",
+        "value": "girji"
       }
     ],
     "P935": [
       {
-        "t": "string",
-        "v": "Book"
+        "type": "string",
+        "value": "Book"
       }
     ],
     "P9495": [
       {
-        "t": "external",
-        "v": "term/369BC664-6FCF-4AE1-AFD4-EA9CB6642BC8"
+        "type": "external",
+        "value": "term/369BC664-6FCF-4AE1-AFD4-EA9CB6642BC8"
       },
       {
-        "t": "external",
-        "v": "term/5104348c-8c39-4f8e-9505-d18d9700c8fd"
+        "type": "external",
+        "value": "term/5104348c-8c39-4f8e-9505-d18d9700c8fd"
       }
     ],
     "P950": [
       {
-        "t": "external",
-        "v": "XX4576243",
-        "q": {
+        "type": "external",
+        "value": "XX4576243",
+        "qualifiers": {
           "P1810": [
             {
-              "t": "string",
-              "v": "Libros"
+              "type": "string",
+              "value": "Libros"
             }
           ]
         }
@@ -1634,19 +1634,19 @@
     ],
     "P989": [
       {
-        "t": "media",
-        "v": "Nl-Boekdocument.ogg",
-        "q": {
+        "type": "media",
+        "value": "Nl-Boekdocument.ogg",
+        "qualifiers": {
           "P407": [
             {
-              "t": "item",
-              "v": "Q7411"
+              "type": "item",
+              "value": "Q7411"
             }
           ],
           "P5237": [
             {
-              "t": "item",
-              "v": "Q7411"
+              "type": "item",
+              "value": "Q7411"
             }
           ]
         }

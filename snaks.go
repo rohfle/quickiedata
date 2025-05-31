@@ -195,8 +195,8 @@ func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 }
 
 type SimpleSnakValue struct {
-	Type  string      `json:"t"`
-	Value interface{} `json:"v"`
+	Type  string      `json:"type"`
+	Value interface{} `json:"value"`
 }
 
 func (sv *SimpleSnakValue) ValueAsString() *string {
@@ -233,8 +233,8 @@ func (sv *SimpleSnakValue) ValueAsQuantity() *SnakValueQuantity {
 
 func (sv *SimpleSnakValue) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Type  string          `json:"t"`
-		Value json.RawMessage `json:"v"`
+		Type  string          `json:"type"`
+		Value json.RawMessage `json:"value"`
 	}
 	err := json.Unmarshal(data, &peek)
 	if err != nil {

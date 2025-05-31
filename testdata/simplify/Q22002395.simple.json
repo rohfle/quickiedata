@@ -2,8 +2,8 @@
   "claims": {
     "P1104": [
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "144",
           "upperbound": "145",
           "lowerbound": "143"
@@ -12,34 +12,34 @@
     ],
     "P123": [
       {
-        "t": "item",
-        "v": "Q2448947"
+        "type": "item",
+        "value": "Q2448947"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q571"
+        "type": "item",
+        "value": "Q571"
       }
     ],
     "P364": [
       {
-        "t": "item",
-        "v": "Q188"
+        "type": "item",
+        "value": "Q188"
       }
     ],
     "P50": [
       {
-        "t": "item",
-        "v": "Q1128109"
+        "type": "item",
+        "value": "Q1128109"
       },
       {
-        "t": "item",
-        "v": "Q1181545"
+        "type": "item",
+        "value": "Q1181545"
       },
       {
-        "t": "item",
-        "v": "Q1747747"
+        "type": "item",
+        "value": "Q1747747"
       }
     ]
   },

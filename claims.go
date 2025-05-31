@@ -15,18 +15,18 @@ type Claim struct {
 }
 
 type SimpleClaim struct {
-	Type       string                        `json:"t,omitempty"`
-	Rank       string                        `json:"r,omitempty"`
-	Value      interface{}                   `json:"v,omitempty"`
-	Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
+	Type       string                        `json:"type,omitempty"`
+	Rank       string                        `json:"rank,omitempty"`
+	Value      interface{}                   `json:"value,omitempty"`
+	Qualifiers map[string][]*SimpleSnakValue `json:"qualifiers,omitempty"`
 }
 
 func (sc *SimpleClaim) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Type       string                        `json:"t,omitempty"`
-		Rank       string                        `json:"r,omitempty"`
-		Value      json.RawMessage               `json:"v,omitempty"`
-		Qualifiers map[string][]*SimpleSnakValue `json:"q,omitempty"`
+		Type       string                        `json:"type,omitempty"`
+		Rank       string                        `json:"rank,omitempty"`
+		Value      json.RawMessage               `json:"value,omitempty"`
+		Qualifiers map[string][]*SimpleSnakValue `json:"qualifiers,omitempty"`
 	}
 
 	err := json.Unmarshal(data, &peek)

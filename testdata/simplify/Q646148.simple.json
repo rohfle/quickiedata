@@ -39,145 +39,145 @@
   "claims": {
     "P102": [
       {
-        "t": "item",
-        "v": "Q217321"
+        "type": "item",
+        "value": "Q217321"
       }
     ],
     "P106": [
       {
-        "t": "item",
-        "v": "Q193391"
+        "type": "item",
+        "value": "Q193391"
       },
       {
-        "t": "item",
-        "v": "Q82955"
+        "type": "item",
+        "value": "Q82955"
       }
     ],
     "P1412": [
       {
-        "t": "item",
-        "v": "Q9035"
+        "type": "item",
+        "value": "Q9035"
       }
     ],
     "P1559": [
       {
-        "t": "string",
-        "v": "Henning Christophersen"
+        "type": "string",
+        "value": "Henning Christophersen"
       }
     ],
     "P166": [
       {
-        "t": "item",
-        "v": "Q1890947"
+        "type": "item",
+        "value": "Q1890947"
       },
       {
-        "t": "item",
-        "v": "Q28100916"
+        "type": "item",
+        "value": "Q28100916"
       },
       {
-        "t": "item",
-        "v": "Q20899901"
+        "type": "item",
+        "value": "Q20899901"
       },
       {
-        "t": "item",
-        "v": "Q12192290"
+        "type": "item",
+        "value": "Q12192290"
       },
       {
-        "t": "item",
-        "v": "Q13422142"
+        "type": "item",
+        "value": "Q13422142"
       }
     ],
     "P1749": [
       {
-        "t": "external",
-        "v": "vi2globs34zv"
+        "type": "external",
+        "value": "vi2globs34zv"
       }
     ],
     "P19": [
       {
-        "t": "item",
-        "v": "Q1748"
+        "type": "item",
+        "value": "Q1748"
       }
     ],
     "P20": [
       {
-        "t": "item",
-        "v": "Q240"
+        "type": "item",
+        "value": "Q240"
       }
     ],
     "P21": [
       {
-        "t": "item",
-        "v": "Q6581097"
+        "type": "item",
+        "value": "Q6581097"
       }
     ],
     "P213": [
       {
-        "t": "external",
-        "v": "0000 0003 8162 2081"
+        "type": "external",
+        "value": "0000 0003 8162 2081"
       }
     ],
     "P214": [
       {
-        "t": "external",
-        "v": "262215362"
+        "type": "external",
+        "value": "262215362"
       }
     ],
     "P227": [
       {
-        "t": "external",
-        "v": "170105202"
+        "type": "external",
+        "value": "170105202"
       }
     ],
     "P244": [
       {
-        "t": "external",
-        "v": "no98066422"
+        "type": "external",
+        "value": "no98066422"
       }
     ],
     "P269": [
       {
-        "t": "external",
-        "v": "091296862"
+        "type": "external",
+        "value": "091296862"
       }
     ],
     "P27": [
       {
-        "t": "item",
-        "v": "Q35"
+        "type": "item",
+        "value": "Q35"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q5"
+        "type": "item",
+        "value": "Q5"
       }
     ],
     "P39": [
       {
-        "t": "item",
-        "v": "Q5449541"
+        "type": "item",
+        "value": "Q5449541"
       },
       {
-        "t": "item",
-        "v": "Q6866144",
-        "q": {
+        "type": "item",
+        "value": "Q6866144",
+        "qualifiers": {
           "P1365": [
             {
-              "t": "item",
-              "v": "Q312881"
+              "type": "item",
+              "value": "Q312881"
             }
           ],
           "P1366": [
             {
-              "t": "item",
-              "v": "Q323762"
+              "type": "item",
+              "value": "Q323762"
             }
           ],
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1978-08-30T00:00:00Z"
@@ -186,8 +186,8 @@
           ],
           "P582": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1979-10-26T00:00:00Z"
@@ -199,8 +199,8 @@
     ],
     "P569": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985727",
           "precision": 11,
           "time": "+1939-11-08T00:00:00Z"
@@ -209,8 +209,8 @@
     ],
     "P570": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985727",
           "precision": 11,
           "time": "+2016-12-31T00:00:00Z"
@@ -219,14 +219,14 @@
     ],
     "P646": [
       {
-        "t": "external",
-        "v": "/m/05vhp2"
+        "type": "external",
+        "value": "/m/05vhp2"
       }
     ],
     "P735": [
       {
-        "t": "item",
-        "v": "Q18607880"
+        "type": "item",
+        "value": "Q18607880"
       }
     ]
   },

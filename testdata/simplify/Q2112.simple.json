@@ -137,24 +137,24 @@
   "claims": {
     "P1036": [
       {
-        "t": "string",
-        "v": "2--435655"
+        "type": "string",
+        "value": "2--435655"
       }
     ],
     "P1082": [
       {
-        "t": "quantity",
-        "r": "preferred",
-        "v": {
+        "type": "quantity",
+        "rank": "preferred",
+        "value": {
           "amount": "329327",
           "upperbound": "329327",
           "lowerbound": "329327"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2014-12-31T00:00:00Z"
@@ -164,17 +164,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "328864",
           "upperbound": "328864",
           "lowerbound": "328864"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2013-12-31T00:00:00Z"
@@ -184,17 +184,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "328314",
           "upperbound": "328314",
           "lowerbound": "328314"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2012-12-31T00:00:00Z"
@@ -204,17 +204,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "327199",
           "upperbound": "327199",
           "lowerbound": "327199"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2011-12-31T00:00:00Z"
@@ -224,17 +224,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "323270",
           "upperbound": "323270",
           "lowerbound": "323270"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2010-12-31T00:00:00Z"
@@ -244,17 +244,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "321758",
           "upperbound": "321758",
           "lowerbound": "321758"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+2000-12-31T00:00:00Z"
@@ -264,17 +264,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "319037",
           "upperbound": "319037",
           "lowerbound": "319037"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1990-12-31T00:00:00Z"
@@ -284,17 +284,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "312708",
           "upperbound": "312708",
           "lowerbound": "312708"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1980-12-31T00:00:00Z"
@@ -304,17 +304,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "169134",
           "upperbound": "169134",
           "lowerbound": "169134"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1970-12-31T00:00:00Z"
@@ -324,17 +324,17 @@
         }
       },
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "175076",
           "upperbound": "175076",
           "lowerbound": "175076"
         },
-        "q": {
+        "qualifiers": {
           "P585": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 11,
                 "time": "+1960-12-31T00:00:00Z"
@@ -346,14 +346,14 @@
     ],
     "P123456789": [
       {
-        "t": "property",
-        "v": "P207614"
+        "type": "property",
+        "value": "P207614"
       }
     ],
     "P1249": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985786",
           "precision": 9,
           "time": "+1214-01-01T00:00:00Z"
@@ -362,119 +362,119 @@
     ],
     "P1281": [
       {
-        "t": "external",
-        "v": "638806"
+        "type": "external",
+        "value": "638806"
       }
     ],
     "P131": [
       {
-        "t": "item",
-        "v": "Q7923"
+        "type": "item",
+        "value": "Q7923"
       }
     ],
     "P1456": [
       {
-        "t": "item",
-        "v": "Q1831146"
+        "type": "item",
+        "value": "Q1831146"
       }
     ],
     "P1464": [
       {
-        "t": "item",
-        "v": "Q8046295"
+        "type": "item",
+        "value": "Q8046295"
       }
     ],
     "P1465": [
       {
-        "t": "item",
-        "v": "Q15080547"
+        "type": "item",
+        "value": "Q15080547"
       }
     ],
     "P150": [
       {
-        "t": "item",
-        "v": "Q630083"
+        "type": "item",
+        "value": "Q630083"
       },
       {
-        "t": "item",
-        "v": "Q884493"
+        "type": "item",
+        "value": "Q884493"
       },
       {
-        "t": "item",
-        "v": "Q1490832"
+        "type": "item",
+        "value": "Q1490832"
       },
       {
-        "t": "item",
-        "v": "Q1593495"
+        "type": "item",
+        "value": "Q1593495"
       },
       {
-        "t": "item",
-        "v": "Q1715175"
+        "type": "item",
+        "value": "Q1715175"
       },
       {
-        "t": "item",
-        "v": "Q857314"
+        "type": "item",
+        "value": "Q857314"
       },
       {
-        "t": "item",
-        "v": "Q2235530"
+        "type": "item",
+        "value": "Q2235530"
       },
       {
-        "t": "item",
-        "v": "Q1457938"
+        "type": "item",
+        "value": "Q1457938"
       },
       {
-        "t": "item",
-        "v": "Q2271193"
+        "type": "item",
+        "value": "Q2271193"
       },
       {
-        "t": "item",
-        "v": "Q2348419"
+        "type": "item",
+        "value": "Q2348419"
       }
     ],
     "P1566": [
       {
-        "t": "external",
-        "v": "2949186"
+        "type": "external",
+        "value": "2949186"
       }
     ],
     "P17": [
       {
-        "t": "item",
-        "v": "Q183"
+        "type": "item",
+        "value": "Q183"
       }
     ],
     "P1792": [
       {
-        "t": "item",
-        "v": "Q6957433"
+        "type": "item",
+        "value": "Q6957433"
       }
     ],
     "P18": [
       {
-        "t": "media",
-        "v": "Bielefeld City.jpg"
+        "type": "media",
+        "value": "Bielefeld City.jpg"
       }
     ],
     "P1842": [
       {
-        "t": "external",
-        "v": "Bielefeld (Nordrhein-Westfalen, Germany)"
+        "type": "external",
+        "value": "Bielefeld (Nordrhein-Westfalen, Germany)"
       }
     ],
     "P190": [
       {
-        "t": "item",
-        "v": "Q207614"
+        "type": "item",
+        "value": "Q207614"
       },
       {
-        "t": "item",
-        "v": "Q474605",
-        "q": {
+        "type": "item",
+        "value": "Q474605",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1953-01-01T00:00:00Z"
@@ -484,13 +484,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q990109",
-        "q": {
+        "type": "item",
+        "value": "Q990109",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1958-01-01T00:00:00Z"
@@ -500,13 +500,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q17393",
-        "q": {
+        "type": "item",
+        "value": "Q17393",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1973-01-01T00:00:00Z"
@@ -516,13 +516,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q167749",
-        "q": {
+        "type": "item",
+        "value": "Q167749",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1980-01-01T00:00:00Z"
@@ -532,13 +532,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q2235",
-        "q": {
+        "type": "item",
+        "value": "Q2235",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1987-01-01T00:00:00Z"
@@ -548,13 +548,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q598",
-        "q": {
+        "type": "item",
+        "value": "Q598",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1991-01-01T00:00:00Z"
@@ -564,13 +564,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q1007634",
-        "q": {
+        "type": "item",
+        "value": "Q1007634",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1995-01-01T00:00:00Z"
@@ -582,14 +582,14 @@
     ],
     "P1997": [
       {
-        "t": "string",
-        "v": "110710585624249"
+        "type": "string",
+        "value": "110710585624249"
       }
     ],
     "P2044": [
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "118",
           "unit": "Q11573",
           "upperbound": "119",
@@ -599,8 +599,8 @@
     ],
     "P2046": [
       {
-        "t": "quantity",
-        "v": {
+        "type": "quantity",
+        "value": {
           "amount": "258.82",
           "unit": "Q712226",
           "upperbound": "258.83",
@@ -610,198 +610,198 @@
     ],
     "P214": [
       {
-        "t": "external",
-        "v": "312796170"
+        "type": "external",
+        "value": "312796170"
       }
     ],
     "P227": [
       {
-        "t": "external",
-        "v": "4006510-8"
+        "type": "external",
+        "value": "4006510-8"
       }
     ],
     "P242": [
       {
-        "t": "media",
-        "v": "North rhine w BI.svg"
+        "type": "media",
+        "value": "North rhine w BI.svg"
       }
     ],
     "P244": [
       {
-        "t": "external",
-        "v": "n79145551"
+        "type": "external",
+        "value": "n79145551"
       }
     ],
     "P268": [
       {
-        "t": "external",
-        "v": "119717772"
+        "type": "external",
+        "value": "119717772"
       }
     ],
     "P281": [
       {
-        "t": "string",
-        "v": "33501"
+        "type": "string",
+        "value": "33501"
       },
       {
-        "t": "string",
-        "v": "33602"
+        "type": "string",
+        "value": "33602"
       },
       {
-        "t": "string",
-        "v": "33604"
+        "type": "string",
+        "value": "33604"
       },
       {
-        "t": "string",
-        "v": "33605"
+        "type": "string",
+        "value": "33605"
       },
       {
-        "t": "string",
-        "v": "33607"
+        "type": "string",
+        "value": "33607"
       },
       {
-        "t": "string",
-        "v": "33609"
+        "type": "string",
+        "value": "33609"
       },
       {
-        "t": "string",
-        "v": "33611"
+        "type": "string",
+        "value": "33611"
       },
       {
-        "t": "string",
-        "v": "33613"
+        "type": "string",
+        "value": "33613"
       },
       {
-        "t": "string",
-        "v": "33615"
+        "type": "string",
+        "value": "33615"
       },
       {
-        "t": "string",
-        "v": "33617"
+        "type": "string",
+        "value": "33617"
       },
       {
-        "t": "string",
-        "v": "33619"
+        "type": "string",
+        "value": "33619"
       },
       {
-        "t": "string",
-        "v": "33647"
+        "type": "string",
+        "value": "33647"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q22865"
+        "type": "item",
+        "value": "Q22865"
       },
       {
-        "t": "item",
-        "v": "Q262166"
+        "type": "item",
+        "value": "Q262166"
       },
       {
-        "t": "item",
-        "v": "Q1549591"
+        "type": "item",
+        "value": "Q1549591"
       },
       {
-        "t": "item",
-        "v": "Q1187811"
+        "type": "item",
+        "value": "Q1187811"
       }
     ],
     "P373": [
       {
-        "t": "string",
-        "v": "Bielefeld"
+        "type": "string",
+        "value": "Bielefeld"
       }
     ],
     "P395": [
       {
-        "t": "string",
-        "v": "BI"
+        "type": "string",
+        "value": "BI"
       }
     ],
     "P421": [
       {
-        "t": "item",
-        "v": "Q6655"
+        "type": "item",
+        "value": "Q6655"
       }
     ],
     "P439": [
       {
-        "t": "external",
-        "v": "05711000"
+        "type": "external",
+        "value": "05711000"
       }
     ],
     "P443": [
       {
-        "t": "media",
-        "v": "De-Bielefeld.ogg"
+        "type": "media",
+        "value": "De-Bielefeld.ogg"
       }
     ],
     "P47": [
       {
-        "t": "item",
-        "v": "Q6234"
+        "type": "item",
+        "value": "Q6234"
       },
       {
-        "t": "item",
-        "v": "Q6230"
+        "type": "item",
+        "value": "Q6230"
       },
       {
-        "t": "item",
-        "v": "Q6218"
+        "type": "item",
+        "value": "Q6218"
       },
       {
-        "t": "item",
-        "v": "Q3771"
+        "type": "item",
+        "value": "Q3771"
       },
       {
-        "t": "item",
-        "v": "Q225375"
+        "type": "item",
+        "value": "Q225375"
       },
       {
-        "t": "item",
-        "v": "Q225432"
+        "type": "item",
+        "value": "Q225432"
       }
     ],
     "P473": [
       {
-        "t": "string",
-        "v": "05203"
+        "type": "string",
+        "value": "05203"
       },
       {
-        "t": "string",
-        "v": "05208"
+        "type": "string",
+        "value": "05208"
       },
       {
-        "t": "string",
-        "v": "05202"
+        "type": "string",
+        "value": "05202"
       },
       {
-        "t": "string",
-        "v": "05205"
+        "type": "string",
+        "value": "05205"
       },
       {
-        "t": "string",
-        "v": "05206"
+        "type": "string",
+        "value": "05206"
       },
       {
-        "t": "string",
-        "v": "05209"
+        "type": "string",
+        "value": "05209"
       },
       {
-        "t": "string",
-        "v": "0521"
+        "type": "string",
+        "value": "0521"
       }
     ],
     "P6": [
       {
-        "t": "item",
-        "r": "preferred",
-        "v": "Q2097128",
-        "q": {
+        "type": "item",
+        "rank": "preferred",
+        "value": "Q2097128",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+2009-01-01T00:00:00Z"
@@ -811,13 +811,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q1278930",
-        "q": {
+        "type": "item",
+        "value": "Q1278930",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1999-01-01T00:00:00Z"
@@ -826,8 +826,8 @@
           ],
           "P582": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+2009-01-01T00:00:00Z"
@@ -837,13 +837,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q534246",
-        "q": {
+        "type": "item",
+        "value": "Q534246",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1994-01-01T00:00:00Z"
@@ -852,8 +852,8 @@
           ],
           "P582": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1999-01-01T00:00:00Z"
@@ -863,13 +863,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q1460066",
-        "q": {
+        "type": "item",
+        "value": "Q1460066",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1975-01-01T00:00:00Z"
@@ -878,8 +878,8 @@
           ],
           "P582": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1989-01-01T00:00:00Z"
@@ -889,13 +889,13 @@
         }
       },
       {
-        "t": "item",
-        "v": "Q1278930",
-        "q": {
+        "type": "item",
+        "value": "Q1278930",
+        "qualifiers": {
           "P580": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1989-01-01T00:00:00Z"
@@ -904,8 +904,8 @@
           ],
           "P582": [
             {
-              "t": "time",
-              "v": {
+              "type": "time",
+              "value": {
                 "calendarmodel": "Q1985727",
                 "precision": 9,
                 "time": "+1994-01-01T00:00:00Z"
@@ -917,14 +917,14 @@
     ],
     "P605": [
       {
-        "t": "external",
-        "v": "DEA41"
+        "type": "external",
+        "value": "DEA41"
       }
     ],
     "P625": [
       {
-        "t": "coords",
-        "v": {
+        "type": "coords",
+        "value": {
           "latitude": 52.016666666667,
           "longitude": 8.5166666666667,
           "precision": 0.016666666666667,
@@ -934,66 +934,66 @@
     ],
     "P646": [
       {
-        "t": "external",
-        "v": "/m/018m98"
+        "type": "external",
+        "value": "/m/018m98"
       }
     ],
     "P706": [
       {
-        "t": "item",
-        "v": "Q677337"
+        "type": "item",
+        "value": "Q677337"
       },
       {
-        "t": "item",
-        "v": "Q109773"
+        "type": "item",
+        "value": "Q109773"
       }
     ],
     "P856": [
       {
-        "t": "url",
-        "v": "http://www.bielefeld.de/"
+        "type": "url",
+        "value": "http://www.bielefeld.de/"
       }
     ],
     "P910": [
       {
-        "t": "item",
-        "v": "Q8299342"
+        "type": "item",
+        "value": "Q8299342"
       }
     ],
     "P935": [
       {
-        "t": "string",
-        "v": "Bielefeld"
+        "type": "string",
+        "value": "Bielefeld"
       }
     ],
     "P94": [
       {
-        "t": "media",
-        "v": "DEU Bielefeld COA.svg"
+        "type": "media",
+        "value": "DEU Bielefeld COA.svg"
       }
     ],
     "P948": [
       {
-        "t": "media",
-        "v": "Bielefeld City.jpg"
+        "type": "media",
+        "value": "Bielefeld City.jpg"
       }
     ],
     "P949": [
       {
-        "t": "external",
-        "v": "000977673"
+        "type": "external",
+        "value": "000977673"
       }
     ],
     "P982": [
       {
-        "t": "external",
-        "v": "dbdd7aff-9bf5-4084-98c3-722f27d7bb4d"
+        "type": "external",
+        "value": "dbdd7aff-9bf5-4084-98c3-722f27d7bb4d"
       }
     ],
     "P998": [
       {
-        "t": "external",
-        "v": "Regional/Europe/Germany/States/North_Rhine-Westphalia/Localities/Bielefeld/"
+        "type": "external",
+        "value": "Regional/Europe/Germany/States/North_Rhine-Westphalia/Localities/Bielefeld/"
       }
     ]
   },

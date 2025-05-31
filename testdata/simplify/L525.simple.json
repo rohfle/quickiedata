@@ -14,8 +14,8 @@
       "claims": {
         "P443": [
           {
-            "t": "media",
-            "v": "LL-Q150 (fra)-0x010C-maisons.wav"
+            "type": "media",
+            "value": "LL-Q150 (fra)-0x010C-maisons.wav"
           }
         ]
       },
@@ -31,8 +31,8 @@
       "claims": {
         "P443": [
           {
-            "t": "media",
-            "v": "LL-Q150 (fra)-0x010C-maison.wav"
+            "type": "media",
+            "value": "LL-Q150 (fra)-0x010C-maison.wav"
           }
         ]
       },
@@ -47,22 +47,22 @@
       "claims": {
         "P5137": [
           {
-            "t": "item",
-            "v": "Q3947"
+            "type": "item",
+            "value": "Q3947"
           }
         ],
         "P5972": [
           {
-            "t": "sense",
-            "v": "L41768-S2"
+            "type": "sense",
+            "value": "L41768-S2"
           },
           {
-            "t": "sense",
-            "v": "L267790-S1"
+            "type": "sense",
+            "value": "L267790-S1"
           },
           {
-            "t": "sense",
-            "v": "L220794-S1"
+            "type": "sense",
+            "value": "L220794-S1"
           }
         ]
       },

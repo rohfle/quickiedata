@@ -19,58 +19,58 @@
   "claims": {
     "P123": [
       {
-        "t": "item",
-        "v": "Q744182"
+        "type": "item",
+        "value": "Q744182"
       }
     ],
     "P136": [
       {
-        "t": "item",
-        "v": "Q12132683"
+        "type": "item",
+        "value": "Q12132683"
       },
       {
-        "t": "item",
-        "v": "Q16681629"
+        "type": "item",
+        "value": "Q16681629"
       }
     ],
     "P212": [
       {
-        "t": "string",
-        "v": "978-0-345-40502-9"
+        "type": "string",
+        "value": "978-0-345-40502-9"
       },
       {
-        "t": "string",
-        "v": "978-84-270-1284-4"
+        "type": "string",
+        "value": "978-84-270-1284-4"
       }
     ],
     "P243": [
       {
-        "t": "string",
-        "v": "38014790"
+        "type": "string",
+        "value": "38014790"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q571"
+        "type": "item",
+        "value": "Q571"
       }
     ],
     "P364": [
       {
-        "t": "item",
-        "v": "Q1860"
+        "type": "item",
+        "value": "Q1860"
       }
     ],
     "P50": [
       {
-        "t": "item",
-        "v": "Q947986"
+        "type": "item",
+        "value": "Q947986"
       }
     ],
     "P577": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985727",
           "precision": 9,
           "time": "+1953-01-01T00:00:00Z"
@@ -79,12 +79,12 @@
     ],
     "P921": [
       {
-        "t": "item",
-        "v": "Q8676"
+        "type": "item",
+        "value": "Q8676"
       },
       {
-        "t": "item",
-        "v": "Q253732"
+        "type": "item",
+        "value": "Q253732"
       }
     ]
   },

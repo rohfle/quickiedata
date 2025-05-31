@@ -5,33 +5,33 @@
   "claims": {
     "P135": [
       {
-        "t": "item",
-        "r": "preferred",
-        "v": "Q2044250"
+        "type": "item",
+        "rank": "preferred",
+        "value": "Q2044250"
       },
       {
-        "t": "item",
-        "v": "Q5843"
+        "type": "item",
+        "value": "Q5843"
       },
       {
-        "t": "item",
-        "r": "deprecated",
-        "v": "Q213454"
+        "type": "item",
+        "rank": "deprecated",
+        "value": "Q213454"
       }
     ],
     "P569": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985786",
           "precision": 9,
           "time": "+1291-01-01T00:00:00Z"
         }
       },
       {
-        "t": "time",
-        "r": "deprecated",
-        "v": {
+        "type": "time",
+        "rank": "deprecated",
+        "value": {
           "calendarmodel": "Q1985786",
           "precision": 9,
           "time": "+0512-01-01T00:00:00Z"
@@ -40,8 +40,8 @@
     ],
     "P6604": [
       {
-        "t": "musical",
-        "v": "\\relative { c d e f g e }"
+        "type": "musical",
+        "value": "\\relative { c d e f g e }"
       }
     ]
   },

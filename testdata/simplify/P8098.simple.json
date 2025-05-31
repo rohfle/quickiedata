@@ -1,339 +1,339 @@
- {
-      "datatype": "external-id",
-      "labels": {
-        "ca": "identificador Biographical Dictionary of Architects in Canada",
-        "dag": "Biographical Dictionary of Architects in Canada 1800-1950 ID",
-        "en": "Biographical Dictionary of Architects in Canada 1800-1950 ID",
-        "fr": "identifiant Biographical Dictionary of Architects in Canada",
-        "it": "identificativo Biographical Dictionary of Architects in Canada",
-        "nl": "Biographical Dictionary of Architects in Canada-identificatiecode"
+{
+  "datatype": "external-id",
+  "labels": {
+    "ca": "identificador Biographical Dictionary of Architects in Canada",
+    "dag": "Biographical Dictionary of Architects in Canada 1800-1950 ID",
+    "en": "Biographical Dictionary of Architects in Canada 1800-1950 ID",
+    "fr": "identifiant Biographical Dictionary of Architects in Canada",
+    "it": "identificativo Biographical Dictionary of Architects in Canada",
+    "nl": "Biographical Dictionary of Architects in Canada-identificatiecode"
+  },
+  "descriptions": {
+    "en": "identifier for an architect in the Biographical Dictionary of Architects in Canada website",
+    "fr": "identifiant d'un architecte dans le Biographical Dictionary of Architects in Canada"
+  },
+  "aliases": {
+    "en": [
+      "BDAC ID",
+      "Biographical Dictionary of Architects in Canada ID"
+    ],
+    "fr": [
+      "identifiant BDAC",
+      "BDAC ID"
+    ],
+    "it": [
+      "identificativo BDAC"
+    ]
+  },
+  "claims": {
+    "P1629": [
+      {
+        "type": "item",
+        "value": "Q89220992"
+      }
+    ],
+    "P1630": [
+      {
+        "type": "string",
+        "value": "http://dictionaryofarchitectsincanada.org/node/$1",
+        "qualifiers": {
+          "P1476": [
+            {
+              "type": "string",
+              "value": ""
+            }
+          ],
+          "P407": [
+            {
+              "type": "item",
+              "value": "Q1860"
+            }
+          ]
+        }
+      }
+    ],
+    "P17": [
+      {
+        "type": "item",
+        "value": "Q16"
+      }
+    ],
+    "P1793": [
+      {
+        "type": "string",
+        "value": "\\d{1,4}"
+      }
+    ],
+    "P1855": [
+      {
+        "type": "item",
+        "value": "Q2958277",
+        "qualifiers": {
+          "P8098": [
+            {
+              "type": "external",
+              "value": "1654"
+            }
+          ]
+        }
       },
-      "descriptions": {
-        "en": "identifier for an architect in the Biographical Dictionary of Architects in Canada website",
-        "fr": "identifiant d'un architecte dans le Biographical Dictionary of Architects in Canada"
+      {
+        "type": "item",
+        "value": "Q3056906",
+        "qualifiers": {
+          "P8098": [
+            {
+              "type": "external",
+              "value": "1624"
+            }
+          ]
+        }
       },
-      "aliases": {
-        "en": [
-          "BDAC ID",
-          "Biographical Dictionary of Architects in Canada ID"
-        ],
-        "fr": [
-          "identifiant BDAC",
-          "BDAC ID"
-        ],
-        "it": [
-          "identificativo BDAC"
-        ]
+      {
+        "type": "item",
+        "value": "Q27178148",
+        "qualifiers": {
+          "P8098": [
+            {
+              "type": "external",
+              "value": "2364"
+            }
+          ]
+        }
       },
-      "claims": {
-        "P1629": [
-          {
-            "t": "item",
-            "v": "Q89220992"
-          }
-        ],
-        "P1630": [
-          {
-            "t": "string",
-            "v": "http://dictionaryofarchitectsincanada.org/node/$1",
-            "q": {
-              "P1476": [
-                {
-                  "t": "string",
-                  "v": ""
-                }
-              ],
-              "P407": [
-                {
-                  "t": "item",
-                  "v": "Q1860"
-                }
-              ]
+      {
+        "type": "item",
+        "value": "Q5498584",
+        "qualifiers": {
+          "P8098": [
+            {
+              "type": "external",
+              "value": "1419"
             }
-          }
-        ],
-        "P17": [
-          {
-            "t": "item",
-            "v": "Q16"
-          }
-        ],
-        "P1793": [
-          {
-            "t": "string",
-            "v": "\\d{1,4}"
-          }
-        ],
-        "P1855": [
-          {
-            "t": "item",
-            "v": "Q2958277",
-            "q": {
-              "P8098": [
-                {
-                  "t": "external",
-                  "v": "1654"
-                }
-              ]
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q7789839",
+        "qualifiers": {
+          "P8098": [
+            {
+              "type": "external",
+              "value": "1578"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q3056906",
-            "q": {
-              "P8098": [
-                {
-                  "t": "external",
-                  "v": "1624"
-                }
-              ]
+          ]
+        }
+      }
+    ],
+    "P1896": [
+      {
+        "type": "url",
+        "value": "http://dictionaryofarchitectsincanada.org/introduction"
+      }
+    ],
+    "P2264": [
+      {
+        "type": "external",
+        "value": "3470",
+        "qualifiers": {
+          "P1552": [
+            {
+              "type": "item",
+              "value": "Q116480204"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q27178148",
-            "q": {
-              "P8098": [
-                {
-                  "t": "external",
-                  "v": "2364"
-                }
-              ]
+          ],
+          "P1810": [
+            {
+              "type": "string",
+              "value": "BDAC"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q5498584",
-            "q": {
-              "P8098": [
-                {
-                  "t": "external",
-                  "v": "1419"
-                }
-              ]
+          ],
+          "P8555": [
+            {
+              "type": "time",
+              "value": {
+                "calendarmodel": "Q1985727",
+                "precision": 11,
+                "time": "+2020-04-02T00:00:00Z"
+              }
             }
-          },
-          {
-            "t": "item",
-            "v": "Q7789839",
-            "q": {
-              "P8098": [
-                {
-                  "t": "external",
-                  "v": "1578"
-                }
-              ]
+          ]
+        }
+      }
+    ],
+    "P2302": [
+      {
+        "type": "item",
+        "value": "Q21502404",
+        "qualifiers": {
+          "P1793": [
+            {
+              "type": "string",
+              "value": "\\d{1,4}"
             }
-          }
-        ],
-        "P1896": [
-          {
-            "t": "url",
-            "v": "http://dictionaryofarchitectsincanada.org/introduction"
-          }
-        ],
-        "P2264": [
-          {
-            "t": "external",
-            "v": "3470",
-            "q": {
-              "P1552": [
-                {
-                  "t": "item",
-                  "v": "Q116480204"
-                }
-              ],
-              "P1810": [
-                {
-                  "t": "string",
-                  "v": "BDAC"
-                }
-              ],
-              "P8555": [
-                {
-                  "t": "time",
-                  "v": {
-                    "calendarmodel": "Q1985727",
-                    "precision": 11,
-                    "time": "+2020-04-02T00:00:00Z"
-                  }
-                }
-              ]
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q21502410",
+        "qualifiers": {
+          "P2316": [
+            {
+              "type": "item",
+              "value": "Q21502408"
             }
-          }
-        ],
-        "P2302": [
-          {
-            "t": "item",
-            "v": "Q21502404",
-            "q": {
-              "P1793": [
-                {
-                  "t": "string",
-                  "v": "\\d{1,4}"
-                }
-              ]
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q19474404"
+      },
+      {
+        "type": "item",
+        "value": "Q21503250",
+        "qualifiers": {
+          "P2308": [
+            {
+              "type": "item",
+              "value": "Q5"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q21502410",
-            "q": {
-              "P2316": [
-                {
-                  "t": "item",
-                  "v": "Q21502408"
-                }
-              ]
+          ],
+          "P2309": [
+            {
+              "type": "item",
+              "value": "Q21503252"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q19474404"
-          },
-          {
-            "t": "item",
-            "v": "Q21503250",
-            "q": {
-              "P2308": [
-                {
-                  "t": "item",
-                  "v": "Q5"
-                }
-              ],
-              "P2309": [
-                {
-                  "t": "item",
-                  "v": "Q21503252"
-                }
-              ]
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q21503247",
+        "qualifiers": {
+          "P2305": [
+            {
+              "type": "item",
+              "value": "Q42973"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q21503247",
-            "q": {
-              "P2305": [
-                {
-                  "t": "item",
-                  "v": "Q42973"
-                }
-              ],
-              "P2306": [
-                {
-                  "t": "property",
-                  "v": "P106"
-                }
-              ]
+          ],
+          "P2306": [
+            {
+              "type": "property",
+              "value": "P106"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q52004125",
-            "q": {
-              "P2305": [
-                {
-                  "t": "item",
-                  "v": "Q29934200"
-                }
-              ]
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q52004125",
+        "qualifiers": {
+          "P2305": [
+            {
+              "type": "item",
+              "value": "Q29934200"
             }
-          },
-          {
-            "t": "item",
-            "v": "Q53869507",
-            "q": {
-              "P5314": [
-                {
-                  "t": "item",
-                  "v": "Q54828448"
-                },
-                {
-                  "t": "item",
-                  "v": "Q54828450"
-                }
-              ]
-            }
-          },
-          {
-            "t": "item",
-            "v": "Q108139345",
-            "q": {
-              "P424": [
-                {
-                  "t": "string",
-                  "v": "en"
-                }
-              ]
-            }
-          },
-          {
-            "t": "item",
-            "v": "Q108139345",
-            "q": {
-              "P424": [
-                {
-                  "t": "string",
-                  "v": "fr"
-                }
-              ]
-            }
-          }
-        ],
-        "P2429": [
-          {
-            "t": "item",
-            "v": "Q21873974"
-          }
-        ],
-        "P31": [
-          {
-            "t": "item",
-            "v": "Q97584729"
-          },
-          {
-            "t": "item",
-            "v": "Q56216473"
-          }
-        ],
-        "P3254": [
-          {
-            "t": "url",
-            "v": "https://www.wikidata.org/wiki/Wikidata:Property_proposal/Biographical_Dictionary_of_Architects_in_Canada_ID"
-          }
-        ],
-        "P4876": [
-          {
-            "t": "quantity",
-            "v": {
-              "amount": "2500"
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q53869507",
+        "qualifiers": {
+          "P5314": [
+            {
+              "type": "item",
+              "value": "Q54828448"
             },
-            "q": {
-              "P585": [
-                {
-                  "t": "time",
-                  "v": {
-                    "calendarmodel": "Q1985727",
-                    "precision": 10,
-                    "time": "+2020-04-01T00:00:00Z"
-                  }
-                }
-              ]
+            {
+              "type": "item",
+              "value": "Q54828450"
             }
-          }
-        ],
-        "P8966": [
-          {
-            "t": "string",
-            "v": "^https?:\\/\\/dictionaryofarchitectsincanada\\.org\\/node\\/(\\d{1,4})"
-          }
-        ],
-        "P9073": [
-          {
-            "t": "item",
-            "v": "Q89220992"
-          }
-        ]
+          ]
+        }
       },
-      "type": "property"
-    }
+      {
+        "type": "item",
+        "value": "Q108139345",
+        "qualifiers": {
+          "P424": [
+            {
+              "type": "string",
+              "value": "en"
+            }
+          ]
+        }
+      },
+      {
+        "type": "item",
+        "value": "Q108139345",
+        "qualifiers": {
+          "P424": [
+            {
+              "type": "string",
+              "value": "fr"
+            }
+          ]
+        }
+      }
+    ],
+    "P2429": [
+      {
+        "type": "item",
+        "value": "Q21873974"
+      }
+    ],
+    "P31": [
+      {
+        "type": "item",
+        "value": "Q97584729"
+      },
+      {
+        "type": "item",
+        "value": "Q56216473"
+      }
+    ],
+    "P3254": [
+      {
+        "type": "url",
+        "value": "https://www.wikidata.org/wiki/Wikidata:Property_proposal/Biographical_Dictionary_of_Architects_in_Canada_ID"
+      }
+    ],
+    "P4876": [
+      {
+        "type": "quantity",
+        "value": {
+          "amount": "2500"
+        },
+        "qualifiers": {
+          "P585": [
+            {
+              "type": "time",
+              "value": {
+                "calendarmodel": "Q1985727",
+                "precision": 10,
+                "time": "+2020-04-01T00:00:00Z"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "P8966": [
+      {
+        "type": "string",
+        "value": "^https?:\\/\\/dictionaryofarchitectsincanada\\.org\\/node\\/(\\d{1,4})"
+      }
+    ],
+    "P9073": [
+      {
+        "type": "item",
+        "value": "Q89220992"
+      }
+    ]
+  },
+  "type": "property"
+}

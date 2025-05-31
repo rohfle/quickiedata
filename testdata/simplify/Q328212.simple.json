@@ -56,134 +56,134 @@
   "claims": {
     "P1005": [
       {
-        "t": "string",
-        "v": "1522214"
+        "type": "string",
+        "value": "1522214"
       }
     ],
     "P1006": [
       {
-        "t": "string",
-        "v": "334997283"
+        "type": "string",
+        "value": "334997283"
       }
     ],
     "P1015": [
       {
-        "t": "string",
-        "v": "x11070798"
+        "type": "string",
+        "value": "x11070798"
       }
     ],
     "P106": [
       {
-        "t": "item",
-        "v": "Q36180"
+        "type": "item",
+        "value": "Q36180"
       }
     ],
     "P1207": [
       {
-        "t": "string",
-        "v": "n2012065705"
+        "type": "string",
+        "value": "n2012065705"
       }
     ],
     "P1233": [
       {
-        "t": "string",
-        "v": "152187"
+        "type": "string",
+        "value": "152187"
       }
     ],
     "P1273": [
       {
-        "t": "string",
-        "v": "a11265723"
+        "type": "string",
+        "value": "a11265723"
       }
     ],
     "P1477": [
       {
-        "t": "string",
-        "v": "Veronica Roth"
+        "type": "string",
+        "value": "Veronica Roth"
       }
     ],
     "P18": [
       {
-        "t": "media",
-        "v": "Veronica Roth March 18, 2014 (cropped).jpg"
+        "type": "media",
+        "value": "Veronica Roth March 18, 2014 (cropped).jpg"
       }
     ],
     "P19": [
       {
-        "t": "item",
-        "v": "Q60"
+        "type": "item",
+        "value": "Q60"
       }
     ],
     "P21": [
       {
-        "t": "item",
-        "v": "Q6581072"
+        "type": "item",
+        "value": "Q6581072"
       }
     ],
     "P213": [
       {
-        "t": "string",
-        "v": "0000 0001 0818 2046"
+        "type": "string",
+        "value": "0000 0001 0818 2046"
       }
     ],
     "P214": [
       {
-        "t": "string",
-        "v": "160629702"
+        "type": "string",
+        "value": "160629702"
       }
     ],
     "P227": [
       {
-        "t": "string",
-        "v": "1020743859"
+        "type": "string",
+        "value": "1020743859"
       }
     ],
     "P244": [
       {
-        "t": "string",
-        "v": "n2010079812"
+        "type": "string",
+        "value": "n2010079812"
       }
     ],
     "P268": [
       {
-        "t": "string",
-        "v": "16557547m"
+        "type": "string",
+        "value": "16557547m"
       }
     ],
     "P27": [
       {
-        "t": "item",
-        "v": "Q30"
+        "type": "item",
+        "value": "Q30"
       }
     ],
     "P31": [
       {
-        "t": "item",
-        "v": "Q5"
+        "type": "item",
+        "value": "Q5"
       }
     ],
     "P345": [
       {
-        "t": "string",
-        "v": "nm4316121"
+        "type": "string",
+        "value": "nm4316121"
       }
     ],
     "P349": [
       {
-        "t": "string",
-        "v": "001149925"
+        "type": "string",
+        "value": "001149925"
       }
     ],
     "P373": [
       {
-        "t": "string",
-        "v": "Veronica Roth"
+        "type": "string",
+        "value": "Veronica Roth"
       }
     ],
     "P569": [
       {
-        "t": "time",
-        "v": {
+        "type": "time",
+        "value": {
           "calendarmodel": "Q1985727",
           "precision": 11,
           "time": "+1988-08-19T00:00:00Z"
@@ -192,44 +192,44 @@
     ],
     "P646": [
       {
-        "t": "string",
-        "v": "/m/0j4_x7k"
+        "type": "string",
+        "value": "/m/0j4_x7k"
       }
     ],
     "P69": [
       {
-        "t": "item",
-        "v": "Q309350"
+        "type": "item",
+        "value": "Q309350"
       }
     ],
     "P691": [
       {
-        "t": "string",
-        "v": "hka2012699219"
+        "type": "string",
+        "value": "hka2012699219"
       }
     ],
     "P800": [
       {
-        "t": "item",
-        "v": "Q627192"
+        "type": "item",
+        "value": "Q627192"
       }
     ],
     "P856": [
       {
-        "t": "url",
-        "v": "http://veronicarothbooks.blogspot.com"
+        "type": "url",
+        "value": "http://veronicarothbooks.blogspot.com"
       }
     ],
     "P937": [
       {
-        "t": "item",
-        "v": "Q1297"
+        "type": "item",
+        "value": "Q1297"
       }
     ],
     "P949": [
       {
-        "t": "string",
-        "v": "000627758"
+        "type": "string",
+        "value": "000627758"
       }
     ]
   },
