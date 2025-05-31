@@ -42,6 +42,22 @@ func ValidateEntityType(entityType string) error {
 	}
 }
 
+func ConvertNumericIDAndTypeToEntityID(entityType string, numericID int64) (string, error) {
+	prefix := ""
+	switch entityType {
+	case "item":
+		prefix = "Q"
+	case "property":
+		prefix = "P"
+	case "lexeme":
+		prefix = "L"
+	// form and sense cannot be converted as they have two number parts (eg form L<xxx>-F<yyy>)
+	default:
+		return "", fmt.Errorf("cannot convert entity type '%s' to entity id", entityType)
+	}
+	return fmt.Sprintf("%s%d", prefix, numericID), nil
+}
+
 func ConvertLanguage(language string) string {
 	return strings.ToLower(strings.SplitN(language, "_", 2)[0])
 }

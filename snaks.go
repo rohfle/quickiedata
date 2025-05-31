@@ -135,6 +135,22 @@ type SnakValueEntity struct {
 	EntityType string `json:"entity-type"`
 }
 
+func (sv *SnakValueEntity) GetID() string {
+	if sv.ID != "" {
+		return sv.ID
+	} else if sv.NumericID != 0 {
+		// usually this is unnecessary but sometimes the id field is not populated
+		// but it can be constructed from the numeric id and entity type
+		s, err := ConvertNumericIDAndTypeToEntityID(sv.EntityType, sv.NumericID)
+		if err != nil {
+			DebugLog.Printf("warning: %s", err)
+			return ""
+		}
+		return s
+	}
+	return ""
+}
+
 func (sv *SnakValue) UnmarshalJSON(data []byte) error {
 	var peek struct {
 		Type  string

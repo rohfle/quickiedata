@@ -196,7 +196,8 @@ func ParseClaim(dv *SnakValue) interface{} {
 	case *string:
 		return value
 	case *SnakValueEntity:
-		return &value.ID
+		s := value.GetID()
+		return &s
 	case *SnakValueMonolingualText:
 		return &value.Value
 	case *SnakValueGlobeCoordinate:
