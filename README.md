@@ -1,8 +1,14 @@
 # quickiedata
 
-**`quickiedata`** is a library for querying [Wikidata](https://www.wikidata.org/) simply and ergonomically. Supports performing SPARQL queries, searching and getting entities.
+**`quickiedata`** is a library written in go for querying [Wikidata](https://www.wikidata.org/) simply and ergonomically. Supports performing SPARQL queries, searching and getting entities.
 
-Based on https://github.com/maxlath/wikibase-sdk
+---
+
+## Installation
+
+```bash
+go get github.com/rohfle/quickiedata@latest
+```
 
 ---
 
@@ -31,6 +37,7 @@ if coord := simpleResult.GetEntityAsItem("Q2112").GetClaim("P625").ValueAsCoordi
 ```bash
 quickiedata-cli search "hubble" --limit 1
 quickiedata-cli get Q1 --props labels,claims
+# read query from stdin
 quickiedata-cli query name=Oscar <<EOF
 SELECT ?item ?itemLabel
 WHERE
@@ -41,6 +48,8 @@ WHERE
   FILTER(STR(?itemLabel) = ?name)
 }
 EOF
+# or read query from file
+quickiedata-cli query path/to/cats.sparql name=Oscar
 ```
 
 ### Search
@@ -317,12 +326,6 @@ gives you as output
 ```
 ```
 first result: Oscar (id=Q1185550)
-```
-
-## Installation
-
-```bash
-go install github.com/rohfle/quickiedata@latest
 ```
 
 ## License
