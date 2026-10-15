@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -35,16 +34,17 @@ func parseArray(val string) ([]string, error) {
 
 func main() {
 	ctx := context.Background()
-	wd := quickiedata.NewClient(&nicehttp.Settings{
-		DefaultHeaders: http.Header{
-			"User-Agent": {UserAgent},
-		},
-		RequestInterval: 1 * time.Second,
-		Backoff:         1 * time.Second,
-		MaxBackoff:      30 * time.Second,
-		MaxTries:        5,
-		MaxConnsPerHost: 1,
-	})
+	transport := nicehttp.NewNiceTransportBuilder().
+		SetUserAgent(UserAgent).
+		SetLimiterBackoff(nicehttp.NewBackoff(
+			1*time.Second,
+			30*time.Second,
+			nicehttp.DefaultBackoffCoefficients,
+		)).
+		SetMaxAttempts(5).
+		SetAttemptTimeout(30 * time.Second).
+		Build()
+	wd := quickiedata.NewClient(transport)
 
 	var language string
 
@@ -124,7 +124,7 @@ func main() {
 
 			data, err := json.MarshalIndent(resp.Results, "", "  ")
 			if err != nil {
-				return fmt.Errorf("failed while rendering results for %q: %w", query, err)
+				return fmt.Errorf("failed while rendering results for %+v: %w", query, err)
 			}
 			fmt.Println(string(data))
 			return nil

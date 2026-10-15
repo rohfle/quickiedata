@@ -10,8 +10,6 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
-
-	"github.com/rohfle/nicehttp"
 )
 
 type WikidataClient struct {
@@ -20,11 +18,13 @@ type WikidataClient struct {
 	Client         *http.Client
 }
 
-func NewClient(settings *nicehttp.Settings) *WikidataClient {
+func NewClient(transport http.RoundTripper) *WikidataClient {
 	return &WikidataClient{
 		APIEndpoint:    "https://www.wikidata.org/w/api.php",
 		SPARQLEndpoint: "https://query.wikidata.org/sparql",
-		Client:         nicehttp.NewClient(settings),
+		Client: &http.Client{
+			Transport: transport,
+		},
 	}
 }
 
