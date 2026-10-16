@@ -211,5 +211,8 @@ func main() {
 
 	rootCmd.AddCommand(queryCmd, searchCmd, getCmd)
 
-	rootCmd.Execute()
+	if err := rootCmd.Execute(); err != nil {
+		// cobra has already written the error to stderr
+		os.Exit(1)
+	}
 }
