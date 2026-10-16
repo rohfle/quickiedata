@@ -126,12 +126,15 @@ func renderSPARQLStatement(name string, value any) (string, error) {
 
 	switch v := value.(type) {
 	case string:
-		v = strings.ReplaceAll(v, "\"", "\\\"")
+		v = strings.ReplaceAll(v, `\`, `\\`)
+		v = strings.ReplaceAll(v, `"`, `\"`)
 		return fmt.Sprintf(`BIND( """%s""" as ?%s)`, v, name), nil
 	case []string:
 		var escaped []string
 		for _, s := range v {
-			e := fmt.Sprintf(`"""%s"""`, strings.ReplaceAll(s, "\"", "\\\""))
+			s = strings.ReplaceAll(s, `\`, `\\`)
+			s = strings.ReplaceAll(s, `"`, `\"`)
+			e := fmt.Sprintf(`"""%s"""`, s)
 			escaped = append(escaped, e)
 		}
 		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(escaped, " ")), nil
