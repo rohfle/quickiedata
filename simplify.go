@@ -34,6 +34,10 @@ func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 }
 
 func SimplifyEntity(entity *EntityInfo) any {
+	if entity == nil {
+		return nil
+	}
+
 	switch entity.Type {
 	case "item":
 		return &SimpleItem{
@@ -150,7 +154,7 @@ func SimplifyClaims(claimMap map[string][]*Claim) map[string][]*SimpleClaim {
 }
 
 func SimplifySnak(snak *Snak) *SimpleSnakValue {
-	if snak.SnakType != "value" {
+	if snak == nil || snak.SnakType != "value" || snak.DataValue == nil {
 		return nil
 	}
 
@@ -175,8 +179,8 @@ func SimplifySnaks(snakMap map[string][]*Snak) map[string][]*SimpleSnakValue {
 	for key, snaks := range snakMap {
 		var newSnaks []*SimpleSnakValue
 		for _, snak := range snaks {
-			if snak.SnakType == "value" {
-				newSnaks = append(newSnaks, SimplifySnak(snak))
+			if simple := SimplifySnak(snak); simple != nil {
+				newSnaks = append(newSnaks, simple)
 			}
 		}
 		if len(newSnaks) > 0 {

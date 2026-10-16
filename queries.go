@@ -217,6 +217,9 @@ func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery
 
 // CreateGetEntitiesURL creates a wikidata api get entries (wbgetentries) query url
 func (wd *WikidataClient) CreateGetEntitiesURL(ids []string, opt *GetEntitiesOptions) (string, error) {
+	if opt == nil {
+		opt = NewGetEntitiesOptions()
+	}
 	if len(ids) == 0 {
 		return "", errors.New("no ids specified")
 	}
@@ -251,6 +254,9 @@ func (wd *WikidataClient) CreateGetEntitiesURL(ids []string, opt *GetEntitiesOpt
 
 // CreateSearchEntitiesURL creates a wikidata api search entries (wbsearchentries) query url
 func (wd *WikidataClient) CreateSearchEntitiesURL(search string, opt *SearchEntitiesOptions) (string, error) {
+	if opt == nil {
+		opt = NewSearchEntitiesOptions()
+	}
 	if len(search) == 0 {
 		return "", errors.New("no ids specified")
 	}
