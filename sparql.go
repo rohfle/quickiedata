@@ -147,7 +147,7 @@ func renderSPARQLStatement(name string, value any) (string, error) {
 		var values []string
 		for _, wid := range v {
 			if !ValidSPARQLWikipediaID.MatchString(string(wid)) {
-				return "", fmt.Errorf("invalid wikidata reference '%s'", v)
+				return "", fmt.Errorf("invalid wikidata reference '%s'", wid)
 			}
 			values = append(values, string(wid))
 		}
@@ -159,9 +159,13 @@ func renderSPARQLStatement(name string, value any) (string, error) {
 	}
 }
 
+// whereClausePattern matches the WHERE clause of a query, including the
+// opening brace.
+var whereClausePattern = regexp.MustCompile(`(?i)WHERE\s*{`)
+
 func insertStatementsInWhere(query string, statementBlock string) string {
 	// search for WHERE {
-	clauses := regexp.MustCompile(`(?i)WHERE\s*{`).FindAllStringIndex(query, -1)
+	clauses := whereClausePattern.FindAllStringIndex(query, -1)
 
 	output := ""
 	lastIndex := 0

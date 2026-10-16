@@ -253,7 +253,7 @@ func (results *SPARQLResponse) Simplify() *SPARQLSimpleResponse {
 			}
 			val, err := SimplifyBindingValue(bvalue)
 			if err != nil {
-				Log.Printf("error while simplifying %s value %v: %s\n", bvalue.DataType, *bvalue.Value, err)
+				DebugLog.Printf("error while simplifying %s value %v: %s\n", bvalue.DataType, *bvalue.Value, err)
 				continue
 			} else if val == nil {
 				continue

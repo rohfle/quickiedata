@@ -1,6 +1,7 @@
 package quickiedata_test
 
 import (
+	"bytes"
 	"strings"
 	"testing"
 
@@ -136,5 +137,76 @@ func TestRenderSPARQLQueryCommentStripping(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+// An empty list is valid SPARQL and matches nothing, so it is rendered. A
+// reference that is not valid is reported with the reference itself.
+func TestRenderSPARQLQueryValues(t *testing.T) {
+	query := quickiedata.NewSPARQLQuery()
+	query.Template = "SELECT ?x WHERE { ?x ?p ?o }"
+	query.Variables["v"] = []string{}
+
+	out, err := quickiedata.RenderSPARQLQuery(query)
+	if err != nil {
+		t.Fatalf("RenderSPARQLQuery with an empty list: %s", err)
+	}
+	if !strings.Contains(out, "VALUES ?v {") {
+		t.Errorf("query = %s, want a VALUES block", out)
+	}
+
+	bad := quickiedata.NewSPARQLQuery()
+	bad.Template = "SELECT ?x WHERE { ?x ?p ?o }"
+	bad.Variables["v"] = []quickiedata.WikidataID{quickiedata.WikidataID("wd:Q42"), quickiedata.WikidataID("nope")}
+
+	_, err = quickiedata.RenderSPARQLQuery(bad)
+	if err == nil {
+		t.Fatal("expected an error for the invalid reference")
+	}
+	if !strings.Contains(err.Error(), "nope") {
+		t.Errorf("error = %q, want it to name the invalid reference", err)
+	}
+}
+
+// A template with no WHERE clause cannot take variable statements, so the
+// variables are left out and the query is sent as it is.
+func TestRenderSPARQLQueryWithoutWhereClause(t *testing.T) {
+	query := quickiedata.NewSPARQLQuery()
+	query.Template = "SELECT ?item { ?item wdt:P31 wd:Q146 }"
+	query.Variables["name"] = "Oscar"
+
+	got, err := quickiedata.RenderSPARQLQuery(query)
+	if err != nil {
+		t.Fatalf("RenderSPARQLQuery: %s", err)
+	}
+	if got != "SELECT ?item { ?item wdt:P31 wd:Q146 }" {
+		t.Errorf("RenderSPARQLQuery = %q, want the query unchanged", got)
+	}
+}
+
+// A binding that cannot be simplified is a debug detail, not something a
+// library prints over the caller's standard error.
+func TestSPARQLSimplifyFailureGoesToDebugLog(t *testing.T) {
+	var logged bytes.Buffer
+	previous := quickiedata.DebugLog.Writer()
+	quickiedata.DebugLog.SetOutput(&logged)
+	defer quickiedata.DebugLog.SetOutput(previous)
+
+	// an integer literal that does not parse
+	value := "not a number"
+	response := &quickiedata.SPARQLResponse{}
+	response.Results.Bindings = []map[string]*quickiedata.BindingValue{
+		{"count": {Value: &value, Type: "literal", DataType: "http://www.w3.org/2001/XMLSchema#integer"}},
+	}
+
+	simple := response.Simplify()
+	if len(simple.Results) != 1 {
+		t.Fatalf("Results = %+v, want one row", simple.Results)
+	}
+	if len(simple.Results[0]) != 0 {
+		t.Errorf("row = %+v, want the unparsable binding dropped", simple.Results[0])
+	}
+	if !strings.Contains(logged.String(), "error while simplifying") {
+		t.Errorf("debug log = %q, want the simplify error in it", logged.String())
 	}
 }
