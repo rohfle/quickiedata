@@ -33,6 +33,10 @@ func SimplifyMapOfTerms(terms map[string]*Term) map[string]string {
 	return output
 }
 
+// SimplifyEntity returns the simplified entity, or nil when the entity is
+// nil, when the API reports that it does not exist, or when its type is not
+// one of item, property, lexeme, form and sense. Check EntityInfo.Missing
+// and EntityInfo.Type to tell those cases apart.
 func SimplifyEntity(entity *EntityInfo) any {
 	if entity == nil {
 		return nil

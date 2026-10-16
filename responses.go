@@ -3,6 +3,7 @@ package quickiedata
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
 )
 
 type ResponseError struct {
@@ -23,6 +24,11 @@ type GetEntitiesResponse struct {
 
 type GetEntitiesSimpleResponse struct {
 	Entities map[string]any `json:"entities,omitempty"`
+	// Missing lists the requested ids that do not exist.
+	Missing []string `json:"missing,omitempty"`
+	// Unsupported maps an entity id to the type that this library cannot
+	// simplify, for example "mediainfo".
+	Unsupported map[string]string `json:"unsupported,omitempty"`
 }
 
 func (resp *GetEntitiesSimpleResponse) UnmarshalJSON(data []byte) error {
@@ -50,35 +56,54 @@ type GetEntityResponse struct {
 
 type GetEntitySimpleResponse struct {
 	Entity any `json:"entity,omitempty"`
+	// Unsupported is the type of an entity that this library cannot
+	// simplify, for example "mediainfo". The Entity field stays nil.
+	Unsupported string `json:"unsupported,omitempty"`
 }
 
 func (resp *GetEntitiesResponse) Simplify() *GetEntitiesSimpleResponse {
 	if resp == nil {
 		return nil
 	}
+
 	var output = make(map[string]any)
+	var missing []string
+	var unsupported = make(map[string]string)
+
 	for key, entity := range resp.Entities {
 		simple := SimplifyEntity(entity)
-		if simple != nil {
+		switch {
+		case simple != nil:
 			output[key] = simple
+		case entity == nil, entity.Missing != nil:
+			missing = append(missing, key)
+		default:
+			unsupported[key] = entity.Type
 		}
 	}
+	sort.Strings(missing)
+
 	return &GetEntitiesSimpleResponse{
-		Entities: output,
+		Entities:    output,
+		Missing:     missing,
+		Unsupported: unsupported,
 	}
 }
 
 func (resp *GetEntityResponse) Simplify() *GetEntitySimpleResponse {
-	if resp == nil || resp.Entity == nil {
+	if resp == nil || resp.Entity == nil || resp.Entity.Missing != nil {
 		return nil
 	}
+
 	simple := SimplifyEntity(resp.Entity)
-	if simple != nil {
+	if simple == nil {
 		return &GetEntitySimpleResponse{
-			Entity: simple,
+			Unsupported: resp.Entity.Type,
 		}
 	}
-	return nil
+	return &GetEntitySimpleResponse{
+		Entity: simple,
+	}
 }
 
 func (resp *GetEntitySimpleResponse) UnmarshalJSON(data []byte) error {

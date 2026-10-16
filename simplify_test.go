@@ -133,3 +133,37 @@ func getTestEntitySimplifyCouples(baseDir string) ([][2]string, error) {
 
 	return toReturn, nil
 }
+
+// A null snak must not stop the simplification of the claims around it.
+func TestSimplifyEntityWithNullSnaks(t *testing.T) {
+	raw := `{"id":"Q1","type":"item","claims":{
+		"P1":[{"mainsnak":null,"rank":"normal"}],
+		"P2":[{"rank":"normal",
+			"mainsnak":{"snaktype":"value","datatype":"string","datavalue":{"value":"kept","type":"string"}},
+			"qualifiers":{"P3":[null]}}]
+	}}`
+
+	var entity quickiedata.EntityInfo
+	if err := json.Unmarshal([]byte(raw), &entity); err != nil {
+		t.Fatal(err)
+	}
+
+	simplified := quickiedata.SimplifyEntity(&entity)
+	item, ok := simplified.(*quickiedata.SimpleItem)
+	if !ok {
+		t.Fatalf("expected a SimpleItem, got %T", simplified)
+	}
+
+	if claim := item.GetClaim("P1"); claim != nil {
+		t.Errorf("a claim with a null snak must be dropped, got %+v", claim)
+	}
+	if got := item.GetClaim("P2").ValueAsString(); got == nil || *got != "kept" {
+		t.Errorf("P2 must be kept, got %+v", got)
+	}
+	if qualifier := item.GetClaim("P2").GetQualifier("P3"); qualifier != nil {
+		t.Errorf("a null qualifier must be dropped, got %+v", qualifier)
+	}
+	if got := quickiedata.SimplifyEntity(nil); got != nil {
+		t.Errorf("SimplifyEntity(nil) = %+v, want nil", got)
+	}
+}

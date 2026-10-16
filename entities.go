@@ -15,6 +15,10 @@ type EntityInfo struct {
 	Modified  string    `json:"modified"`
 	Redirects *Redirect `json:"redirects,omitempty"`
 	Type      string    `json:"type"`
+	// Missing is not nil when the API reports that the entity does not
+	// exist. Such an entity has no type, so this is the only way to tell a
+	// missing entity from one this library cannot simplify.
+	Missing *string `json:"missing,omitempty"`
 
 	// Item fields
 	ID           string               `json:"id"`
