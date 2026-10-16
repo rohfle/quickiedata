@@ -1,6 +1,7 @@
 package quickiedata_test
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -257,5 +258,23 @@ func TestSimpleFormRoundTripsEveryDataType(t *testing.T) {
 				t.Errorf("round trip through the %s changed %s: got %v, want %q", name, property, got, want)
 			}
 		}
+	}
+}
+
+// An unexpected datatype is a detail for a debugger, not something a library
+// prints over the caller's standard error.
+func TestUnexpectedDatatypeGoesToDebugLog(t *testing.T) {
+	var logged bytes.Buffer
+	previous := quickiedata.DebugLog.Writer()
+	quickiedata.DebugLog.SetOutput(&logged)
+	defer quickiedata.DebugLog.SetOutput(previous)
+
+	// an int is not one of the datatypes this library knows
+	snak := &quickiedata.SnakValue{Type: "unknown", Value: 42}
+	if got := quickiedata.ParseClaim(snak); got != 42 {
+		t.Errorf("ParseClaim = %v, want the value unchanged", got)
+	}
+	if !strings.Contains(logged.String(), "unexpected datatype") {
+		t.Errorf("debug log = %q, want the unexpected datatype in it", logged.String())
 	}
 }

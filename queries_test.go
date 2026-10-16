@@ -199,6 +199,27 @@ func TestGetEntitySimpleUnsupportedType(t *testing.T) {
 	}
 }
 
+func TestResponseErrorMessage(t *testing.T) {
+	tests := []struct {
+		name     string
+		response quickiedata.ResponseError
+		want     string
+	}{
+		{"code and info", quickiedata.ResponseError{Code: "badvalue", Info: "Unrecognized value."}, "badvalue: Unrecognized value."},
+		{"code only", quickiedata.ResponseError{Code: "badtoken"}, "badtoken"},
+		{"info only", quickiedata.ResponseError{Info: "Something went wrong."}, "Something went wrong."},
+		{"neither", quickiedata.ResponseError{}, "api error"},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := test.response.Error(); got != test.want {
+				t.Errorf("Error() = %q, want %q", got, test.want)
+			}
+		})
+	}
+}
+
 func TestEmptySearchReportsTheSearchTerm(t *testing.T) {
 	client := quickiedata.NewClient(nil)
 

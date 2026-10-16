@@ -12,8 +12,19 @@ type ResponseError struct {
 	Extra string `json:"extra"`
 }
 
+// Error returns the code together with the description. The description is
+// empty for some API errors, and the code is the only useful part there.
 func (re *ResponseError) Error() string {
-	return re.Info
+	switch {
+	case re.Code == "" && re.Info == "":
+		return "api error"
+	case re.Code == "":
+		return re.Info
+	case re.Info == "":
+		return re.Code
+	default:
+		return re.Code + ": " + re.Info
+	}
 }
 
 type GetEntitiesResponse struct {

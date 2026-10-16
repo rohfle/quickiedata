@@ -245,7 +245,7 @@ func ParseClaim(dv *SnakValue) any {
 		}
 	default:
 		// unexpected datatype
-		Log.Printf("unexpected datatype '%s'", reflect.TypeOf(value))
+		DebugLog.Printf("unexpected datatype '%s'", reflect.TypeOf(value))
 		return value
 	}
 }
