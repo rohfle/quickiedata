@@ -53,6 +53,9 @@ type GetEntitySimpleResponse struct {
 }
 
 func (resp *GetEntitiesResponse) Simplify() *GetEntitiesSimpleResponse {
+	if resp == nil {
+		return nil
+	}
 	var output = make(map[string]any)
 	for key, entity := range resp.Entities {
 		simple := SimplifyEntity(entity)
@@ -66,6 +69,9 @@ func (resp *GetEntitiesResponse) Simplify() *GetEntitiesSimpleResponse {
 }
 
 func (resp *GetEntityResponse) Simplify() *GetEntitySimpleResponse {
+	if resp == nil || resp.Entity == nil {
+		return nil
+	}
 	simple := SimplifyEntity(resp.Entity)
 	if simple != nil {
 		return &GetEntitySimpleResponse{

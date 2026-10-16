@@ -28,6 +28,37 @@ func NewClient(transport http.RoundTripper) *WikidataClient {
 	}
 }
 
+// errorBodyLimit is the maximum number of bytes that readResponseBody reads
+// from the body of a failed response. The error message is made from this
+// part of the body.
+const errorBodyLimit = 512
+
+// readResponseBody reads the body of a response and then closes the body.
+// If the status code is 300 or more, the function returns an error and no
+// body. The error message contains the status code and part of the body.
+// If the body is empty, the error message contains only the status code.
+// The function replaces each group of space characters with one space.
+// If the read stops with an error, the function returns the part of the
+// body that it read and that error.
+func readResponseBody(resp *http.Response) ([]byte, error) {
+	defer resp.Body.Close()
+
+	if resp.StatusCode >= 300 {
+		snippet, _ := io.ReadAll(io.LimitReader(resp.Body, errorBodyLimit))
+		message := strings.Join(strings.Fields(string(snippet)), " ")
+		if message == "" {
+			return nil, fmt.Errorf("request returned status %s", resp.Status)
+		}
+		return nil, fmt.Errorf("request returned status %s: %s", resp.Status, message)
+	}
+
+	return io.ReadAll(resp.Body)
+}
+
+// GetWithContext sends a GET request and returns the response to the caller.
+// This function does not check the status code. It does not read the body.
+// The caller must check the status code, read the body and close the body.
+// GetEntitiesRaw, SearchEntitiesRaw and SPARQLQueryRaw do this work.
 func (wd *WikidataClient) GetWithContext(ctx context.Context, url string) (*http.Response, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -47,8 +78,7 @@ func (wd *WikidataClient) GetEntitiesRaw(ctx context.Context, ids []string, opt 
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
-	return io.ReadAll(resp.Body)
+	return readResponseBody(resp)
 }
 
 func (wd *WikidataClient) GetEntities(ctx context.Context, ids []string, options *GetEntitiesOptions) (*GetEntitiesResponse, error) {
@@ -95,6 +125,10 @@ func (wd *WikidataClient) GetEntity(ctx context.Context, id string, options *Get
 	}, nil
 }
 
+// GetEntitySimple returns the simplified entity. The function returns a nil
+// response and a nil error when the API does not return the entity. It also
+// returns a nil response and a nil error when this library does not support
+// the entity type.
 func (wd *WikidataClient) GetEntitySimple(ctx context.Context, id string, options *GetEntitiesOptions) (*GetEntitySimpleResponse, error) {
 	response, err := wd.GetEntity(ctx, id, options)
 	if err != nil {
@@ -114,8 +148,7 @@ func (wd *WikidataClient) SearchEntitiesRaw(ctx context.Context, query string, o
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
-	return io.ReadAll(resp.Body)
+	return readResponseBody(resp)
 }
 
 func (wd *WikidataClient) SearchEntities(ctx context.Context, query string, options *SearchEntitiesOptions) ([]*SearchResult, error) {
@@ -179,11 +212,7 @@ func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
-	if resp.StatusCode >= 300 {
-		return nil, fmt.Errorf("request returned status: %s", resp.Status)
-	}
-	return io.ReadAll(resp.Body)
+	return readResponseBody(resp)
 }
 
 // CreateGetEntitiesURL creates a wikidata api get entries (wbgetentries) query url
