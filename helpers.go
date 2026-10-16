@@ -82,7 +82,6 @@ func GetSitelinkURL(site string, title string) string {
 		"commonswiki",
 		"metawiki",
 		"specieswiki",
-		"wikidatawiki",
 		"wikimaniawiki",
 	}
 
