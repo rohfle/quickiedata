@@ -254,7 +254,7 @@ func unmarshalSimpleSnakValue(stype string, data []byte) (any, error) {
 	var value any
 
 	switch stype {
-	case "string", "external", "item", "url", "property", "lexeme", "media", "geoshape", "musical", "form", "sense", "tabular":
+	case "string", "math", "external", "item", "url", "property", "lexeme", "media", "geoshape", "musical", "form", "sense", "tabular":
 		s := ""
 		value = &s
 	case "quantity":

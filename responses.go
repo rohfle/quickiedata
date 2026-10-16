@@ -33,13 +33,16 @@ type GetEntitiesSimpleResponse struct {
 
 func (resp *GetEntitiesSimpleResponse) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Entities map[string]json.RawMessage `json:"entities"`
+		Entities    map[string]json.RawMessage `json:"entities"`
+		Missing     []string                   `json:"missing"`
+		Unsupported map[string]string          `json:"unsupported"`
 	}
 	err := json.Unmarshal(data, &peek)
 	if err != nil {
 		return err
 	}
 
+	resp.Entities = make(map[string]any, len(peek.Entities))
 	for key, data := range peek.Entities {
 		value, err := unmarshalSimpleEntity(data)
 		if err != nil {
@@ -47,6 +50,8 @@ func (resp *GetEntitiesSimpleResponse) UnmarshalJSON(data []byte) error {
 		}
 		resp.Entities[key] = value
 	}
+	resp.Missing = peek.Missing
+	resp.Unsupported = peek.Unsupported
 	return nil
 }
 
@@ -108,13 +113,15 @@ func (resp *GetEntityResponse) Simplify() *GetEntitySimpleResponse {
 
 func (resp *GetEntitySimpleResponse) UnmarshalJSON(data []byte) error {
 	var peek struct {
-		Entity json.RawMessage `json:"entity"`
+		Entity      json.RawMessage `json:"entity"`
+		Unsupported string          `json:"unsupported"`
 	}
 	err := json.Unmarshal(data, &peek)
 	if err != nil {
 		return err
 	}
 
+	resp.Unsupported = peek.Unsupported
 	value, err := unmarshalSimpleEntity(peek.Entity)
 	if err != nil {
 		return err

@@ -167,3 +167,95 @@ func TestSimplifyEntityWithNullSnaks(t *testing.T) {
 		t.Errorf("SimplifyEntity(nil) = %+v, want nil", got)
 	}
 }
+
+// Every datatype the simplifier can emit must survive a trip through the
+// simple json form, or the round trip fails on a type it produced itself.
+func TestSimpleFormRoundTripsEveryDataType(t *testing.T) {
+	claims := []struct {
+		property string
+		snak     string // json of one mainsnak
+	}{
+		{"P1", `{"snaktype":"value","datatype":"string","datavalue":{"value":"text","type":"string"}}`},
+		{"P2", `{"snaktype":"value","datatype":"url","datavalue":{"value":"https://example.org/x","type":"string"}}`},
+		{"P3", `{"snaktype":"value","datatype":"math","datavalue":{"value":"E=mc^2","type":"string"}}`},
+		{"P4", `{"snaktype":"value","datatype":"external-id","datavalue":{"value":"abc-123","type":"string"}}`},
+		{"P5", `{"snaktype":"value","datatype":"commonsMedia","datavalue":{"value":"Foo.jpg","type":"string"}}`},
+		{"P6", `{"snaktype":"value","datatype":"geo-shape","datavalue":{"value":"Data:Foo.map","type":"string"}}`},
+		{"P7", `{"snaktype":"value","datatype":"musical-notation","datavalue":{"value":"\\clef treble","type":"string"}}`},
+		{"P8", `{"snaktype":"value","datatype":"tabular-data","datavalue":{"value":"Data:Foo.tab","type":"string"}}`},
+		{"P9", `{"snaktype":"value","datatype":"monolingualtext","datavalue":{"value":{"text":"hallo","language":"de"},"type":"monolingualtext"}}`},
+		{"P10", `{"snaktype":"value","datatype":"quantity","datavalue":{"value":{"amount":"+1","unit":"1"},"type":"quantity"}}`},
+		{"P11", `{"snaktype":"value","datatype":"time","datavalue":{"value":{"time":"+2020-01-01T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}}`},
+		{"P12", `{"snaktype":"value","datatype":"globe-coordinate","datavalue":{"value":{"latitude":52,"longitude":8,"precision":0.01,"globe":"http://www.wikidata.org/entity/Q2"},"type":"globecoordinate"}}`},
+		{"P13", `{"snaktype":"value","datatype":"wikibase-item","datavalue":{"value":{"id":"Q42","entity-type":"item","numeric-id":42},"type":"wikibase-entityid"}}`},
+		{"P14", `{"snaktype":"value","datatype":"wikibase-form","datavalue":{"value":{"id":"L1-F1","entity-type":"form","numeric-id":1},"type":"wikibase-entityid"}}`},
+		{"P15", `{"snaktype":"value","datatype":"wikibase-sense","datavalue":{"value":{"id":"L1-S1","entity-type":"sense","numeric-id":1},"type":"wikibase-entityid"}}`},
+	}
+
+	var raw strings.Builder
+	raw.WriteString(`{"id":"Q1","type":"item","claims":{`)
+	for i, claim := range claims {
+		if i > 0 {
+			raw.WriteString(",")
+		}
+		fmt.Fprintf(&raw, `%q:[{"mainsnak":%s,"type":"statement","rank":"normal"}]`, claim.property, claim.snak)
+	}
+	raw.WriteString(`}}`)
+
+	var entity quickiedata.EntityInfo
+	if err := json.Unmarshal([]byte(raw.String()), &entity); err != nil {
+		t.Fatalf("unmarshal entity: %s", err)
+	}
+
+	data, err := json.Marshal(quickiedata.SimplifyEntity(&entity))
+	if err != nil {
+		t.Fatalf("marshal simplified entity: %s", err)
+	}
+
+	var single quickiedata.GetEntitySimpleResponse
+	if err := json.Unmarshal([]byte(`{"entity":`+string(data)+`}`), &single); err != nil {
+		t.Fatalf("round trip through the single entity form failed: %s", err)
+	}
+
+	var multi quickiedata.GetEntitiesSimpleResponse
+	if err := json.Unmarshal([]byte(`{"entities":{"Q1":`+string(data)+`}}`), &multi); err != nil {
+		t.Fatalf("round trip through the entities form failed: %s", err)
+	}
+
+	// for the types that carry a plain string, the value must survive too
+	wantValues := map[string]string{
+		"P1":  "text",
+		"P2":  "https://example.org/x",
+		"P3":  "E=mc^2",
+		"P4":  "abc-123",
+		"P5":  "Foo.jpg",
+		"P6":  "Data:Foo.map",
+		"P7":  `\clef treble`,
+		"P8":  "Data:Foo.tab",
+		"P9":  "hallo",
+		"P13": "Q42",
+		"P14": "L1-F1",
+		"P15": "L1-S1",
+	}
+
+	items := map[string]*quickiedata.SimpleItem{
+		"single entity form": single.GetEntityAsItem("Q1"),
+		"entities form":      multi.GetEntityAsItem("Q1"),
+	}
+	for name, item := range items {
+		if item == nil {
+			t.Fatalf("round trip through the %s lost the item: %s", name, data)
+		}
+		for _, claim := range claims {
+			if item.GetClaim(claim.property) == nil {
+				t.Errorf("round trip through the %s lost claim %s: %s", name, claim.property, data)
+			}
+		}
+		for property, want := range wantValues {
+			got := item.GetClaim(property).ValueAsString()
+			if got == nil || *got != want {
+				t.Errorf("round trip through the %s changed %s: got %v, want %q", name, property, got, want)
+			}
+		}
+	}
+}
