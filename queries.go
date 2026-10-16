@@ -258,7 +258,7 @@ func (wd *WikidataClient) CreateSearchEntitiesURL(search string, opt *SearchEnti
 		opt = NewSearchEntitiesOptions()
 	}
 	if len(search) == 0 {
-		return "", errors.New("no ids specified")
+		return "", errors.New("no search term specified")
 	}
 	if err := ValidateEntityType(opt.EntityType); err != nil {
 		return "", err

@@ -199,6 +199,18 @@ func TestGetEntitySimpleUnsupportedType(t *testing.T) {
 	}
 }
 
+func TestEmptySearchReportsTheSearchTerm(t *testing.T) {
+	client := quickiedata.NewClient(nil)
+
+	_, err := client.CreateSearchEntitiesURL("", nil)
+	if err == nil {
+		t.Fatal("expected an error for an empty search term")
+	}
+	if !strings.Contains(err.Error(), "search") || strings.Contains(err.Error(), "ids") {
+		t.Errorf("error = %q, want it to name the search term", err)
+	}
+}
+
 func TestNilOptionsAreDefaulted(t *testing.T) {
 	client := quickiedata.NewClient(nil)
 
