@@ -174,11 +174,10 @@ func insertStatementsInWhere(query string, statementBlock string) string {
 }
 
 func cleanupSPARQL(query string) string {
-	lines := strings.Split(query, "\n")
+	lines := strings.Split(stripSPARQLComments(query), "\n")
 	var outlines []string
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
-		line := findAndRemoveComment(line)
 		if line != "" {
 			outlines = append(outlines, line)
 		}
@@ -186,20 +185,83 @@ func cleanupSPARQL(query string) string {
 	return strings.Join(outlines, " ")
 }
 
-func findAndRemoveComment(line string) string {
-	inQuotes := false
-	for cidx, char := range line {
-		switch char {
-		case '\'', '"':
-			inQuotes = !inQuotes
-		case '#':
-			if !inQuotes {
-				// comment found, remove rest of line
-				line = line[:cidx]
-				line = strings.TrimSpace(line)
-				return line
+// stripSPARQLComments replaces every comment with one space. A "#" starts a
+// comment only when it is outside a string literal and outside an IRI, so a
+// "#" in a value or in an IRI stays part of the query.
+func stripSPARQLComments(query string) string {
+	var out strings.Builder
+	out.Grow(len(query))
+
+	quote := "" // the string literal that is open, empty when outside one
+	inComment := false
+
+	for i := 0; i < len(query); i++ {
+		char := query[i]
+
+		if inComment {
+			if char == '\n' {
+				inComment = false
+				out.WriteByte(char)
 			}
+			continue
+		}
+
+		if quote != "" {
+			// an escaped character cannot end the string
+			if char == '\\' && i+1 < len(query) {
+				out.WriteByte(char)
+				i++
+				out.WriteByte(query[i])
+				continue
+			}
+			if strings.HasPrefix(query[i:], quote) {
+				out.WriteString(quote)
+				i += len(quote) - 1
+				quote = ""
+				continue
+			}
+			out.WriteByte(char)
+			continue
+		}
+
+		switch {
+		case char == '#':
+			inComment = true
+			out.WriteByte(' ')
+		case char == '<':
+			if end, ok := iriEnd(query, i); ok {
+				out.WriteString(query[i : end+1])
+				i = end
+				continue
+			}
+			out.WriteByte(char)
+		case char == '\'' || char == '"':
+			quote = string(char)
+			// a long string literal has three delimiters
+			if strings.HasPrefix(query[i:], quote+quote+quote) {
+				quote = quote + quote + quote
+			}
+			out.WriteString(quote)
+			i += len(quote) - 1
+		default:
+			out.WriteByte(char)
 		}
 	}
-	return line
+
+	return out.String()
+}
+
+// iriEnd returns the index of the ">" that closes the IRI that starts at
+// start. A "<" that is a comparison operator has no such end, and an IRI
+// cannot contain a space or a control character.
+func iriEnd(query string, start int) (int, bool) {
+	for i := start + 1; i < len(query); i++ {
+		switch char := query[i]; {
+		case char == '>':
+			return i, true
+		case char <= ' ', char == '<', char == '"', char == '{', char == '}', char == '|', char == '^', char == '`', char == '\\':
+			return 0, false
+		}
+	}
+	return 0, false
 }
