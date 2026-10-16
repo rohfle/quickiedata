@@ -137,7 +137,7 @@ func main() {
 	// Search command
 	var entityType string
 	var searchCmd = &cobra.Command{
-		Use:   "search [term]",
+		Use:   "search term",
 		Short: "Search for entities by term",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -172,9 +172,9 @@ func main() {
 	var props string
 	var rawMode bool
 	var getCmd = &cobra.Command{
-		Use:   "get [id1 id2 ...]",
+		Use:   "get id [id ...]",
 		Short: "Fetch entity data for given IDs",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			wikidataIDs := args
 			options := quickiedata.NewGetEntitiesOptions()

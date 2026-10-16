@@ -48,7 +48,8 @@ func TestExitCode(t *testing.T) {
 		want int
 	}{
 		{"invalid entity id", []string{"get", "NOTANID"}, 1},
-		{"too many arguments", []string{"get", "Q1", "Q42"}, 1},
+		{"get without an id", []string{"get"}, 1},
+		{"search with two terms", []string{"search", "cat", "dog"}, 1},
 		{"unknown command", []string{"bogus"}, 1},
 		{"help", []string{"--help"}, 0},
 	}
