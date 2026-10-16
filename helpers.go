@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/url"
 	"regexp"
+	"slices"
 	"strings"
 )
 
@@ -85,7 +86,7 @@ func GetSitelinkURL(site string, title string) string {
 		"wikimaniawiki",
 	}
 
-	if ValueInSlice(site, specialSites) {
+	if slices.Contains(specialSites, site) {
 		site = strings.TrimSuffix(site, "wiki")
 		return fmt.Sprintf("https://%s.wikimedia.org/wiki/%s", site, title)
 	} else if site == "mediawikiwiki" {

@@ -7,6 +7,54 @@ import (
 	"github.com/rohfle/quickiedata"
 )
 
+// A template may already carry its own offset or limit, and the caller may
+// ask for one: it must be added once, or not at all.
+func TestRenderSPARQLQueryOffsetAndLimit(t *testing.T) {
+	tests := []struct {
+		name     string
+		template string
+		offset   int64
+		limit    int64
+		want     string // must appear in the result
+		once     string // must appear exactly once
+	}{
+		{"none requested", "SELECT ?x WHERE { ?x ?p ?o }", -1, -1, "", ""},
+		{"both requested", "SELECT ?x WHERE { ?x ?p ?o }", 5, 10, "OFFSET 5 LIMIT 10", "OFFSET"},
+		{"zero offset", "SELECT ?x WHERE { ?x ?p ?o }", 0, 10, "OFFSET 0 LIMIT 10", "OFFSET"},
+		{"template has a limit", "SELECT ?x WHERE { ?x ?p ?o } LIMIT 3", -1, 10, "LIMIT 3", "LIMIT"},
+		{"template has both", "SELECT ?x WHERE { ?x ?p ?o } OFFSET 2 LIMIT 3", 5, 10, "OFFSET 2 LIMIT 3", "OFFSET"},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			query := quickiedata.NewSPARQLQuery()
+			query.Template = test.template
+			query.Offset = test.offset
+			query.Limit = test.limit
+
+			out, err := quickiedata.RenderSPARQLQuery(query)
+			if err != nil {
+				t.Fatalf("RenderSPARQLQuery: %s", err)
+			}
+
+			if test.want == "" {
+				for _, unwanted := range []string{"OFFSET", "LIMIT"} {
+					if strings.Contains(out, unwanted) {
+						t.Errorf("query gained a %s: %s", unwanted, out)
+					}
+				}
+				return
+			}
+			if !strings.Contains(out, test.want) {
+				t.Errorf("query lost %q: %s", test.want, out)
+			}
+			if strings.Count(out, test.once) != 1 {
+				t.Errorf("%s appears %d times, want 1: %s", test.once, strings.Count(out, test.once), out)
+			}
+		})
+	}
+}
+
 // A "#" must only start a comment when it is outside a string literal and
 // outside an IRI. Anything else truncates the query.
 func TestRenderSPARQLQueryCommentStripping(t *testing.T) {

@@ -2,6 +2,7 @@ package quickiedata
 
 import (
 	"encoding/json"
+	"slices"
 	"strings"
 )
 
@@ -98,19 +99,10 @@ var ListOfEntityDataTypes = []DataType{
 }
 
 func DataTypeIsSimple(dtype string) bool {
-	return ValueInSlice(DataType(dtype), ListOfSimpleDataTypes)
+	return slices.Contains(ListOfSimpleDataTypes, DataType(dtype))
 }
 func DataTypeIsEntity(dtype string) bool {
-	return ValueInSlice(DataType(dtype), ListOfEntityDataTypes)
-}
-
-func ValueInSlice[T comparable](needle T, haystack []T) bool {
-	for _, hay := range haystack {
-		if hay == needle {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(ListOfEntityDataTypes, DataType(dtype))
 }
 
 // NumberPlus extends json.Number to removes the prefix "+" and prevent errors when unmarshaling

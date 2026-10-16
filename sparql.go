@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 	"regexp"
-	"sort"
+	"slices"
 	"strings"
 )
 
@@ -90,7 +90,7 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 		for key := range query.Variables {
 			keys = append(keys, key)
 		}
-		sort.Strings(keys)
+		slices.Sort(keys)
 		for _, name := range keys {
 			value := query.Variables[name]
 			statement, err := renderSPARQLStatement(name, value)
@@ -109,10 +109,10 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	}
 	// probably should replace the limit and offset in the query or error
 	// but for now this is good enough
-	if query.Offset >= 0 && strings.Index(trailingOptions, "offset ") <= 0 {
+	if query.Offset >= 0 && !strings.Contains(trailingOptions, "offset ") {
 		queryText += fmt.Sprintf(" OFFSET %d", query.Offset)
 	}
-	if query.Limit > 0 && strings.Index(trailingOptions, "limit ") <= 0 {
+	if query.Limit > 0 && !strings.Contains(trailingOptions, "limit ") {
 		queryText += fmt.Sprintf(" LIMIT %d", query.Limit)
 	}
 	return queryText, nil

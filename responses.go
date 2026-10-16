@@ -3,7 +3,7 @@ package quickiedata
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
+	"slices"
 )
 
 type ResponseError struct {
@@ -86,7 +86,7 @@ func (resp *GetEntitiesResponse) Simplify() *GetEntitiesSimpleResponse {
 			unsupported[key] = entity.Type
 		}
 	}
-	sort.Strings(missing)
+	slices.Sort(missing)
 
 	return &GetEntitiesSimpleResponse{
 		Entities:    output,
