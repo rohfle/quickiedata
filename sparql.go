@@ -72,9 +72,6 @@ func (s *SimpleBindingValue) ValueAsFloat() *float64 {
 	return &casted
 }
 
-type WikidataID string
-
-var ValidSPARQLWikipediaID = regexp.MustCompile(`^[a-z]+:(?:NOOP|[PLSFQ][1-9]\d*)$`)
 var ValidSPARQLVariableName = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
 func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
@@ -124,6 +121,15 @@ func renderSPARQLStatement(name string, value any) (string, error) {
 		return "", fmt.Errorf("invalid sparql variable name '%s'", name)
 	}
 
+	// An id list is a term list, so one case renders both.
+	if ids, ok := value.([]WikidataID); ok {
+		terms := make([]SPARQLTerm, 0, len(ids))
+		for _, id := range ids {
+			terms = append(terms, id)
+		}
+		value = terms
+	}
+
 	switch v := value.(type) {
 	case string:
 		v = strings.ReplaceAll(v, `\`, `\\`)
@@ -138,20 +144,25 @@ func renderSPARQLStatement(name string, value any) (string, error) {
 			escaped = append(escaped, e)
 		}
 		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(escaped, " ")), nil
-	case WikidataID:
-		if !ValidSPARQLWikipediaID.MatchString(string(v)) {
-			return "", fmt.Errorf("invalid wikidata reference '%s'", v)
+	case SPARQLTerm:
+		term, err := v.SPARQLTerm()
+		if err != nil {
+			return "", err
 		}
-		return fmt.Sprintf(`BIND( %s as ?%s)`, v, name), nil
-	case []WikidataID:
-		var values []string
-		for _, wid := range v {
-			if !ValidSPARQLWikipediaID.MatchString(string(wid)) {
-				return "", fmt.Errorf("invalid wikidata reference '%s'", wid)
+		return fmt.Sprintf(`BIND( %s as ?%s)`, term, name), nil
+	case []SPARQLTerm:
+		terms := make([]string, 0, len(v))
+		for _, term := range v {
+			if term == nil {
+				return "", fmt.Errorf("nil sparql term in the list for ?%s", name)
 			}
-			values = append(values, string(wid))
+			text, err := term.SPARQLTerm()
+			if err != nil {
+				return "", err
+			}
+			terms = append(terms, text)
 		}
-		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(values, " ")), nil
+		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(terms, " ")), nil
 	case int, int32, int64:
 		return fmt.Sprintf(`BIND( %d as ?%s)`, v, name), nil
 	default:
