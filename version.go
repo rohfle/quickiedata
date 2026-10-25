@@ -8,6 +8,12 @@ const versionUnknown = "unknown"
 // libraryModulePath is this module, as it appears in build info.
 const libraryModulePath = "github.com/rohfle/quickiedata"
 
+// Version returns the release version of this library, for example "v0.2.0",
+// or "unknown" for a build that carries no version, such as a local one.
+func Version() string {
+	return getVersion()
+}
+
 // getVersion returns the quickiedata release version, or versionUnknown for
 // local builds, which report no version or "(devel)".
 func getVersion() string {

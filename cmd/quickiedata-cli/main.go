@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const UserAgent = "quickiedata-cli/0.1 (https://github.com/rohfle/quickiedata)"
+var UserAgent = fmt.Sprintf("quickiedata-cli/%s (https://github.com/rohfle/quickiedata)", quickiedata.Version())
 
 func parseArray(val string) ([]string, error) {
 	var rawArr []any
