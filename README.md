@@ -26,6 +26,33 @@ if coord := simpleResult.GetEntityAsItem("Q2112").GetClaim("P625").ValueAsCoordi
 	fmt.Println("Latitude:", coord.Latitude)
 }
 ```
+- Wikimedia-compliant User-Agent, pacing and retries by default
+
+---
+
+## User-Agent and rate limits
+
+Wikimedia asks every client to identify itself, in the form
+`<client name>/<version> (<contact information>)`. That first argument of
+`NewClient` is required, and the library appends its own
+`quickiedata/<version>` token to it:
+
+```go
+client, err := quickiedata.NewClient("your-app/1.0 (you@example.org)", nil)
+```
+
+The transport built by default allows one request per second, retries up to
+five times with exponential backoff, honours `Retry-After`, and bounds each
+attempt to sixty seconds.
+
+`WikidataClientOptions.DownstreamTransport` replaces only the connection layer
+(sockets, timeouts, proxies), keeping the User-Agent, the pacing and the
+retries. To take over the whole client, replace `client.Client.Transport` after
+construction: the User-Agent is set on each request, so it still goes out.
+`WikidataClientOptions.SuppressLibraryUA` drops the library token, leaving the
+whole header to the caller. For policy details see the
+[Wikimedia User-Agent policy](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy).
+
 ---
 
 ## Examples
@@ -61,25 +88,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"time"
+	"log"
 
-	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 )
 
 func main() {
 	ctx := context.Background()
-	client := quickiedata.NewClient(&nicehttp.Settings{
-		DefaultHeaders: http.Header{
-			"User-Agent": []string{"your-user-agent-here"},
-		},
-		RequestInterval: 1 * time.Second,
-		Backoff:         1 * time.Second,
-		MaxBackoff:      30 * time.Second,
-		MaxTries:        5,
-		MaxConnsPerHost: 1,
-	})
+	client, err := quickiedata.NewClient("your-app/1.0 (you@example.org)", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	query := "hubble space telescope"
 	options := quickiedata.NewSearchEntitiesOptions()
@@ -144,25 +163,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"time"
+	"log"
 
-	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 )
 
 func main() {
 	ctx := context.Background()
-	client := quickiedata.NewClient(&nicehttp.Settings{
-		DefaultHeaders: http.Header{
-			"User-Agent": []string{"your-user-agent-here"},
-		},
-		RequestInterval: 1 * time.Second,
-		Backoff:         1 * time.Second,
-		MaxBackoff:      30 * time.Second,
-		MaxTries:        5,
-		MaxConnsPerHost: 1,
-	})
+	client, err := quickiedata.NewClient("your-app/1.0 (you@example.org)", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	ids := []string{"Q2112"}
 	options := quickiedata.NewGetEntitiesOptions()
@@ -235,26 +246,18 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"net/http"
+	"log"
 	"strings"
-	"time"
 
-	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 )
 
 func main() {
 	ctx := context.Background()
-	client := quickiedata.NewClient(&nicehttp.Settings{
-		DefaultHeaders: http.Header{
-			"User-Agent": []string{"your-user-agent-here"},
-		},
-		RequestInterval: 1 * time.Second,
-		Backoff:         1 * time.Second,
-		MaxBackoff:      30 * time.Second,
-		MaxTries:        5,
-		MaxConnsPerHost: 1,
-	})
+	client, err := quickiedata.NewClient("your-app/1.0 (you@example.org)", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	query := quickiedata.NewSPARQLQuery()
 	query.Offset = 0
@@ -290,7 +293,7 @@ func main() {
 
 	data, err := json.MarshalIndent(resp.Results, "", "  ")
 	if err != nil {
-		fmt.Printf("failed while rendering results for %q: %s\n", query, err)
+		fmt.Printf("failed while rendering results for %+v: %s\n", query, err)
 		return
 	}
 	fmt.Println(string(data))
