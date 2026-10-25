@@ -77,6 +77,8 @@ WHERE
 EOF
 # or read query from file
 quickiedata-cli query path/to/cats.sparql name=Oscar
+# report SPARQL that the new WDQS backend does not support
+quickiedata-cli check-query path/to/cats.sparql
 ```
 
 ### Search
@@ -329,6 +331,96 @@ gives you as output
 ```
 ```
 first result: Oscar (id=Q1185550)
+```
+
+## Migrating to WDQS v2
+
+The Wikidata Query Service is moving from v1 to v2. New endpoints are
+available from November 2026, the v1 endpoint stays up but may
+degrade from February 2027, and the migration also requires rewriting some
+SPARQL. The entity and search APIs are not affected.
+
+The two endpoints are exported as constants, and the client uses v1 until v2 is
+generally available:
+
+```go
+client, err := quickiedata.NewClient("your-app/1.0 (you@example.org)", &quickiedata.WikidataClientOptions{
+	SPARQLEndpoint: quickiedata.SPARQLEndpointV2,
+})
+```
+
+`SPARQLCompatibilityIssues` reports the constructs v2 does not support, so a
+query can be checked before it is sent anywhere. The check is textual: it looks
+at the query with comments and string literals removed.
+
+```go
+for _, issue := range quickiedata.SPARQLCompatibilityIssues(queryText) {
+	log.Printf("%s: %s (%s)", issue.Construct, issue.Message, issue.DocURL)
+}
+```
+
+`quickiedata-cli check-query file.sparql` prints the same report and exits
+non-zero when it finds something, which makes it usable in a pipeline.
+
+| Construct | v2 |
+| --- | --- |
+| `SERVICE wikibase:label` | not available, use `rdfs:label` with `OPTIONAL` |
+| `SERVICE wikibase:mwapi` | not available, call the API separately |
+| `wikibase:around`, `wikibase:box`, `geof:distance` | rewrite with GeoSPARQL |
+| `bd:slice`, `bd:sample` | rewrite with `ORDER BY` and `OFFSET`/`LIMIT` |
+| `hint:*` | ignored |
+| `%name` subqueries | not SPARQL 1.1, restructure |
+| `wikibase:decodeURI`, `wikibase:isSomeValue` | not available |
+| GAS service | use path search |
+| `"2001-08-25"^^xsd:dateTime`, `^^xsd:duration` | needs a time part, use `dayTimeDuration` |
+| `SAMPLE(?v) AS ?v` | a variable cannot be bound twice |
+
+The label service is the one most queries use. This:
+
+```sparql
+SELECT ?item ?itemLabel WHERE {
+  ?item wdt:P31 wd:Q515 .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,de". }
+}
+```
+
+becomes plain SPARQL 1.1, which runs on both backends:
+
+```sparql
+SELECT ?item ?itemLabel WHERE {
+  ?item wdt:P31 wd:Q515 .
+  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "en") }
+  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "de") }
+  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "mul") }
+  BIND(IF(BOUND(?item__label_value), ?item__label_value,
+          IF((isURI(?item) && strstarts(str(?item), "http://www.wikidata.org/entity/")),
+             strafter(str(?item), "entity/"), str(?item))) AS ?itemLabel)
+}
+```
+
+Chained `OPTIONAL`s give language priority: once the first one binds
+`?item__label_value`, the next pattern has nowhere to bind. A mandatory
+`?item rdfs:label ?label` would instead drop entities that have no label in that
+language. Aliases need `GROUP_CONCAT` because they are multi-valued.
+
+Dates keep their precision outside the value: a statement with year precision is
+stored as `1984-01-01T00:00:00Z^^xsd:dateTime`, so filtering by a period takes a
+range, not a year literal:
+
+```sparql
+?dob >= "1984-01-01T00:00:00Z"^^xsd:dateTime &&
+?dob <  "1985-01-01T00:00:00Z"^^xsd:dateTime
+```
+
+The full rewriting guide is at
+<https://www.wikidata.org/wiki/Wikidata:SPARQL_query_service/WDQS_backend_update/Migrate>.
+A differential test against both endpoints is kept behind a build tag and is
+skipped unless the endpoints are given:
+
+```bash
+QUICKIEDATA_ENDPOINT_V1=https://query.wikidata.org/sparql \
+QUICKIEDATA_ENDPOINT_V2=https://query-next.wikidata.org/sparql \
+go test -tags live -run TestLiveEndpointsAgree .
 ```
 
 ## License
