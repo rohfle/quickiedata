@@ -25,12 +25,19 @@ func newTestClient(t *testing.T, handler http.HandlerFunc) *quickiedata.Wikidata
 	server := httptest.NewServer(handler)
 	t.Cleanup(server.Close)
 
-	client, err := quickiedata.NewClient(testUserAgent, &quickiedata.WikidataClientOptions{
+	return newClientForServer(t, testUserAgent, server)
+}
+
+// newClientForServer builds a client that sends its requests to server, with
+// one attempt and no pacing: the tests exercise the response handling, not the
+// retry policy, and must not sleep between requests.
+func newClientForServer(t *testing.T, userAgent string, server *httptest.Server) *quickiedata.WikidataClient {
+	t.Helper()
+
+	client, err := quickiedata.NewClient(userAgent, &quickiedata.WikidataClientOptions{
 		DownstreamTransport: server.Client().Transport,
-		// One attempt and no pacing: the tests exercise the response handling,
-		// not the retry policy, and must not sleep between requests.
-		MaxAttempts: 1,
-		Backoff:     nicehttp.NewBackoff(time.Millisecond, time.Millisecond, nicehttp.DefaultBackoffCoefficients),
+		MaxAttempts:         1,
+		Backoff:             nicehttp.NewBackoff(time.Millisecond, time.Millisecond, nicehttp.DefaultBackoffCoefficients),
 	})
 	if err != nil {
 		t.Fatalf("NewClient: %s", err)

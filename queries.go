@@ -16,12 +16,23 @@ import (
 	"github.com/rohfle/nicehttp"
 )
 
-var LibraryUserAgent = fmt.Sprintf("quickiedata/%s (https://github.com/rohfle/quickiedata)", getVersion())
+// libraryName prefixes the library's own user agent token.
+const libraryName = "quickiedata"
+
+// userAgentPolicyURL is where callers are pointed when the user agent is
+// missing, since an unidentified client gets a 403 from Wikimedia.
+const userAgentPolicyURL = "https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy"
+
+var LibraryUserAgent = fmt.Sprintf("%s/%s (https://github.com/rohfle/quickiedata)", libraryName, getVersion())
 
 type WikidataClient struct {
 	APIEndpoint    string
 	SPARQLEndpoint string
 	Client         *http.Client
+
+	// userAgent is set by NewClient and added to every request. A client built
+	// by hand instead of through NewClient sends no User-Agent of its own.
+	userAgent string
 }
 
 type WikidataClientOptions struct {
@@ -62,7 +73,8 @@ func isValidUserAgent(s string) bool {
 func buildUserAgent(callerUA string, suppressLibraryUA bool) (string, error) {
 	callerUA = strings.TrimSpace(callerUA)
 	if callerUA == "" {
-		return "", errors.New("user agent must not be empty")
+		return "", fmt.Errorf("user agent must not be empty, identify your application as %q: %s",
+			"app/1.0 (you@example.org)", userAgentPolicyURL)
 	}
 	if !isValidUserAgent(callerUA) {
 		return "", fmt.Errorf("user agent contains invalid characters: %q", callerUA)
@@ -73,8 +85,10 @@ func buildUserAgent(callerUA string, suppressLibraryUA bool) (string, error) {
 	}
 
 	// Caller may have already included our identifier (e.g. a wrapper library
-	// that concatenates). Trust them rather than emit a duplicate.
-	if strings.Contains(callerUA, LibraryUserAgent) {
+	// that concatenates, or a caller pinning the version itself). Trust them
+	// rather than emit a duplicate token. The match is on "quickiedata/", so
+	// a caller named "quickiedata-cli/0.1" still gets the token.
+	if strings.Contains(callerUA, libraryName+"/") {
 		return callerUA, nil
 	}
 
@@ -103,7 +117,18 @@ func NewClient(userAgent string, options *WikidataClientOptions) (*WikidataClien
 		APIEndpoint:    cmp.Or(options.APIEndpoint, "https://www.wikidata.org/w/api.php"),
 		SPARQLEndpoint: cmp.Or(options.SPARQLEndpoint, "https://query.wikidata.org/sparql"),
 		Client:         &http.Client{Transport: transport},
+		userAgent:      userAgent,
 	}, nil
+}
+
+// setUserAgent labels a request with the client's User-Agent. Setting it on the
+// request, not only on the transport, keeps the label when a caller replaces
+// Client.Transport with one of their own; a header the caller already set is
+// left alone.
+func (wd *WikidataClient) setUserAgent(req *http.Request) {
+	if wd.userAgent != "" && req.Header.Get("User-Agent") == "" {
+		req.Header.Set("User-Agent", wd.userAgent)
+	}
 }
 
 // errorBodyLimit is the maximum number of bytes that readResponseBody reads
@@ -137,11 +162,14 @@ func readResponseBody(resp *http.Response) ([]byte, error) {
 // This function does not check the status code. It does not read the body.
 // The caller must check the status code, read the body and close the body.
 // GetEntitiesRaw, SearchEntitiesRaw and SPARQLQueryRaw do this work.
+// The client's User-Agent is added to the request.
 func (wd *WikidataClient) GetWithContext(ctx context.Context, url string) (*http.Response, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
+
+	wd.setUserAgent(req)
 
 	return wd.Client.Do(req)
 }
@@ -285,6 +313,7 @@ func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery
 
 	req.Header.Set("Content-Type", "application/sparql-query")
 	req.Header.Set("Accept", "application/sparql-results+json")
+	wd.setUserAgent(req)
 
 	resp, err := wd.Client.Do(req)
 	if err != nil {
