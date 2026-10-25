@@ -1,6 +1,7 @@
 package quickiedata
 
 import (
+	"cmp"
 	"context"
 	"encoding/json"
 	"errors"
@@ -10,7 +11,12 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/rohfle/nicehttp"
 )
+
+var LibraryUserAgent = fmt.Sprintf("quickiedata/%s (https://github.com/rohfle/quickiedata)", getVersion())
 
 type WikidataClient struct {
 	APIEndpoint    string
@@ -18,14 +24,86 @@ type WikidataClient struct {
 	Client         *http.Client
 }
 
-func NewClient(transport http.RoundTripper) *WikidataClient {
-	return &WikidataClient{
-		APIEndpoint:    "https://www.wikidata.org/w/api.php",
-		SPARQLEndpoint: "https://query.wikidata.org/sparql",
-		Client: &http.Client{
-			Transport: transport,
-		},
+type WikidataClientOptions struct {
+	APIEndpoint         string
+	SPARQLEndpoint      string
+	Backoff             *nicehttp.Backoff
+	MaxAttempts         int
+	AttemptTimeout      time.Duration
+	DownstreamTransport http.RoundTripper
+	SuppressLibraryUA   bool
+}
+
+// isValidUserAgent reports whether s is a legal HTTP header value.
+// Per RFC 7230 §3.2.6, field values may contain visible ASCII (0x21–0x7E),
+// spaces, and horizontal tabs; they must NOT contain CR, LF, or NUL.
+func isValidUserAgent(s string) bool {
+	for _, r := range s {
+		switch {
+		case r == '\t' || r == ' ':
+			// allowed
+		case r >= 0x21 && r <= 0x7E:
+			// visible ASCII
+		default:
+			return false
+		}
 	}
+	return true
+}
+
+// buildUserAgent validates the caller-supplied user agent and appends the
+// library's own identifier per Wikimedia's User-Agent policy. The result is
+// "<caller> <library>" — tool first, library second, matching the convention
+// documented at https://meta.wikimedia.org/wiki/User-Agent_policy.
+//
+// If suppressLibraryUA is set, the library identifier is NOT appended and
+// the caller is solely responsible for including it. This is a policy
+// violation unless the caller has a good reason (proxying, exact-header tests).
+func buildUserAgent(callerUA string, suppressLibraryUA bool) (string, error) {
+	callerUA = strings.TrimSpace(callerUA)
+	if callerUA == "" {
+		return "", errors.New("user agent must not be empty")
+	}
+	if !isValidUserAgent(callerUA) {
+		return "", fmt.Errorf("user agent contains invalid characters: %q", callerUA)
+	}
+
+	if suppressLibraryUA {
+		return callerUA, nil
+	}
+
+	// Caller may have already included our identifier (e.g. a wrapper library
+	// that concatenates). Trust them rather than emit a duplicate.
+	if strings.Contains(callerUA, LibraryUserAgent) {
+		return callerUA, nil
+	}
+
+	return callerUA + " " + LibraryUserAgent, nil
+}
+
+func NewClient(userAgent string, options *WikidataClientOptions) (*WikidataClient, error) {
+	if options == nil {
+		options = &WikidataClientOptions{}
+	}
+
+	userAgent, err := buildUserAgent(userAgent, options.SuppressLibraryUA)
+	if err != nil {
+		return nil, err
+	}
+
+	transport := nicehttp.NewNiceTransportBuilder().
+		SetUserAgent(userAgent).
+		SetLimiterBackoff(cmp.Or(options.Backoff, nicehttp.NewBackoff(1*time.Second, 120*time.Second, nicehttp.DefaultBackoffCoefficients))).
+		SetMaxAttempts(cmp.Or(options.MaxAttempts, 5)).
+		SetAttemptTimeout(cmp.Or(options.AttemptTimeout, 60*time.Second)).
+		SetDownstreamTransport(options.DownstreamTransport).
+		Build()
+
+	return &WikidataClient{
+		APIEndpoint:    cmp.Or(options.APIEndpoint, "https://www.wikidata.org/w/api.php"),
+		SPARQLEndpoint: cmp.Or(options.SPARQLEndpoint, "https://query.wikidata.org/sparql"),
+		Client:         &http.Client{Transport: transport},
+	}, nil
 }
 
 // errorBodyLimit is the maximum number of bytes that readResponseBody reads

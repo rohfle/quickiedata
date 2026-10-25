@@ -10,7 +10,9 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
+	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 )
 
@@ -23,9 +25,32 @@ func newTestClient(t *testing.T, handler http.HandlerFunc) *quickiedata.Wikidata
 	server := httptest.NewServer(handler)
 	t.Cleanup(server.Close)
 
-	client := quickiedata.NewClient(server.Client().Transport)
+	client, err := quickiedata.NewClient(testUserAgent, &quickiedata.WikidataClientOptions{
+		DownstreamTransport: server.Client().Transport,
+		// One attempt and no pacing: the tests exercise the response handling,
+		// not the retry policy, and must not sleep between requests.
+		MaxAttempts: 1,
+		Backoff:     nicehttp.NewBackoff(time.Millisecond, time.Millisecond, nicehttp.DefaultBackoffCoefficients),
+	})
+	if err != nil {
+		t.Fatalf("NewClient: %s", err)
+	}
 	client.APIEndpoint = server.URL + "/w/api.php"
 	client.SPARQLEndpoint = server.URL + "/sparql"
+	return client
+}
+
+// testUserAgent is the caller user agent all test clients use.
+const testUserAgent = "quickiedata-test/0.0"
+
+// newAPIClient returns a client that builds URLs only, without a test server.
+func newAPIClient(t *testing.T) *quickiedata.WikidataClient {
+	t.Helper()
+
+	client, err := quickiedata.NewClient(testUserAgent, nil)
+	if err != nil {
+		t.Fatalf("NewClient: %s", err)
+	}
 	return client
 }
 
@@ -221,7 +246,7 @@ func TestResponseErrorMessage(t *testing.T) {
 }
 
 func TestEmptySearchReportsTheSearchTerm(t *testing.T) {
-	client := quickiedata.NewClient(nil)
+	client := newAPIClient(t)
 
 	_, err := client.CreateSearchEntitiesURL("", nil)
 	if err == nil {
@@ -233,7 +258,7 @@ func TestEmptySearchReportsTheSearchTerm(t *testing.T) {
 }
 
 func TestNilOptionsAreDefaulted(t *testing.T) {
-	client := quickiedata.NewClient(nil)
+	client := newAPIClient(t)
 
 	got, err := client.CreateGetEntitiesURL([]string{"Q42"}, nil)
 	if err != nil {

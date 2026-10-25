@@ -7,9 +7,7 @@ import (
 	"io"
 	"os"
 	"strings"
-	"time"
 
-	"github.com/rohfle/nicehttp"
 	"github.com/rohfle/quickiedata"
 	"github.com/spf13/cobra"
 )
@@ -34,17 +32,11 @@ func parseArray(val string) ([]string, error) {
 
 func main() {
 	ctx := context.Background()
-	transport := nicehttp.NewNiceTransportBuilder().
-		SetUserAgent(UserAgent).
-		SetLimiterBackoff(nicehttp.NewBackoff(
-			1*time.Second,
-			30*time.Second,
-			nicehttp.DefaultBackoffCoefficients,
-		)).
-		SetMaxAttempts(5).
-		SetAttemptTimeout(30 * time.Second).
-		Build()
-	wd := quickiedata.NewClient(transport)
+	wd, err := quickiedata.NewClient(UserAgent, nil)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "failed to create quickiedata client: %v\n", err)
+		os.Exit(1)
+	}
 
 	var language string
 
