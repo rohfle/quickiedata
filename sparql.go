@@ -193,8 +193,32 @@ func cleanupSPARQL(query string) string {
 // comment only when it is outside a string literal and outside an IRI, so a
 // "#" in a value or in an IRI stays part of the query.
 func stripSPARQLComments(query string) string {
+	return stripSPARQL(query, false)
+}
+
+// stripSPARQLCode replaces every comment and the contents of every string
+// literal with spaces, keeping the query structure and its IRIs. Scanning a
+// query for a keyword this way cannot match text inside a literal.
+//
+//	BIND("SERVICE wikibase:label" AS ?x)  ->  BIND("                      " AS ?x)
+func stripSPARQLCode(query string) string {
+	return stripSPARQL(query, true)
+}
+
+// stripSPARQL removes comments. With blankLiterals every byte inside a string
+// literal becomes a space, which is for scanning only: the result is no longer
+// a query.
+func stripSPARQL(query string, blankLiterals bool) string {
 	var out strings.Builder
 	out.Grow(len(query))
+
+	// literal returns the byte to keep for text inside a string literal.
+	literal := func(char byte) byte {
+		if blankLiterals {
+			return ' '
+		}
+		return char
+	}
 
 	quote := "" // the string literal that is open, empty when outside one
 	inComment := false
@@ -213,9 +237,9 @@ func stripSPARQLComments(query string) string {
 		if quote != "" {
 			// an escaped character cannot end the string
 			if char == '\\' && i+1 < len(query) {
-				out.WriteByte(char)
+				out.WriteByte(literal(char))
 				i++
-				out.WriteByte(query[i])
+				out.WriteByte(literal(query[i]))
 				continue
 			}
 			if strings.HasPrefix(query[i:], quote) {
@@ -224,7 +248,7 @@ func stripSPARQLComments(query string) string {
 				quote = ""
 				continue
 			}
-			out.WriteByte(char)
+			out.WriteByte(literal(char))
 			continue
 		}
 

@@ -16,6 +16,17 @@ import (
 	"github.com/rohfle/nicehttp"
 )
 
+// Wikidata Query Service endpoints. The service is migrating from v1 to v2,
+// which changes the endpoint URL and the supported SPARQL; see
+// SPARQLCompatibilityIssues and the README section "Migrating to WDQS v2".
+const (
+	// SPARQLEndpointV1 is the current WDQS endpoint. It stays available but
+	// may degrade from February 2027.
+	SPARQLEndpointV1 = "https://query.wikidata.org/sparql"
+	// SPARQLEndpointV2 is the new WDQS endpoint.
+	SPARQLEndpointV2 = "https://query-next.wikidata.org/sparql"
+)
+
 // libraryName prefixes the library's own user agent token.
 const libraryName = "quickiedata"
 
@@ -115,7 +126,7 @@ func NewClient(userAgent string, options *WikidataClientOptions) (*WikidataClien
 
 	return &WikidataClient{
 		APIEndpoint:    cmp.Or(options.APIEndpoint, "https://www.wikidata.org/w/api.php"),
-		SPARQLEndpoint: cmp.Or(options.SPARQLEndpoint, "https://query.wikidata.org/sparql"),
+		SPARQLEndpoint: cmp.Or(options.SPARQLEndpoint, SPARQLEndpointV1),
 		Client:         &http.Client{Transport: transport},
 		userAgent:      userAgent,
 	}, nil
@@ -304,6 +315,13 @@ func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery
 	sparqlQuery, err := RenderSPARQLQuery(query)
 	if err != nil {
 		return nil, err
+	}
+
+	// The query is sent whatever it contains: the endpoint in use decides what
+	// it accepts, and WDQS v1 still accepts these constructs.
+	for _, issue := range SPARQLCompatibilityIssues(sparqlQuery) {
+		DebugLog.Printf("sparql: %s is not supported by WDQS v2: %s (%s)",
+			issue.Construct, issue.Message, issue.DocURL)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", wd.SPARQLEndpoint, strings.NewReader(sparqlQuery))

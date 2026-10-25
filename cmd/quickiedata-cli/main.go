@@ -201,7 +201,40 @@ func main() {
 	getCmd.Flags().BoolVar(&rawMode, "raw", false, "Output data without simplification")
 	getCmd.SilenceUsage = true
 
-	rootCmd.AddCommand(queryCmd, searchCmd, getCmd)
+	// Compatibility check command
+	var checkCmd = &cobra.Command{
+		Use:   "check-query [file]",
+		Short: "Report SPARQL constructs that the WDQS v2 backend does not support",
+		Args:  cobra.MaximumNArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			var data []byte
+			var err error
+			if len(args) == 1 && args[0] != "-" {
+				data, err = os.ReadFile(args[0])
+				if err != nil {
+					return fmt.Errorf("failed to read query file: %w", err)
+				}
+			} else {
+				data, err = io.ReadAll(os.Stdin)
+				if err != nil {
+					return fmt.Errorf("failed to read query from stdin: %w", err)
+				}
+			}
+
+			issues := quickiedata.SPARQLCompatibilityIssues(string(data))
+			if len(issues) == 0 {
+				fmt.Println("no WDQS v2 compatibility issues found")
+				return nil
+			}
+			for _, issue := range issues {
+				fmt.Printf("%s: %s\n  %s\n", issue.Construct, issue.Message, issue.DocURL)
+			}
+			return fmt.Errorf("%d construct(s) to rewrite for WDQS v2", len(issues))
+		},
+	}
+	checkCmd.SilenceUsage = true
+
+	rootCmd.AddCommand(queryCmd, searchCmd, getCmd, checkCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		// cobra has already written the error to stderr

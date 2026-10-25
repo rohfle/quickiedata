@@ -38,14 +38,12 @@ func NewSearchEntitiesOptions() *SearchEntitiesOptions {
 	}
 }
 
-type GetSPARQLQueryOptions struct {
-	Timeout int64
-}
+// GetSPARQLQueryOptions carries the options of a SPARQL query. No option is
+// defined yet; per-request timeouts come from the context.
+type GetSPARQLQueryOptions struct{}
 
 func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
-	return &GetSPARQLQueryOptions{
-		Timeout: -1,
-	}
+	return &GetSPARQLQueryOptions{}
 }
 
 type SPARQLQuery struct {
