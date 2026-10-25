@@ -375,7 +375,7 @@ non-zero when it finds something, which makes it usable in a pipeline.
 | `"2001-08-25"^^xsd:dateTime`, `^^xsd:duration` | needs a time part, use `dayTimeDuration` |
 | `SAMPLE(?v) AS ?v` | a variable cannot be bound twice |
 
-The label service is the one most queries use. This:
+The label service is used by most queries. This:
 
 ```sparql
 SELECT ?item ?itemLabel WHERE {
@@ -389,19 +389,21 @@ becomes plain SPARQL 1.1, which runs on both backends:
 ```sparql
 SELECT ?item ?itemLabel WHERE {
   ?item wdt:P31 wd:Q515 .
-  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "en") }
-  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "de") }
-  OPTIONAL { ?item rdfs:label ?item__label_value . FILTER(lang(?item__label_value) = "mul") }
-  BIND(IF(BOUND(?item__label_value), ?item__label_value,
-          IF((isURI(?item) && strstarts(str(?item), "http://www.wikidata.org/entity/")),
-             strafter(str(?item), "entity/"), str(?item))) AS ?itemLabel)
+  OPTIONAL { ?item rdfs:label ?itemLabel . FILTER(lang(?itemLabel) = "en") }
+  OPTIONAL { ?item rdfs:label ?itemLabel . FILTER(lang(?itemLabel) = "de") }
+  OPTIONAL { ?item rdfs:label ?itemLabel . FILTER(lang(?itemLabel) = "mul") }
 }
 ```
 
-Chained `OPTIONAL`s give language priority: once the first one binds
-`?item__label_value`, the next pattern has nowhere to bind. A mandatory
-`?item rdfs:label ?label` would instead drop entities that have no label in that
-language. Aliases need `GROUP_CONCAT` because they are multi-valued.
+Chained `OPTIONAL`s give language priority: all of them bind `?itemLabel`, so
+once the first one matches, the next pattern has nowhere to bind. An entity with
+no label in any listed language keeps its row with `?itemLabel` unbound, where a
+mandatory `?item rdfs:label ?label` would drop the row instead.
+
+Keep the `mul` line: some items, including Q42, carry their label only as `mul`.
+Use `LANGMATCHES(lang(?itemLabel), "en")` instead of `=` if regional variants
+such as `en-gb` should count. Aliases need `GROUP_CONCAT` because they are
+multi-valued.
 
 Dates keep their precision outside the value: a statement with year precision is
 stored as `1984-01-01T00:00:00Z^^xsd:dateTime`, so filtering by a period takes a
