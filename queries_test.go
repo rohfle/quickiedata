@@ -164,7 +164,7 @@ func TestGetEntitySimpleMissingEntity(t *testing.T) {
 	}
 	// Make sure that a nil response also returns a nil item. This keeps the
 	// call sequence in the README safe.
-	if item := response.GetEntityAsItem("Q999999999"); item != nil {
+	if item := response.GetEntityAsItem(); item != nil {
 		t.Errorf("expected nil item, got %+v", item)
 	}
 }
@@ -226,7 +226,7 @@ func TestGetEntitySimpleUnsupportedType(t *testing.T) {
 	if response.Entity != nil {
 		t.Errorf("Entity should stay nil, got %+v", response.Entity)
 	}
-	if item := response.GetEntityAsItem("M123"); item != nil {
+	if item := response.GetEntityAsItem(); item != nil {
 		t.Errorf("expected a nil item, got %+v", item)
 	}
 }

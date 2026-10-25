@@ -240,7 +240,7 @@ func TestSimpleFormRoundTripsEveryDataType(t *testing.T) {
 	}
 
 	items := map[string]*quickiedata.SimpleItem{
-		"single entity form": single.GetEntityAsItem("Q1"),
+		"single entity form": single.GetEntityAsItem(),
 		"entities form":      multi.GetEntityAsItem("Q1"),
 	}
 	for name, item := range items {

@@ -210,7 +210,7 @@ func (resp *GetEntitiesSimpleResponse) GetEntityAsLexeme(key string) *SimpleLexe
 	return casted
 }
 
-func (resp *GetEntitySimpleResponse) GetEntityAsItem(key string) *SimpleItem {
+func (resp *GetEntitySimpleResponse) GetEntityAsItem() *SimpleItem {
 	if resp == nil {
 		return nil
 	}
@@ -218,7 +218,7 @@ func (resp *GetEntitySimpleResponse) GetEntityAsItem(key string) *SimpleItem {
 	return casted
 }
 
-func (resp *GetEntitySimpleResponse) GetEntityAsProperty(key string) *SimpleProperty {
+func (resp *GetEntitySimpleResponse) GetEntityAsProperty() *SimpleProperty {
 	if resp == nil {
 		return nil
 	}
@@ -226,7 +226,7 @@ func (resp *GetEntitySimpleResponse) GetEntityAsProperty(key string) *SimpleProp
 	return casted
 }
 
-func (resp *GetEntitySimpleResponse) GetEntityAsLexeme(key string) *SimpleLexeme {
+func (resp *GetEntitySimpleResponse) GetEntityAsLexeme() *SimpleLexeme {
 	if resp == nil {
 		return nil
 	}
