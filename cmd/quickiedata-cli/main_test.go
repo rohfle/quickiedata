@@ -2,8 +2,10 @@ package main
 
 import (
 	"errors"
+	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -60,5 +62,128 @@ func TestExitCode(t *testing.T) {
 				t.Errorf("exit code = %d, want %d", got, test.want)
 			}
 		})
+	}
+}
+
+// parseVariables classifies every value, including array elements, in one
+// place: entity id, then predicate, then string.
+func TestParseVariables(t *testing.T) {
+	tests := []struct {
+		name    string
+		args    []string
+		key     string
+		want    []string
+		wantErr string
+	}{
+		{
+			name: "string",
+			args: []string{"name=Oscar"},
+			key:  "name",
+			want: []string{`"""Oscar"""`},
+		},
+		{
+			name: "bare entity id",
+			args: []string{"item=Q42"},
+			key:  "item",
+			want: []string{"<http://www.wikidata.org/entity/Q42>"},
+		},
+		{
+			name: "prefixed entity id",
+			args: []string{"item=wd:Q42"},
+			key:  "item",
+			want: []string{"<http://www.wikidata.org/entity/Q42>"},
+		},
+		{
+			name: "predicate",
+			args: []string{"p=wdt:P31"},
+			key:  "p",
+			want: []string{"<http://www.wikidata.org/prop/direct/P31>"},
+		},
+		{
+			name: "array of ids",
+			args: []string{`ids=["Q42","Q1"]`},
+			key:  "ids",
+			want: []string{
+				"<http://www.wikidata.org/entity/Q42>",
+				"<http://www.wikidata.org/entity/Q1>",
+			},
+		},
+		{
+			name: "bare array of ids",
+			args: []string{"ids=[Q42,Q1]"},
+			key:  "ids",
+			want: []string{
+				"<http://www.wikidata.org/entity/Q42>",
+				"<http://www.wikidata.org/entity/Q1>",
+			},
+		},
+		{
+			name: "array of strings",
+			args: []string{`names=["Oscar","Felix"]`},
+			key:  "names",
+			want: []string{`"""Oscar"""`, `"""Felix"""`},
+		},
+		{
+			name:    "argument without a value",
+			args:    []string{"name"},
+			wantErr: "must be key=value",
+		},
+		{
+			name:    "unterminated array",
+			args:    []string{`ids=[Q42`},
+			key:     "ids",
+			wantErr: "invalid array syntax",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			variables, err := parseVariables(test.args)
+			if test.wantErr != "" {
+				if err == nil || !strings.Contains(err.Error(), test.wantErr) {
+					t.Fatalf("error = %v, want it to contain %q", err, test.wantErr)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("parseVariables: %s", err)
+			}
+
+			var got []string
+			for _, term := range variables.Get(test.key) {
+				rendered, err := term.SPARQLTerm()
+				if err != nil {
+					t.Fatalf("SPARQLTerm: %s", err)
+				}
+				got = append(got, rendered)
+			}
+			if len(got) != len(test.want) {
+				t.Fatalf("terms = %v, want %v", got, test.want)
+			}
+			for i := range got {
+				if got[i] != test.want[i] {
+					t.Errorf("term %d = %q, want %q", i, got[i], test.want[i])
+				}
+			}
+		})
+	}
+}
+
+// readQueryInput treats the first argument as a file unless it is a key=value.
+func TestReadQueryInput(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "query.sparql")
+	if err := os.WriteFile(path, []byte("SELECT ?x WHERE { ?x ?p ?o }"), 0o644); err != nil {
+		t.Fatalf("WriteFile: %s", err)
+	}
+
+	queryText, varArgs, err := readQueryInput([]string{path, "name=Oscar"})
+	if err != nil {
+		t.Fatalf("readQueryInput: %s", err)
+	}
+	if !strings.Contains(queryText, "SELECT ?x") {
+		t.Errorf("query = %q, want the file contents", queryText)
+	}
+	if len(varArgs) != 1 || varArgs[0] != "name=Oscar" {
+		t.Errorf("varArgs = %v, want [name=Oscar]", varArgs)
 	}
 }
