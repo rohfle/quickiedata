@@ -167,14 +167,34 @@ func TestSPARQLTermRendering(t *testing.T) {
 			want:  `BIND( <http://www.wikidata.org/entity/Q42> as ?at)`,
 		},
 		{
-			name:  "wikibase prefix is accepted",
-			value: quickiedata.WikidataID("wikibase:Q42"),
+			name:    "the ontology prefix is not an entity prefix",
+			value:   quickiedata.WikidataID("wikibase:Q42"),
+			wantErr: "invalid entity id",
+		},
+		{
+			name:    "a predicate prefix is not an entity prefix",
+			value:   quickiedata.WikidataID("wdt:P31"),
+			wantErr: "invalid entity id",
+		},
+		{
+			name:  "bare id",
+			value: quickiedata.WikidataID("Q42"),
 			want:  `BIND( <http://www.wikidata.org/entity/Q42> as ?at)`,
+		},
+		{
+			name:  "form id",
+			value: quickiedata.WikidataID("wd:L1-F1"),
+			want:  `BIND( <http://www.wikidata.org/entity/L1-F1> as ?at)`,
+		},
+		{
+			name:  "media info id",
+			value: quickiedata.WikidataID("wd:M6661797"),
+			want:  `BIND( <http://www.wikidata.org/entity/M6661797> as ?at)`,
 		},
 		{
 			name:    "another prefix is rejected",
 			value:   quickiedata.WikidataID("foo:Q42"),
-			wantErr: "invalid wikidata reference",
+			wantErr: "invalid entity id",
 		},
 		{
 			name:  "caller defined term",
@@ -184,7 +204,7 @@ func TestSPARQLTermRendering(t *testing.T) {
 		{
 			name:    "invalid wikidata id",
 			value:   quickiedata.WikidataID("nope"),
-			wantErr: "invalid wikidata reference",
+			wantErr: "invalid entity id",
 		},
 	}
 
@@ -231,7 +251,7 @@ func TestSPARQLTermListRendering(t *testing.T) {
 		{
 			name:    "an invalid term fails the whole list",
 			value:   []quickiedata.SPARQLTerm{quickiedata.WikidataID("wd:Q42"), quickiedata.WikidataID("nope")},
-			wantErr: "invalid wikidata reference",
+			wantErr: "invalid entity id",
 		},
 		{
 			name:    "a nil term is reported, not a panic",

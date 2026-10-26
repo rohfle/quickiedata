@@ -16,7 +16,8 @@ type SPARQLTerm interface {
 }
 
 // Datatype and IRI prefixes, written in full so a query needs no prefix for
-// values this library injects.
+// values this library injects. The entity base is Wikidata's; another Wikibase
+// instance has its own, which this library does not target.
 const (
 	wikidataEntityIRI  = "http://www.wikidata.org/entity/"
 	xsdDateTime        = "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -26,21 +27,19 @@ const (
 	wktLiteral         = "http://www.opengis.net/ont/geosparql#wktLiteral"
 )
 
-// WikidataID is an entity reference written with a prefix, such as wd:Q42. It
-// renders as the entity IRI, so the query does not need the prefix itself.
+// WikidataID is an entity reference, written bare (Q42) or with the entity
+// prefix (wd:Q42). It renders as the entity IRI, so the query needs no prefix
+// itself.
 type WikidataID string
-
-// ValidSPARQLWikipediaID matches a prefixed entity id: an item, property,
-// lexeme, sense or form, or NOOP.
-var ValidSPARQLWikipediaID = regexp.MustCompile(`^(?:wd|wikibase):(NOOP|[PLSFQ][1-9]\d*)$`)
 
 // SPARQLTerm returns the entity IRI once the reference validates.
 func (id WikidataID) SPARQLTerm() (string, error) {
-	match := ValidSPARQLWikipediaID.FindStringSubmatch(string(id))
-	if match == nil {
-		return "", fmt.Errorf("invalid wikidata reference %q, want wd:Q42", id)
+	canonical, err := ParseEntityID(string(id))
+	if err != nil {
+		return "", err
 	}
-	return fmt.Sprintf("<%s%s>", wikidataEntityIRI, match[1]), nil
+	_, local, _ := strings.Cut(string(canonical), ":")
+	return fmt.Sprintf("<%s%s>", wikidataEntityIRI, local), nil
 }
 
 // String is a plain string literal.

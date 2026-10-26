@@ -8,11 +8,31 @@ import (
 	"strings"
 )
 
-var ValidSPARQLEntityID = regexp.MustCompile("^((Q|P|L|M)[1-9][0-9]*|L[1-9][0-9]*-(F|S)[1-9][0-9]*)$")
+// entityIDLocal matches the local part of an entity id: an item, property,
+// lexeme, MediaInfo, form or sense.
+const entityIDLocal = `(?:[QPLM][1-9]\d*|L[1-9]\d*-[FS][1-9]\d*)`
 
-// IsEntityID checks if a string is a valid entity id
+// ValidSPARQLEntityID matches a bare entity id, the form the entity API takes.
+var ValidSPARQLEntityID = regexp.MustCompile(`^` + entityIDLocal + `$`)
+
+// sparqlEntityID matches an entity id as a SPARQL value may write it: bare, or
+// with wd:, the only prefix that names an entity. wdt:, p:, ps: and the rest
+// name predicates, so they are not accepted here.
+var sparqlEntityID = regexp.MustCompile(`^(?:wd:)?(` + entityIDLocal + `)$`)
+
+// IsEntityID checks if a string is a bare entity id, as the entity API takes it.
 func IsEntityID(id string) bool {
 	return ValidSPARQLEntityID.MatchString(id)
+}
+
+// ParseEntityID accepts an entity id written bare (Q42) or with the entity
+// prefix (wd:Q42) and returns it in the canonical wd: form.
+func ParseEntityID(id string) (WikidataID, error) {
+	match := sparqlEntityID.FindStringSubmatch(id)
+	if match == nil {
+		return "", fmt.Errorf("invalid entity id %q, want Q42 or wd:Q42", id)
+	}
+	return WikidataID("wd:" + match[1]), nil
 }
 
 // ValidateEntityID checks if a string is a valid entity id

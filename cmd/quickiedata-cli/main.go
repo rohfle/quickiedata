@@ -94,10 +94,15 @@ func main() {
 					// The elements are plain strings: an id inside an array is
 					// not detected the way a single value below is.
 					query.Variables.Set(key, quickiedata.Strings(parsedVals...)...)
-				case quickiedata.IsEntityID(val):
-					query.Variables.Set(key, quickiedata.WikidataID("wd:"+val))
 				default:
-					query.Variables.Set(key, quickiedata.String(val))
+					// an entity id is written bare (Q42) or prefixed (wd:Q42);
+					// anything else is a string literal
+					id, err := quickiedata.ParseEntityID(val)
+					if err == nil {
+						query.Variables.Set(key, id)
+					} else {
+						query.Variables.Set(key, quickiedata.String(val))
+					}
 				}
 			}
 
