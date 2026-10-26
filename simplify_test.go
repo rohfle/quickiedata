@@ -3,6 +3,7 @@ package quickiedata_test
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 	"path"
@@ -12,6 +13,9 @@ import (
 	"github.com/go-test/deep"
 	"github.com/rohfle/quickiedata"
 )
+
+// updateGolden rewrites a placeholder golden file instead of comparing it.
+var updateGolden = flag.Bool("update", false, "populate placeholder .simple.json files from the current output")
 
 func TestEntitySimplify(t *testing.T) {
 	couples, err := getTestEntitySimplifyCouples("testdata/simplify")
@@ -40,11 +44,20 @@ func TestEntitySimplify(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		// Useful widget to populate initial testdata
+		// A "{}" file is a placeholder for testdata. Refuse to compare it, so a
+		// golden that lost its content fails instead of rewriting itself.
 		if strings.HasPrefix(string(compareData), "{}") {
-			t.Logf("found special symbol %q in %q. populating expected simpified entity data...", "{}", testCouple[1])
-			afterdata, _ := json.MarshalIndent(afterEntity, "", "  ")
-			os.WriteFile(testCouple[1], afterdata, 0644)
+			if !*updateGolden {
+				t.Fatalf("%s is a placeholder; run go test -run TestEntitySimplify -update to populate it", testCouple[1])
+			}
+			afterdata, err := json.MarshalIndent(afterEntity, "", "  ")
+			if err != nil {
+				t.Fatalf("marshal %s: %s", testCouple[1], err)
+			}
+			if err := os.WriteFile(testCouple[1], afterdata, 0o644); err != nil {
+				t.Fatalf("write %s: %s", testCouple[1], err)
+			}
+			t.Logf("populated %s", testCouple[1])
 			continue
 		}
 
