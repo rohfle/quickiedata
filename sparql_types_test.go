@@ -192,6 +192,21 @@ func TestSPARQLTermRendering(t *testing.T) {
 			want:  `BIND( <http://www.wikidata.org/entity/M6661797> as ?at)`,
 		},
 		{
+			name:  "direct claim predicate",
+			value: quickiedata.Predicate("wdt:P31"),
+			want:  `BIND( <http://www.wikidata.org/prop/direct/P31> as ?at)`,
+		},
+		{
+			name:  "statement predicate",
+			value: quickiedata.Predicate("ps:P31"),
+			want:  `BIND( <http://www.wikidata.org/prop/statement/P31> as ?at)`,
+		},
+		{
+			name:    "a predicate needs its prefix",
+			value:   quickiedata.Predicate("P31"),
+			wantErr: "invalid predicate",
+		},
+		{
 			name:    "another prefix is rejected",
 			value:   quickiedata.WikidataID("foo:Q42"),
 			wantErr: "invalid entity id",

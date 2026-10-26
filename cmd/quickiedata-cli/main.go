@@ -95,11 +95,12 @@ func main() {
 					// not detected the way a single value below is.
 					query.Variables.Set(key, quickiedata.Strings(parsedVals...)...)
 				default:
-					// an entity id is written bare (Q42) or prefixed (wd:Q42);
-					// anything else is a string literal
-					id, err := quickiedata.ParseEntityID(val)
-					if err == nil {
+					// an entity id (Q42, wd:Q42), a predicate (wdt:P31), or else
+					// a string literal
+					if id, err := quickiedata.ParseEntityID(val); err == nil {
 						query.Variables.Set(key, id)
+					} else if predicate, err := quickiedata.ParsePredicate(val); err == nil {
+						query.Variables.Set(key, predicate)
 					} else {
 						query.Variables.Set(key, quickiedata.String(val))
 					}

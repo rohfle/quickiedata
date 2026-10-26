@@ -333,6 +333,16 @@ gives you as output
 first result: Oscar (id=Q1185550)
 ```
 
+`Variables` takes any `quickiedata.SPARQLTerm`: `String`, `Integer`, `Boolean`,
+`Float`, `Decimal`, `Text`, `Coordinate`, `WikidataID`, `Predicate` for a
+property in predicate position, and the date and duration literals. One term
+renders as a `BIND`, several as a `VALUES` clause:
+
+```go
+query.Variables.Set("name", quickiedata.String("Oscar"))
+query.Variables.Set("p", quickiedata.Predicate("wdt:P31"))
+```
+
 ## Migrating to WDQS v2
 
 The Wikidata Query Service is moving from v1 to v2. New endpoints are

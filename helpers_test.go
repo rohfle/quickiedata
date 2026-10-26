@@ -88,3 +88,46 @@ func TestParseEntityID(t *testing.T) {
 		})
 	}
 }
+
+// ParsePredicate is the predicate counterpart of ParseEntityID: a property in
+// predicate position, never an entity.
+func TestParsePredicate(t *testing.T) {
+	tests := []struct {
+		value   string
+		want    quickiedata.Predicate
+		wantErr bool
+	}{
+		{value: "wdt:P31", want: "wdt:P31"},
+		{value: "p:P31", want: "p:P31"},
+		{value: "ps:P31", want: "ps:P31"},
+		{value: "psv:P31", want: "psv:P31"},
+		{value: "pq:P31", want: "pq:P31"},
+		{value: "pqv:P31", want: "pqv:P31"},
+		{value: "pr:P31", want: "pr:P31"},
+		{value: "prv:P31", want: "prv:P31"},
+		{value: "wdt:NOOP", want: "wdt:NOOP"},
+		{value: "wd:P31", wantErr: true},
+		{value: "P31", wantErr: true},
+		{value: "wdt:P0", wantErr: true},
+		{value: "wdt:Q31", wantErr: true},
+		{value: "", wantErr: true},
+	}
+
+	for _, test := range tests {
+		t.Run(test.value, func(t *testing.T) {
+			got, err := quickiedata.ParsePredicate(test.value)
+			if test.wantErr {
+				if err == nil {
+					t.Fatalf("ParsePredicate(%q) = %q, want an error", test.value, got)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("ParsePredicate(%q): %s", test.value, err)
+			}
+			if got != test.want {
+				t.Errorf("ParsePredicate(%q) = %q, want %q", test.value, got, test.want)
+			}
+		})
+	}
+}

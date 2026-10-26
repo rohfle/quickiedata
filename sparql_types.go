@@ -27,6 +27,44 @@ const (
 	wktLiteral         = "http://www.opengis.net/ont/geosparql#wktLiteral"
 )
 
+// Predicate is a Wikidata property in predicate position, written with the
+// prefix that names its IRI family (wdt:P31, ps:P31, pq:P31, …). It renders the
+// full IRI, so a template needs no prefix for a bound predicate.
+type Predicate string
+
+// predicateIRIBase maps each Wikidata property prefix to its IRI namespace.
+var predicateIRIBase = map[string]string{
+	"wdt": "http://www.wikidata.org/prop/direct/",
+	"p":   "http://www.wikidata.org/prop/",
+	"ps":  "http://www.wikidata.org/prop/statement/",
+	"psv": "http://www.wikidata.org/prop/statement/value/",
+	"pq":  "http://www.wikidata.org/prop/qualifier/",
+	"pqv": "http://www.wikidata.org/prop/qualifier/value/",
+	"pr":  "http://www.wikidata.org/prop/reference/",
+	"prv": "http://www.wikidata.org/prop/reference/value/",
+}
+
+// predicatePattern matches a prefixed property. wd: is not accepted: that is
+// the property entity, which WikidataID covers.
+var predicatePattern = regexp.MustCompile(`^(wdt|psv|pqv|prv|ps|pq|pr|p):(P[1-9]\d*|NOOP)$`)
+
+// ParsePredicate validates a prefixed property such as wdt:P31.
+func ParsePredicate(value string) (Predicate, error) {
+	if !predicatePattern.MatchString(value) {
+		return "", fmt.Errorf("invalid predicate %q, want wdt:P31 or another property prefix", value)
+	}
+	return Predicate(value), nil
+}
+
+// SPARQLTerm returns the property IRI once the prefix and the id validate.
+func (p Predicate) SPARQLTerm() (string, error) {
+	match := predicatePattern.FindStringSubmatch(string(p))
+	if match == nil {
+		return "", fmt.Errorf("invalid predicate %q, want wdt:P31 or another property prefix", p)
+	}
+	return fmt.Sprintf("<%s%s>", predicateIRIBase[match[1]], match[2]), nil
+}
+
 // WikidataID is an entity reference, written bare (Q42) or with the entity
 // prefix (wd:Q42). It renders as the entity IRI, so the query needs no prefix
 // itself.
@@ -256,6 +294,7 @@ func Terms(terms ...SPARQLTerm) []SPARQLTerm {
 // Compile-time checks that every term type implements SPARQLTerm.
 var (
 	_ SPARQLTerm = WikidataID("")
+	_ SPARQLTerm = Predicate("")
 	_ SPARQLTerm = String("")
 	_ SPARQLTerm = Integer(0)
 	_ SPARQLTerm = Boolean(false)
