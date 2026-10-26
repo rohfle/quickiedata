@@ -423,6 +423,10 @@ Use `LANGMATCHES(lang(?itemLabel), "en")` instead of `=` if regional variants
 such as `en-gb` should count. Aliases need `GROUP_CONCAT` because they are
 multi-valued.
 
+Measured 2026-10-25 on 1000 cities: the `OPTIONAL` rewrite takes 2.6-5.5s on
+WDQS v1 against 1.8-2.4s for `SERVICE wikibase:label`, and 3 of the 1000 labels
+differ because the service never falls back to `mul`.
+
 Dates keep their precision outside the value: a statement with year precision is
 stored as `1984-01-01T00:00:00Z^^xsd:dateTime`, so filtering by a period takes a
 range, not a year literal:
