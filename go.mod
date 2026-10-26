@@ -5,7 +5,7 @@ go 1.26.0
 require github.com/go-test/deep v1.1.2
 
 require (
-	github.com/rohfle/nicehttp v0.4.1
+	github.com/rohfle/nicehttp v0.5.0
 	github.com/spf13/cobra v1.10.2
 )
 

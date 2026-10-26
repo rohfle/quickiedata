@@ -5,8 +5,8 @@ github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/neilotoole/fifomu v0.2.0 h1:6mBpHXsOIpyrOYZUab7Bz2R+HL6R1f6qo8v/m7CkJy0=
 github.com/neilotoole/fifomu v0.2.0/go.mod h1:tJqmHyCaQ/PH+nZdVLrVv+2ah5Zz/wpuKfPSYJit9ek=
-github.com/rohfle/nicehttp v0.4.1 h1:aYcGgHe+jMDpDjfuhu2VacpFbdKxXUZYBAXw/1XsSEI=
-github.com/rohfle/nicehttp v0.4.1/go.mod h1:8E6SDOap23ymM1oyvf/RSOhUZCNmS/Irwxx6Y6pexaw=
+github.com/rohfle/nicehttp v0.5.0 h1:CDRHzGw1Fp6WCoXdaOdCibSVX0NfVgxTM+lknfQVYss=
+github.com/rohfle/nicehttp v0.5.0/go.mod h1:8E6SDOap23ymM1oyvf/RSOhUZCNmS/Irwxx6Y6pexaw=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/spf13/cobra v1.10.2 h1:DMTTonx5m65Ic0GOoRY2c16WCbHxOOw6xxezuLaBpcU=
 github.com/spf13/cobra v1.10.2/go.mod h1:7C1pvHqHw5A4vrJfjNwvOdzYu0Gml16OCs2GRiTUUS4=
