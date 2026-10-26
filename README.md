@@ -79,7 +79,13 @@ EOF
 quickiedata-cli query path/to/cats.sparql name=Oscar
 # report SPARQL that the new WDQS backend does not support
 quickiedata-cli check-query path/to/cats.sparql
+# log the rendered query and the scanner view to stderr
+quickiedata-cli --debug query path/to/cats.sparql name=Oscar
 ```
+
+`--debug` prints the query after variable injection, so a query the endpoint
+rejects can be reproduced verbatim; `check-query` does not render, so it only
+reports on the template as written.
 
 ### Search
 

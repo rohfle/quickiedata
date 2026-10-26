@@ -73,6 +73,12 @@ func (s *SimpleBindingValue) ValueAsFloat() *float64 {
 
 var ValidSPARQLVariableName = regexp.MustCompile(`^[A-Za-z_]\w*$`)
 
+// variableStatement is one variable's rendered statement, ready to insert.
+type variableStatement struct {
+	name      string
+	statement string
+}
+
 func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	if query == nil || len(query.Template) == 0 {
 		return "", errors.New("sparql query is empty")
@@ -80,7 +86,7 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 
 	queryText := cleanupSPARQL(query.Template)
 	if len(query.Variables) > 0 {
-		var statements []string
+		var statements []variableStatement
 		// sort the variables to keep output deterministic
 		var keys []string
 		for key := range query.Variables {
@@ -92,9 +98,13 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 			if err != nil {
 				return "", err
 			}
-			statements = append(statements, statement)
+			statements = append(statements, variableStatement{name: name, statement: statement})
 		}
-		queryText = insertStatementsInWhere(queryText, strings.Join(statements, " "))
+		var err error
+		queryText, err = injectVariableStatements(queryText, statements)
+		if err != nil {
+			return "", err
+		}
 	}
 
 	// The fields own these clauses. A template that carries its own OFFSET or
@@ -105,6 +115,9 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	if query.Limit > 0 {
 		queryText += fmt.Sprintf(" LIMIT %d", query.Limit)
 	}
+	// The rendered query is what the endpoint receives, so a rejected query can
+	// be reproduced without rebuilding the template by hand.
+	DebugLog.Printf("sparql query: %s", queryText)
 	return queryText, nil
 }
 
@@ -134,22 +147,291 @@ func renderSPARQLStatement(name string, terms []SPARQLTerm) (string, error) {
 	return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(rendered, " ")), nil
 }
 
-// whereClausePattern matches the WHERE clause of a query, including the
-// opening brace.
-var whereClausePattern = regexp.MustCompile(`(?i)WHERE\s*{`)
+// ErrNoInjectionPoint reports a query that has variables but no group pattern
+// to bind them in.
+var ErrNoInjectionPoint = errors.New("no group graph pattern to bind the variables in")
 
-func insertStatementsInWhere(query string, statementBlock string) string {
-	// search for WHERE {
-	clauses := whereClausePattern.FindAllStringIndex(query, -1)
-
-	output := ""
-	lastIndex := 0
-	for _, match := range clauses {
-		output += query[lastIndex:match[1]]
-		output += " " + statementBlock + " "
-		lastIndex = match[1]
+// injectVariableStatements inserts each variable's statement into the group
+// patterns that use it: all of them at the outer group, and the ones whose name
+// appears inside a subquery into that subquery as well.
+func injectVariableStatements(query string, statements []variableStatement) (string, error) {
+	blanked := stripSPARQLCode(query)
+	if len(blanked) != len(query) {
+		return "", errors.New("sparql query scanner changed the query length")
 	}
-	return output + query[lastIndex:]
+
+	outer, subqueries, err := queryScopes(blanked)
+	if err != nil {
+		return "", err
+	}
+	// The scanner searches this view, not the query: a statement in an
+	// unexpected group is explained here.
+	DebugLog.Printf("sparql scanner view (literals blanked): %s", blanked)
+
+	// One block per insertion point: the outer group takes every statement, a
+	// subquery takes the statements it uses.
+	blocks := map[int]string{outer: joinVariableStatements(statements, nil)}
+	for _, scope := range subqueries {
+		if _, ok := blocks[scope.insertAt]; ok {
+			continue
+		}
+		block := joinVariableStatements(statements, func(name string) bool {
+			return containsVariable(blanked[scope.start:scope.end], name)
+		})
+		if block != "" {
+			blocks[scope.insertAt] = block
+		}
+	}
+
+	offsets := make([]int, 0, len(blocks))
+	for at := range blocks {
+		offsets = append(offsets, at)
+	}
+	// insert back to front so the earlier offsets stay valid
+	slices.SortFunc(offsets, func(a, b int) int { return b - a })
+	for _, at := range offsets {
+		query = query[:at] + " " + blocks[at] + " " + query[at:]
+	}
+	return query, nil
+}
+
+// joinVariableStatements joins the statements keep accepts, in the given order.
+func joinVariableStatements(statements []variableStatement, keep func(name string) bool) string {
+	parts := make([]string, 0, len(statements))
+	for _, statement := range statements {
+		if keep == nil || keep(statement.name) {
+			parts = append(parts, statement.statement)
+		}
+	}
+	return strings.Join(parts, " ")
+}
+
+// containsVariable reports whether code uses ?name or $name as a variable.
+func containsVariable(code string, name string) bool {
+	for _, prefix := range []string{"?", "$"} {
+		needle := prefix + name
+		for i := 0; ; {
+			match := strings.Index(code[i:], needle)
+			if match < 0 {
+				break
+			}
+			end := i + match + len(needle)
+			if end == len(code) || !nameByte(code[end]) {
+				return true
+			}
+			i += match + 1
+		}
+	}
+	return false
+}
+
+// scope is one group pattern that can receive statements.
+type scope struct {
+	insertAt int // index just past the '{' of the group
+	start    int // first byte of the subquery, its SELECT clause
+	end      int // index of the '}' that closes the subquery
+}
+
+// queryScopes returns the index just past the '{' of the outer group pattern
+// and the scopes of the subqueries, in the order they appear.
+func queryScopes(blanked string) (outer int, subqueries []scope, err error) {
+	var topBraces []int
+	whereBrace := -1
+	braceDepth, parenDepth := 0, 0
+
+	for i := 0; i < len(blanked); i++ {
+		switch blanked[i] {
+		case '(':
+			parenDepth++
+		case ')':
+			parenDepth--
+		case '<':
+			// an IRI can hold a brace, a comparison operator cannot
+			if end, ok := iriEnd(blanked, i); ok {
+				i = end
+			}
+		case '{':
+			if braceDepth == 0 && parenDepth == 0 {
+				topBraces = append(topBraces, i)
+			}
+			if sel := nextNonSpace(blanked, i+1); keywordAt(blanked, sel, "SELECT") {
+				group := nextBraceAtParenZero(blanked, sel)
+				if group < 0 {
+					return 0, nil, errUnbalancedBraces
+				}
+				end := matchingBrace(blanked, group)
+				if end < 0 {
+					return 0, nil, errUnbalancedBraces
+				}
+				subqueries = append(subqueries, scope{insertAt: group + 1, start: sel, end: end})
+			}
+			braceDepth++
+		case '}':
+			braceDepth--
+		}
+
+		if braceDepth == 0 && parenDepth == 0 && whereBrace < 0 && keywordAt(blanked, i, "WHERE") {
+			if brace := nextNonSpace(blanked, i+len("WHERE")); brace < len(blanked) && blanked[brace] == '{' {
+				whereBrace = brace
+			}
+		}
+	}
+
+	form := ""
+	pos := skipPrologue(blanked)
+	for _, keyword := range []string{"SELECT", "ASK", "CONSTRUCT", "DESCRIBE"} {
+		if keywordAt(blanked, pos, keyword) {
+			form = keyword
+			break
+		}
+	}
+
+	found := true
+	switch {
+	case whereBrace >= 0:
+		outer = whereBrace + 1
+	case form == "SELECT" || form == "ASK":
+		found = len(topBraces) > 0
+		if found {
+			outer = topBraces[0] + 1
+		}
+	case form == "CONSTRUCT":
+		// the template comes first, the group pattern after it
+		found = len(topBraces) > 1
+		if found {
+			outer = topBraces[1] + 1
+		}
+	default:
+		found = false
+	}
+	if !found {
+		return 0, nil, fmt.Errorf("%w: add a WHERE clause or a SELECT, ASK or CONSTRUCT group", ErrNoInjectionPoint)
+	}
+	return outer, subqueries, nil
+}
+
+// errUnbalancedBraces reports a query whose braces do not pair up.
+var errUnbalancedBraces = errors.New("unbalanced braces in the query")
+
+// nextBraceAtParenZero returns the index of the first '{' at or after i that is
+// outside parentheses, or -1. It is the group brace of a SELECT clause.
+func nextBraceAtParenZero(code string, i int) int {
+	depth := 0
+	for ; i < len(code); i++ {
+		switch code[i] {
+		case '(':
+			depth++
+		case ')':
+			depth--
+		case '<':
+			if end, ok := iriEnd(code, i); ok {
+				i = end
+			}
+		case '{':
+			if depth == 0 {
+				return i
+			}
+		}
+	}
+	return -1
+}
+
+// matchingBrace returns the index of the '}' that closes the '{' at open,
+// skipping IRIs, or -1 when the braces are unbalanced.
+func matchingBrace(code string, open int) int {
+	depth := 1
+	for i := open + 1; i < len(code); i++ {
+		switch code[i] {
+		case '<':
+			if end, ok := iriEnd(code, i); ok {
+				i = end
+			}
+		case '{':
+			depth++
+		case '}':
+			depth--
+			if depth == 0 {
+				return i
+			}
+		}
+	}
+	return -1
+}
+
+// skipPrologue returns the index of the first keyword after the PREFIX and
+// BASE declarations, handling an empty prefix label.
+func skipPrologue(code string) int {
+	pos := 0
+	for {
+		pos = nextNonSpace(code, pos)
+		switch {
+		case keywordAt(code, pos, "PREFIX"):
+			pos = nextNonSpace(code, pos+len("PREFIX"))
+			for pos < len(code) && (nameByte(code[pos]) || code[pos] == '-' || code[pos] == '.') {
+				pos++
+			}
+			if pos >= len(code) || code[pos] != ':' {
+				return pos
+			}
+			pos = nextNonSpace(code, pos+1)
+			if pos >= len(code) || code[pos] != '<' {
+				return pos
+			}
+			end, ok := iriEnd(code, pos)
+			if !ok {
+				return pos
+			}
+			pos = end + 1
+		case keywordAt(code, pos, "BASE"):
+			pos = nextNonSpace(code, pos+len("BASE"))
+			if pos >= len(code) || code[pos] != '<' {
+				return pos
+			}
+			end, ok := iriEnd(code, pos)
+			if !ok {
+				return pos
+			}
+			pos = end + 1
+		default:
+			return pos
+		}
+	}
+}
+
+// keywordAt reports whether code[i:] starts with keyword, case-insensitively,
+// as a whole token: the byte before it is not part of a name, a prefixed name
+// or a variable, and the byte after it does not continue a name or prefix.
+func keywordAt(code string, i int, keyword string) bool {
+	if len(code)-i < len(keyword) || !strings.EqualFold(code[i:i+len(keyword)], keyword) {
+		return false
+	}
+	if i > 0 {
+		switch before := code[i-1]; {
+		case nameByte(before), before == '-', before == '.', before == ':', before == '?', before == '$', before == '@':
+			return false
+		}
+	}
+	if end := i + len(keyword); end < len(code) {
+		switch after := code[end]; {
+		case nameByte(after), after == '-', after == '.', after == ':':
+			return false
+		}
+	}
+	return true
+}
+
+// nextNonSpace returns the index of the first byte at or after i that is not a
+// space or a tab, or len(code).
+func nextNonSpace(code string, i int) int {
+	for i < len(code) && (code[i] == ' ' || code[i] == '\t') {
+		i++
+	}
+	return i
+}
+
+// nameByte reports whether b continues a SPARQL name.
+func nameByte(b byte) bool {
+	return b == '_' || b >= 0x80 || ('0' <= b && b <= '9') || ('A' <= b && b <= 'Z') || ('a' <= b && b <= 'z')
 }
 
 func cleanupSPARQL(query string) string {

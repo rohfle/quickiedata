@@ -54,6 +54,15 @@ func main() {
 
 	rootCmd.PersistentFlags().StringVarP(&language, "language", "l", "en", "Language code for labels and descriptions")
 
+	// Debug logs go to stderr so the JSON on stdout stays parseable.
+	var debug bool
+	rootCmd.PersistentFlags().BoolVar(&debug, "debug", false, "Log rendered queries and scanner views to stderr")
+	rootCmd.PersistentPreRun = func(cmd *cobra.Command, args []string) {
+		if debug {
+			quickiedata.DebugLog.SetOutput(os.Stderr)
+		}
+	}
+
 	var offset int
 	var limit int
 

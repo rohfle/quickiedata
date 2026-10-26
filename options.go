@@ -40,6 +40,9 @@ func NewSearchEntitiesOptions() *SearchEntitiesOptions {
 
 // Variables holds the terms bound to a SPARQL variable: one term is a BIND, a
 // list is a VALUES clause. Use Set and Add, and NewSPARQLQuery to initialise it.
+// A variable's statement is inserted in the outer group pattern, and again
+// inside each subquery that uses it; a subquery is its own scope, so a binding
+// outside it does not reach it.
 type Variables map[string][]SPARQLTerm
 
 // Set replaces the terms bound to name.

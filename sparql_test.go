@@ -2,6 +2,7 @@ package quickiedata_test
 
 import (
 	"bytes"
+	"errors"
 	"strings"
 	"testing"
 
@@ -168,19 +169,258 @@ func TestRenderSPARQLQueryValues(t *testing.T) {
 	}
 }
 
-// A template with no WHERE clause cannot take variable statements, so the
-// variables are left out and the query is sent as it is.
-func TestRenderSPARQLQueryWithoutWhereClause(t *testing.T) {
-	query := quickiedata.NewSPARQLQuery()
-	query.Template = "SELECT ?item { ?item wdt:P31 wd:Q146 }"
-	query.Variables.Set("name", quickiedata.String("Oscar"))
+// squash collapses runs of spaces, so a test can assert on the structure of a
+// rendered query without pinning the padding around an insertion.
+func squash(text string) string {
+	return strings.Join(strings.Fields(text), " ")
+}
 
-	got, err := quickiedata.RenderSPARQLQuery(query)
+// renderVariables renders a template with one bound variable.
+func renderVariables(t *testing.T, template string, name string, terms []quickiedata.SPARQLTerm) (string, error) {
+	t.Helper()
+
+	query := quickiedata.NewSPARQLQuery()
+	query.Template = template
+	query.Variables.Set(name, terms...)
+	return quickiedata.RenderSPARQLQuery(query)
+}
+
+// A variable's statement goes into the outer group pattern, and again inside
+// every subquery that uses the variable: a subquery is its own scope, so the
+// outer binding alone does not reach it.
+func TestRenderSPARQLQueryInjectionScope(t *testing.T) {
+	one := func(term quickiedata.SPARQLTerm) []quickiedata.SPARQLTerm {
+		return []quickiedata.SPARQLTerm{term}
+	}
+	const q42 = `BIND( <http://www.wikidata.org/entity/Q42> as ?item)`
+
+	tests := []struct {
+		name     string
+		template string
+		variable string
+		terms    []quickiedata.SPARQLTerm
+		contains []string
+		counts   map[string]int
+		wantErr  error
+	}{
+		{
+			name:     "subquery uses the variable",
+			template: `SELECT ?y ?item WHERE { { SELECT ?y ?item WHERE { ?item wdt:P31 wd:Q5 } LIMIT 1 } }`,
+			variable: "item",
+			terms:    one(quickiedata.WikidataID("wd:Q42")),
+			contains: []string{`{ SELECT ?y ?item WHERE { ` + q42 + ` ?item wdt:P31 wd:Q5 }`},
+			counts:   map[string]int{q42: 2},
+		},
+		{
+			name:     "dollar sigil is the same variable",
+			template: `SELECT ?y ?item WHERE { { SELECT ?y ?item WHERE { $item wdt:P31 wd:Q5 } LIMIT 1 } }`,
+			variable: "item",
+			terms:    one(quickiedata.WikidataID("wd:Q42")),
+			contains: []string{`{ SELECT ?y ?item WHERE { ` + q42 + ` $item wdt:P31 wd:Q5 }`},
+			counts:   map[string]int{q42: 2},
+		},
+		{
+			name:     "subquery does not use the variable",
+			template: `SELECT ?y WHERE { { SELECT ?y WHERE { ?y wdt:P31 wd:Q5 } LIMIT 1 } ?x ?p ?o }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{
+				`SELECT ?y WHERE { BIND( """v""" as ?x) { SELECT`,
+				`{ SELECT ?y WHERE { ?y wdt:P31 wd:Q5 }`,
+			},
+			counts: map[string]int{`BIND( """v""" as ?x)`: 1},
+		},
+		{
+			name:     "list in a subquery",
+			template: `SELECT ?y ?item WHERE { { SELECT ?y ?item WHERE { ?item wdt:P31 wd:Q5 } LIMIT 1 } }`,
+			variable: "item",
+			terms:    quickiedata.Strings("a", "b"),
+			contains: []string{`{ SELECT ?y ?item WHERE { VALUES ?item { """a""" """b""" } ?item`},
+			counts:   map[string]int{`VALUES ?item {`: 2},
+		},
+		{
+			name:     "union is one scope",
+			template: `SELECT ?x WHERE { { ?x wdt:P31 wd:Q5 } UNION { ?x wdt:P31 wd:Q6 } }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`WHERE { BIND( """v""" as ?x) { ?x wdt:P31 wd:Q5 }`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "WHERE { inside a literal",
+			template: `SELECT ?x WHERE { BIND("""WHERE {""" AS ?x) }`,
+			variable: "name",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`BIND("""WHERE {""" AS ?x)`, `BIND( """v""" as ?name)`},
+			counts:   map[string]int{`BIND( """v""" as ?name)`: 1},
+		},
+		{
+			name:     "multi byte literal",
+			template: `SELECT ?x WHERE { BIND("é—🔥 WHERE {" AS ?x) }`,
+			variable: "name",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`BIND("é—🔥 WHERE {" AS ?x)`, `BIND( """v""" as ?name)`},
+			counts:   map[string]int{`BIND( """v""" as ?name)`: 1},
+		},
+		{
+			name:     "lowercase where with no space",
+			template: `SELECT ?x where{ ?x ?p ?o }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`where{ BIND( """v""" as ?x) ?x ?p ?o }`},
+		},
+		{
+			name:     "variable named where",
+			template: `SELECT ?where WHERE { ?where wdt:P31 wd:Q5 }`,
+			variable: "where",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`BIND( """v""" as ?where)`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "prefixed name ending in where",
+			template: `SELECT ?x { ?x a ex:where }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`{ BIND( """v""" as ?x) ?x a ex:where }`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "implicit group without the WHERE keyword",
+			template: `SELECT ?item { ?item wdt:P31 wd:Q146 }`,
+			variable: "name",
+			terms:    one(quickiedata.String("Oscar")),
+			contains: []string{`SELECT ?item { BIND( """Oscar""" as ?name) ?item wdt:P31 wd:Q146 }`},
+		},
+		{
+			name:     "construct with a where clause",
+			template: `CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }`,
+			variable: "s",
+			terms:    one(quickiedata.WikidataID("wd:Q42")),
+			contains: []string{`WHERE { BIND( <http://www.wikidata.org/entity/Q42> as ?s)`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "construct short form binds after the template",
+			template: `CONSTRUCT { ?s ?p ?o } { ?s ?p ?o }`,
+			variable: "s",
+			terms:    one(quickiedata.WikidataID("wd:Q42")),
+			contains: []string{`CONSTRUCT { ?s ?p ?o } { BIND( <http://www.wikidata.org/entity/Q42> as ?s) ?s ?p ?o }`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "prefix prologue before an implicit group",
+			template: "PREFIX wd: <http://www.wikidata.org/entity/>\nSELECT ?item { ?item wdt:P31 wd:Q5 }",
+			variable: "name",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`SELECT ?item { BIND( """v""" as ?name) ?item wdt:P31 wd:Q5 }`},
+		},
+		{
+			name:     "comparison operator is not an iri",
+			template: `SELECT ?x WHERE { ?x ?p ?o . FILTER(?o < 5) }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`WHERE { BIND( """v""" as ?x) ?x ?p ?o . FILTER(?o < 5) }`},
+		},
+		{
+			name:     "exists is not the outer group",
+			template: `SELECT (EXISTS { ?x a ?y } AS ?e) { ?x a ?y }`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`AS ?e) { BIND( """v""" as ?x) ?x a ?y }`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
+			name:     "describe has no group to bind in",
+			template: `DESCRIBE ?x`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			wantErr:  quickiedata.ErrNoInjectionPoint,
+		},
+		{
+			name:     "select with no group",
+			template: `SELECT ?x`,
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			wantErr:  quickiedata.ErrNoInjectionPoint,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			out, err := renderVariables(t, test.template, test.variable, test.terms)
+			if test.wantErr != nil {
+				if !errors.Is(err, test.wantErr) {
+					t.Fatalf("RenderSPARQLQuery error = %v, want %v", err, test.wantErr)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("RenderSPARQLQuery: %s", err)
+			}
+			normalized := squash(out)
+			for _, want := range test.contains {
+				if !strings.Contains(normalized, want) {
+					t.Errorf("rendered query lost %q:\n  %s", want, out)
+				}
+			}
+			for statement, want := range test.counts {
+				if got := strings.Count(out, statement); got != want {
+					t.Errorf("query has %d of %q, want %d:\n  %s", got, statement, want, out)
+				}
+			}
+		})
+	}
+}
+
+// The debug log shows the view the scanner searched and the query the endpoint
+// receives, so a statement in an unexpected group can be explained.
+func TestRenderSPARQLQueryLogsScannerViewAndResult(t *testing.T) {
+	var logged bytes.Buffer
+	previous := quickiedata.DebugLog.Writer()
+	quickiedata.DebugLog.SetOutput(&logged)
+	defer quickiedata.DebugLog.SetOutput(previous)
+
+	// the literal holds a group brace, so the two views differ
+	const template = `SELECT ?item WHERE { BIND("""WHERE {""" AS ?item) }`
+	if _, err := renderVariables(t, template, "x", []quickiedata.SPARQLTerm{quickiedata.String("v")}); err != nil {
+		t.Fatalf("RenderSPARQLQuery: %s", err)
+	}
+
+	var sawScannerView, sawQuery bool
+	for _, line := range strings.Split(strings.TrimSpace(logged.String()), "\n") {
+		switch {
+		case strings.Contains(line, "sparql scanner view"):
+			sawScannerView = true
+			if strings.Contains(line, `"""WHERE {"""`) {
+				t.Errorf("scanner view kept a literal: %s", line)
+			}
+		case strings.Contains(line, "sparql query:"):
+			sawQuery = true
+			for _, want := range []string{`"""WHERE {"""`, `BIND( """v""" as ?x)`} {
+				if !strings.Contains(line, want) {
+					t.Errorf("logged query lost %q: %s", want, line)
+				}
+			}
+		}
+	}
+	if !sawScannerView || !sawQuery {
+		t.Errorf("log = %q, want a scanner view line and a query line", logged.String())
+	}
+}
+
+// The inserted block is the only difference from the template, so a caller can
+// still recognise its own query in the output.
+func TestRenderSPARQLQueryInjectionIsRemovable(t *testing.T) {
+	const template = `SELECT ?x WHERE { ?x ?p ?o }`
+	const statement = `BIND( """v""" as ?x)`
+
+	out, err := renderVariables(t, template, "x", []quickiedata.SPARQLTerm{quickiedata.String("v")})
 	if err != nil {
 		t.Fatalf("RenderSPARQLQuery: %s", err)
 	}
-	if got != "SELECT ?item { ?item wdt:P31 wd:Q146 }" {
-		t.Errorf("RenderSPARQLQuery = %q, want the query unchanged", got)
+	if got := strings.Replace(out, " "+statement+" ", "", 1); got != template {
+		t.Errorf("query without the statement = %q, want %q", got, template)
 	}
 }
 
