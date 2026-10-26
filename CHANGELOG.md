@@ -3,6 +3,15 @@
 Newest first. Versions follow [Semantic Versioning](https://semver.org/); this
 library is pre-1.0, so a breaking change bumps the minor version.
 
+## v0.2.1 — 2026-10-26
+
+### Changed
+
+- `nicehttp` v0.5.0 (was v0.4.1). A retry that cannot start before the caller's
+  deadline now returns the last response instead of a deadline error, so a saved
+  `429` or `503` reports its status and body. The per-attempt deadline stays at
+  60s here, so the new `NoTimeout` default does not apply.
+
 ## v0.2.0 — 2026-10-26
 
 Requires Go 1.26 or later; `go.mod` moved up from `go 1.23.0`.
