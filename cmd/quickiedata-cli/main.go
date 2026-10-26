@@ -85,16 +85,19 @@ func main() {
 				}
 				key := parts[0]
 				val := strings.TrimSpace(parts[1])
-				if strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]") {
+				switch {
+				case strings.HasPrefix(val, "[") && strings.HasSuffix(val, "]"):
 					parsedVals, err := parseArray(val)
 					if err != nil {
 						return fmt.Errorf("invalid array syntax for %s: %v", key, err)
 					}
-					query.Variables[key] = parsedVals
-				} else if quickiedata.IsEntityID(val) {
-					query.Variables[key] = quickiedata.WikidataID("wd:" + val)
-				} else {
-					query.Variables[key] = val
+					// The elements are plain strings: an id inside an array is
+					// not detected the way a single value below is.
+					query.Variables.Set(key, quickiedata.Strings(parsedVals...)...)
+				case quickiedata.IsEntityID(val):
+					query.Variables.Set(key, quickiedata.WikidataID("wd:"+val))
+				default:
+					query.Variables.Set(key, quickiedata.String(val))
 				}
 			}
 

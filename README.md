@@ -275,7 +275,7 @@ func main() {
 			FILTER(STR(?itemLabel) = ?name)
 		}
 	`
-	query.Variables["name"] = "Oscar"
+	query.Variables.Set("name", quickiedata.String("Oscar"))
 
 	options := quickiedata.NewSPARQLQueryOptions()
 	resp, err := client.SPARQLQuerySimple(ctx, query, options)

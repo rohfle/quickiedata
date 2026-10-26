@@ -46,16 +46,35 @@ func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
 	return &GetSPARQLQueryOptions{}
 }
 
+// Variables holds the terms bound to a SPARQL variable: one term is a BIND, a
+// list is a VALUES clause. Use Set and Add, and NewSPARQLQuery to initialise it.
+type Variables map[string][]SPARQLTerm
+
+// Set replaces the terms bound to name.
+func (v Variables) Set(name string, terms ...SPARQLTerm) {
+	v[name] = terms
+}
+
+// Add appends terms to the ones bound to name.
+func (v Variables) Add(name string, terms ...SPARQLTerm) {
+	v[name] = append(v[name], terms...)
+}
+
+// Get returns the terms bound to name.
+func (v Variables) Get(name string) []SPARQLTerm {
+	return v[name]
+}
+
 type SPARQLQuery struct {
 	Template  string
-	Variables map[string]any
+	Variables Variables
 	Offset    int64
 	Limit     int64
 }
 
 func NewSPARQLQuery() *SPARQLQuery {
 	return &SPARQLQuery{
-		Variables: make(map[string]any),
+		Variables: make(Variables),
 		Offset:    -1,
 		Limit:     -1,
 	}

@@ -1,6 +1,7 @@
 package quickiedata_test
 
 import (
+	"math"
 	"strings"
 	"testing"
 	"time"
@@ -9,12 +10,22 @@ import (
 )
 
 // renderBound renders a query with one bound variable and returns the result.
-func renderBound(t *testing.T, value any) (string, error) {
+func renderBound(t *testing.T, term quickiedata.SPARQLTerm) (string, error) {
 	t.Helper()
 
 	query := quickiedata.NewSPARQLQuery()
 	query.Template = "SELECT ?x WHERE { ?x wdt:P31 wd:Q5 }"
-	query.Variables["at"] = value
+	query.Variables.Set("at", term)
+	return quickiedata.RenderSPARQLQuery(query)
+}
+
+// renderBoundList renders a query whose variable holds a term list.
+func renderBoundList(t *testing.T, terms []quickiedata.SPARQLTerm) (string, error) {
+	t.Helper()
+
+	query := quickiedata.NewSPARQLQuery()
+	query.Template = "SELECT ?x WHERE { ?x wdt:P31 wd:Q5 }"
+	query.Variables.Set("at", terms...)
 	return quickiedata.RenderSPARQLQuery(query)
 }
 
@@ -146,14 +157,24 @@ func (t testTerm) SPARQLTerm() (string, error) { return t.text, nil }
 func TestSPARQLTermRendering(t *testing.T) {
 	tests := []struct {
 		name    string
-		value   any
+		value   quickiedata.SPARQLTerm
 		want    string
 		wantErr string
 	}{
 		{
 			name:  "wikidata id",
 			value: quickiedata.WikidataID("wd:Q42"),
-			want:  `BIND( wd:Q42 as ?at)`,
+			want:  `BIND( <http://www.wikidata.org/entity/Q42> as ?at)`,
+		},
+		{
+			name:  "wikibase prefix is accepted",
+			value: quickiedata.WikidataID("wikibase:Q42"),
+			want:  `BIND( <http://www.wikidata.org/entity/Q42> as ?at)`,
+		},
+		{
+			name:    "another prefix is rejected",
+			value:   quickiedata.WikidataID("foo:Q42"),
+			wantErr: "invalid wikidata reference",
 		},
 		{
 			name:  "caller defined term",
@@ -190,7 +211,7 @@ func TestSPARQLTermRendering(t *testing.T) {
 func TestSPARQLTermListRendering(t *testing.T) {
 	tests := []struct {
 		name    string
-		value   any
+		value   []quickiedata.SPARQLTerm
 		want    string
 		wantErr string
 	}{
@@ -200,12 +221,12 @@ func TestSPARQLTermListRendering(t *testing.T) {
 				quickiedata.WikidataID("wd:Q42"),
 				quickiedata.NewWikidataDateTime(time.Date(1952, 3, 11, 0, 0, 0, 0, time.UTC)),
 			},
-			want: `VALUES ?at { wd:Q42 "1952-03-11T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> }`,
+			want: `VALUES ?at { <http://www.wikidata.org/entity/Q42> "1952-03-11T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> }`,
 		},
 		{
 			name:  "wikidata ids keep working",
-			value: []quickiedata.WikidataID{quickiedata.WikidataID("wd:Q42"), quickiedata.WikidataID("wd:Q1")},
-			want:  `VALUES ?at { wd:Q42 wd:Q1 }`,
+			value: quickiedata.IDs("wd:Q42", "wd:Q1"),
+			want:  `VALUES ?at { <http://www.wikidata.org/entity/Q42> <http://www.wikidata.org/entity/Q1> }`,
 		},
 		{
 			name:    "an invalid term fails the whole list",
@@ -221,7 +242,101 @@ func TestSPARQLTermListRendering(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			rendered, err := renderBound(t, test.value)
+			rendered, err := renderBoundList(t, test.value)
+
+			if test.wantErr != "" {
+				if err == nil || !strings.Contains(err.Error(), test.wantErr) {
+					t.Fatalf("error = %v, want it to contain %q", err, test.wantErr)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("RenderSPARQLQuery: %s", err)
+			}
+			if !strings.Contains(rendered, test.want) {
+				t.Errorf("rendered = %q, want it to contain %q", rendered, test.want)
+			}
+		})
+	}
+}
+
+func TestTermConstructors(t *testing.T) {
+	decimal, err := quickiedata.NewDecimal("12.5")
+	if err != nil {
+		t.Fatalf("NewDecimal: %s", err)
+	}
+
+	tests := []struct {
+		name    string
+		term    quickiedata.SPARQLTerm
+		want    string
+		wantErr string
+	}{
+		{
+			name: "string",
+			term: quickiedata.String("Oscar"),
+			want: `BIND( """Oscar""" as ?at)`,
+		},
+		{
+			name: "string with a quote",
+			term: quickiedata.String(`say "hi"`),
+			want: `say \"hi\"`,
+		},
+		{
+			name: "integer",
+			term: quickiedata.Integer(42),
+			want: `BIND( 42 as ?at)`,
+		},
+		{
+			name: "boolean",
+			term: quickiedata.Boolean(true),
+			want: `BIND( true as ?at)`,
+		},
+		{
+			name: "float",
+			term: quickiedata.Float(1500),
+			want: `BIND( 1.5E+03 as ?at)`,
+		},
+		{
+			name: "float infinity",
+			term: quickiedata.Float(math.Inf(1)),
+			want: `BIND( "INF"^^<http://www.w3.org/2001/XMLSchema#double> as ?at)`,
+		},
+		{
+			name: "decimal",
+			term: decimal,
+			want: `BIND( "12.5"^^<http://www.w3.org/2001/XMLSchema#decimal> as ?at)`,
+		},
+		{
+			name:    "decimal with an exponent",
+			term:    quickiedata.Decimal("1e5"),
+			wantErr: "is not an xsd:decimal",
+		},
+		{
+			name: "language text",
+			term: quickiedata.Text{Language: "EN", Value: "Douglas Adams"},
+			want: `BIND( "Douglas Adams"@en as ?at)`,
+		},
+		{
+			name:    "text with a broken language tag",
+			term:    quickiedata.Text{Language: "e n", Value: "x"},
+			wantErr: "invalid language tag",
+		},
+		{
+			name: "coordinate",
+			term: quickiedata.Coordinate{Latitude: 52.5, Longitude: 13.4},
+			want: `BIND( "Point(13.4 52.5)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> as ?at)`,
+		},
+		{
+			name:    "coordinate out of range",
+			term:    quickiedata.Coordinate{Latitude: 91, Longitude: 0},
+			wantErr: "latitude",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			rendered, err := renderBound(t, test.term)
 
 			if test.wantErr != "" {
 				if err == nil || !strings.Contains(err.Error(), test.wantErr) {

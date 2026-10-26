@@ -145,7 +145,7 @@ func TestRenderSPARQLQueryCommentStripping(t *testing.T) {
 func TestRenderSPARQLQueryValues(t *testing.T) {
 	query := quickiedata.NewSPARQLQuery()
 	query.Template = "SELECT ?x WHERE { ?x ?p ?o }"
-	query.Variables["v"] = []string{}
+	query.Variables.Set("v")
 
 	out, err := quickiedata.RenderSPARQLQuery(query)
 	if err != nil {
@@ -157,7 +157,7 @@ func TestRenderSPARQLQueryValues(t *testing.T) {
 
 	bad := quickiedata.NewSPARQLQuery()
 	bad.Template = "SELECT ?x WHERE { ?x ?p ?o }"
-	bad.Variables["v"] = []quickiedata.WikidataID{quickiedata.WikidataID("wd:Q42"), quickiedata.WikidataID("nope")}
+	bad.Variables.Set("v", quickiedata.IDs("wd:Q42", "nope")...)
 
 	_, err = quickiedata.RenderSPARQLQuery(bad)
 	if err == nil {
@@ -173,7 +173,7 @@ func TestRenderSPARQLQueryValues(t *testing.T) {
 func TestRenderSPARQLQueryWithoutWhereClause(t *testing.T) {
 	query := quickiedata.NewSPARQLQuery()
 	query.Template = "SELECT ?item { ?item wdt:P31 wd:Q146 }"
-	query.Variables["name"] = "Oscar"
+	query.Variables.Set("name", quickiedata.String("Oscar"))
 
 	got, err := quickiedata.RenderSPARQLQuery(query)
 	if err != nil {
@@ -208,5 +208,34 @@ func TestSPARQLSimplifyFailureGoesToDebugLog(t *testing.T) {
 	}
 	if !strings.Contains(logged.String(), "error while simplifying") {
 		t.Errorf("debug log = %q, want the simplify error in it", logged.String())
+	}
+}
+
+// A single term is a BIND, a list is a VALUES clause, and Set replaces while
+// Add appends.
+func TestVariablesSetAndAdd(t *testing.T) {
+	query := quickiedata.NewSPARQLQuery()
+	query.Template = "SELECT ?v WHERE { ?v ?p ?o }"
+
+	query.Variables.Set("v", quickiedata.String("a"))
+	rendered, err := quickiedata.RenderSPARQLQuery(query)
+	if err != nil {
+		t.Fatalf("RenderSPARQLQuery: %s", err)
+	}
+	if !strings.Contains(rendered, `BIND( """a""" as ?v)`) {
+		t.Errorf("one term should be a BIND:\n  %s", rendered)
+	}
+
+	query.Variables.Set("v", quickiedata.Strings("a", "b")...)
+	query.Variables.Add("v", quickiedata.String("c"))
+	rendered, err = quickiedata.RenderSPARQLQuery(query)
+	if err != nil {
+		t.Fatalf("RenderSPARQLQuery: %s", err)
+	}
+	if !strings.Contains(rendered, `VALUES ?v { """a""" """b""" """c""" }`) {
+		t.Errorf("terms should be a VALUES clause:\n  %s", rendered)
+	}
+	if got := len(query.Variables.Get("v")); got != 3 {
+		t.Errorf("Get returned %d terms, want 3", got)
 	}
 }

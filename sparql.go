@@ -3,7 +3,6 @@ package quickiedata
 import (
 	"errors"
 	"fmt"
-	"reflect"
 	"regexp"
 	"slices"
 	"strings"
@@ -89,8 +88,7 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 		}
 		slices.Sort(keys)
 		for _, name := range keys {
-			value := query.Variables[name]
-			statement, err := renderSPARQLStatement(name, value)
+			statement, err := renderSPARQLStatement(name, query.Variables[name])
 			if err != nil {
 				return "", err
 			}
@@ -115,59 +113,30 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 	return queryText, nil
 }
 
-func renderSPARQLStatement(name string, value any) (string, error) {
-	// validate key is valid
+// renderSPARQLStatement renders the terms bound to one variable: a single term
+// is a BIND, a list is a VALUES clause, and an empty list is a VALUES clause
+// that matches nothing.
+func renderSPARQLStatement(name string, terms []SPARQLTerm) (string, error) {
 	if !ValidSPARQLVariableName.MatchString(name) {
 		return "", fmt.Errorf("invalid sparql variable name '%s'", name)
 	}
 
-	// An id list is a term list, so one case renders both.
-	if ids, ok := value.([]WikidataID); ok {
-		terms := make([]SPARQLTerm, 0, len(ids))
-		for _, id := range ids {
-			terms = append(terms, id)
+	rendered := make([]string, 0, len(terms))
+	for _, term := range terms {
+		if term == nil {
+			return "", fmt.Errorf("nil sparql term for ?%s", name)
 		}
-		value = terms
-	}
-
-	switch v := value.(type) {
-	case string:
-		v = strings.ReplaceAll(v, `\`, `\\`)
-		v = strings.ReplaceAll(v, `"`, `\"`)
-		return fmt.Sprintf(`BIND( """%s""" as ?%s)`, v, name), nil
-	case []string:
-		var escaped []string
-		for _, s := range v {
-			s = strings.ReplaceAll(s, `\`, `\\`)
-			s = strings.ReplaceAll(s, `"`, `\"`)
-			e := fmt.Sprintf(`"""%s"""`, s)
-			escaped = append(escaped, e)
-		}
-		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(escaped, " ")), nil
-	case SPARQLTerm:
-		term, err := v.SPARQLTerm()
+		text, err := term.SPARQLTerm()
 		if err != nil {
 			return "", err
 		}
-		return fmt.Sprintf(`BIND( %s as ?%s)`, term, name), nil
-	case []SPARQLTerm:
-		terms := make([]string, 0, len(v))
-		for _, term := range v {
-			if term == nil {
-				return "", fmt.Errorf("nil sparql term in the list for ?%s", name)
-			}
-			text, err := term.SPARQLTerm()
-			if err != nil {
-				return "", err
-			}
-			terms = append(terms, text)
-		}
-		return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(terms, " ")), nil
-	case int, int32, int64:
-		return fmt.Sprintf(`BIND( %d as ?%s)`, v, name), nil
-	default:
-		return "", fmt.Errorf("unhandled %s datatype", reflect.TypeOf(v))
+		rendered = append(rendered, text)
 	}
+
+	if len(rendered) == 1 {
+		return fmt.Sprintf(`BIND( %s as ?%s)`, rendered[0], name), nil
+	}
+	return fmt.Sprintf(`VALUES ?%s { %s }`, name, strings.Join(rendered, " ")), nil
 }
 
 // whereClausePattern matches the WHERE clause of a query, including the
