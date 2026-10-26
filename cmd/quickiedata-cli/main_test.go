@@ -153,7 +153,7 @@ func TestParseVariables(t *testing.T) {
 			}
 
 			var got []string
-			for _, term := range variables.Get(test.key) {
+			for _, term := range variables[test.key] {
 				rendered, err := term.SPARQLTerm()
 				if err != nil {
 					t.Fatalf("SPARQLTerm: %s", err)

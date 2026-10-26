@@ -475,7 +475,7 @@ func TestVariablesSetAndAdd(t *testing.T) {
 	if !strings.Contains(rendered, `VALUES ?v { """a""" """b""" """c""" }`) {
 		t.Errorf("terms should be a VALUES clause:\n  %s", rendered)
 	}
-	if got := len(query.Variables.Get("v")); got != 3 {
+	if got := len(query.Variables["v"]); got != 3 {
 		t.Errorf("Get returned %d terms, want 3", got)
 	}
 }

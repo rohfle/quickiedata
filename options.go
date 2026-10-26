@@ -55,11 +55,6 @@ func (v Variables) Add(name string, terms ...SPARQLTerm) {
 	v[name] = append(v[name], terms...)
 }
 
-// Get returns the terms bound to name.
-func (v Variables) Get(name string) []SPARQLTerm {
-	return v[name]
-}
-
 type SPARQLQuery struct {
 	Template  string
 	Variables Variables
