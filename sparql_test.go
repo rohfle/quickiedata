@@ -316,6 +316,14 @@ func TestRenderSPARQLQueryInjectionScope(t *testing.T) {
 			contains: []string{`SELECT ?item { BIND( """v""" as ?name) ?item wdt:P31 wd:Q5 }`},
 		},
 		{
+			name:     "prefix and base prologue",
+			template: "PREFIX : <http://example.org/>\nBASE <http://example.org/>\nSELECT ?x { ?x :p ?o }",
+			variable: "x",
+			terms:    one(quickiedata.String("v")),
+			contains: []string{`SELECT ?x { BIND( """v""" as ?x) ?x :p ?o }`},
+			counts:   map[string]int{`BIND(`: 1},
+		},
+		{
 			name:     "comparison operator is not an iri",
 			template: `SELECT ?x WHERE { ?x ?p ?o . FILTER(?o < 5) }`,
 			variable: "x",
