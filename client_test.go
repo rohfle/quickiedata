@@ -53,7 +53,7 @@ func TestUserAgentOnEveryRequest(t *testing.T) {
 	}
 	query := quickiedata.NewSPARQLQuery()
 	query.Template = "SELECT ?item WHERE { ?item wdt:P31 wd:Q146 } LIMIT 1"
-	if _, err := client.SPARQLQueryRaw(context.Background(), query, nil); err != nil {
+	if _, err := client.SPARQLQueryRaw(context.Background(), query); err != nil {
 		t.Fatalf("SPARQLQueryRaw: %s", err)
 	}
 

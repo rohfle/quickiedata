@@ -84,7 +84,7 @@ func TestRawRequestsReportHTTPFailures(t *testing.T) {
 			return client.SearchEntitiesRaw(context.Background(), "hubble", quickiedata.NewSearchEntitiesOptions())
 		}},
 		{"SPARQLQueryRaw", func() ([]byte, error) {
-			return client.SPARQLQueryRaw(context.Background(), query, quickiedata.NewSPARQLQueryOptions())
+			return client.SPARQLQueryRaw(context.Background(), query)
 		}},
 	}
 

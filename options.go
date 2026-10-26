@@ -38,14 +38,6 @@ func NewSearchEntitiesOptions() *SearchEntitiesOptions {
 	}
 }
 
-// GetSPARQLQueryOptions carries the options of a SPARQL query. No option is
-// defined yet; per-request timeouts come from the context.
-type GetSPARQLQueryOptions struct{}
-
-func NewSPARQLQueryOptions() *GetSPARQLQueryOptions {
-	return &GetSPARQLQueryOptions{}
-}
-
 // Variables holds the terms bound to a SPARQL variable: one term is a BIND, a
 // list is a VALUES clause. Use Set and Add, and NewSPARQLQuery to initialise it.
 type Variables map[string][]SPARQLTerm

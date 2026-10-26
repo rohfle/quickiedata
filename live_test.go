@@ -62,7 +62,7 @@ func runLiveQuery(t *testing.T, endpoint string, query *quickiedata.SPARQLQuery)
 	}
 	client.SPARQLEndpoint = endpoint
 
-	response, err := client.SPARQLQuery(context.Background(), query, nil)
+	response, err := client.SPARQLQuery(context.Background(), query)
 	if err != nil {
 		t.Fatalf("%s: %s", endpoint, err)
 	}

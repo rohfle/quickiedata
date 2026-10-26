@@ -148,7 +148,7 @@ func TestSPARQLQueryWarnsAboutCompatibility(t *testing.T) {
 	query := quickiedata.NewSPARQLQuery()
 	query.Template = `SELECT ?item ?itemLabel WHERE { ?item wdt:P31 wd:Q515 . SERVICE wikibase:label { bd:serviceParam wikibase:language "en". } }`
 
-	if _, err := client.SPARQLQueryRaw(context.Background(), query, nil); err != nil {
+	if _, err := client.SPARQLQueryRaw(context.Background(), query); err != nil {
 		t.Fatalf("SPARQLQueryRaw: %s", err)
 	}
 	if requests := seen(); len(requests) != 1 {

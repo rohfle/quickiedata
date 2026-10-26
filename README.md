@@ -277,12 +277,10 @@ func main() {
 	`
 	query.Variables.Set("name", quickiedata.String("Oscar"))
 
-	options := quickiedata.NewSPARQLQueryOptions()
-	resp, err := client.SPARQLQuerySimple(ctx, query, options)
+	resp, err := client.SPARQLQuerySimple(ctx, query)
 	if err != nil {
-		fmt.Printf("sparql request failed:\nquery:\n  %s\noptions: %+v\nerror: %s\n",
+		fmt.Printf("sparql request failed:\nquery:\n  %s\nerror: %s\n",
 			strings.ReplaceAll(query.Template, "\n", "\n  "),
-			options,
 			err,
 		)
 		return

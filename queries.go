@@ -287,8 +287,8 @@ func (wd *WikidataClient) SearchEntities(ctx context.Context, query string, opti
 	return result.Search, nil
 }
 
-func (wd *WikidataClient) SPARQLQuerySimple(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLSimpleResponse, error) {
-	response, err := wd.SPARQLQuery(ctx, query, options)
+func (wd *WikidataClient) SPARQLQuerySimple(ctx context.Context, query *SPARQLQuery) (*SPARQLSimpleResponse, error) {
+	response, err := wd.SPARQLQuery(ctx, query)
 	if err != nil {
 		return nil, err
 	}
@@ -296,8 +296,8 @@ func (wd *WikidataClient) SPARQLQuerySimple(ctx context.Context, query *SPARQLQu
 	return response.Simplify(), nil
 }
 
-func (wd *WikidataClient) SPARQLQuery(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) (*SPARQLResponse, error) {
-	rawBody, err := wd.SPARQLQueryRaw(ctx, query, options)
+func (wd *WikidataClient) SPARQLQuery(ctx context.Context, query *SPARQLQuery) (*SPARQLResponse, error) {
+	rawBody, err := wd.SPARQLQueryRaw(ctx, query)
 	if err != nil {
 		return nil, err
 	}
@@ -311,7 +311,7 @@ func (wd *WikidataClient) SPARQLQuery(ctx context.Context, query *SPARQLQuery, o
 	return &result, nil
 }
 
-func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery, options *GetSPARQLQueryOptions) ([]byte, error) {
+func (wd *WikidataClient) SPARQLQueryRaw(ctx context.Context, query *SPARQLQuery) ([]byte, error) {
 	sparqlQuery, err := RenderSPARQLQuery(query)
 	if err != nil {
 		return nil, err
