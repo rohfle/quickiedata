@@ -60,8 +60,14 @@ func (v Variables) Get(name string) []SPARQLTerm {
 type SPARQLQuery struct {
 	Template  string
 	Variables Variables
-	Offset    int64
-	Limit     int64
+
+	// Offset is appended to the generated query as "OFFSET n" when not
+	// negative. The template is not checked for an existing OFFSET clause.
+	Offset int64
+	// Limit is appended to the generated query as "LIMIT n" when positive, so
+	// 0 means no limit and -1, the default, means unset. The template is not
+	// checked for an existing LIMIT clause.
+	Limit int64
 }
 
 func NewSPARQLQuery() *SPARQLQuery {

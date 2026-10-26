@@ -7,6 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/rohfle/quickiedata"
+	"github.com/spf13/cobra"
 )
 
 // buildCLI builds the command into a temporary directory, so the test can
@@ -185,5 +188,46 @@ func TestReadQueryInput(t *testing.T) {
 	}
 	if len(varArgs) != 1 || varArgs[0] != "name=Oscar" {
 		t.Errorf("varArgs = %v, want [name=Oscar]", varArgs)
+	}
+}
+
+// A paging flag reaches the query only when the caller set it, so a template
+// with its own LIMIT is not given a second one.
+func TestApplyPagination(t *testing.T) {
+	tests := []struct {
+		name       string
+		setFlags   map[string]string
+		wantOffset int64
+		wantLimit  int64
+	}{
+		{"nothing set", nil, -1, -1},
+		{"limit set", map[string]string{"limit": "3"}, -1, 3},
+		{"offset set", map[string]string{"offset": "5"}, 5, -1},
+		{"both set", map[string]string{"offset": "5", "limit": "3"}, 5, 3},
+		{"limit zero", map[string]string{"limit": "0"}, -1, 0},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			cmd := &cobra.Command{}
+			var offset, limit int
+			cmd.Flags().IntVar(&offset, "offset", 0, "")
+			cmd.Flags().IntVar(&limit, "limit", 0, "")
+			for name, value := range test.setFlags {
+				if err := cmd.Flags().Set(name, value); err != nil {
+					t.Fatalf("Set(%s): %s", name, err)
+				}
+			}
+
+			query := quickiedata.NewSPARQLQuery()
+			applyPagination(cmd, query, offset, limit)
+
+			if query.Offset != test.wantOffset {
+				t.Errorf("Offset = %d, want %d", query.Offset, test.wantOffset)
+			}
+			if query.Limit != test.wantLimit {
+				t.Errorf("Limit = %d, want %d", query.Limit, test.wantLimit)
+			}
+		})
 	}
 }

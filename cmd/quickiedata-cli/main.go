@@ -73,9 +73,8 @@ func main() {
 			}
 
 			query := quickiedata.NewSPARQLQuery()
-			query.Offset = int64(offset)
-			query.Limit = int64(limit)
 			query.Template = queryText
+			applyPagination(cmd, query, offset, limit)
 			query.Variables = variables
 
 			resp, err := wd.SPARQLQuerySimple(ctx, query)
@@ -99,8 +98,8 @@ func main() {
 			return nil
 		},
 	}
-	queryCmd.Flags().IntVar(&offset, "offset", 0, "Offset for results")
-	queryCmd.Flags().IntVar(&limit, "limit", 10, "Limit for results")
+	queryCmd.Flags().IntVar(&offset, "offset", 0, "Offset for results (default: as written in the query)")
+	queryCmd.Flags().IntVar(&limit, "limit", 0, "Limit for results (default: as written in the query)")
 	queryCmd.SilenceUsage = true
 
 	// Search command
@@ -282,4 +281,16 @@ func parseTerm(value string) quickiedata.SPARQLTerm {
 		return predicate
 	}
 	return quickiedata.String(value)
+}
+
+// applyPagination passes the paging flags to the query only when the caller
+// set them, so a template that carries its own OFFSET or LIMIT is not given a
+// second one.
+func applyPagination(cmd *cobra.Command, query *quickiedata.SPARQLQuery, offset, limit int) {
+	if cmd.Flags().Changed("offset") {
+		query.Offset = int64(offset)
+	}
+	if cmd.Flags().Changed("limit") {
+		query.Limit = int64(limit)
+	}
 }

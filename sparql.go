@@ -97,17 +97,12 @@ func RenderSPARQLQuery(query *SPARQLQuery) (string, error) {
 		queryText = insertStatementsInWhere(queryText, strings.Join(statements, " "))
 	}
 
-	lastIndexCurly := strings.LastIndex(queryText, "}")
-	trailingOptions := ""
-	if lastIndexCurly >= 0 {
-		trailingOptions = strings.ToLower(queryText[lastIndexCurly:])
-	}
-	// probably should replace the limit and offset in the query or error
-	// but for now this is good enough
-	if query.Offset >= 0 && !strings.Contains(trailingOptions, "offset ") {
+	// The fields own these clauses. A template that carries its own OFFSET or
+	// LIMIT gets a second one, so leave them out of the template.
+	if query.Offset >= 0 {
 		queryText += fmt.Sprintf(" OFFSET %d", query.Offset)
 	}
-	if query.Limit > 0 && !strings.Contains(trailingOptions, "limit ") {
+	if query.Limit > 0 {
 		queryText += fmt.Sprintf(" LIMIT %d", query.Limit)
 	}
 	return queryText, nil

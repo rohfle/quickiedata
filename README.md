@@ -341,6 +341,10 @@ query.Variables.Set("name", quickiedata.String("Oscar"))
 query.Variables.Set("p", quickiedata.Predicate("wdt:P31"))
 ```
 
+`Offset` and `Limit` are appended to the query when set (`>= 0` and `> 0`; `-1`
+means unset). Leave them out of the template: a template that carries its own
+gets a second clause, which the endpoint rejects.
+
 ## Migrating to WDQS v2
 
 The Wikidata Query Service is moving from v1 to v2. New endpoints are
